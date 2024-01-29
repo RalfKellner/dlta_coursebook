@@ -1,0 +1,6 @@
+.DS_Store
+.venv/
+data/
+language_models/
+notebooks/
+to_dos.txt
