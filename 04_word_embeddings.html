@@ -156,14 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/course_logo.png" class="logo__image only-light" alt="Deep Learning and Text Analysis in Finance - Home"/>
-    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Deep Learning and Text Analysis in Finance - Home"/>`);</script>
   
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -190,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
@@ -530,9 +525,9 @@ document.write(`
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="8568bd9b-d30c-49f6-bf13-39dea83457a5" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("8568bd9b-d30c-49f6-bf13-39dea83457a5")) {                    Plotly.newPlot(                        "8568bd9b-d30c-49f6-bf13-39dea83457a5",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003eweight=%{x}\u003cbr\u003esize=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Afghan hound","Airedale Terrier","American Staffordshire Terrier","Australian Shepherd","Borzoi","Basset","Beagle","Bearded Collie","Berger de Brie (Briard)","Saint Bernard","Bobtail","Border Collie","Boxer","Bull terrier","Chow-Chow","Collie","Dalmatian","Great Dane","German shepherd dog","Doberman pinscher","French bulldog","Golden Retriever","Greyhound","Havanese","Hovawart","Irish Red Setter","Leonberger","Lhasa Apso","Maltese","Pug","Small M\u00fcnsterl\u00e4nder","Large M\u00fcnsterl\u00e4nder","Newfoundland","Parson Russel Terrier","Rhodesian Ridgeback","Rottweiler","Standard Schnauzers","Shih Tzu","Siberian Husky","Sheltie (Shetland Sheepdog)","Staffordshire Bullterrier","Keeshond","Miniature Pinscher","Toy poodle","Miniature Schnauzer"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[25.0,22.5,16.0,24.0,36.0,24.0,14.0,24.0,25.0,77.5,32.5,16.0,27.5,25.0,24.0,24.0,28.0,67.5,35.0,36.0,11.0,32.0,39.5,5.5,32.5,27.5,60.0,6.0,3.5,7.5,22.5,27.0,57.5,7.0,39.5,50.0,16.0,6.5,22.0,9.0,14.0,23.0,6.5,5.0,6.5],"xaxis":"x","y":[68.5,58.5,45.5,52.0,76.5,33.0,37.0,53.5,62.0,75.0,60.0,51.0,58.0,47.5,47.5,56.0,57.0,76.0,60.0,66.5,29.5,56.0,73.5,25.0,64.0,64.5,72.5,26.0,22.5,27.5,55.0,61.5,68.5,35.0,65.0,61.5,47.5,26.0,55.5,37.0,35.0,50.0,31.5,31.5,32.5],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"weight"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"size"}},"legend":{"tracegroupgap":0},"title":{"text":"Dog breed vectorization"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="41c5f574-4b8c-4429-bf51-dcb542ca4686" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("41c5f574-4b8c-4429-bf51-dcb542ca4686")) {                    Plotly.newPlot(                        "41c5f574-4b8c-4429-bf51-dcb542ca4686",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003eweight=%{x}\u003cbr\u003esize=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Afghan hound","Airedale Terrier","American Staffordshire Terrier","Australian Shepherd","Borzoi","Basset","Beagle","Bearded Collie","Berger de Brie (Briard)","Saint Bernard","Bobtail","Border Collie","Boxer","Bull terrier","Chow-Chow","Collie","Dalmatian","Great Dane","German shepherd dog","Doberman pinscher","French bulldog","Golden Retriever","Greyhound","Havanese","Hovawart","Irish Red Setter","Leonberger","Lhasa Apso","Maltese","Pug","Small M\u00fcnsterl\u00e4nder","Large M\u00fcnsterl\u00e4nder","Newfoundland","Parson Russel Terrier","Rhodesian Ridgeback","Rottweiler","Standard Schnauzers","Shih Tzu","Siberian Husky","Sheltie (Shetland Sheepdog)","Staffordshire Bullterrier","Keeshond","Miniature Pinscher","Toy poodle","Miniature Schnauzer"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[25.0,22.5,16.0,24.0,36.0,24.0,14.0,24.0,25.0,77.5,32.5,16.0,27.5,25.0,24.0,24.0,28.0,67.5,35.0,36.0,11.0,32.0,39.5,5.5,32.5,27.5,60.0,6.0,3.5,7.5,22.5,27.0,57.5,7.0,39.5,50.0,16.0,6.5,22.0,9.0,14.0,23.0,6.5,5.0,6.5],"xaxis":"x","y":[68.5,58.5,45.5,52.0,76.5,33.0,37.0,53.5,62.0,75.0,60.0,51.0,58.0,47.5,47.5,56.0,57.0,76.0,60.0,66.5,29.5,56.0,73.5,25.0,64.0,64.5,72.5,26.0,22.5,27.5,55.0,61.5,68.5,35.0,65.0,61.5,47.5,26.0,55.5,37.0,35.0,50.0,31.5,31.5,32.5],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"weight"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"size"}},"legend":{"tracegroupgap":0},"title":{"text":"Dog breed vectorization"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('8568bd9b-d30c-49f6-bf13-39dea83457a5');
+var gd = document.getElementById('41c5f574-4b8c-4429-bf51-dcb542ca4686');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -778,22 +773,22 @@ if (outputEl) {{
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[ 0.5895, -0.0470, -3.1187],
-        [ 1.1235,  0.3098,  1.2105],
-        [ 0.1007, -1.3018, -0.7761],
-        [ 1.4632, -0.4515, -1.1275],
-        [ 1.3964, -0.1420, -0.6582],
-        [ 0.6449, -0.3622,  0.5733],
-        [-0.8630,  0.9476,  1.1604],
-        [-1.6165,  0.3343,  1.2483],
-        [-1.8169,  1.4191,  1.5955],
-        [ 1.2534, -0.5648, -0.5539],
-        [ 0.6894,  0.8024,  0.7204],
-        [-1.3833,  0.0267, -0.8311],
-        [ 0.4645,  0.2140, -1.3226],
-        [ 0.5690, -1.3508,  0.0364],
-        [ 0.3852, -0.4963, -0.6601],
-        [ 0.8757,  2.1920, -0.8110]], requires_grad=True)
+tensor([[ 0.3166, -0.3365,  1.0269],
+        [-0.7337, -0.4678, -0.0935],
+        [-0.5001,  0.2388, -1.2857],
+        [-1.0089,  1.2570, -0.6596],
+        [-1.3994, -0.5504, -0.0991],
+        [ 0.0905,  0.3027,  0.7760],
+        [ 0.4260, -0.9649, -1.1326],
+        [-0.2472,  1.0093, -0.3782],
+        [ 0.6256,  0.2974, -0.9303],
+        [ 0.4232, -1.0932,  0.0271],
+        [ 0.5102, -0.3444,  1.5452],
+        [ 1.1464,  0.5397, -0.7967],
+        [-1.1632, -0.3970, -1.9282],
+        [-0.3909,  1.7098, -0.0721],
+        [-1.0029, -0.9865, -0.2916],
+        [-0.8693,  0.5531, -0.3011]], requires_grad=True)
 </pre></div>
 </div>
 </div>
@@ -807,8 +802,8 @@ tensor([[ 0.5895, -0.0470, -3.1187],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.5895, -0.0470, -3.1187],
-        [ 0.1007, -1.3018, -0.7761]], grad_fn=&lt;EmbeddingBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 0.3166, -0.3365,  1.0269],
+        [-0.5001,  0.2388, -1.2857]], grad_fn=&lt;EmbeddingBackward0&gt;)
 </pre></div>
 </div>
 </div>
@@ -822,7 +817,7 @@ tensor([[ 0.5895, -0.0470, -3.1187],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.3451, -0.6744, -1.9474], grad_fn=&lt;MeanBackward1&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.0918, -0.0489, -0.1294], grad_fn=&lt;MeanBackward1&gt;)
 </pre></div>
 </div>
 </div>
@@ -837,9 +832,10 @@ tensor([[ 0.5895, -0.0470, -3.1187],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.6139, -0.5486, -1.0482, -0.6567,  0.5792,  1.2220, -0.0956, -0.1067,
-        -0.8088, -0.3393, -0.6477,  0.5428,  1.0838,  1.3074, -1.5127,  0.2422],
-       grad_fn=&lt;SqueezeBackward4&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 5.2666e-02, -7.9156e-02,  4.9706e-02,  4.1769e-02,  4.1512e-02,
+        -6.7455e-02,  5.8304e-02,  3.9762e-05, -9.4141e-02, -6.9396e-02,
+        -2.3271e-02, -9.8086e-03, -3.2661e-03,  5.5009e-02, -1.9621e-02,
+        -2.2761e-02], grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
 </div>
@@ -853,8 +849,8 @@ tensor([[ 0.5895, -0.0470, -3.1187],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0846, 0.0265, 0.0161, 0.0238, 0.0818, 0.1555, 0.0416, 0.0412, 0.0204,
-        0.0326, 0.0240, 0.0788, 0.1354, 0.1693, 0.0101, 0.0584],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0662, 0.0580, 0.0660, 0.0655, 0.0654, 0.0587, 0.0665, 0.0628, 0.0571,
+        0.0586, 0.0613, 0.0622, 0.0626, 0.0663, 0.0616, 0.0614],
        grad_fn=&lt;SoftmaxBackward0&gt;)
 </pre></div>
 </div>
@@ -868,7 +864,7 @@ tensor([[ 0.5895, -0.0470, -3.1187],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.6318169], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.8473928], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -989,7 +985,7 @@ Target word labels for the neural network:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7692a4107cb323657cf4c086bc448c78155890134f201ad21ac6c77841fdd09f.png" src="_images/7692a4107cb323657cf4c086bc448c78155890134f201ad21ac6c77841fdd09f.png" />
+<img alt="_images/ecc8218b33c1b19387400affde5b0506a9d5af312944c50ccd4452c1c76b2816.png" src="_images/ecc8218b33c1b19387400affde5b0506a9d5af312944c50ccd4452c1c76b2816.png" />
 </div>
 </div>
 <p>What does happen during training? In the beginning word embeddings for context words <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and center words <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> are randomly initialized. Word embeddings of words which are close to each other need to produces high dot product values in order to come along with high probabilities. This is what we want if words are used in the same context (are close to each other in documents). A high dot product results if vectors have very similar elements. Thus, during training parameters for each word vector are updated such that words which are close to each other have similar vectors. In addition, words serve as anchors to recognize similarities between words that do not appear next to each other in documents but are used in similar contexts. One training is finished, it makes sense to use center word vectors <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> as embeddings for our words. However, one may also experiment and can use context word vectors <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> or the average vectors of both matrices. Our example is too small to produce high quality embeddings. However if you take a look at the cosine similarity matrix below, you can observe that, e.g., the model learned “sandwich” has a similar meaning to “dog” which makes sense, given our corpus information.</p>
@@ -1044,305 +1040,305 @@ Target word labels for the neural network:
     <tr>
       <th>the</th>
       <td>1.000000</td>
-      <td>0.993783</td>
-      <td>-0.286429</td>
-      <td>0.998182</td>
-      <td>0.413950</td>
-      <td>-0.947689</td>
-      <td>0.531538</td>
-      <td>0.974976</td>
-      <td>0.980590</td>
-      <td>-0.446679</td>
-      <td>-0.412284</td>
-      <td>0.990280</td>
-      <td>0.980094</td>
-      <td>0.076153</td>
-      <td>0.968979</td>
-      <td>0.992744</td>
+      <td>0.891027</td>
+      <td>-0.353238</td>
+      <td>0.433051</td>
+      <td>-0.054729</td>
+      <td>-0.396137</td>
+      <td>0.706658</td>
+      <td>0.996234</td>
+      <td>0.984142</td>
+      <td>-0.976025</td>
+      <td>0.328397</td>
+      <td>0.899301</td>
+      <td>0.997352</td>
+      <td>-0.491199</td>
+      <td>0.953138</td>
+      <td>0.997166</td>
     </tr>
     <tr>
       <th>dog</th>
-      <td>0.993783</td>
+      <td>0.891027</td>
       <td>1.000000</td>
-      <td>-0.214727</td>
-      <td>0.985780</td>
-      <td>0.352694</td>
-      <td>-0.959285</td>
-      <td>0.569737</td>
-      <td>0.993655</td>
-      <td>0.996281</td>
-      <td>-0.530434</td>
-      <td>-0.343391</td>
-      <td>0.999598</td>
-      <td>0.996075</td>
-      <td>-0.026118</td>
-      <td>0.990470</td>
-      <td>0.999365</td>
+      <td>-0.391103</td>
+      <td>0.790988</td>
+      <td>0.201471</td>
+      <td>-0.761272</td>
+      <td>0.748225</td>
+      <td>0.876966</td>
+      <td>0.957417</td>
+      <td>-0.879292</td>
+      <td>-0.014024</td>
+      <td>0.994320</td>
+      <td>0.896687</td>
+      <td>-0.100909</td>
+      <td>0.985718</td>
+      <td>0.897271</td>
     </tr>
     <tr>
       <th>would</th>
-      <td>-0.286429</td>
-      <td>-0.214727</td>
+      <td>-0.353238</td>
+      <td>-0.391103</td>
       <td>1.000000</td>
-      <td>-0.337610</td>
-      <td>-0.986600</td>
-      <td>0.373851</td>
-      <td>0.632200</td>
-      <td>-0.135047</td>
-      <td>-0.149168</td>
-      <td>-0.680837</td>
-      <td>-0.006448</td>
-      <td>-0.200047</td>
-      <td>-0.163595</td>
-      <td>-0.308314</td>
-      <td>-0.121036</td>
-      <td>-0.186546</td>
+      <td>-0.186678</td>
+      <td>-0.839575</td>
+      <td>0.461098</td>
+      <td>0.311605</td>
+      <td>-0.424726</td>
+      <td>-0.376135</td>
+      <td>0.148982</td>
+      <td>-0.609965</td>
+      <td>-0.295045</td>
+      <td>-0.420202</td>
+      <td>0.468826</td>
+      <td>-0.355605</td>
+      <td>-0.422402</td>
     </tr>
     <tr>
       <th>like</th>
-      <td>0.998182</td>
-      <td>0.985780</td>
-      <td>-0.337610</td>
+      <td>0.433051</td>
+      <td>0.790988</td>
+      <td>-0.186678</td>
       <td>1.000000</td>
-      <td>0.459712</td>
-      <td>-0.943657</td>
-      <td>0.492218</td>
-      <td>0.960687</td>
-      <td>0.967635</td>
-      <td>-0.392353</td>
-      <td>-0.428735</td>
-      <td>0.980862</td>
-      <td>0.967514</td>
-      <td>0.117694</td>
-      <td>0.953422</td>
-      <td>0.983725</td>
+      <td>0.362944</td>
+      <td>-0.950909</td>
+      <td>0.622309</td>
+      <td>0.399818</td>
+      <td>0.584667</td>
+      <td>-0.468996</td>
+      <td>-0.544133</td>
+      <td>0.781851</td>
+      <td>0.438746</td>
+      <td>0.507092</td>
+      <td>0.685355</td>
+      <td>0.439866</td>
     </tr>
     <tr>
       <th>a</th>
-      <td>0.413950</td>
-      <td>0.352694</td>
-      <td>-0.986600</td>
-      <td>0.459712</td>
+      <td>-0.054729</td>
+      <td>0.201471</td>
+      <td>-0.839575</td>
+      <td>0.362944</td>
       <td>1.000000</td>
-      <td>-0.515734</td>
-      <td>-0.540952</td>
-      <td>0.281690</td>
-      <td>0.293743</td>
-      <td>0.553666</td>
-      <td>0.026859</td>
-      <td>0.340455</td>
-      <td>0.308784</td>
-      <td>0.218310</td>
-      <td>0.269516</td>
-      <td>0.324081</td>
+      <td>-0.627811</td>
+      <td>-0.442152</td>
+      <td>0.001941</td>
+      <td>0.042706</td>
+      <td>0.222074</td>
+      <td>0.159331</td>
+      <td>0.100001</td>
+      <td>0.013892</td>
+      <td>0.055773</td>
+      <td>0.084903</td>
+      <td>0.016611</td>
     </tr>
     <tr>
       <th>piece</th>
-      <td>-0.947689</td>
-      <td>-0.959285</td>
-      <td>0.373851</td>
-      <td>-0.943657</td>
-      <td>-0.515734</td>
+      <td>-0.396137</td>
+      <td>-0.761272</td>
+      <td>0.461098</td>
+      <td>-0.950909</td>
+      <td>-0.627811</td>
       <td>1.000000</td>
-      <td>-0.350940</td>
-      <td>-0.957092</td>
-      <td>-0.956653</td>
-      <td>0.422255</td>
-      <td>0.105611</td>
-      <td>-0.961730</td>
-      <td>-0.962806</td>
-      <td>0.181960</td>
-      <td>-0.956612</td>
-      <td>-0.949013</td>
+      <td>-0.393491</td>
+      <td>-0.388833</td>
+      <td>-0.549127</td>
+      <td>0.365728</td>
+      <td>0.355603</td>
+      <td>-0.719806</td>
+      <td>-0.424000</td>
+      <td>-0.388410</td>
+      <td>-0.641578</td>
+      <td>-0.425810</td>
     </tr>
     <tr>
       <th>of</th>
-      <td>0.531538</td>
-      <td>0.569737</td>
-      <td>0.632200</td>
-      <td>0.492218</td>
-      <td>-0.540952</td>
-      <td>-0.350940</td>
+      <td>0.706658</td>
+      <td>0.748225</td>
+      <td>0.311605</td>
+      <td>0.622309</td>
+      <td>-0.442152</td>
+      <td>-0.393491</td>
       <td>1.000000</td>
-      <td>0.605967</td>
-      <td>0.603422</td>
-      <td>-0.864227</td>
-      <td>-0.521291</td>
-      <td>0.574300</td>
-      <td>0.587101</td>
-      <td>0.002104</td>
-      <td>0.608541</td>
-      <td>0.597470</td>
+      <td>0.642970</td>
+      <td>0.742739</td>
+      <td>-0.837700</td>
+      <td>-0.378515</td>
+      <td>0.813830</td>
+      <td>0.663007</td>
+      <td>0.146842</td>
+      <td>0.774661</td>
+      <td>0.661887</td>
     </tr>
     <tr>
       <th>sandwich</th>
-      <td>0.974976</td>
-      <td>0.993655</td>
-      <td>-0.135047</td>
-      <td>0.960687</td>
-      <td>0.281690</td>
-      <td>-0.957092</td>
-      <td>0.605967</td>
+      <td>0.996234</td>
+      <td>0.876966</td>
+      <td>-0.424726</td>
+      <td>0.399818</td>
+      <td>0.001941</td>
+      <td>-0.388833</td>
+      <td>0.642970</td>
       <td>1.000000</td>
-      <td>0.999616</td>
-      <td>-0.611066</td>
-      <td>-0.274007</td>
-      <td>0.996353</td>
-      <td>0.999562</td>
-      <td>-0.126381</td>
-      <td>0.999661</td>
-      <td>0.993663</td>
+      <td>0.976131</td>
+      <td>-0.953775</td>
+      <td>0.398177</td>
+      <td>0.877350</td>
+      <td>0.999066</td>
+      <td>-0.544933</td>
+      <td>0.939591</td>
+      <td>0.999022</td>
     </tr>
     <tr>
       <th>i</th>
-      <td>0.980590</td>
-      <td>0.996281</td>
-      <td>-0.149168</td>
-      <td>0.967635</td>
-      <td>0.293743</td>
-      <td>-0.956653</td>
-      <td>0.603422</td>
-      <td>0.999616</td>
+      <td>0.984142</td>
+      <td>0.957417</td>
+      <td>-0.376135</td>
+      <td>0.584667</td>
+      <td>0.042706</td>
+      <td>-0.549127</td>
+      <td>0.742739</td>
+      <td>0.976131</td>
       <td>1.000000</td>
-      <td>-0.595496</td>
-      <td>-0.296076</td>
-      <td>0.998197</td>
-      <td>0.999746</td>
-      <td>-0.099420</td>
-      <td>0.998556</td>
-      <td>0.996392</td>
+      <td>-0.964624</td>
+      <td>0.202415</td>
+      <td>0.960608</td>
+      <td>0.984567</td>
+      <td>-0.351159</td>
+      <td>0.991388</td>
+      <td>0.984674</td>
     </tr>
     <tr>
       <th>to</th>
-      <td>-0.446679</td>
-      <td>-0.530434</td>
-      <td>-0.680837</td>
-      <td>-0.392353</td>
-      <td>0.553666</td>
-      <td>0.422255</td>
-      <td>-0.864227</td>
-      <td>-0.611066</td>
-      <td>-0.595496</td>
+      <td>-0.976025</td>
+      <td>-0.879292</td>
+      <td>0.148982</td>
+      <td>-0.468996</td>
+      <td>0.222074</td>
+      <td>0.365728</td>
+      <td>-0.837700</td>
+      <td>-0.953775</td>
+      <td>-0.964624</td>
       <td>1.000000</td>
-      <td>0.026550</td>
-      <td>-0.548105</td>
-      <td>-0.587364</td>
-      <td>0.500410</td>
-      <td>-0.625699</td>
-      <td>-0.548449</td>
+      <td>-0.163183</td>
+      <td>-0.908917</td>
+      <td>-0.958532</td>
+      <td>0.364805</td>
+      <td>-0.944109</td>
+      <td>-0.957918</td>
     </tr>
     <tr>
       <th>eat</th>
-      <td>-0.412284</td>
-      <td>-0.343391</td>
-      <td>-0.006448</td>
-      <td>-0.428735</td>
-      <td>0.026859</td>
-      <td>0.105611</td>
-      <td>-0.521291</td>
-      <td>-0.274007</td>
-      <td>-0.296076</td>
-      <td>0.026550</td>
+      <td>0.328397</td>
+      <td>-0.014024</td>
+      <td>-0.609965</td>
+      <td>-0.544133</td>
+      <td>0.159331</td>
+      <td>0.355603</td>
+      <td>-0.378515</td>
+      <td>0.398177</td>
+      <td>0.202415</td>
+      <td>-0.163183</td>
       <td>1.000000</td>
-      <td>-0.321943</td>
-      <td>-0.278910</td>
-      <td>-0.850258</td>
-      <td>-0.253492</td>
-      <td>-0.365264</td>
+      <td>-0.059425</td>
+      <td>0.362173</td>
+      <td>-0.963794</td>
+      <td>0.087277</td>
+      <td>0.362423</td>
     </tr>
     <tr>
       <th>ice</th>
-      <td>0.990280</td>
-      <td>0.999598</td>
-      <td>-0.200047</td>
-      <td>0.980862</td>
-      <td>0.340455</td>
-      <td>-0.961730</td>
-      <td>0.574300</td>
-      <td>0.996353</td>
-      <td>0.998197</td>
-      <td>-0.548105</td>
-      <td>-0.321943</td>
+      <td>0.899301</td>
+      <td>0.994320</td>
+      <td>-0.295045</td>
+      <td>0.781851</td>
+      <td>0.100001</td>
+      <td>-0.719806</td>
+      <td>0.813830</td>
+      <td>0.877350</td>
+      <td>0.960608</td>
+      <td>-0.908917</td>
+      <td>-0.059425</td>
       <td>1.000000</td>
-      <td>0.998178</td>
-      <td>-0.053712</td>
-      <td>0.993902</td>
-      <td>0.998884</td>
+      <td>0.897213</td>
+      <td>-0.079604</td>
+      <td>0.988479</td>
+      <td>0.897527</td>
     </tr>
     <tr>
       <th>cream</th>
-      <td>0.980094</td>
-      <td>0.996075</td>
-      <td>-0.163595</td>
-      <td>0.967514</td>
-      <td>0.308784</td>
-      <td>-0.962806</td>
-      <td>0.587101</td>
-      <td>0.999562</td>
-      <td>0.999746</td>
-      <td>-0.587364</td>
-      <td>-0.278910</td>
-      <td>0.998178</td>
+      <td>0.997352</td>
+      <td>0.896687</td>
+      <td>-0.420202</td>
+      <td>0.438746</td>
+      <td>0.013892</td>
+      <td>-0.424000</td>
+      <td>0.663007</td>
+      <td>0.999066</td>
+      <td>0.984567</td>
+      <td>-0.958532</td>
+      <td>0.362173</td>
+      <td>0.897213</td>
       <td>1.000000</td>
-      <td>-0.110717</td>
-      <td>0.998672</td>
-      <td>0.995402</td>
+      <td>-0.508999</td>
+      <td>0.953498</td>
+      <td>0.999996</td>
     </tr>
     <tr>
       <th>is</th>
-      <td>0.076153</td>
-      <td>-0.026118</td>
-      <td>-0.308314</td>
-      <td>0.117694</td>
-      <td>0.218310</td>
-      <td>0.181960</td>
-      <td>0.002104</td>
-      <td>-0.126381</td>
-      <td>-0.099420</td>
-      <td>0.500410</td>
-      <td>-0.850258</td>
-      <td>-0.053712</td>
-      <td>-0.110717</td>
+      <td>-0.491199</td>
+      <td>-0.100909</td>
+      <td>0.468826</td>
+      <td>0.507092</td>
+      <td>0.055773</td>
+      <td>-0.388410</td>
+      <td>0.146842</td>
+      <td>-0.544933</td>
+      <td>-0.351159</td>
+      <td>0.364805</td>
+      <td>-0.963794</td>
+      <td>-0.079604</td>
+      <td>-0.508999</td>
       <td>1.000000</td>
-      <td>-0.151466</td>
-      <td>-0.015366</td>
+      <td>-0.229505</td>
+      <td>-0.508668</td>
     </tr>
     <tr>
       <th>good</th>
-      <td>0.968979</td>
-      <td>0.990470</td>
-      <td>-0.121036</td>
-      <td>0.953422</td>
-      <td>0.269516</td>
-      <td>-0.956612</td>
-      <td>0.608541</td>
-      <td>0.999661</td>
-      <td>0.998556</td>
-      <td>-0.625699</td>
-      <td>-0.253492</td>
-      <td>0.993902</td>
-      <td>0.998672</td>
-      <td>-0.151466</td>
+      <td>0.953138</td>
+      <td>0.985718</td>
+      <td>-0.355605</td>
+      <td>0.685355</td>
+      <td>0.084903</td>
+      <td>-0.641578</td>
+      <td>0.774661</td>
+      <td>0.939591</td>
+      <td>0.991388</td>
+      <td>-0.944109</td>
+      <td>0.087277</td>
+      <td>0.988479</td>
+      <td>0.953498</td>
+      <td>-0.229505</td>
       <td>1.000000</td>
-      <td>0.990409</td>
+      <td>0.953744</td>
     </tr>
     <tr>
       <th>friend</th>
-      <td>0.992744</td>
-      <td>0.999365</td>
-      <td>-0.186546</td>
-      <td>0.983725</td>
-      <td>0.324081</td>
-      <td>-0.949013</td>
-      <td>0.597470</td>
-      <td>0.993663</td>
-      <td>0.996392</td>
-      <td>-0.548449</td>
-      <td>-0.365264</td>
-      <td>0.998884</td>
-      <td>0.995402</td>
-      <td>-0.015366</td>
-      <td>0.990409</td>
+      <td>0.997166</td>
+      <td>0.897271</td>
+      <td>-0.422402</td>
+      <td>0.439866</td>
+      <td>0.016611</td>
+      <td>-0.425810</td>
+      <td>0.661887</td>
+      <td>0.999022</td>
+      <td>0.984674</td>
+      <td>-0.957918</td>
+      <td>0.362423</td>
+      <td>0.897527</td>
+      <td>0.999996</td>
+      <td>-0.508668</td>
+      <td>0.953744</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -1476,7 +1472,7 @@ Target values for the neural network:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c5131fc437376c732e231369e52817e48dfdb4402a5bb8f4705bf05adb95fa62.png" src="_images/c5131fc437376c732e231369e52817e48dfdb4402a5bb8f4705bf05adb95fa62.png" />
+<img alt="_images/52cd0930d2fd53a963f7d6c3e7003e4891c8cb54969139254904c54e22a766e2.png" src="_images/52cd0930d2fd53a963f7d6c3e7003e4891c8cb54969139254904c54e22a766e2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1528,305 +1524,305 @@ Target values for the neural network:
     <tr>
       <th>the</th>
       <td>1.000000</td>
-      <td>0.591911</td>
-      <td>-0.730213</td>
-      <td>0.630298</td>
-      <td>0.882321</td>
-      <td>-0.468084</td>
-      <td>0.917841</td>
-      <td>-0.585689</td>
-      <td>-0.454305</td>
-      <td>0.064732</td>
-      <td>-0.410156</td>
-      <td>-0.044737</td>
-      <td>-0.072288</td>
-      <td>-0.881228</td>
-      <td>-0.358998</td>
-      <td>-0.822845</td>
+      <td>0.223961</td>
+      <td>-0.426993</td>
+      <td>-0.216153</td>
+      <td>0.630154</td>
+      <td>-0.421008</td>
+      <td>-0.172000</td>
+      <td>-0.084859</td>
+      <td>-0.794881</td>
+      <td>-0.043943</td>
+      <td>-0.775569</td>
+      <td>-0.448270</td>
+      <td>0.008609</td>
+      <td>-0.853041</td>
+      <td>-0.094569</td>
+      <td>-0.858311</td>
     </tr>
     <tr>
       <th>dog</th>
-      <td>0.591911</td>
+      <td>0.223961</td>
       <td>1.000000</td>
-      <td>-0.217454</td>
-      <td>0.474951</td>
-      <td>0.855966</td>
-      <td>-0.083808</td>
-      <td>0.492917</td>
-      <td>-0.790574</td>
-      <td>-0.507765</td>
-      <td>-0.639155</td>
-      <td>-0.476054</td>
-      <td>-0.389465</td>
-      <td>-0.757075</td>
-      <td>-0.175543</td>
-      <td>0.354037</td>
-      <td>-0.087837</td>
+      <td>0.611401</td>
+      <td>-0.167830</td>
+      <td>0.896885</td>
+      <td>0.516130</td>
+      <td>0.065259</td>
+      <td>-0.432830</td>
+      <td>-0.738958</td>
+      <td>-0.946771</td>
+      <td>-0.744038</td>
+      <td>-0.968090</td>
+      <td>-0.962840</td>
+      <td>0.246286</td>
+      <td>0.911710</td>
+      <td>0.268804</td>
     </tr>
     <tr>
       <th>would</th>
-      <td>-0.730213</td>
-      <td>-0.217454</td>
+      <td>-0.426993</td>
+      <td>0.611401</td>
       <td>1.000000</td>
-      <td>-0.908475</td>
-      <td>-0.393163</td>
-      <td>0.940775</td>
-      <td>-0.933483</td>
-      <td>0.655057</td>
-      <td>-0.275753</td>
-      <td>-0.609627</td>
-      <td>-0.321726</td>
-      <td>-0.648335</td>
-      <td>-0.471245</td>
-      <td>0.882271</td>
-      <td>0.063123</td>
-      <td>0.557573</td>
+      <td>-0.519471</td>
+      <td>0.314932</td>
+      <td>0.988306</td>
+      <td>-0.377949</td>
+      <td>0.214770</td>
+      <td>0.025559</td>
+      <td>-0.531936</td>
+      <td>0.034390</td>
+      <td>-0.497660</td>
+      <td>-0.645485</td>
+      <td>0.833574</td>
+      <td>0.587144</td>
+      <td>0.816990</td>
     </tr>
     <tr>
       <th>like</th>
-      <td>0.630298</td>
-      <td>0.474951</td>
-      <td>-0.908475</td>
+      <td>-0.216153</td>
+      <td>-0.167830</td>
+      <td>-0.519471</td>
       <td>1.000000</td>
-      <td>0.437025</td>
-      <td>-0.916233</td>
-      <td>0.870887</td>
-      <td>-0.894296</td>
-      <td>0.319718</td>
-      <td>0.346582</td>
-      <td>0.367388</td>
-      <td>0.597944</td>
-      <td>0.192958</td>
-      <td>-0.652611</td>
-      <td>0.332927</td>
-      <td>-0.242649</td>
+      <td>-0.269709</td>
+      <td>-0.621267</td>
+      <td>0.972744</td>
+      <td>-0.802752</td>
+      <td>0.056272</td>
+      <td>-0.135984</td>
+      <td>0.010073</td>
+      <td>0.283479</td>
+      <td>-0.017537</td>
+      <td>-0.128629</td>
+      <td>0.168099</td>
+      <td>-0.065015</td>
     </tr>
     <tr>
       <th>a</th>
-      <td>0.882321</td>
-      <td>0.855966</td>
-      <td>-0.393163</td>
-      <td>0.437025</td>
+      <td>0.630154</td>
+      <td>0.896885</td>
+      <td>0.314932</td>
+      <td>-0.269709</td>
       <td>1.000000</td>
-      <td>-0.123378</td>
-      <td>0.696230</td>
-      <td>-0.611698</td>
-      <td>-0.711558</td>
-      <td>-0.411270</td>
-      <td>-0.675280</td>
-      <td>-0.425502</td>
-      <td>-0.533113</td>
-      <td>-0.555512</td>
-      <td>-0.163159</td>
-      <td>-0.583290</td>
+      <td>0.246454</td>
+      <td>-0.064718</td>
+      <td>-0.346930</td>
+      <td>-0.939583</td>
+      <td>-0.762374</td>
+      <td>-0.933125</td>
+      <td>-0.976052</td>
+      <td>-0.756589</td>
+      <td>-0.178994</td>
+      <td>0.671808</td>
+      <td>-0.166143</td>
     </tr>
     <tr>
       <th>piece</th>
-      <td>-0.468084</td>
-      <td>-0.083808</td>
-      <td>0.940775</td>
-      <td>-0.916233</td>
-      <td>-0.123378</td>
+      <td>-0.421008</td>
+      <td>0.516130</td>
+      <td>0.988306</td>
+      <td>-0.621267</td>
+      <td>0.246454</td>
       <td>1.000000</td>
-      <td>-0.778018</td>
-      <td>0.647903</td>
-      <td>-0.572944</td>
-      <td>-0.689322</td>
-      <td>-0.613012</td>
-      <td>-0.845487</td>
-      <td>-0.567864</td>
-      <td>0.683591</td>
-      <td>-0.185703</td>
-      <td>0.266981</td>
+      <td>-0.503425</td>
+      <td>0.361181</td>
+      <td>0.100195</td>
+      <td>-0.405292</td>
+      <td>0.115286</td>
+      <td>-0.421391</td>
+      <td>-0.530859</td>
+      <td>0.814965</td>
+      <td>0.459881</td>
+      <td>0.788080</td>
     </tr>
     <tr>
       <th>of</th>
-      <td>0.917841</td>
-      <td>0.492917</td>
-      <td>-0.933483</td>
-      <td>0.870887</td>
-      <td>0.696230</td>
-      <td>-0.778018</td>
+      <td>-0.172000</td>
+      <td>0.065259</td>
+      <td>-0.377949</td>
+      <td>0.972744</td>
+      <td>-0.064718</td>
+      <td>-0.503425</td>
       <td>1.000000</td>
-      <td>-0.736274</td>
-      <td>-0.069139</td>
-      <td>0.322784</td>
-      <td>-0.019342</td>
-      <td>0.336637</td>
-      <td>0.168410</td>
-      <td>-0.913156</td>
-      <td>-0.132712</td>
-      <td>-0.676988</td>
+      <td>-0.913373</td>
+      <td>-0.112689</td>
+      <td>-0.360994</td>
+      <td>-0.160723</td>
+      <td>0.060644</td>
+      <td>-0.245376</td>
+      <td>-0.066372</td>
+      <td>0.386063</td>
+      <td>0.003300</td>
     </tr>
     <tr>
       <th>sandwich</th>
-      <td>-0.585689</td>
-      <td>-0.790574</td>
-      <td>0.655057</td>
-      <td>-0.894296</td>
-      <td>-0.611698</td>
-      <td>0.647903</td>
-      <td>-0.736274</td>
+      <td>-0.084859</td>
+      <td>-0.432830</td>
+      <td>0.214770</td>
+      <td>-0.802752</td>
+      <td>-0.346930</td>
+      <td>0.361181</td>
+      <td>-0.913373</td>
       <td>1.000000</td>
-      <td>-0.070312</td>
-      <td>0.105128</td>
-      <td>-0.114708</td>
-      <td>-0.256073</td>
-      <td>0.258272</td>
-      <td>0.397233</td>
-      <td>-0.542021</td>
-      <td>0.043485</td>
+      <td>0.484990</td>
+      <td>0.656928</td>
+      <td>0.527657</td>
+      <td>0.343964</td>
+      <td>0.547061</td>
+      <td>0.121969</td>
+      <td>-0.644966</td>
+      <td>0.051181</td>
     </tr>
     <tr>
       <th>i</th>
-      <td>-0.454305</td>
-      <td>-0.507765</td>
-      <td>-0.275753</td>
-      <td>0.319718</td>
-      <td>-0.711558</td>
-      <td>-0.572944</td>
-      <td>-0.069139</td>
-      <td>-0.070312</td>
+      <td>-0.794881</td>
+      <td>-0.738958</td>
+      <td>0.025559</td>
+      <td>0.056272</td>
+      <td>-0.939583</td>
+      <td>0.100195</td>
+      <td>-0.112689</td>
+      <td>0.484990</td>
       <td>1.000000</td>
-      <td>0.671562</td>
-      <td>0.998695</td>
-      <td>0.902936</td>
-      <td>0.679911</td>
-      <td>0.107013</td>
-      <td>0.470670</td>
-      <td>0.461076</td>
+      <td>0.640450</td>
+      <td>0.998772</td>
+      <td>0.853378</td>
+      <td>0.590071</td>
+      <td>0.470966</td>
+      <td>-0.528295</td>
+      <td>0.448180</td>
     </tr>
     <tr>
       <th>to</th>
-      <td>0.064732</td>
-      <td>-0.639155</td>
-      <td>-0.609627</td>
-      <td>0.346582</td>
-      <td>-0.411270</td>
-      <td>-0.689322</td>
-      <td>0.322784</td>
-      <td>0.105128</td>
-      <td>0.671562</td>
+      <td>-0.043943</td>
+      <td>-0.946771</td>
+      <td>-0.531936</td>
+      <td>-0.135984</td>
+      <td>-0.762374</td>
+      <td>-0.405292</td>
+      <td>-0.360994</td>
+      <td>0.656928</td>
+      <td>0.640450</td>
       <td>1.000000</td>
-      <td>0.681921</td>
-      <td>0.855284</td>
-      <td>0.986348</td>
-      <td>-0.524276</td>
-      <td>-0.283749</td>
-      <td>-0.319738</td>
+      <td>0.661003</td>
+      <td>0.853854</td>
+      <td>0.989710</td>
+      <td>-0.321499</td>
+      <td>-0.990397</td>
+      <td>-0.363011</td>
     </tr>
     <tr>
       <th>eat</th>
-      <td>-0.410156</td>
-      <td>-0.476054</td>
-      <td>-0.321726</td>
-      <td>0.367388</td>
-      <td>-0.675280</td>
-      <td>-0.613012</td>
-      <td>-0.019342</td>
-      <td>-0.114708</td>
-      <td>0.998695</td>
-      <td>0.681921</td>
+      <td>-0.775569</td>
+      <td>-0.744038</td>
+      <td>0.034390</td>
+      <td>0.010073</td>
+      <td>-0.933125</td>
+      <td>0.115286</td>
+      <td>-0.160723</td>
+      <td>0.527657</td>
+      <td>0.998772</td>
+      <td>0.661003</td>
       <td>1.000000</td>
-      <td>0.919926</td>
-      <td>0.681917</td>
-      <td>0.066183</td>
-      <td>0.474892</td>
-      <td>0.435074</td>
+      <td>0.849744</td>
+      <td>0.606098</td>
+      <td>0.462044</td>
+      <td>-0.551560</td>
+      <td>0.435907</td>
     </tr>
     <tr>
       <th>ice</th>
-      <td>-0.044737</td>
-      <td>-0.389465</td>
-      <td>-0.648335</td>
-      <td>0.597944</td>
-      <td>-0.425502</td>
-      <td>-0.845487</td>
-      <td>0.336637</td>
-      <td>-0.256073</td>
-      <td>0.902936</td>
-      <td>0.855284</td>
-      <td>0.919926</td>
+      <td>-0.448270</td>
+      <td>-0.968090</td>
+      <td>-0.497660</td>
+      <td>0.283479</td>
+      <td>-0.976052</td>
+      <td>-0.421391</td>
+      <td>0.060644</td>
+      <td>0.343964</td>
+      <td>0.853378</td>
+      <td>0.853854</td>
+      <td>0.849744</td>
       <td>1.000000</td>
-      <td>0.810405</td>
-      <td>-0.330238</td>
-      <td>0.247086</td>
-      <td>0.062167</td>
+      <td>0.866159</td>
+      <td>-0.038429</td>
+      <td>-0.787935</td>
+      <td>-0.052310</td>
     </tr>
     <tr>
       <th>cream</th>
-      <td>-0.072288</td>
-      <td>-0.757075</td>
-      <td>-0.471245</td>
-      <td>0.192958</td>
-      <td>-0.533113</td>
-      <td>-0.567864</td>
-      <td>0.168410</td>
-      <td>0.258272</td>
-      <td>0.679911</td>
-      <td>0.986348</td>
-      <td>0.681917</td>
-      <td>0.810405</td>
+      <td>0.008609</td>
+      <td>-0.962840</td>
+      <td>-0.645485</td>
+      <td>-0.017537</td>
+      <td>-0.756589</td>
+      <td>-0.530859</td>
+      <td>-0.245376</td>
+      <td>0.547061</td>
+      <td>0.590071</td>
+      <td>0.989710</td>
+      <td>0.606098</td>
+      <td>0.866159</td>
       <td>1.000000</td>
-      <td>-0.407272</td>
-      <td>-0.315957</td>
-      <td>-0.251978</td>
+      <td>-0.413881</td>
+      <td>-0.987043</td>
+      <td>-0.447553</td>
     </tr>
     <tr>
       <th>is</th>
-      <td>-0.881228</td>
-      <td>-0.175543</td>
-      <td>0.882271</td>
-      <td>-0.652611</td>
-      <td>-0.555512</td>
-      <td>0.683591</td>
-      <td>-0.913156</td>
-      <td>0.397233</td>
-      <td>0.107013</td>
-      <td>-0.524276</td>
-      <td>0.066183</td>
-      <td>-0.330238</td>
-      <td>-0.407272</td>
+      <td>-0.853041</td>
+      <td>0.246286</td>
+      <td>0.833574</td>
+      <td>-0.128629</td>
+      <td>-0.178994</td>
+      <td>0.814965</td>
+      <td>-0.066372</td>
+      <td>0.121969</td>
+      <td>0.470966</td>
+      <td>-0.321499</td>
+      <td>0.462044</td>
+      <td>-0.038429</td>
+      <td>-0.413881</td>
       <td>1.000000</td>
-      <td>0.496750</td>
-      <td>0.882700</td>
+      <td>0.437337</td>
+      <td>0.997407</td>
     </tr>
     <tr>
       <th>good</th>
-      <td>-0.358998</td>
-      <td>0.354037</td>
-      <td>0.063123</td>
-      <td>0.332927</td>
-      <td>-0.163159</td>
-      <td>-0.185703</td>
-      <td>-0.132712</td>
-      <td>-0.542021</td>
-      <td>0.470670</td>
-      <td>-0.283749</td>
-      <td>0.474892</td>
-      <td>0.247086</td>
-      <td>-0.315957</td>
-      <td>0.496750</td>
+      <td>-0.094569</td>
+      <td>0.911710</td>
+      <td>0.587144</td>
+      <td>0.168099</td>
+      <td>0.671808</td>
+      <td>0.459881</td>
+      <td>0.386063</td>
+      <td>-0.644966</td>
+      <td>-0.528295</td>
+      <td>-0.990397</td>
+      <td>-0.551560</td>
+      <td>-0.787935</td>
+      <td>-0.987043</td>
+      <td>0.437337</td>
       <td>1.000000</td>
-      <td>0.814602</td>
+      <td>0.479595</td>
     </tr>
     <tr>
       <th>friend</th>
-      <td>-0.822845</td>
-      <td>-0.087837</td>
-      <td>0.557573</td>
-      <td>-0.242649</td>
-      <td>-0.583290</td>
-      <td>0.266981</td>
-      <td>-0.676988</td>
-      <td>0.043485</td>
-      <td>0.461076</td>
-      <td>-0.319738</td>
-      <td>0.435074</td>
-      <td>0.062167</td>
-      <td>-0.251978</td>
-      <td>0.882700</td>
-      <td>0.814602</td>
+      <td>-0.858311</td>
+      <td>0.268804</td>
+      <td>0.816990</td>
+      <td>-0.065015</td>
+      <td>-0.166143</td>
+      <td>0.788080</td>
+      <td>0.003300</td>
+      <td>0.051181</td>
+      <td>0.448180</td>
+      <td>-0.363011</td>
+      <td>0.435907</td>
+      <td>-0.052310</td>
+      <td>-0.447553</td>
+      <td>0.997407</td>
+      <td>0.479595</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -2097,14 +2093,17 @@ Pairwise cosine similarities:
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/plotly/express/_core.py:2065: FutureWarning:
 
 When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
 </pre></div>
 </div>
-<div class="output text_html"><div>                            <div id="9ff2e112-bbc0-43c1-ae3c-f68f16c321aa" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("9ff2e112-bbc0-43c1-ae3c-f68f16c321aa")) {                    Plotly.newPlot(                        "9ff2e112-bbc0-43c1-ae3c-f68f16c321aa",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["crises","turmoil","meltdown","credit_crunch","crisis.The","recession","downturn","subprime_mortgage_crisis","economic_downturn","liquidity_crunch","crisi","upheaval","turmoil_engulfing","crunch","calamity","contagion","malaise_gripping","upheavals","subprime_mortgage_meltdown","recesssion"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[-1.581466794013977,-1.7368519306182861,-1.9221631288528442,2.0507311820983887,2.2047362327575684,2.0787482261657715,2.1818575859069824,2.158452272415161,1.9564343690872192,2.5558815002441406,-3.2714335918426514,-1.8450356721878052,-1.2869139909744263,-0.34586071968078613,-0.4299657940864563,2.39567232131958,1.9375386238098145,-2.0016961097717285,2.0907387733459473,2.255401849746704],"xaxis":"x","y":[-0.7528190612792969,-0.628179132938385,-0.6970450282096863,-1.7371209859848022,-1.560314416885376,-1.6755082607269287,-1.721828818321228,-1.72312331199646,-1.7275354862213135,-1.5396169424057007,1.1512994766235352,-0.6186309456825256,-0.4724600315093994,-0.7964465618133545,-0.9945818185806274,-1.59577476978302,-1.6481423377990723,-0.6389154195785522,-1.6651082038879395,-1.7240458726882935],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Fertittas","Susannah_Meadows","General_Yoshio_Utsumi","Kyonggi_Province","Mansheim","Macedonia_Nordonia","operator_Angkasa_Pura","Krambach","Outright_secular","Cook_Yourself_Thin","Ganira_Pashayeva","Peter_Whittall","BFGoodrich_Baja","Guernica_Picasso","Gumtree","striker_Stuart_Beavon","Daughter_Remembers","overbooked_flights","Tito_Massoud","Yong_Pyong","Phebra","Titlow","Info_www.tops.org","granola","Vladimir_Obradovic","Djang","----------_-----------------------------------------------_unaudited","ImageStation","Cerro_Grande","Auggie_Tantillo_executive","ROLL_OUT_THE","Combat_Infantryman_Badges","Thousand_Cranes","GREEN_PARTY","##M####","Toaff","Clake","Girbaud","Solotomo","Le_Cirque","Sven_Bruss","http:\u002f\u002fwww.avanquest.com","LI","Zeta_Ophiuchi","Patient_Monitoring_Market","Rekong_Peo","atopic_asthma","Ocitti","Zomi_Students_Federation","Cyngor","Alisha_Filmore","heat_exchanger_ruptured","Golden_Pin_Lanes","Jillie","Ti_Logistics_Briefing","Noor_Azam","BIAM_auditorium","Drapers_features","Anastazia_Kuzmina","Throne_Holst","Laura_Grevas_Worthington","mantling","WE_Thu","Steve_Chealander","TT_X_TRADER","Be_Exhumed","Picardi","Daejeon","Deluxe_Rooms","Franco_Prussian_War","ClearBlack_display","shampoo_contraceptives","Bukit_Payong","Deborah_Jeon","Raj_Thackerey","Sub_Swara","Quartermaster_Corps","Dichello_Distributors","Irawati","MCF####","Oquaye","SFA_disciplinary","GameZnFlix","Rube_Waddell","Sholom_Aleichem","Engagement_Rumors","wakame","LVDS_transmitter","director_Jesus_Puc","Athletic_Bilbao_Atletico_Madrid","Vijay_Kannan","Group_JSE_NED","Wellesley_Wenham_West","Don_DeFord","MAp_airports","fecal_coli","King_Athelstan","Jorge_Mario_Bergoglio","Tirumalasetti","Airbus_A###\u002fA###_aircraft"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[-1.3606045246124268,-2.1326773166656494,2.4992904663085938,4.051769733428955,-1.6018277406692505,-2.2146995067596436,0.041649751365184784,1.4441921710968018,-0.007834280841052532,-2.96281361579895,2.129448413848877,2.479001522064209,2.0073492527008057,-2.944082498550415,1.3660950660705566,1.2288872003555298,-3.1697750091552734,0.8780500888824463,1.7103638648986816,-1.0000301599502563,2.26922607421875,-1.53829824924469,-0.6613786816596985,-2.5474395751953125,-1.8487218618392944,-0.72165447473526,-3.5438132286071777,1.4321365356445312,-0.9902165532112122,1.5831961631774902,-5.360601425170898,0.7582264542579651,-3.7130656242370605,-5.208982944488525,1.917298436164856,1.426500916481018,-0.3484915792942047,-2.860408306121826,4.306109428405762,-2.911850929260254,-3.211789608001709,0.18788698315620422,-1.44621741771698,0.22641237080097198,0.8281724452972412,4.010873794555664,-0.6532238721847534,3.6609973907470703,3.6332857608795166,-3.6635239124298096,-2.7512245178222656,0.06459138542413712,-1.442299485206604,0.12611950933933258,-0.3611973822116852,3.417266607284546,3.4503345489501953,-0.264493852853775,-1.1459141969680786,-0.6465475559234619,-0.2241698056459427,0.27029913663864136,-0.6078165769577026,1.0284298658370972,1.5596566200256348,-1.0546278953552246,-1.6204686164855957,4.151745796203613,-1.7087582349777222,-2.6472935676574707,1.5263946056365967,-0.14346633851528168,3.542332410812378,0.616554856300354,3.726330518722534,-4.5409770011901855,0.910259485244751,-1.5862587690353394,3.4329113960266113,1.9819402694702148,4.072675704956055,1.2019708156585693,1.5800020694732666,-3.857128143310547,-3.443298101425171,-2.9287619590759277,-2.5916671752929688,1.758774995803833,0.3255225718021393,0.8083597421646118,-0.16299881041049957,0.07989761978387833,-3.6943161487579346,-0.17971016466617584,1.8001978397369385,-0.7131439447402954,1.0105631351470947,-0.737237274646759,3.5595741271972656,2.295935869216919],"xaxis":"x","y":[0.7671331167221069,-3.865236282348633,0.30698850750923157,-0.41799771785736084,3.644280433654785,4.673166275024414,1.9281617403030396,3.3450582027435303,-3.3588531017303467,-2.2873270511627197,0.381804883480072,-0.921781063079834,-5.049798488616943,-1.1704241037368774,-2.8025894165039062,5.140185356140137,-1.34403395652771,-1.248173713684082,1.0850930213928223,5.420529842376709,-3.4979467391967773,3.590550184249878,-3.527372121810913,-2.8887205123901367,5.120820999145508,3.539536237716675,-5.945267677307129,-5.596231937408447,-0.3683565855026245,-1.0385119915008545,-3.820632219314575,-0.0033511908259242773,-0.23665118217468262,-4.016147613525391,-4.997786045074463,1.5434019565582275,4.023113250732422,-1.9205725193023682,-2.932961940765381,-2.1890950202941895,2.6993134021759033,-3.4091808795928955,1.3973066806793213,-3.9762001037597656,-2.8949155807495117,2.151341438293457,-5.160669326782227,1.2820994853973389,2.247753858566284,1.0302523374557495,5.117976188659668,-4.170199871063232,4.8181233406066895,3.592694044113159,-2.8195011615753174,0.608128011226654,2.200012445449829,-2.349147319793701,5.496760845184326,1.9170445203781128,-2.2276711463928223,-4.36401891708374,-2.3538289070129395,-0.5762065649032593,-4.419290542602539,-1.216540813446045,3.1123247146606445,-0.44813764095306396,0.1661917269229889,-0.7813357710838318,-5.548255443572998,-4.766131401062012,0.469855397939682,0.6267763376235962,2.4191198348999023,-0.4095022976398468,-0.026156600564718246,0.10638900101184845,2.9695825576782227,-5.046627044677734,1.1932443380355835,5.242866039276123,-3.6908674240112305,5.506399631500244,-0.7527370452880859,-1.267937183380127,-3.030198812484741,-5.222052574157715,0.09255145490169525,5.675014495849609,5.70943546295166,-2.101728677749634,-4.103173732757568,1.540732979774475,-1.4737497568130493,-4.45277738571167,2.387805223464966,-0.09998805820941925,2.8629002571105957,-4.599381446838379],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+<div class="output text_html"><div>                            <div id="41bf9eec-a40d-4e32-afb2-50bc3c2fb725" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("41bf9eec-a40d-4e32-afb2-50bc3c2fb725")) {                    Plotly.newPlot(                        "41bf9eec-a40d-4e32-afb2-50bc3c2fb725",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["crises","turmoil","meltdown","credit_crunch","crisis.The","recession","downturn","subprime_mortgage_crisis","economic_downturn","liquidity_crunch","crisi","upheaval","turmoil_engulfing","crunch","calamity","contagion","malaise_gripping","upheavals","subprime_mortgage_meltdown","recesssion"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[-1.6295725107192993,-1.782227635383606,-2.086747884750366,2.059725284576416,2.552919387817383,1.985466718673706,2.1452131271362305,2.1327805519104004,2.04433536529541,2.7441158294677734,-3.306180715560913,-1.8047902584075928,-1.2555979490280151,-0.5087481141090393,-0.39253029227256775,2.2584245204925537,1.580303430557251,-1.9794175624847412,2.1182703971862793,2.2713048458099365],"xaxis":"x","y":[-0.667282223701477,-0.7284297943115234,-0.6704280376434326,-1.767071008682251,-1.594901204109192,-1.7141278982162476,-1.7437868118286133,-1.7829654216766357,-1.6577515602111816,-1.4371838569641113,1.1259896755218506,-0.5559192895889282,-0.5766735076904297,-0.6622273325920105,-0.9214081168174744,-1.6856944561004639,-1.4985501766204834,-0.6675552725791931,-1.6752660274505615,-1.6989655494689941],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Fertittas","Susannah_Meadows","General_Yoshio_Utsumi","Kyonggi_Province","Mansheim","Macedonia_Nordonia","operator_Angkasa_Pura","Krambach","Outright_secular","Cook_Yourself_Thin","Ganira_Pashayeva","Peter_Whittall","BFGoodrich_Baja","Guernica_Picasso","Gumtree","striker_Stuart_Beavon","Daughter_Remembers","overbooked_flights","Tito_Massoud","Yong_Pyong","Phebra","Titlow","Info_www.tops.org","granola","Vladimir_Obradovic","Djang","----------_-----------------------------------------------_unaudited","ImageStation","Cerro_Grande","Auggie_Tantillo_executive","ROLL_OUT_THE","Combat_Infantryman_Badges","Thousand_Cranes","GREEN_PARTY","##M####","Toaff","Clake","Girbaud","Solotomo","Le_Cirque","Sven_Bruss","http:\u002f\u002fwww.avanquest.com","LI","Zeta_Ophiuchi","Patient_Monitoring_Market","Rekong_Peo","atopic_asthma","Ocitti","Zomi_Students_Federation","Cyngor","Alisha_Filmore","heat_exchanger_ruptured","Golden_Pin_Lanes","Jillie","Ti_Logistics_Briefing","Noor_Azam","BIAM_auditorium","Drapers_features","Anastazia_Kuzmina","Throne_Holst","Laura_Grevas_Worthington","mantling","WE_Thu","Steve_Chealander","TT_X_TRADER","Be_Exhumed","Picardi","Daejeon","Deluxe_Rooms","Franco_Prussian_War","ClearBlack_display","shampoo_contraceptives","Bukit_Payong","Deborah_Jeon","Raj_Thackerey","Sub_Swara","Quartermaster_Corps","Dichello_Distributors","Irawati","MCF####","Oquaye","SFA_disciplinary","GameZnFlix","Rube_Waddell","Sholom_Aleichem","Engagement_Rumors","wakame","LVDS_transmitter","director_Jesus_Puc","Athletic_Bilbao_Atletico_Madrid","Vijay_Kannan","Group_JSE_NED","Wellesley_Wenham_West","Don_DeFord","MAp_airports","fecal_coli","King_Athelstan","Jorge_Mario_Bergoglio","Tirumalasetti","Airbus_A###\u002fA###_aircraft"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[1.7290072441101074,-2.0508251190185547,2.3937220573425293,4.1240925788879395,-1.6618534326553345,-2.20729660987854,0.05577180162072182,1.4668701887130737,-0.05996665358543396,-3.027836561203003,2.1226842403411865,2.412045955657959,1.9174542427062988,-2.9183921813964844,1.4118542671203613,1.2414923906326294,-3.092735767364502,1.012479543685913,1.6215003728866577,-1.0886142253875732,2.3169429302215576,-1.545150876045227,-0.6185903549194336,-2.561215400695801,-1.8056373596191406,-0.7505272030830383,-3.5586204528808594,1.3689396381378174,-1.0605229139328003,1.4598239660263062,-5.305606365203857,0.8153119683265686,-3.5804505348205566,-5.0982279777526855,1.9304107427597046,1.4333797693252563,-0.3358515202999115,-2.9207119941711426,4.257757663726807,-2.875436305999756,-3.137075424194336,0.18208816647529602,-4.917653560638428,0.21761564910411835,0.8087807893753052,4.10092306137085,-0.8420817852020264,3.725024700164795,3.619469404220581,-3.672692060470581,-2.788788318634033,0.08466091752052307,-1.5611680746078491,0.11153238266706467,-0.40701571106910706,3.4498932361602783,3.534731864929199,-0.10268229246139526,-1.1346968412399292,-0.6586101651191711,-0.23022493720054626,0.3594895899295807,-0.7079579830169678,0.958608090877533,1.6105918884277344,-1.0110710859298706,-1.6277140378952026,4.127366542816162,-1.7978094816207886,-2.3179290294647217,1.6000080108642578,-0.17797213792800903,3.558872938156128,0.70158851146698,3.7280282974243164,-4.530435562133789,0.8683205842971802,-2.51214599609375,3.402036666870117,1.9784483909606934,4.044266223907471,1.195871353149414,1.4010987281799316,-3.798717737197876,-3.4353103637695312,-2.8119795322418213,-2.6777665615081787,1.7957308292388916,0.41121047735214233,0.7945888042449951,-0.13825300335884094,0.024082588031888008,-3.655848979949951,-0.06533663719892502,1.9702413082122803,-0.6695622801780701,0.9403765797615051,-0.7081382274627686,3.5629167556762695,2.336045503616333],"xaxis":"x","y":[-2.2779321670532227,-3.8203580379486084,0.3536599576473236,-0.44804346561431885,3.688077449798584,4.665869235992432,1.9092031717300415,3.390153408050537,-3.3426032066345215,-2.2210566997528076,0.3457019329071045,-0.9201938509941101,-5.090705871582031,-1.0232375860214233,-2.667640447616577,5.169930934906006,-1.3738994598388672,-1.2295433282852173,1.0461695194244385,5.415846347808838,-3.656445026397705,3.4861533641815186,-3.5402562618255615,-2.9250881671905518,5.148687839508057,3.624350070953369,-5.922086238861084,-5.394903659820557,-0.43614068627357483,-0.9968811869621277,-3.9266672134399414,-0.04510047659277916,-0.17408771812915802,-4.0498175621032715,-5.0487775802612305,1.5771021842956543,4.0422749519348145,-2.044166088104248,-2.89426851272583,-2.1315271854400635,2.7625396251678467,-3.360328197479248,-5.209432601928711,-3.953908681869507,-2.913231134414673,2.0907349586486816,-5.01711368560791,1.2629727125167847,2.262371301651001,1.0084092617034912,5.120270729064941,-4.498647689819336,4.789534091949463,3.58471941947937,-2.7477970123291016,0.6640283465385437,2.2836883068084717,-2.284466505050659,5.517694473266602,1.8913506269454956,-2.117300271987915,-4.35314416885376,-2.333099365234375,-0.5629358887672424,-4.3691253662109375,-1.1837553977966309,3.0662474632263184,-0.4413989186286926,0.3093680739402771,-0.41515612602233887,-5.582032203674316,-4.791317939758301,0.48917728662490845,0.7341473698616028,2.4574270248413086,-0.3748689591884613,-0.05369621515274048,-1.442089557647705,2.9824624061584473,-5.0395426750183105,1.158324956893921,5.212193489074707,-3.685633659362793,5.474757671356201,-0.7510437965393066,-1.3868054151535034,-2.8947033882141113,-5.240447521209717,0.053638357669115067,5.615151405334473,5.711978435516357,-1.9163265228271484,-4.124176025390625,1.5211362838745117,-1.4598042964935303,-4.358537673950195,2.197605848312378,-0.08455878496170044,2.8133528232574463,-4.561651706695557],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('9ff2e112-bbc0-43c1-ae3c-f68f16c321aa');
+var gd = document.getElementById('41bf9eec-a40d-4e32-afb2-50bc3c2fb725');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -2379,9 +2378,9 @@ Pairwise cosine similarities:
 When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
 </pre></div>
 </div>
-<div class="output text_html"><div>                            <div id="e35820e4-8e31-4144-8973-af943f0d562f" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("e35820e4-8e31-4144-8973-af943f0d562f")) {                    Plotly.newPlot(                        "e35820e4-8e31-4144-8973-af943f0d562f",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["turmoil","recession","crises","downturn","pandemic","covid","slowdown","unprecedented","tightening","outbreak","economy","recessionary","lingering","macroeconomic","deteriorating","instability","worsening","coronavirus","dislocation","dislocations"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[10.787596702575684,10.790511131286621,10.778595924377441,10.810744285583496,10.89116382598877,10.893057823181152,10.859443664550781,10.840555191040039,10.831534385681152,10.888824462890625,10.786070823669434,10.871781349182129,10.860511779785156,10.776022911071777,10.828577995300293,10.657856941223145,10.888182640075684,10.937789916992188,10.855656623840332,10.816313743591309],"xaxis":"x","y":[10.584969520568848,10.365921974182129,10.778433799743652,10.369536399841309,10.711122512817383,10.689022064208984,10.360121726989746,10.403997421264648,10.44575309753418,10.753602981567383,10.380680084228516,10.405706405639648,10.382994651794434,10.424449920654297,10.392171859741211,10.76823616027832,10.348569869995117,10.757640838623047,10.378941535949707,10.492712020874023],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["sched","ugas","collectibles","salle","plers","disagreed","biod","dpler","recruitment","ldr","umber","nys","reinsurers","finisar","amune","golub","adata","galileo","originators","maidstone","slee","partners","brazing","usgovernmentsponsoredenterprises","constric","omniab","shortfalls","starting","serviceable","beings","hur","verastem","shenandoah","rox","ndc","trapped","dissol","gassegmentmember","sior","vpc","constructionandlanddevelopment","kog","arena","lihood","cyx","lomb","lucer","insec","coalmember","oncor","resolved","eco","nuo","pressur","lloy","docsis","filippo","acbb","unlocking","endow","certiorari","apu","abatements","stranded","administrator","strath","ogen","seriesofindividuallyimmaterial","risperidone","tv","hne","eafe","talis","vontier","verint","pwc","oradur","majo","rated","classb","mccrea","bux","lf","correction","resem","ameh","albu","wich","confirmations","part","graduate","adversaries","foss","championships","occi","gmac","sellers","behavi","veneers","asct"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[10.3967866897583,6.907687187194824,10.097966194152832,8.600141525268555,12.26791000366211,8.789142608642578,14.866129875183105,8.406169891357422,9.720979690551758,13.34145450592041,9.062592506408691,7.483005523681641,7.337878227233887,9.981913566589355,14.705538749694824,8.150156021118164,10.344417572021484,10.537511825561523,7.436327934265137,9.080889701843262,11.33443546295166,8.441208839416504,12.580329895019531,2.908158779144287,11.008628845214844,9.109071731567383,10.330924034118652,9.03322982788086,11.068525314331055,13.096272468566895,10.563708305358887,9.118301391601562,8.873950958251953,11.64042854309082,9.67106819152832,12.720789909362793,13.112469673156738,3.5719566345214844,9.594444274902344,10.84644603729248,2.6953542232513428,11.11455249786377,10.15279483795166,10.760449409484863,5.80302095413208,9.581254005432129,5.453349590301514,6.1704864501953125,3.1264445781707764,8.31369400024414,8.953699111938477,10.905590057373047,12.377925872802734,12.528318405151367,1.4691516160964966,10.69201374053955,9.71817398071289,2.385439157485962,10.578317642211914,12.861300468444824,8.67581844329834,10.999547958374023,8.228965759277344,13.636497497558594,7.9434428215026855,9.405176162719727,12.852495193481445,2.8709030151367188,14.65863037109375,9.958318710327148,10.594613075256348,7.046069622039795,10.66795539855957,9.136250495910645,10.21235179901123,11.536516189575195,14.62033748626709,9.710744857788086,6.829236030578613,1.6341789960861206,10.21162223815918,10.31053352355957,10.951983451843262,12.492883682250977,12.099607467651367,1.8676646947860718,14.273655891418457,8.958698272705078,9.288140296936035,7.6797261238098145,9.398073196411133,10.231196403503418,10.582587242126465,10.162957191467285,7.623695373535156,7.428409099578857,8.263530731201172,10.93272876739502,12.601213455200195,14.859734535217285],"xaxis":"x","y":[7.325984954833984,6.960423469543457,6.759716510772705,2.356215238571167,7.50405216217041,10.989310264587402,7.302323818206787,5.844401836395264,8.46680736541748,7.475057125091553,1.654644250869751,7.369778156280518,6.8730621337890625,4.568465232849121,7.540597438812256,4.851957321166992,5.30769157409668,4.958375930786133,7.992095470428467,1.097682237625122,7.311240196228027,8.363195419311523,6.528614044189453,5.856593132019043,10.267613410949707,4.169042587280273,10.346390724182129,10.061644554138184,7.701125621795654,8.429134368896484,0.9273762106895447,4.041332244873047,1.9202487468719482,3.588212013244629,5.33006477355957,7.4274139404296875,6.717648983001709,4.862669944763184,0.27622634172439575,5.670238494873047,6.48335075378418,1.2694082260131836,8.69188117980957,8.596424102783203,4.240538120269775,3.891266345977783,3.4615116119384766,4.0212016105651855,4.5291595458984375,5.88785982131958,11.073952674865723,4.816577911376953,2.230161190032959,6.895277976989746,4.874998569488525,6.443513870239258,0.22823284566402435,6.000328063964844,8.876572608947754,7.309543132781982,11.16525650024414,6.078855514526367,8.513147354125977,8.22573184967041,8.06574821472168,1.5116684436798096,6.628506183624268,4.701630115509033,7.393101692199707,6.425408840179443,0.6568784713745117,7.182425498962402,4.7559494972229,4.652904510498047,5.255185604095459,0.5511561036109924,7.214432716369629,2.847212553024292,7.234214782714844,5.122127056121826,0.35989585518836975,0.9973909854888916,4.3116135597229,8.09476089477539,8.540984153747559,4.215568542480469,7.312153339385986,1.6611263751983643,8.789024353027344,10.155652046203613,7.2845139503479,11.19808292388916,1.475300908088684,6.264266014099121,3.4611878395080566,5.324862003326416,8.107563018798828,8.91645336151123,6.0786333084106445,8.087128639221191],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+<div class="output text_html"><div>                            <div id="1201a5b2-cf1b-4610-a7a0-921d2197aed2" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("1201a5b2-cf1b-4610-a7a0-921d2197aed2")) {                    Plotly.newPlot(                        "1201a5b2-cf1b-4610-a7a0-921d2197aed2",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["turmoil","recession","crises","downturn","pandemic","covid","slowdown","unprecedented","tightening","outbreak","economy","recessionary","lingering","macroeconomic","deteriorating","instability","worsening","coronavirus","dislocation","dislocations"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[10.801414489746094,10.8036527633667,10.813545227050781,10.826499938964844,10.939762115478516,10.89566707611084,10.93527603149414,10.819466590881348,10.859990119934082,10.91662311553955,10.786665916442871,10.827661514282227,10.873456954956055,10.8134765625,10.860723495483398,10.692815780639648,10.853080749511719,10.961009979248047,10.869645118713379,10.791250228881836],"xaxis":"x","y":[10.581221580505371,10.433520317077637,10.772567749023438,10.381880760192871,10.689252853393555,10.69522762298584,10.422704696655273,10.455185890197754,10.410297393798828,10.779159545898438,10.425858497619629,10.393132209777832,10.359820365905762,10.326957702636719,10.408174514770508,10.744000434875488,10.361932754516602,10.744028091430664,10.396594047546387,10.493350982666016],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["sched","ugas","collectibles","salle","plers","disagreed","biod","dpler","recruitment","ldr","umber","nys","reinsurers","finisar","amune","golub","adata","galileo","originators","maidstone","slee","partners","brazing","usgovernmentsponsoredenterprises","constric","omniab","shortfalls","starting","serviceable","beings","hur","verastem","shenandoah","rox","ndc","trapped","dissol","gassegmentmember","sior","vpc","constructionandlanddevelopment","kog","arena","lihood","cyx","lomb","lucer","insec","coalmember","oncor","resolved","eco","nuo","pressur","lloy","docsis","filippo","acbb","unlocking","endow","certiorari","apu","abatements","stranded","administrator","strath","ogen","seriesofindividuallyimmaterial","risperidone","tv","hne","eafe","talis","vontier","verint","pwc","oradur","majo","rated","classb","mccrea","bux","lf","correction","resem","ameh","albu","wich","confirmations","part","graduate","adversaries","foss","championships","occi","gmac","sellers","behavi","veneers","asct"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[10.426907539367676,6.897769451141357,10.048083305358887,8.590920448303223,12.2955322265625,8.861358642578125,14.881865501403809,8.375910758972168,9.746129989624023,13.392152786254883,9.151318550109863,7.4209160804748535,7.3630781173706055,9.953364372253418,14.744819641113281,8.175749778747559,10.14970874786377,10.51819133758545,7.383042335510254,9.093385696411133,11.425373077392578,8.440614700317383,12.604104042053223,2.8674521446228027,10.940948486328125,9.127720832824707,10.23366641998291,8.892455101013184,11.024761199951172,12.861268997192383,10.465619087219238,9.084680557250977,8.811680793762207,11.735404968261719,9.6514310836792,12.741690635681152,13.15619945526123,3.417755365371704,9.669256210327148,10.984579086303711,2.7060070037841797,11.036145210266113,10.167317390441895,10.691810607910156,5.709468841552734,9.52265453338623,5.4721455574035645,6.122818470001221,3.153402090072632,8.276269912719727,9.025233268737793,10.860706329345703,12.382013320922852,12.48000431060791,1.4597431421279907,10.581436157226562,9.652693748474121,2.416512966156006,10.62714672088623,12.870209693908691,8.625831604003906,11.114396095275879,8.20763874053955,13.626442909240723,7.907785415649414,9.23635196685791,12.822495460510254,2.8819282054901123,14.584609985351562,9.94264030456543,10.396244049072266,7.0646748542785645,10.593017578125,9.145722389221191,10.176292419433594,11.533473014831543,14.523908615112305,9.752243041992188,6.795108318328857,1.6714705228805542,10.307049751281738,10.204362869262695,10.905583381652832,12.554885864257812,12.051677703857422,1.887839436531067,14.33427906036377,9.029417037963867,9.256937026977539,7.676887512207031,9.367218971252441,10.200037002563477,10.707287788391113,10.157734870910645,7.606385707855225,7.416932582855225,8.190624237060547,10.939804077148438,12.642895698547363,14.70993423461914],"xaxis":"x","y":[7.263339042663574,6.9534196853637695,6.603579998016357,2.266364574432373,7.523802280426025,11.04434871673584,7.328819274902344,5.843155860900879,8.459907531738281,7.377291202545166,1.6426533460617065,7.453781604766846,6.857497692108154,4.541236400604248,7.509469509124756,4.861844062805176,5.3402557373046875,5.008293151855469,8.065231323242188,1.1278491020202637,7.299991130828857,8.451482772827148,6.458973407745361,5.883580207824707,10.247294425964355,4.272169589996338,10.47382640838623,10.066591262817383,7.670912265777588,8.521851539611816,1.118566870689392,4.075545787811279,1.8308634757995605,3.6020028591156006,5.310090065002441,7.469966411590576,6.814054012298584,4.708957672119141,0.34708380699157715,5.699705600738525,6.503892421722412,1.2043893337249756,8.692230224609375,8.493956565856934,4.356066703796387,3.8439083099365234,3.5772616863250732,3.9125912189483643,4.558972358703613,5.937977313995361,11.16457462310791,4.825423240661621,2.24371075630188,6.965585231781006,4.845123291015625,6.3980889320373535,0.35158002376556396,5.944778919219971,9.076720237731934,7.36604118347168,11.129125595092773,5.863247394561768,8.459331512451172,8.216874122619629,8.010796546936035,1.6242806911468506,6.729435920715332,4.7253193855285645,7.372588634490967,6.4302544593811035,0.8196865916252136,7.199627876281738,4.822621822357178,4.665984630584717,5.228426933288574,0.5635136961936951,7.215539455413818,2.8206140995025635,7.235846042633057,5.018022537231445,0.5497329831123352,0.7349152565002441,4.244802474975586,8.129569053649902,8.488551139831543,4.280622959136963,7.4236979484558105,1.8459153175354004,8.535494804382324,10.136940956115723,7.344029903411865,11.164493560791016,1.467160701751709,6.27803897857666,3.411219596862793,5.260605812072754,8.146198272705078,8.798348426818848,6.026200771331787,8.207541465759277],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('e35820e4-8e31-4144-8973-af943f0d562f');
+var gd = document.getElementById('1201a5b2-cf1b-4610-a7a0-921d2197aed2');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{

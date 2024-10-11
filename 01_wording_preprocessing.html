@@ -154,14 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/course_logo.png" class="logo__image only-light" alt="Deep Learning and Text Analysis in Finance - Home"/>
-    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Deep Learning and Text Analysis in Finance - Home"/>`);</script>
   
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -188,6 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Text analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
@@ -393,9 +388,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-preprocessing">Text preprocessing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokens-lexicon-and-corpus">Tokens, lexicon and corpus</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-and-corpus">Document and Corpus</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-text-types-for-financial-text-analysis">Common text types for financial text analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-10-q-and-8-k-filings">10-K, 10-Q and 8-K filings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earning-call-transcripts">Earning call transcripts</a></li>
@@ -419,7 +415,7 @@ document.write(`
 <p>Let us refer to text analysis, text analytics or text mining as a process which extracts useful information from data using statistical algorithms techniques from natural language processing. Before we are able to start with text analysis, we need to gather text data and prepare it in certain ways to ease the use of text models.</p>
 <section id="text-preprocessing">
 <h2>Text preprocessing<a class="headerlink" href="#text-preprocessing" title="Link to this heading">#</a></h2>
-<p>Usually texts such as financial reports, news or others are available in digital form. Either embedded as content on web pages using hypertext markup language (HTML) or by downloading common text files such as pdf-files. If we want collect text from these sources we either need to manually collected them or we make use of techniques like web scraping. For many different types of text, this already has been done by third-party providers and text is available upon request from these providers. However, we often receive texts in raw format with special characters and other peculiarities that make direct further processing difficult. For instance, take a look at the output below which shows you the beginning of the scraped raw text format of <a class="reference external" href="https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm">this</a> company filing. As you can see, for this example even some metadata is included before the actual content of the report begins.</p>
+<p>Usually texts such as financial reports, news or others are available in digital form. Either embedded as content on web pages using hypertext markup language (HTML) or by downloading common text files such as pdf-files. If we want collect text from these sources we either need to manually collect them or we make use of techniques like web scraping. For many different types of text, this already has been done by third-party providers and text is available upon request from these providers. However, we often receive texts in raw format with special characters and other peculiarities that make direct further processing difficult. For instance, take a look at the output below which shows you the beginning of the scraped raw text format of <a class="reference external" href="https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm">this</a> company filing. As you can see, for this example even some metadata is included before the actual content of the report begins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -528,7 +524,7 @@ almost
 </section>
 <section id="stemming-and-lemmatization">
 <h3>Stemming and lemmatization<a class="headerlink" href="#stemming-and-lemmatization" title="Link to this heading">#</a></h3>
-<p>Stemming and lemmatization both bring word variatons back to their root form. While leammatization brings back words to their canonical form, stemming reduces words to their word stem. For instance the words:</p>
+<p>Stemming and lemmatization both bring word variatons back to their root form. While lemmatization brings back words to their canonical form, stemming reduces words to their word stem. For instance the words:</p>
 <ul class="simple">
 <li><p>improve</p></li>
 <li><p>improving</p></li>
@@ -539,12 +535,40 @@ almost
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="n">simple_preprocess</span><span class="p">(</span><span class="n">filings_sentences</span><span class="p">[</span><span class="mi">40</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;form&#39;, &#39;summary&#39;, &#39;this&#39;, &#39;annual&#39;, &#39;report&#39;, &#39;on&#39;, &#39;form&#39;, &#39;form&#39;, &#39;contains&#39;, &#39;forward&#39;, &#39;looking&#39;, &#39;statements&#39;, &#39;within&#39;, &#39;the&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;private&#39;, &#39;securities&#39;, &#39;litigation&#39;, &#39;reform&#39;, &#39;act&#39;, &#39;of&#39;, &#39;that&#39;, &#39;involve&#39;, &#39;risks&#39;, &#39;and&#39;, &#39;uncertainties&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>form
+summary
+this
+annual
+report
+on
+form
+form
+contains
+forward
+looking
+statements
+within
+the
+meaning
+of
+the
+private
+securities
+litigation
+reform
+act
+of
+that
+involve
+risks
+and
+uncertainties
 </pre></div>
 </div>
 </div>
@@ -640,10 +664,80 @@ uncertainty
 </div>
 </div>
 </section>
-<section id="tokens-lexicon-and-corpus">
-<h3>Tokens, lexicon and corpus<a class="headerlink" href="#tokens-lexicon-and-corpus" title="Link to this heading">#</a></h3>
-<p>Let us clarify some wording conventions before we dig deeper into text analysis. Text analysis usually starts with a set of documents which is called a corpus. After documents have been processed, the outcome is a list of tokens. Generally, tokens are an indivisible sequence of characters, usually a single word. Distinct tokens/words are called a term and the set of all terms in a corpus is called the lexicon.</p>
 </section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h2>
+<p>While the simple preprocessing example from above splits the sentence into individual words, most state of the art language models use algorithms which are trained to split a text sequence into tokens. This usually includes normalization steps such as removing unneeded white space, stripping accents, lower casing, etc. The Stanford Natural Language Processing group describes a token as <em>an instance of a sequence of characters in some particular document that are grouped together as a useful semantic unit for processing</em>. Learning useful tokens is a task which is learned by algorithms such as Byte-Pair-Encoding or Wordpiece. Interested readers can get some first information about these algorithms at <a class="reference external" href="https://huggingface.co/docs/tokenizers/components#pretokenizers">huggingface’s documentation</a>. Below, we can take a look how the BERT model and its pretrained tokenizer would preprocess the example sentence from above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tokenizers</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;bert-base-uncased&quot;</span><span class="p">)</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">filings_sentences</span><span class="p">[</span><span class="mi">40</span><span class="p">])</span><span class="o">.</span><span class="n">tokens</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[CLS]
+form
+10
+-
+k
+summary
+57
+this
+annual
+report
+on
+form
+10
+-
+k
+(
+“
+form
+10
+-
+k
+”
+)
+contains
+forward
+-
+looking
+statements
+,
+within
+the
+meaning
+of
+the
+private
+securities
+litigation
+reform
+act
+of
+1995
+,
+that
+involve
+risks
+and
+uncertain
+##ties
+.
+[SEP]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="document-and-corpus">
+<h2>Document and Corpus<a class="headerlink" href="#document-and-corpus" title="Link to this heading">#</a></h2>
+<p>Let us clarify some wording conventions before we dig deeper into text analysis. Text analysis usually starts with a set of documents which is called a corpus. After documents have been processed, the outcome is a list of tokens. Distinct tokens/words are called a term and the set of all terms in a corpus is called the lexicon. A document is the general notion for different things such as a sentence, a paragraph, a chapter, etc.</p>
 </section>
 <section id="common-text-types-for-financial-text-analysis">
 <h2>Common text types for financial text analysis<a class="headerlink" href="#common-text-types-for-financial-text-analysis" title="Link to this heading">#</a></h2>
@@ -660,7 +754,6 @@ uncertainty
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
 
 <span class="n">apple_filings_list</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/apple_filings_list.csv&quot;</span><span class="p">)</span>
 <span class="n">apple_filings_list</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
@@ -1100,7 +1193,7 @@ uncertainty
 </section>
 <section id="financial-news">
 <h3>Financial news<a class="headerlink" href="#financial-news" title="Link to this heading">#</a></h3>
-<p>Financial news are popular for text analysis. While it sound pretty straight forward in the beginning, extracting useful information from financial news can be challenging. As news tend to be backward looking and repetitive in many cases.</p>
+<p>Financial news are popular for text analysis. While it sound pretty straight forward in the beginning, extracting useful information from financial news can be challenging. As news tend to be backward looking and repetitive in many cases. Nevertheless, interesting applications of news analysis exist, e.g., to identify systematic market movements.</p>
 </section>
 </section>
 </section>
@@ -1172,9 +1265,10 @@ uncertainty
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-preprocessing">Text preprocessing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokens-lexicon-and-corpus">Tokens, lexicon and corpus</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-and-corpus">Document and Corpus</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-text-types-for-financial-text-analysis">Common text types for financial text analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-10-q-and-8-k-filings">10-K, 10-Q and 8-K filings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earning-call-transcripts">Earning call transcripts</a></li>

@@ -156,14 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/course_logo.png" class="logo__image only-light" alt="Deep Learning and Text Analysis in Finance - Home"/>
-    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Deep Learning and Text Analysis in Finance - Home"/>`);</script>
   
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -190,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
@@ -530,6 +525,12 @@ tensor([-0.7568, -0.3465, -0.2336,  0.3571,  0.5186,  0.1808, -0.3280,  0.7645,
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BertForMaskedLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn&#39;t directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you&#39;re using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you&#39;ll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: [&#39;bert.pooler.dense.bias&#39;, &#39;bert.pooler.dense.weight&#39;, &#39;cls.seq_relationship.bias&#39;, &#39;cls.seq_relationship.weight&#39;]
 - This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
@@ -549,11 +550,11 @@ tensor([-0.7568, -0.3465, -0.2336,  0.3571,  0.5186,  0.1808, -0.3280,  0.7645,
 
  Probability predictions for the first 20 words in the lexicon, given the first masked token:
  
-[9.79041275e-08 1.16179564e-07 9.52343484e-08 1.10266001e-07
- 1.08427777e-07 1.06024892e-07 1.09136337e-07 1.16443566e-07
- 9.25745880e-08 1.10625280e-07 1.11278887e-07 1.08806383e-07
- 9.45586791e-08 1.20131986e-07 1.08165757e-07 8.49745518e-08
- 1.04968898e-07 9.28828641e-08 1.08935438e-07 1.15667603e-07]
+[9.79043406e-08 1.16180381e-07 9.52346539e-08 1.10266356e-07
+ 1.08428324e-07 1.06025531e-07 1.09137197e-07 1.16444149e-07
+ 9.25754122e-08 1.10625955e-07 1.11280080e-07 1.08806518e-07
+ 9.45591623e-08 1.20132810e-07 1.08166411e-07 8.49750634e-08
+ 1.04969438e-07 9.28835107e-08 1.08935879e-07 1.15667852e-07]
 </pre></div>
 </div>
 </div>

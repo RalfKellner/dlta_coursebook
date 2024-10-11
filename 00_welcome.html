@@ -155,14 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/course_logo.png" class="logo__image only-light" alt="Deep Learning and Text Analysis in Finance - Home"/>
-    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Deep Learning and Text Analysis in Finance - Home"/>`);</script>
   
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -189,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
@@ -412,7 +407,7 @@ document.write(`
 <li><p>frequency and dictionary based text models</p></li>
 <li><p>neural networks</p></li>
 <li><p>distributional word and document embeddings</p></li>
-<li><p>attention-based text models</p></li>
+<li><p>transformer-based text models</p></li>
 </ul>
 <p>However, the methodological aspect is just one part for text analysis. The other part refers to the tasks and possibilities of text modeling in a certain domain such as business economics and finance. Especially in the area of financial markets a large number of different text types are available and of potential relevance. Examples are mandatory financial reports, voluntary environmental, social and corporate governance (ESG) reports as well as third party information such as financial news. Applications of text analysis are diverse and depend on the task itself. A few popular examples are:</p>
 <ul class="simple">
@@ -442,15 +437,15 @@ document.write(`
 <li><p>Distributional word embeddings using Word2Vec</p></li>
 <li><p>Distributional document embeddings using Doc2Vec</p></li>
 <li><p>Topic analysis by distributional word and document embeddings</p></li>
-<li><p>A glimpse into modern language modeling network architectures, i.e, the attention-based mechanism of the transformer model</p></li>
+<li><p>Modern language modeling network architectures, i.e, the attention-based mechanism of the transformer model</p></li>
 </ul>
 <section id="prerequisites-for-this-course">
 <h2>Prerequisites for this course<a class="headerlink" href="#prerequisites-for-this-course" title="Link to this heading">#</a></h2>
-<p>If you successfully passed the undergraduate exams in math and statistics you should be fine! We are going to dig a little deeper into the methodological aspects of some models, because I am convinced that this helps to create a more profound understanding of text modeling in general. However, from a technical point of view, all you need is to be able to conduct simple vector and matrix operations and understand what a (partial) derivative is. Furthermore, to work with text and text models, we are going to use python. However, even if you never heard about python before, you should be fine in this course. We have a little python introduction in the first week of the semester. Furthermore, all analysis are going to be presented with pre-written code examples. Your task is to understand and interpret the output, and, at a later stage in the course, to be able to copy+paste pre-written code and adjust it a little to make partly your individual analysis. For instance, you will learn about frequency-based text comprehensions and see a pre-written code example for a company filing of a company, e.g., Apple Inc. Later you may be asked to conduct a similar analysis for Microsoft. Therefore, you will receive text data from us.</p>
+<p>If you successfully passed the undergraduate exams in math and statistics you should be fine! We are going to dig a little deeper into the methodological aspects of some models, because I am convinced that this helps to create a more profound understanding of text modeling in general. However, from a technical point of view, all you need is to be able to conduct simple vector and matrix operations and understand what a (partial) derivative is. Furthermore, to work with text and text models, we are going to use python. However, even if you never heard about python before, you are fine in this course. You do not need to write any code by yourself, the exam is going to focus on the theoretical content of this course and the interpretation of empirical analysis and output of python based analyses. Nevertheless, we want to give you the possibility to learn a little about python if you want. We have a little python introduction in the first week of the semester. Furthermore, all analysis are going to be presented with pre-written code examples. In this way, you can learn about the implementation of text analysis with python if you want. If you are just interested in the course content and passing the exam, you do not need to spend any time on python code.</p>
 </section>
 <section id="exam">
 <h2>Exam<a class="headerlink" href="#exam" title="Link to this heading">#</a></h2>
-<p>The exam of this course is a portfolio of a question and answer part (including some calculations) and an assignment part. Within the assignment part you will receive an individual notebook in which you are supposed to interpret some output and/or conduct a few self-made text analyses. Do not worry, we are going to practice this during the semester a lot and conduct a small mock exam before the exam. The exam will be conducted in presence with a time limitation of 90-120 minutes. The exam date will be organized during the semester.</p>
+<p>The exam is pen and paper, only. Questions are going to be a mixture of theoretical questions, minor calculations and interpretation of exemplary text analyses.</p>
 <p><br/><br/>
 <strong>I hope you are as excited as I am about learning text based modeling and powerful methods which stand behind modern text models, either way, good luck for this course!</strong></p>
 </section>
