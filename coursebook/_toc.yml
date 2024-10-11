@@ -6,6 +6,7 @@ root: 00_welcome
 chapters:
 - file: 01_wording_preprocessing
 - file: 02_frequency_dictionary_models
+- file: 021_financial_analysis
 - file: 03_neural_networks
 - file: 04_word_embeddings
 - file: 05_document_embeddings

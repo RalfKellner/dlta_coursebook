@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Applications of word frequencies in finance &#8212; Deep Learning and Text Analysis in Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '021_financial_analysis';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Neural networks" href="03_neural_networks.html" />
+    <link rel="prev" title="Model free text analysis" href="02_frequency_dictionary_models.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Applications of word frequencies in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_case_study_8k.html">Case study form 8K filings</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F021_financial_analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/021_financial_analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Applications of word frequencies in finance</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-language-matters">Domain specific language matters</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="applications-of-word-frequencies-in-finance">
+<h1>Applications of word frequencies in finance<a class="headerlink" href="#applications-of-word-frequencies-in-finance" title="Link to this heading">#</a></h1>
+<p>Text analysis in the financial area already has a long history with versatile applications. The first major contributions were based upon word frequencies and dictionary based approaches. When analyzing it is important to have some background knowledge in the financial domain. In this chapter, we take a look at some examples to get familiar with some domain specific characteristics.</p>
+<section id="domain-specific-language-matters">
+<h2>Domain specific language matters<a class="headerlink" href="#domain-specific-language-matters" title="Link to this heading">#</a></h2>
+<p>One of the most cited text analysis research articles is by <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughrain and McDonald (2011)</a> which was mentioned in the last chapter. Their paper addresses issues with existing word classification methods used for analyzing the tone in financial texts, particularly 10-K reports. The research focuses on how the widely used Harvard Psychosociological Dictionary (H4N) misclassifies words when applied to financial contexts. Specifically, about 73.8% of the words deemed “negative” by the Harvard list, such as “tax,” “liability,” or “cost,” are not necessarily negative in financial contexts but rather commonly used terms in business.</p>
+<p>The authors argue that such misclassification introduces noise into tone analysis and develop a new word list, “Fin-Neg,” tailored to the financial setting. The Fin-Neg list consists of words that genuinely have negative connotations in finance, such as “felony,” “litigation,” and “misstatement.” They find that using this list results in stronger correlations with financial variables like returns, trading volume, and volatility than the Harvard list. Their analysis also extends to additional word lists covering positive, uncertainty, and litigious tones, among others.</p>
+<p>By examining over 50,000 10-K reports filed from 1994 to 2008, the paper demonstrates that Fin-Neg provides a more accurate reflection of negative sentiment and shows a stronger relation to stock price reactions and financial outcomes during the 10-K filing period.</p>
+<p>Among different variables in their paper, they examine if a relationship between the number of negative words in a 10-K report and the corresponding stock market reaction around the filing date of the report exists. Let <span class="math notranslate nohighlight">\(s_{t, }\)</span> be the stock price of a company, then <span class="math notranslate nohighlight">\(r_{t, i}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+r_{t, 1} = \frac{s_{t, i} - s_{t-1, i}}{s_{t-1, i}} = \frac{s_{t, i}}{s_{t-1, i}} - 1
+\]</div>
+<p>is the discrete return between two time periods <span class="math notranslate nohighlight">\(t, t-1\)</span>. Furthermore, <span class="math notranslate nohighlight">\(r{t, b}\)</span> represents the return at the same point in time of a reasonable benchmark, e.g., a broad stock market index. The excess return is given by the difference:</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{r}_{t, i} = r_{t, i} - r_{t, b}
+\]</div>
+<p>Stock market reactions are quantified by the excess return around the event date (the day the report is filed). This period is called event period or event window. For instance, a popular choice is a four day event window which determines the excess return between <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t+2\)</span>. The benchmark chosen in most of the studies (using data from the United States) is the value weighted buy-and-hold CRSP index. CRSP is a data provider that has a broad set of stock market data with long historical access, including listed and de-listed stocks. Thus, this is an index which captures the aggregate market development. Note, that this is an important and domain specific issue. Stock price changes on equity markets tend to co-move together, which leads to positive correlation between company returns and systematic market movements. For instance, market participants refer to bear and bull markets during times when the majority of all companies experiences an increase and decrease of its market value, respectively. Thus, to isolate the company development over an event window from systematic market movements, one can use the excess return as described above. Other ways can be chosen to control for systematic developments, e.g., the use of abnormal returns which describe the difference between the observed and the expected return. Hereby, the expected return is usually determined by a model which relates the company return to factors that are known to capture systematic stock market movements.</p>
+<p>In their paper Loughrain and McDonald (2011), use a regression analysis to examine if negative tone in 10-K filings has an impact on the stock market reaction (excess return).</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{r}_{t, i} = \beta_0 + \beta_1 \text{tone}_{t, i} + \beta_2 \log \text{size}_{t, i} + \beta_3 \log \text{btm}_{t, i} + \beta_4 \log \text{turnover}_{t, i} + \beta_5 \text{FF}_{t, i} + \beta_6 \text{InstOwn}_{t, i} + \beta_7 \text{Nasdaq}_{t, i} + \epsilon_{t, i}
+\]</div>
+<p>The parameter which is of interest is <span class="math notranslate nohighlight">\(\beta_1\)</span> because it measures the impact of the tone in the filing on the stock market reaction. In their analysis, tone is the number of negative words according to their domain specific dictionary divided by the number of words in a report. As an alternative, they also conduct the analysis with and a term-frequency inverse-document-frequency weighted count of negative words. Other variables are called control variables and must be included to measure the impact of tone more precisely. For instance, if a company is bigger, it is likely that more investors pay attention towards their reports and investors act quicker and more accurate to information shared in the report. The size is usually quantified by the natural log of the market capitalization. The book-to-market value (btm) is another control variable which is the ratio between the equity value according to the balance sheet of a company and its value according to the stock market (market capitalization). The (share) turnover is the relation of volume traded in the year before the filing to the number of outstanding shares of a company. A high value reflects many ownership changes. The variable FF stands for Fama-French alpha and refers to a popular model in finance. It measures if a company experienced surprisingly good and bad returns in the more recent history. The variable InstOwn stands for institutional ownership and describes the fraction of institutional owners of the company in the quarter before the filing. The higher it is, the more attention is paid to the company by professional investors which may also lead to more accurate or at least stronger stock market reactions in both possible directions. The Nasdaq variable is a dummy variable which is equal to one for companies which are listed at the Nasdaq exchange and zero otherwise.</p>
+<p>Please note, that we can not go into econometric details, however, such regression analysis usually control for clustering in the data and potential omitted variables. Examples how to do this are the used of fixed effects regression and corrections of standard errors. Take a look at this <a class="reference external" href="https://www.tidy-finance.org/python/fixed-effects-and-clustered-standard-errors.html">online book</a> for a more detailed explanation.</p>
+<p>If we take a look at Table IV in the paper, we observe that the domain specific tone has a larger effect than if it is determined with a general purpose dictionary. This is an important result as it shows that text analysis can benefit from the usage of domain specific language models. At the same time, when looking at the coefficient of determination <span class="math notranslate nohighlight">\(R^2\)</span> which in general is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\]</div>
+<p>The low values in the analysis highlight, that only little variation of stock market reactions can be explained by tone and control variables. This demonstrates another more general challenge for financial text analysis, a high noise-to-signal ratio. This means that it is really difficult to quantify the importance of textual information precisely.</p>
+<p>To understand this type of analysis a little better, we take a look at an own analysis. The data includes 1966 companies with annual 10-K reports between 2002 and 2024. Not every company exists over the whole period. On average we have almost ten reports over the time period. For every company we collect the market capitalization and book to market value at the filing date. The excess return is the four day event return over the market portfolio provided by <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">Kenneth French data site</a> between <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t+2\)</span>, where <span class="math notranslate nohighlight">\(t\)</span> represents the filing date. For every report, we count the number of negative words according to the <a class="reference external" href="https://sraf.nd.edu/loughranmcdonald-master-dictionary/">Loughrain-McDonald dictionary</a>. and determine the relative frequency of negative words. The cell below exhibits descriptive statistics for 19125 firm year observations. While the average and median excess return is around zero it varies between <span class="math notranslate nohighlight">\(-0.98\)</span> and <span class="math notranslate nohighlight">\(0.41\)</span>. Size is given by the log of market cap. Note that negative book to market values imply a negative equity value, meaning liabilities are larger than assets. However, as long as the company is not legally insolvent and can fulfill its obligations, it can continue its business operations. Negative word frequencies are between zero and <span class="math notranslate nohighlight">\(0.055\)</span>. The average report has a length of around 50,000 words. Note that each report is relatively simply preprocessed, i.e., removal of numbers and punctuation, lower casing and splitting into words by whitespaces.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">lmcd_regression_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="s2">&quot;../analysis/lmcd_regression_data.parquet&quot;</span><span class="p">)</span>
+<span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;freq_negative&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;n_words&quot;</span><span class="p">]</span> 
+<span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>
+<span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s2">&quot;year_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span>  <span class="n">lmcd_regression_data</span><span class="o">.</span><span class="n">Date</span><span class="p">]</span>
+<span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s1">&#39;neg_freq_quintile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">lmcd_regression_data</span><span class="p">[</span><span class="s1">&#39;freq_negative&#39;</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Q</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+<span class="n">lmcd_regression_data</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;ex_r_t&quot;</span><span class="p">,</span> <span class="s2">&quot;Size&quot;</span><span class="p">,</span> <span class="s2">&quot;BTM&quot;</span><span class="p">,</span> <span class="s2">&quot;freq_negative&quot;</span><span class="p">,</span> <span class="s2">&quot;n_words&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ex_r_t</th>
+      <th>Size</th>
+      <th>BTM</th>
+      <th>freq_negative</th>
+      <th>n_words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>19125.000000</td>
+      <td>19125.000000</td>
+      <td>19125.000000</td>
+      <td>19125.000000</td>
+      <td>19125.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-0.000755</td>
+      <td>22.609088</td>
+      <td>0.471917</td>
+      <td>0.016800</td>
+      <td>51537.597490</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.048978</td>
+      <td>1.423160</td>
+      <td>0.601495</td>
+      <td>0.004740</td>
+      <td>26364.465927</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.983018</td>
+      <td>16.232908</td>
+      <td>-7.332997</td>
+      <td>0.000000</td>
+      <td>347.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.017244</td>
+      <td>21.555226</td>
+      <td>0.208206</td>
+      <td>0.013751</td>
+      <td>35661.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.000015</td>
+      <td>22.464324</td>
+      <td>0.377686</td>
+      <td>0.016640</td>
+      <td>48319.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.017682</td>
+      <td>23.551008</td>
+      <td>0.627358</td>
+      <td>0.019511</td>
+      <td>63123.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.409557</td>
+      <td>28.776384</td>
+      <td>46.641317</td>
+      <td>0.055189</td>
+      <td>388143.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Figure 1 of the original paper shows a clear negative relationship between firms sorted into quintiles according to the negative word frequencies and excess returns. We do the same. If you are not familiar with such a procedure, we sort all observations (over time and companies) of negative word frequencies and split this data set into five equally sized parts. For every part, we determine the median of excess returns. This is what you can observe below. In comparison to the original paper, we still observe a negative relationship, however, it is less strict pronounced.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">neg_quintiles_fig</span> <span class="o">=</span> <span class="n">lmcd_regression_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;ex_r_t&quot;</span><span class="p">,</span> <span class="s1">&#39;neg_freq_quintile&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;neg_freq_quintile&quot;</span><span class="p">,</span> <span class="n">observed</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">xlabel</span> <span class="o">=</span> <span class="s2">&quot;Quintiles based on negative word frequencies&quot;</span><span class="p">,</span> <span class="n">ylabel</span> <span class="o">=</span> <span class="s2">&quot;Median excess return&quot;</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2e4bbdf7b1002852321a40f924ba63e241728e5133e03c400498a5a7dd8cb3ea.png" src="_images/2e4bbdf7b1002852321a40f924ba63e241728e5133e03c400498a5a7dd8cb3ea.png" />
+</div>
+</div>
+<p>Last, we conduct three regression analysis:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\tilde{r}_{t, i} = \beta_0 + \beta_1 \text{tone}_{t, i} + \beta_2 \log \text{size}_{t, i} + \beta_3 \log \text{btm}_{t, i} + \epsilon_{t, i} \\
+\tilde{r}_{t, i} = \beta_i + \beta_1 \text{tone}_{t, i} + \beta_2 \log \text{size}_{t, i} + \beta_3 \log \text{btm}_{t, i} + \epsilon_{t, i} \\
+\tilde{r}_{t, i} = \beta_i + \beta_t + \beta_1 \text{tone}_{t, i} + \beta_2 \log \text{size}_{t, i} + \beta_3 \log \text{btm}_{t, i} + \epsilon_{t, i} \\
+\end{split}\]</div>
+<p>The first model is a benchmark, which does not include any fixed effects, the second includes firm fixed effects (<span class="math notranslate nohighlight">\(\beta_i\)</span>) and the last model includes firm and time fixed effects (<span class="math notranslate nohighlight">\(\beta_i, \beta_t\)</span>) controlling for the averages of excess returns by firm and by time. The time is defined by year-month which means the average of all excess returns for a specific month in a specific year is taken into account when estimating the impact of negative word frequencies (<span class="math notranslate nohighlight">\(\text{tone}\)</span>). Furthermore, standard errors are corrected for potential cluster of firms and years.</p>
+<p>The results are shown in the cell below. The estimated <span class="math notranslate nohighlight">\(\beta\)</span> coefficients are reported with t-statistics (in brackets). We do not find a significant impact of the tone on excess returns. Without firm or time fixed effects almost no variation in excess returns can be explained. When controlling for firm and time effects, the sign of tone switches from positive to negative which is the opposite of the original finding. Overall, we do not find any evidence that stock market participants react to negative tone measured by the Loughrain and McDonald dictionary anymore.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyfixest</span> <span class="k">as</span> <span class="nn">pf</span>
+
+
+<span class="n">model_ols</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">feols</span><span class="p">(</span>
+    <span class="s2">&quot;ex_r_t ~ freq_negative + Size + BTM&quot;</span><span class="p">,</span>
+    <span class="n">vcov</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;CRV1&quot;</span><span class="p">:</span> <span class="s2">&quot;RIC + year_month&quot;</span><span class="p">},</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">lmcd_regression_data</span>
+<span class="p">)</span>
+
+<span class="n">model_fe_firm</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">feols</span><span class="p">(</span>
+    <span class="s2">&quot;ex_r_t ~ freq_negative + Size + BTM | RIC&quot;</span><span class="p">,</span>
+    <span class="n">vcov</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;CRV1&quot;</span><span class="p">:</span> <span class="s2">&quot;RIC + year_month&quot;</span><span class="p">},</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">lmcd_regression_data</span>
+<span class="p">)</span>
+
+<span class="n">model_fe_firmyear</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">feols</span><span class="p">(</span>
+    <span class="s2">&quot;ex_r_t ~ freq_negative + Size + BTM | RIC + year_month&quot;</span><span class="p">,</span>
+    <span class="n">vcov</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;CRV1&quot;</span><span class="p">:</span> <span class="s2">&quot;RIC + year_month&quot;</span><span class="p">},</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">lmcd_regression_data</span>
+<span class="p">)</span>
+
+<span class="n">pf</span><span class="o">.</span><span class="n">etable</span><span class="p">([</span><span class="n">model_ols</span><span class="p">,</span> <span class="n">model_fe_firm</span><span class="p">,</span> <span class="n">model_fe_firmyear</span><span class="p">],</span> <span class="n">coef_fmt</span> <span class="o">=</span> <span class="s2">&quot;b (t)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+            <div id="OcJ0Yn"></div>
+            <script type="text/javascript" data-lets-plot-script="library">
+                if(!window.letsPlotCallQueue) {
+                    window.letsPlotCallQueue = [];
+                }; 
+                window.letsPlotCall = function(f) {
+                    window.letsPlotCallQueue.push(f);
+                };
+                (function() {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+                    script.onload = function() {
+                        window.letsPlotCall = function(f) {f();};
+                        window.letsPlotCallQueue.forEach(function(f) {f();});
+                        window.letsPlotCallQueue = [];
+                        
+                    };
+                    script.onerror = function(event) {
+                        window.letsPlotCall = function(f) {};    // noop
+                        window.letsPlotCallQueue = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading Lets-Plot JS';
+                        document.getElementById("OcJ0Yn").appendChild(div);
+                    };
+                    var e = document.getElementById("OcJ0Yn");
+                    e.appendChild(script);
+                })()
+            </script>
+            </div><div class="output text_html">
+            <div id="q1aJw7"></div>
+            <script type="text/javascript" data-lets-plot-script="library">
+                if(!window.letsPlotCallQueue) {
+                    window.letsPlotCallQueue = [];
+                }; 
+                window.letsPlotCall = function(f) {
+                    window.letsPlotCallQueue.push(f);
+                };
+                (function() {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.4.1/js-package/distr/lets-plot.min.js";
+                    script.onload = function() {
+                        window.letsPlotCall = function(f) {f();};
+                        window.letsPlotCallQueue.forEach(function(f) {f();});
+                        window.letsPlotCallQueue = [];
+                        
+                    };
+                    script.onerror = function(event) {
+                        window.letsPlotCall = function(f) {};    // noop
+                        window.letsPlotCallQueue = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading Lets-Plot JS';
+                        document.getElementById("q1aJw7").appendChild(div);
+                    };
+                    var e = document.getElementById("q1aJw7");
+                    e.appendChild(script);
+                })()
+            </script>
+            </div><div class="output text_html"><div id="jyylnliwmm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#jyylnliwmm table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#jyylnliwmm thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#jyylnliwmm p { margin: 0; padding: 0; }
+ #jyylnliwmm .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #jyylnliwmm .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #jyylnliwmm .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #jyylnliwmm .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #jyylnliwmm .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jyylnliwmm .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #jyylnliwmm .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jyylnliwmm .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #jyylnliwmm .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #jyylnliwmm .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #jyylnliwmm .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #jyylnliwmm .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #jyylnliwmm .gt_spanner_row { border-bottom-style: hidden; }
+ #jyylnliwmm .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #jyylnliwmm .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #jyylnliwmm .gt_from_md> :first-child { margin-top: 0; }
+ #jyylnliwmm .gt_from_md> :last-child { margin-bottom: 0; }
+ #jyylnliwmm .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #jyylnliwmm .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #jyylnliwmm .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #jyylnliwmm .gt_row_group_first td { border-top-width: 0.5px; }
+ #jyylnliwmm .gt_row_group_first th { border-top-width: 0.5px; }
+ #jyylnliwmm .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #jyylnliwmm .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #jyylnliwmm .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #jyylnliwmm .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #jyylnliwmm .gt_left { text-align: left; }
+ #jyylnliwmm .gt_center { text-align: center; }
+ #jyylnliwmm .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #jyylnliwmm .gt_font_normal { font-weight: normal; }
+ #jyylnliwmm .gt_font_bold { font-weight: bold; }
+ #jyylnliwmm .gt_font_italic { font-style: italic; }
+ #jyylnliwmm .gt_super { font-size: 65%; }
+ #jyylnliwmm .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #jyylnliwmm .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+
+<tr class="gt_col_headings gt_spanner_row">
+  <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="2" colspan="1" scope="col" id=""></th>
+  <th class="gt_center gt_columns_top_border gt_column_spanner_outer" rowspan="1" colspan="3" scope="colgroup" id="ex_r_t">
+    <span class="gt_column_spanner">ex_r_t</span>
+  </th>
+</tr>
+<tr class="gt_col_headings">
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="(1)">(1)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="(2)">(2)</th>
+  <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="(3)">(3)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="4">coef</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">freq_negative</th>
+    <td class="gt_row gt_center">-0.003 (-0.038)</td>
+    <td class="gt_row gt_center">-0.006 (-0.051)</td>
+    <td class="gt_row gt_center">0.150 (1.244)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Size</th>
+    <td class="gt_row gt_center">0.001* (2.122)</td>
+    <td class="gt_row gt_center">0.003** (2.692)</td>
+    <td class="gt_row gt_center">0.004** (3.069)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">BTM</th>
+    <td class="gt_row gt_center">-0.005 (-1.743)</td>
+    <td class="gt_row gt_center">-0.004 (-1.232)</td>
+    <td class="gt_row gt_center">-0.004 (-1.099)</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Intercept</th>
+    <td class="gt_row gt_center">-0.016 (-1.858)</td>
+    <td class="gt_row gt_center"></td>
+    <td class="gt_row gt_center"></td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="4">fe</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">year_month</th>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">x</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">RIC</th>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">x</td>
+    <td class="gt_row gt_center">x</td>
+  </tr>
+  <tr class="gt_group_heading_row">
+    <th class="gt_group_heading" colspan="4">stats</th>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">Observations</th>
+    <td class="gt_row gt_center">19125</td>
+    <td class="gt_row gt_center">19125</td>
+    <td class="gt_row gt_center">19125</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">S.E. type</th>
+    <td class="gt_row gt_center">by: RIC+year_month</td>
+    <td class="gt_row gt_center">by: RIC+year_month</td>
+    <td class="gt_row gt_center">by: RIC+year_month</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">R<sup>2</sup></th>
+    <td class="gt_row gt_center">0.004</td>
+    <td class="gt_row gt_center">0.147</td>
+    <td class="gt_row gt_center">0.169</td>
+  </tr>
+</tbody>
+  <tfoot class="gt_sourcenotes">
+  
+  <tr>
+    <td class="gt_sourcenote" colspan="4"></td>
+  </tr>
+
+</tfoot>
+
+</table>
+
+</div>
+        </div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02_frequency_dictionary_models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Model free text analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_neural_networks.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Neural networks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-language-matters">Domain specific language matters</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

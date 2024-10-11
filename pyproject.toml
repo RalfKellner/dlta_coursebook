@@ -24,6 +24,7 @@ ipywidgets = "^8.1.1"
 transformers = "^4.37.1"
 yfinance = "^0.2.36"
 statsmodels = "^0.14.1"
+ghp-import = "^2.1.0"
 
 
 [build-system]

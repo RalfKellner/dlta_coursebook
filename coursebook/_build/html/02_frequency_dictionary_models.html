@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Neural networks" href="03_neural_networks.html" />
+    <link rel="next" title="Applications of word frequencies in finance" href="021_financial_analysis.html" />
     <link rel="prev" title="Text analysis" href="01_wording_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -156,14 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/course_logo.png" class="logo__image only-light" alt="Deep Learning and Text Analysis in Finance - Home"/>
-    <script>document.write(`<img src="_static/course_logo.png" class="logo__image only-dark" alt="Deep Learning and Text Analysis in Finance - Home"/>`);</script>
   
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -190,6 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
@@ -1599,7 +1594,13 @@ tf-idf =  tf_{ij} \cdot id_j
 <p>In the examples above, we observe that each document is represented by a high dimensional vector. High dimensions can often be troublesome for machine learning methods. To deal with this issue, one may focus on the occurrences of certain words that fall into a category of interest. Usually, the common categories which are used are the number of positive and negative words. Which words are considered as negative and positive are defined by different dictionaries. An example for a general-purpose dictionary is the Harvard IV-4 dictionary. However, especially for financial documents general-purpose dictionaries may not be useful due to the domain specific usage of words, e.g., the word bear stands for bad market conditions or bull stands for good market conditions, respectively. <a class="reference external" href="https://deliverypdf.ssrn.com/delivery.php?ID=346086103074016126099123079120127096014062039067032088087075106109126028088004124029100103062122015051018100067119123113113108030078070086003125007072006080022042087054067068004000067088111096112124095065023103125127106022115082065076000082025104&amp;amp;EXT=pdf&amp;amp;INDEX=TRUE">Loughran and McDonald (2011)</a> find that the majority of general-purpose negative words from the Harvard dictionary found in in 10-K filings are not considered as negative in a financial context. This is why they generate their own dictionary. See the next cell’s output for a few examples. Besides the categories positive and negative, they also generate the categories: uncertainty, litigious, strong modal, weak modal and constraining. Each report can be summarized by counting the (relative) frequencies of words falling into these categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dict_word_vectorizer</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">raw_counts</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/LMcD_word_list.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">lmcd_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dict_word_vectorizer</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">raw_counts</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
@@ -1611,11 +1612,6 @@ tf-idf =  tf_{ij} \cdot id_j
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">counts</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">categories</span><span class="p">)</span>
 
-<span class="n">lmcd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/Loughran-McDonald_MasterDictionary_1993-2021.csv&quot;</span><span class="p">)</span>
-<span class="n">word_categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Negative&quot;</span><span class="p">,</span> <span class="s2">&quot;Positive&quot;</span><span class="p">,</span> <span class="s2">&quot;Uncertainty&quot;</span><span class="p">,</span> <span class="s2">&quot;Litigious&quot;</span><span class="p">,</span> <span class="s2">&quot;Strong_Modal&quot;</span><span class="p">,</span> <span class="s2">&quot;Weak_Modal&quot;</span> <span class="p">,</span> <span class="s2">&quot;Constraining&quot;</span><span class="p">]</span>
-<span class="n">lmcd_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_categories</span><span class="p">:</span>
-    <span class="n">lmcd_dict</span><span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">=</span>  <span class="p">[</span><span class="n">cat_word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">cat_word</span> <span class="ow">in</span> <span class="n">lmcd</span><span class="p">[</span><span class="n">lmcd</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Word</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
 
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">lmcd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examples for the category: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1628,38 +1624,39 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;arrest&#39; &#39;questions&#39; &#39;conciliation&#39; &#39;aggravations&#39; &#39;disapproves&#39;
- &#39;dispossess&#39; &#39;disassociations&#39; &#39;denying&#39; &#39;illicitly&#39; &#39;disclosed&#39;]
+[&#39;encroachments&#39; &#39;unreasonableness&#39; &#39;discrepancies&#39; &#39;downsize&#39;
+ &#39;cybercrime&#39; &#39;diminution&#39; &#39;exacerbation&#39; &#39;alienates&#39; &#39;underestimated&#39;
+ &#39;confessing&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;upturns&#39; &#39;succeeded&#39; &#39;spectacularly&#39; &#39;boom&#39; &#39;distinction&#39; &#39;distinctions&#39;
- &#39;surpasses&#39; &#39;enhances&#39; &#39;collaborating&#39; &#39;efficiencies&#39;]
+[&#39;favorably&#39; &#39;beneficially&#39; &#39;brilliant&#39; &#39;complimented&#39; &#39;enjoying&#39;
+ &#39;successes&#39; &#39;benefited&#39; &#39;beautifully&#39; &#39;courteous&#39; &#39;enabled&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;reexamine&#39; &#39;unfamiliar&#39; &#39;reassessed&#39; &#39;predict&#39; &#39;believing&#39; &#39;anomalously&#39;
- &#39;untested&#39; &#39;unclear&#39; &#39;approximations&#39; &#39;vaguenesses&#39;]
+[&#39;riskiest&#39; &#39;undetectable&#39; &#39;undecided&#39; &#39;undocumented&#39; &#39;unidentified&#39;
+ &#39;reconsiders&#39; &#39;unseasonably&#39; &#39;undetermined&#39; &#39;indeterminate&#39; &#39;differ&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;referenda&#39; &#39;legalization&#39; &#39;viatical&#39; &#39;nonusurious&#39; &#39;uncontracted&#39;
- &#39;litigations&#39; &#39;thence&#39; &#39;executors&#39; &#39;prepetition&#39; &#39;attesting&#39;]
+[&#39;bailiffs&#39; &#39;immateriality&#39; &#39;notarization&#39; &#39;redact&#39; &#39;escheated&#39;
+ &#39;theretofor&#39; &#39;suing&#39; &#39;hereinbelow&#39; &#39;collusion&#39; &#39;rebut&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;best&#39; &#39;undoubtedly&#39; &#39;highest&#39; &#39;definitely&#39; &#39;unambiguously&#39; &#39;lowest&#39;
- &#39;unequivocal&#39; &#39;will&#39; &#39;unsurpassed&#39; &#39;uncompromising&#39;]
+[&#39;unsurpassed&#39; &#39;unequivocally&#39; &#39;will&#39; &#39;must&#39; &#39;unparalleled&#39; &#39;unequivocal&#39;
+ &#39;clearly&#39; &#39;lowest&#39; &#39;undoubtedly&#39; &#39;definitively&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;depend&#39; &#39;could&#39; &#39;depends&#39; &#39;almost&#39; &#39;nearly&#39; &#39;appears&#39; &#39;may&#39; &#39;apparently&#39;
- &#39;suggests&#39; &#39;sometimes&#39;]
+[&#39;uncertain&#39; &#39;sometimes&#39; &#39;uncertainly&#39; &#39;perhaps&#39; &#39;depend&#39; &#39;maybe&#39;
+ &#39;appears&#39; &#39;apparently&#39; &#39;nearly&#39; &#39;suggest&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;permissions&#39; &#39;obligations&#39; &#39;impairing&#39; &#39;confined&#39; &#39;dependencies&#39;
- &#39;requires&#39; &#39;preconditions&#39; &#39;restraint&#39; &#39;committing&#39; &#39;impositions&#39;]
+[&#39;forbade&#39; &#39;impaired&#39; &#39;noncancellable&#39; &#39;permitting&#39; &#39;insisted&#39;
+ &#39;necessitates&#39; &#39;required&#39; &#39;insistence&#39; &#39;confines&#39; &#39;covenanted&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1668,7 +1665,9 @@ Examples for the category: constraining
 <p>Overall we see below that the dictionary mostly contains negative words. This may have different reasons, for instance, 10-K filings are reports in which companies are supposed to report about potential issues with respect to their business. Furthermore, the tone of financial reports traditionally has been quantified by the occurrences of negative words in documents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span> 
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="p">[</span><span class="n">word</span><span class="p">])</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">values</span><span class="p">)</span>
@@ -1811,11 +1810,11 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5382
-The average cosine distance is: 0.1664
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5371
+The average cosine distance is: 0.1716
 </pre></div>
 </div>
-<img alt="_images/f662edbbb4c4a576e1b9f0ceaed5fd4522fcc23f76840ebdd3b34d60bcd32a50.png" src="_images/f662edbbb4c4a576e1b9f0ceaed5fd4522fcc23f76840ebdd3b34d60bcd32a50.png" />
+<img alt="_images/0779aa1685c49247ba2b7e6cfa9d35f14e61c8eeb6662f60d6e202fe14445968.png" src="_images/0779aa1685c49247ba2b7e6cfa9d35f14e61c8eeb6662f60d6e202fe14445968.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1838,11 +1837,11 @@ The average cosine distance is: 0.1664
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6677
-The average cosine distance is: 0.2143
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6573
+The average cosine distance is: 0.2014
 </pre></div>
 </div>
-<img alt="_images/f63f3147e94a3e0f106be3b2ecde40420804cf3b6fb4e8d5d43d678b9bf2c9d7.png" src="_images/f63f3147e94a3e0f106be3b2ecde40420804cf3b6fb4e8d5d43d678b9bf2c9d7.png" />
+<img alt="_images/41312450f81a03f3efa499acdb22951865c5ae200ce03760ec5e4b58d4a5f206.png" src="_images/41312450f81a03f3efa499acdb22951865c5ae200ce03760ec5e4b58d4a5f206.png" />
 </div>
 </div>
 <p>Now let us take a look, this the average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
@@ -1875,7 +1874,7 @@ The average cosine distance is: 0.2143
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/91bbfd31741c122daa9f5492880636d5a630add1b667a3884ef6054aa5b874c9.png" src="_images/91bbfd31741c122daa9f5492880636d5a630add1b667a3884ef6054aa5b874c9.png" />
+<img alt="_images/3c5628d3055ee3bca4c25d13792681188dddbee9b5cadf3d90744bc13240155d.png" src="_images/3c5628d3055ee3bca4c25d13792681188dddbee9b5cadf3d90744bc13240155d.png" />
 </div>
 </div>
 <p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
@@ -1908,7 +1907,7 @@ The average cosine distance is: 0.2143
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4bf8f63e6c17bd8d96d307728f9c9fc0b9fd2fedb42f93bbec4081799f6506a2.png" src="_images/4bf8f63e6c17bd8d96d307728f9c9fc0b9fd2fedb42f93bbec4081799f6506a2.png" />
+<img alt="_images/b1e7ef2a1974b0222345596253920444337ac6bd5e6dca3f2b76d9540a932de1.png" src="_images/b1e7ef2a1974b0222345596253920444337ac6bd5e6dca3f2b76d9540a932de1.png" />
 </div>
 </div>
 <p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
@@ -1955,11 +1954,11 @@ The average cosine distance is: 0.2143
       </div>
     </a>
     <a class="right-next"
-       href="03_neural_networks.html"
+       href="021_financial_analysis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Neural networks</p>
+        <p class="prev-next-title">Applications of word frequencies in finance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
