@@ -9,3 +9,5 @@ yt/00_collect_eightk_filings.py
 yt/00_collect_top_reddits.py
 yt/apple_eightks.csv
 yt/reddit_api_credentials.json
+tex/
+!tex/dlta.pdf
