@@ -1,0 +1,167 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+% Theme choice
+\usetheme{Madrid}
+\usecolortheme{dove}
+
+
+
+% Title, author, and date
+\title{Deep Learning and Text Analysis in Finance}
+\author{Ralf Kellner}
+\date{Semester 2024 / 2025}
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}{Organization of the course}
+		\begin{itemize}
+			\item The course consists of a lectures on Thursday 12-14, HK 28 (SR 010) and exercises on Wednesday (12-14), HK 14b (SR 315) or Wednesday (16-18), HK 14b (SR 016)
+			\item If you are interested in python and how to could text analysis by yourself, a voluntary session is every Thursday 12-14, HK 28 (SR 010) starting on October 24
+			\item Lectures discuss theoretical and empirical topics of the course
+			\item Exercises repeat the content, however, with a perspective on applications and calculations
+			\item You should participate in both, if you can't, team up with your fellow students
+			\item The exam is paper based, it includes output from data analysis as well as questions which include calculations or open questions
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	
+	\section{Introduction}
+	\begin{frame}{Introduction}
+		\textbf{Welcome to the Financial Data Analytics course.}
+		\vspace{0.5cm}
+		
+		Due to advancing digitalization, large amounts of data on companies, products, and individuals have been generated in the last decades. The increase in storage and computing capacities has fueled the evolution of data analysis methods, allowing more automated and complex analyses of data. \\
+		\vspace{0.5cm}
+		
+		The goal of data analysis is to gain insights that can generate new value. This course focuses on empirical analysis of financial data, but the methods covered are broadly applicable.
+	\end{frame}
+	
+	\begin{frame}{Course Content}
+		The course covers the following key topics:
+		\begin{itemize}
+			\item Data types, data retrieval, and data preparation
+			\item Descriptive and graphical analysis of data
+			\item Regression models and model evaluation
+			\item Dimension reduction
+			\item Clustering
+		\end{itemize}
+		\vspace{0.5cm}
+		We will use a "learning by doing" approach, working hands-on with data. The course materials include digital worksheets and an online book.
+	\end{frame}
+	
+	\begin{frame}{Python in Financial Data Analytics}
+		\textbf{Python as a Tool for Data Analysis:} \\
+		\vspace{0.5cm}
+		Python is a popular programming language, especially useful for data analysis. In this course, you will not be learning Python programming comprehensively. Instead, Python serves as a tool to help you understand data analysis and interpret results. \\
+		\vspace{0.5cm}
+		Course notebooks and examples will provide practical experience without requiring prior programming knowledge.
+	\end{frame}
+	
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	
+	\section{Data access}
+	\begin{frame}{Access to Data}
+		There are many ways to obtain data for analysis. In this section, we will discuss a few common methods of data acquisition:
+		\begin{itemize}
+			\item Downloading and importing smaller files, such as CSV or TXT files.
+			\item Using databases.
+			\item Accessing data via APIs.
+		\end{itemize}
+		\vspace{0.5cm}
+		This is just a brief overview; more complex methods exist, which may require further knowledge.
+	\end{frame}
+	
+	\begin{frame}{File Import}
+		One of the most common ways to obtain data is by sharing files. Common formats include CSV or TXT, where each line typically corresponds to an observation, and variables are separated by commas or other delimiters. \\
+		\vspace{0.5cm}
+		When reading such files, it is important to specify the correct delimiter based on how the data is structured (e.g., space, comma). For example, a CSV file can be downloaded from sources such as Yahoo Finance.
+	\end{frame}
+	
+	\begin{frame}{Databases and APIs}
+		\textbf{Using Databases:} \\
+		Data can also be accessed via databases, which store large amounts of structured data. Query languages such as SQL are often used to retrieve information from databases. \\
+		\vspace{0.5cm}
+		
+		\textbf{Accessing Data via APIs:} \\
+		Application Programming Interfaces (APIs) allow programmatic access to data from various sources. APIs often provide structured data, such as JSON or XML, which can be processed and analyzed directly.
+	\end{frame}
+	
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	
+	\section{Descriptive Analysis}
+	\begin{frame}{Descriptive Analysis of Data}
+		Descriptive analysis is an essential part of any data analysis process. It is typically done at the beginning of an analysis to gain a first impression of the data's characteristics and potential correlations. \\
+		\vspace{0.5cm}
+		Descriptive analysis includes:
+		\begin{itemize}
+			\item Interpretation of data distributions.
+			\item Exploration of correlations between variables.
+			\item Use of descriptive statistics and graphical representations.
+		\end{itemize}
+	\end{frame}
+	
+	% Slide 3: Data Collection
+	\begin{frame}{Data Collection}
+		Every data analysis starts with data collection. The goal is to identify relationships that are generally valid. For example, in analyzing rental prices of housing, we must:
+		\begin{itemize}
+			\item Define the relevant unit (e.g., apartments).
+			\item Determine which factors (besides rental price) may influence the analysis.
+		\end{itemize}
+		Since collecting data on the entire population is often impossible, a representative and random sample is taken.
+	\end{frame}
+	
+	% Slide 4: Descriptive Statistics
+	\begin{frame}{Descriptive Statistics}
+		Descriptive statistics provide quantitative measures that summarize the characteristics of data. Common metrics include:
+		\begin{itemize}
+			\item Mean, median, and mode
+			\item Standard deviation and variance
+			\item Quartiles and percentiles
+		\end{itemize}
+		These statistics give a clear view of the data's central tendency, dispersion, and distribution.
+	\end{frame}
+	
+	% Slide 5: Graphical Representations
+	\begin{frame}{Graphical Representations}
+		Visualizing data is an essential part of descriptive analysis. Common graphical methods include:
+		\begin{itemize}
+			\item Histograms: Show frequency distribution.
+			\item Boxplots: Display data spread and potential outliers.
+			\item Scatter plots: Visualize relationships between two variables.
+		\end{itemize}
+		These visualizations help identify patterns and potential anomalies in the data.
+	\end{frame}
+	
+	% Slide 6: Data Interpretation
+	\begin{frame}{Data Interpretation}
+		\textbf{Distribution of Characteristics:} \\
+		Understanding the distribution of variables helps in drawing meaningful conclusions. For example, does a higher number of study hours correlate with better grades? \\
+		\vspace{0.5cm}
+		\textbf{Correlation Between Variables:} \\
+		Descriptive analysis also looks at how variables relate to each other. For example, analyzing the relationship between family education level and student performance.
+	\end{frame}
+	
+	% Slide 7: Conclusion
+	\begin{frame}{Conclusion}
+		Descriptive analysis serves as the foundation of any comprehensive data analysis. It provides the first look at the data and helps guide further in-depth statistical analyses. \\
+		\vspace{0.5cm}
+		By using a combination of descriptive statistics and graphical representations, we can summarize and interpret data effectively, identifying key trends and relationships.
+	\end{frame}
+	
+	
+\end{document}

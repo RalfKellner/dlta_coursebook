@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Applications of word frequencies in finance" href="021_financial_analysis.html" />
+    <link rel="next" title="Applications of word frequencies in finance" href="03_financial_words_analysis.html" />
     <link rel="prev" title="Text analysis" href="01_wording_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -184,14 +184,14 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model free text analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="021_financial_analysis.html">Applications of word frequencies in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_transformer.html">Attention!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_bert.html">BERT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_text_analysis_finance.html">Text analysis in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_case_study_8k.html">Case study form 8K filings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
     </div>
@@ -441,8 +441,10 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM filings;&quot;</span>
 <span class="n">df_filings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 <span class="n">apple_filings</span> <span class="o">=</span> <span class="n">df_filings</span><span class="p">[</span><span class="n">df_filings</span><span class="o">.</span><span class="n">ticker</span> <span class="o">==</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+<span class="n">apple_filings</span> <span class="o">=</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;filingDate&quot;</span><span class="p">)</span>
+<span class="n">apple_filings</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">apple_filings</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">apple_filings</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -486,27 +488,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0000320193-22-000108</td>
-      <td>2022-10-28</td>
-      <td>2022-09-24</td>
-      <td>2022-10-27T18:01:14.000Z</td>
-      <td>34</td>
-      <td>10-K</td>
-      <td>001-36743</td>
-      <td>221338448</td>
-      <td></td>
-      <td>10332356</td>
-      <td>1</td>
-      <td>1</td>
-      <td>aapl-20220924.htm</td>
-      <td>10-K</td>
-      <td>AAPL</td>
-      <td>0000320193</td>
-      <td>10-K\n 1\n aapl-20220924.htm\n 10-K\n \n \n \n...</td>
-    </tr>
-    <tr>
-      <th>1</th>
+      <th>19</th>
       <td>0000320193-21-000105</td>
       <td>2021-10-29</td>
       <td>2021-09-25</td>
@@ -525,6 +507,26 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0000320193</td>
       <td>10-K\n 1\n aapl-20210925.htm\n 10-K\n \n \n \n...</td>
     </tr>
+    <tr>
+      <th>20</th>
+      <td>0000320193-22-000108</td>
+      <td>2022-10-28</td>
+      <td>2022-09-24</td>
+      <td>2022-10-27T18:01:14.000Z</td>
+      <td>34</td>
+      <td>10-K</td>
+      <td>001-36743</td>
+      <td>221338448</td>
+      <td></td>
+      <td>10332356</td>
+      <td>1</td>
+      <td>1</td>
+      <td>aapl-20220924.htm</td>
+      <td>10-K</td>
+      <td>AAPL</td>
+      <td>0000320193</td>
+      <td>10-K\n 1\n aapl-20220924.htm\n 10-K\n \n \n \n...</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -538,7 +540,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="n">processed_reports</span> <span class="o">=</span> <span class="p">[</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">report</span><span class="p">)</span> <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">raw_reports</span><span class="p">]</span>
 <span class="c1"># count the number of tokens for each report</span>
 <span class="n">nbr_words_per_report</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">report</span><span class="p">)</span> <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">processed_reports</span><span class="p">]</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_filings</span><span class="p">[</span><span class="n">df_filings</span><span class="o">.</span><span class="n">ticker</span> <span class="o">==</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">filingDate</span><span class="p">)</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">apple_filings</span><span class="o">.</span><span class="n">filingDate</span><span class="p">)</span>
 <span class="n">words_per_report</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">nbr_words_per_report</span><span class="p">)</span>
 
 <span class="c1"># visualize the number of tokens per Apple report over time</span>
@@ -562,7 +564,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="c1"># let us take a look at the first reports</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">bow_default</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">bow_default</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">bow_default</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -634,39 +636,39 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
   </thead>
   <tbody>
     <tr>
-      <th>2022-10-28</th>
-      <td>0</td>
-      <td>0</td>
-      <td>109</td>
+      <th>2018-11-05</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>23</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>9</td>
+      <td>0</td>
       <td>3</td>
       <td>0</td>
-      <td>4</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>2021-10-29</th>
+      <th>2019-10-31</th>
       <td>0</td>
       <td>0</td>
-      <td>130</td>
+      <td>116</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>26</td>
-      <td>10</td>
+      <td>19</td>
+      <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -706,15 +708,15 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2019-10-31</th>
+      <th>2021-10-29</th>
       <td>0</td>
       <td>0</td>
-      <td>116</td>
+      <td>130</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>19</td>
-      <td>9</td>
+      <td>26</td>
+      <td>10</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -730,28 +732,28 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2018-11-05</th>
+      <th>2022-10-28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>109</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>23</td>
+      <td>27</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
-      <td>9</td>
-      <td>0</td>
       <td>3</td>
       <td>0</td>
+      <td>4</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -771,7 +773,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="c1"># let us take a look at the first reports</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">bow_wo_stopwords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">bow_wo_stopwords</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">bow_wo_stopwords</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -843,39 +845,39 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
   </thead>
   <tbody>
     <tr>
-      <th>2022-10-28</th>
-      <td>0</td>
-      <td>0</td>
-      <td>109</td>
+      <th>2018-11-05</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>23</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
+      <td>9</td>
+      <td>0</td>
       <td>3</td>
       <td>0</td>
-      <td>4</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>2021-10-29</th>
+      <th>2019-10-31</th>
       <td>0</td>
       <td>0</td>
-      <td>130</td>
+      <td>116</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>26</td>
-      <td>10</td>
+      <td>19</td>
+      <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -915,15 +917,15 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2019-10-31</th>
+      <th>2021-10-29</th>
       <td>0</td>
       <td>0</td>
-      <td>116</td>
+      <td>130</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>19</td>
-      <td>9</td>
+      <td>26</td>
+      <td>10</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
@@ -939,28 +941,28 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2018-11-05</th>
+      <th>2022-10-28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>109</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>23</td>
+      <td>27</td>
       <td>9</td>
       <td>0</td>
       <td>0</td>
       <td>...</td>
       <td>0</td>
-      <td>9</td>
-      <td>0</td>
       <td>3</td>
       <td>0</td>
+      <td>4</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -976,7 +978,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="c1"># let us take a look at the first reports</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">bow_top100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">bow_top100</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">bow_top100</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1048,76 +1050,28 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
   </thead>
   <tbody>
     <tr>
-      <th>2022-10-28</th>
-      <td>44</td>
+      <th>2018-11-05</th>
       <td>64</td>
-      <td>136</td>
-      <td>65</td>
-      <td>24</td>
-      <td>66</td>
-      <td>82</td>
-      <td>106</td>
-      <td>67</td>
-      <td>69</td>
-      <td>...</td>
-      <td>60</td>
-      <td>12</td>
-      <td>101</td>
-      <td>36</td>
-      <td>33</td>
-      <td>49</td>
-      <td>75</td>
-      <td>66</td>
-      <td>37</td>
-      <td>42</td>
-    </tr>
-    <tr>
-      <th>2021-10-29</th>
-      <td>43</td>
-      <td>59</td>
-      <td>127</td>
-      <td>63</td>
-      <td>30</td>
-      <td>66</td>
-      <td>86</td>
-      <td>104</td>
-      <td>69</td>
-      <td>75</td>
-      <td>...</td>
-      <td>62</td>
-      <td>14</td>
-      <td>113</td>
-      <td>35</td>
-      <td>34</td>
+      <td>52</td>
+      <td>190</td>
+      <td>89</td>
       <td>45</td>
-      <td>76</td>
-      <td>64</td>
-      <td>31</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>2020-10-30</th>
-      <td>54</td>
-      <td>51</td>
-      <td>138</td>
-      <td>84</td>
-      <td>38</td>
-      <td>71</td>
-      <td>123</td>
-      <td>72</td>
-      <td>122</td>
-      <td>85</td>
+      <td>88</td>
+      <td>133</td>
+      <td>66</td>
+      <td>115</td>
+      <td>91</td>
       <td>...</td>
       <td>58</td>
-      <td>22</td>
-      <td>122</td>
-      <td>37</td>
-      <td>45</td>
-      <td>34</td>
-      <td>92</td>
-      <td>89</td>
-      <td>31</td>
-      <td>45</td>
+      <td>27</td>
+      <td>179</td>
+      <td>50</td>
+      <td>48</td>
+      <td>48</td>
+      <td>90</td>
+      <td>90</td>
+      <td>47</td>
+      <td>46</td>
     </tr>
     <tr>
       <th>2019-10-31</th>
@@ -1144,28 +1098,76 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>48</td>
     </tr>
     <tr>
-      <th>2018-11-05</th>
-      <td>64</td>
-      <td>52</td>
-      <td>190</td>
-      <td>89</td>
-      <td>45</td>
-      <td>88</td>
-      <td>133</td>
-      <td>66</td>
-      <td>115</td>
-      <td>91</td>
+      <th>2020-10-30</th>
+      <td>54</td>
+      <td>51</td>
+      <td>138</td>
+      <td>84</td>
+      <td>38</td>
+      <td>71</td>
+      <td>123</td>
+      <td>72</td>
+      <td>122</td>
+      <td>85</td>
       <td>...</td>
       <td>58</td>
-      <td>27</td>
-      <td>179</td>
-      <td>50</td>
-      <td>48</td>
-      <td>48</td>
-      <td>90</td>
-      <td>90</td>
-      <td>47</td>
-      <td>46</td>
+      <td>22</td>
+      <td>122</td>
+      <td>37</td>
+      <td>45</td>
+      <td>34</td>
+      <td>92</td>
+      <td>89</td>
+      <td>31</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>43</td>
+      <td>59</td>
+      <td>127</td>
+      <td>63</td>
+      <td>30</td>
+      <td>66</td>
+      <td>86</td>
+      <td>104</td>
+      <td>69</td>
+      <td>75</td>
+      <td>...</td>
+      <td>62</td>
+      <td>14</td>
+      <td>113</td>
+      <td>35</td>
+      <td>34</td>
+      <td>45</td>
+      <td>76</td>
+      <td>64</td>
+      <td>31</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>44</td>
+      <td>64</td>
+      <td>136</td>
+      <td>65</td>
+      <td>24</td>
+      <td>66</td>
+      <td>82</td>
+      <td>106</td>
+      <td>67</td>
+      <td>69</td>
+      <td>...</td>
+      <td>60</td>
+      <td>12</td>
+      <td>101</td>
+      <td>36</td>
+      <td>33</td>
+      <td>49</td>
+      <td>75</td>
+      <td>66</td>
+      <td>37</td>
+      <td>42</td>
     </tr>
   </tbody>
 </table>
@@ -1181,7 +1183,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <span class="c1"># let us take a look at the first reports</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">bow_binary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">bow_binary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">bow_binary</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1255,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
   </thead>
   <tbody>
     <tr>
-      <th>2022-10-28</th>
+      <th>2018-11-05</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -1274,10 +1276,10 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
-      <th>2021-10-29</th>
+      <th>2019-10-31</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -1325,7 +1327,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2019-10-31</th>
+      <th>2021-10-29</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -1349,7 +1351,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
     </tr>
     <tr>
-      <th>2018-11-05</th>
+      <th>2022-10-28</th>
       <td>0</td>
       <td>0</td>
       <td>1</td>
@@ -1370,7 +1372,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
       <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -1392,7 +1394,7 @@ tf-idf =  tf_{ij} \cdot id_j
 <span class="c1"># let us take a look at the first reports</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 <span class="n">tfidf_wo_stopwords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">tfidf_wo_stopwords</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">tfidf_wo_stopwords</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1464,50 +1466,50 @@ tf-idf =  tf_{ij} \cdot id_j
   </thead>
   <tbody>
     <tr>
-      <th>2022-10-28</th>
+      <th>2018-11-05</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.092510</td>
+      <td>0.000694</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000849</td>
-      <td>0.022915</td>
-      <td>0.007638</td>
+      <td>0.000694</td>
+      <td>0.015961</td>
+      <td>0.006246</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.002789</td>
+      <td>0.006841</td>
       <td>0.0</td>
-      <td>0.004076</td>
+      <td>0.002500</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000849</td>
+      <td>0.000694</td>
       <td>0.0</td>
-      <td>0.000000</td>
+      <td>0.001596</td>
     </tr>
     <tr>
-      <th>2021-10-29</th>
+      <th>2019-10-31</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.106513</td>
+      <td>0.088962</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000819</td>
-      <td>0.021303</td>
-      <td>0.008193</td>
+      <td>0.000767</td>
+      <td>0.014571</td>
+      <td>0.006902</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.001795</td>
+      <td>0.001680</td>
       <td>0.0</td>
-      <td>0.002951</td>
+      <td>0.002762</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000819</td>
+      <td>0.000767</td>
       <td>0.0</td>
       <td>0.000000</td>
     </tr>
@@ -1536,52 +1538,52 @@ tf-idf =  tf_{ij} \cdot id_j
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>2019-10-31</th>
+      <th>2021-10-29</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.088962</td>
+      <td>0.106513</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000767</td>
-      <td>0.014571</td>
-      <td>0.006902</td>
+      <td>0.000819</td>
+      <td>0.021303</td>
+      <td>0.008193</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.001680</td>
+      <td>0.001795</td>
       <td>0.0</td>
-      <td>0.002762</td>
+      <td>0.002951</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000767</td>
+      <td>0.000819</td>
       <td>0.0</td>
       <td>0.000000</td>
     </tr>
     <tr>
-      <th>2018-11-05</th>
+      <th>2022-10-28</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000694</td>
+      <td>0.092510</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000694</td>
-      <td>0.015961</td>
-      <td>0.006246</td>
+      <td>0.000849</td>
+      <td>0.022915</td>
+      <td>0.007638</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>0.0</td>
-      <td>0.006841</td>
+      <td>0.002789</td>
       <td>0.0</td>
-      <td>0.002500</td>
+      <td>0.004076</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.000694</td>
+      <td>0.000849</td>
       <td>0.0</td>
-      <td>0.001596</td>
+      <td>0.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1624,39 +1626,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;encroachments&#39; &#39;unreasonableness&#39; &#39;discrepancies&#39; &#39;downsize&#39;
- &#39;cybercrime&#39; &#39;diminution&#39; &#39;exacerbation&#39; &#39;alienates&#39; &#39;underestimated&#39;
- &#39;confessing&#39;]
+[&#39;convict&#39; &#39;catastrophe&#39; &#39;underperformed&#39; &#39;quitting&#39; &#39;disputing&#39;
+ &#39;obstacles&#39; &#39;sacrifice&#39; &#39;untruthfully&#39; &#39;disparities&#39; &#39;irreparable&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;favorably&#39; &#39;beneficially&#39; &#39;brilliant&#39; &#39;complimented&#39; &#39;enjoying&#39;
- &#39;successes&#39; &#39;benefited&#39; &#39;beautifully&#39; &#39;courteous&#39; &#39;enabled&#39;]
+[&#39;stronger&#39; &#39;achievements&#39; &#39;prosperity&#39; &#39;stabilizations&#39; &#39;smooth&#39;
+ &#39;enabled&#39; &#39;achieves&#39; &#39;enabling&#39; &#39;strong&#39; &#39;exceptional&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;riskiest&#39; &#39;undetectable&#39; &#39;undecided&#39; &#39;undocumented&#39; &#39;unidentified&#39;
- &#39;reconsiders&#39; &#39;unseasonably&#39; &#39;undetermined&#39; &#39;indeterminate&#39; &#39;differ&#39;]
+[&#39;anticipations&#39; &#39;appear&#39; &#39;appearing&#39; &#39;depend&#39; &#39;seldomly&#39; &#39;reassessment&#39;
+ &#39;alteration&#39; &#39;differ&#39; &#39;differing&#39; &#39;unobservable&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;bailiffs&#39; &#39;immateriality&#39; &#39;notarization&#39; &#39;redact&#39; &#39;escheated&#39;
- &#39;theretofor&#39; &#39;suing&#39; &#39;hereinbelow&#39; &#39;collusion&#39; &#39;rebut&#39;]
+[&#39;nonforfeitability&#39; &#39;overruling&#39; &#39;petitioner&#39; &#39;delegees&#39; &#39;attorn&#39;
+ &#39;nonterminable&#39; &#39;conveniens&#39; &#39;crossclaims&#39; &#39;indemnifiable&#39; &#39;subtrusts&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;unsurpassed&#39; &#39;unequivocally&#39; &#39;will&#39; &#39;must&#39; &#39;unparalleled&#39; &#39;unequivocal&#39;
- &#39;clearly&#39; &#39;lowest&#39; &#39;undoubtedly&#39; &#39;definitively&#39;]
+[&#39;always&#39; &#39;never&#39; &#39;must&#39; &#39;undisputed&#39; &#39;unequivocal&#39; &#39;strongly&#39;
+ &#39;undoubtedly&#39; &#39;unequivocally&#39; &#39;definitively&#39; &#39;highest&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;uncertain&#39; &#39;sometimes&#39; &#39;uncertainly&#39; &#39;perhaps&#39; &#39;depend&#39; &#39;maybe&#39;
- &#39;appears&#39; &#39;apparently&#39; &#39;nearly&#39; &#39;suggest&#39;]
+[&#39;maybe&#39; &#39;could&#39; &#39;conceivable&#39; &#39;nearly&#39; &#39;might&#39; &#39;uncertainly&#39; &#39;depend&#39;
+ &#39;appears&#39; &#39;seldomly&#39; &#39;possible&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;forbade&#39; &#39;impaired&#39; &#39;noncancellable&#39; &#39;permitting&#39; &#39;insisted&#39;
- &#39;necessitates&#39; &#39;required&#39; &#39;insistence&#39; &#39;confines&#39; &#39;covenanted&#39;]
+[&#39;permitted&#39; &#39;inhibit&#39; &#39;forbade&#39; &#39;entailing&#39; &#39;forbidden&#39; &#39;imposed&#39;
+ &#39;restriction&#39; &#39;requiring&#39; &#39;prevent&#39; &#39;obligating&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1752,6 +1753,38 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 \]</div>
 <p>It measures the angle between vectors and can have values in the range <span class="math notranslate nohighlight">\([-1, 1]\)</span>. If each vector has only non-negative values, its range is in <span class="math notranslate nohighlight">\([0, 1]\)</span>. The smaller the angle between the vectors, the higher the value for cosine similarity.</p>
 <p>Both measures can suffer in high-dimensional spaces, meaning if vectors have a high dimension. However, cosine similarity is often favored for text analysis, if it includes sparse vectors. Sparse vectors have many <span class="math notranslate nohighlight">\(0\)</span> entries which have no impact on the distance measure (as the product in the numerator is always zero for this position). A <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.12885">popular paper</a> in the Journal of Finance by Cohen at al. (2020) finds that bigger changes in 10-K filings indicate a decline in the company’s stock price. With this in mind, let us examine euclidean distances and cosine distances (1 - <span class="math notranslate nohighlight">\(d_{cosine}\)</span>) for the Apple filings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">euclidean_distances</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># create the bag-of-words with default settings</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="c1"># the output is a sparse matrix, the first dimension are the number of reports, the second dimension is the number of terms</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+
+<span class="n">euc_distances</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">cos_distances</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">distances_between_reports</span> <span class="o">=</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;euclidean distance&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;cosine distance&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="c1">#cosine_distances_between_reports.loc[:, &quot;cosine distance&quot;] = cosine_distances_between_reports.loc[:, &quot;cosine distance&quot;].astype(float)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">euc_distances</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cos_distances</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;euclidean distance&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;cosine distance&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" src="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" />
+</div>
+</div>
 </section>
 <section id="the-curse-of-dimensionality">
 <h2>The curse of dimensionality<a class="headerlink" href="#the-curse-of-dimensionality" title="Link to this heading">#</a></h2>
@@ -1792,7 +1825,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 <img alt="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" src="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" />
 </div>
 </div>
-<p>To get a intuition for observations being drawn apart in higher dimensions and how this depends on the numerical space and the measure which is used for quantifying the distance between observations, let us take a look at some simulation experiments. The first assumes each observation is in the interval <span class="math notranslate nohighlight">\(x_i \in [0, 1] \forall x_i\)</span>. For a given dimension each vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^T = \begin{pmatrix} x_{i1} &amp; ... &amp; x_{id} \end{pmatrix} \)</span> is located in the the vector space <span class="math notranslate nohighlight">\([0, 1]^d\)</span>. We randomly draw <span class="math notranslate nohighlight">\(n\)</span> observations in the vector space with uniform probabilities (each position is equally likely) and (1) calculate the average of all pairwise euclidean and cosine distances. For instance, the next to cells exhibit this for <span class="math notranslate nohighlight">\(n = 500\)</span> and <span class="math notranslate nohighlight">\(d = 2, 3\)</span>.</p>
+<p>To get a intuition for observations being drawn apart in higher dimensions and how this depends on the numerical space and the measure which is used for quantifying the distance between observations, let us take a look at some simulation experiments. The first assumes each observation is in the interval <span class="math notranslate nohighlight">\(x_i \in [0, 1] \forall x_i\)</span>. For a given dimension each vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^T = \begin{pmatrix} x_{i1} &amp; ... &amp; x_{id} \end{pmatrix} \)</span> is located in the the vector space <span class="math notranslate nohighlight">\([0, 1]^d\)</span>. We randomly draw <span class="math notranslate nohighlight">\(n\)</span> observations in the vector space with uniform probabilities (each position is equally likely) and (1) calculate the average of all pairwise euclidean and cosine distances. For instance, the next two cells exhibit this for <span class="math notranslate nohighlight">\(n = 500\)</span> and <span class="math notranslate nohighlight">\(d = 2, 3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
@@ -1810,11 +1843,11 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5371
-The average cosine distance is: 0.1716
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5217
+The average cosine distance is: 0.1596
 </pre></div>
 </div>
-<img alt="_images/0779aa1685c49247ba2b7e6cfa9d35f14e61c8eeb6662f60d6e202fe14445968.png" src="_images/0779aa1685c49247ba2b7e6cfa9d35f14e61c8eeb6662f60d6e202fe14445968.png" />
+<img alt="_images/39b85d664dae452997535dc2ff27218ba25f7484ab887b47e2a6562a9d39bf83.png" src="_images/39b85d664dae452997535dc2ff27218ba25f7484ab887b47e2a6562a9d39bf83.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1837,14 +1870,14 @@ The average cosine distance is: 0.1716
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6573
-The average cosine distance is: 0.2014
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6541
+The average cosine distance is: 0.2003
 </pre></div>
 </div>
-<img alt="_images/41312450f81a03f3efa499acdb22951865c5ae200ce03760ec5e4b58d4a5f206.png" src="_images/41312450f81a03f3efa499acdb22951865c5ae200ce03760ec5e4b58d4a5f206.png" />
+<img alt="_images/2979d77a54d0c8fe31e715d0375608d3150121d57dbd0b9c1a6052f683443624.png" src="_images/2979d77a54d0c8fe31e715d0375608d3150121d57dbd0b9c1a6052f683443624.png" />
 </div>
 </div>
-<p>Now let us take a look, this the average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
+<p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
@@ -1874,7 +1907,7 @@ The average cosine distance is: 0.2014
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3c5628d3055ee3bca4c25d13792681188dddbee9b5cadf3d90744bc13240155d.png" src="_images/3c5628d3055ee3bca4c25d13792681188dddbee9b5cadf3d90744bc13240155d.png" />
+<img alt="_images/84d712bca97860d7b00101760c5b0303ded73a89e39ad747a0e6d4a2e6ca3554.png" src="_images/84d712bca97860d7b00101760c5b0303ded73a89e39ad747a0e6d4a2e6ca3554.png" />
 </div>
 </div>
 <p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
@@ -1907,7 +1940,7 @@ The average cosine distance is: 0.2014
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b1e7ef2a1974b0222345596253920444337ac6bd5e6dca3f2b76d9540a932de1.png" src="_images/b1e7ef2a1974b0222345596253920444337ac6bd5e6dca3f2b76d9540a932de1.png" />
+<img alt="_images/328c12e2019c46419579b667385dabe4752b4e82f4cdcdf7a7f15f251fccd60f.png" src="_images/328c12e2019c46419579b667385dabe4752b4e82f4cdcdf7a7f15f251fccd60f.png" />
 </div>
 </div>
 <p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
@@ -1954,7 +1987,7 @@ The average cosine distance is: 0.2014
       </div>
     </a>
     <a class="right-next"
-       href="021_financial_analysis.html"
+       href="03_financial_words_analysis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
