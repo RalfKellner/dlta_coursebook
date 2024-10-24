@@ -388,6 +388,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-language-matters">Domain specific language matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-market-reactions-with-machine-learning-models">Predicting market reactions with machine learning models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports">Unsupervised language modeling to determine climate talk in annual reports</a></li>
 </ul>
             </nav>
         </div>
@@ -404,13 +406,13 @@ document.write(`
 <p>Text analysis in the financial area already has a long history with versatile applications. The first major contributions were based upon word frequencies and dictionary based approaches. When analyzing it is important to have some background knowledge in the financial domain. In this chapter, we take a look at some examples to get familiar with some domain specific characteristics.</p>
 <section id="domain-specific-language-matters">
 <h2>Domain specific language matters<a class="headerlink" href="#domain-specific-language-matters" title="Link to this heading">#</a></h2>
-<p>One of the most cited text analysis research articles is by <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughrain and McDonald (2011)</a> which was mentioned in the last chapter. Their paper addresses issues with existing word classification methods used for analyzing the tone in financial texts, particularly 10-K reports. The research focuses on how the widely used Harvard Psychosociological Dictionary (H4N) misclassifies words when applied to financial contexts. Specifically, about 73.8% of the words deemed “negative” by the Harvard list, such as “tax,” “liability,” or “cost,” are not necessarily negative in financial contexts but rather commonly used terms in business.</p>
+<p>One of the most cited text analysis research articles is by <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughran and McDonald (2011)</a> which was mentioned in the last chapter. Their paper addresses issues with existing word classification methods used for analyzing the tone in financial texts, particularly 10-K reports. The research focuses on how the widely used Harvard Psychosociological Dictionary (H4N) misclassifies words when applied to financial contexts. Specifically, about 73.8% of the words deemed “negative” by the Harvard list, such as “tax,” “liability,” or “cost,” are not necessarily negative in financial contexts but rather commonly used terms in business.</p>
 <p>The authors argue that such misclassification introduces noise into tone analysis and develop a new word list, “Fin-Neg,” tailored to the financial setting. The Fin-Neg list consists of words that genuinely have negative connotations in finance, such as “felony,” “litigation,” and “misstatement.” They find that using this list results in stronger correlations with financial variables like returns, trading volume, and volatility than the Harvard list. Their analysis also extends to additional word lists covering positive, uncertainty, and litigious tones, among others.</p>
 <p>By examining over 50,000 10-K reports filed from 1994 to 2008, the paper demonstrates that Fin-Neg provides a more accurate reflection of negative sentiment and shows a stronger relation to stock price reactions and financial outcomes during the 10-K filing period.</p>
 <p>Among different variables in their paper, they examine if a relationship between the number of negative words in a 10-K report and the corresponding stock market reaction around the filing date of the report exists. Let <span class="math notranslate nohighlight">\(s_{t, }\)</span> be the stock price of a company, then <span class="math notranslate nohighlight">\(r_{t, i}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-r_{t, 1} = \frac{s_{t, i} - s_{t-1, i}}{s_{t-1, i}} = \frac{s_{t, i}}{s_{t-1, i}} - 1
+r_{t, i} = \frac{s_{t, i} - s_{t-1, i}}{s_{t-1, i}} = \frac{s_{t, i}}{s_{t-1, i}} - 1
 \]</div>
 <p>is the discrete return between two time periods <span class="math notranslate nohighlight">\(t, t-1\)</span>. Furthermore, <span class="math notranslate nohighlight">\(r{t, b}\)</span> represents the return at the same point in time of a reasonable benchmark, e.g., a broad stock market index. The excess return is given by the difference:</p>
 <div class="math notranslate nohighlight">
@@ -589,7 +591,7 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="fvabeo"></div>
+            <div id="VaXq3N"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -613,14 +615,14 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("fvabeo").appendChild(div);
+                        document.getElementById("VaXq3N").appendChild(div);
                     };
-                    var e = document.getElementById("fvabeo");
+                    var e = document.getElementById("VaXq3N");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="UAOud9"></div>
+            <div id="awBbmh"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -644,58 +646,58 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("UAOud9").appendChild(div);
+                        document.getElementById("awBbmh").appendChild(div);
                     };
-                    var e = document.getElementById("UAOud9");
+                    var e = document.getElementById("awBbmh");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="bxmyoauobd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="avvwjvzimr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#bxmyoauobd table {
+#avvwjvzimr table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#bxmyoauobd thead, tbody, tfoot, tr, td, th { border-style: none; }
+#avvwjvzimr thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#bxmyoauobd p { margin: 0; padding: 0; }
- #bxmyoauobd .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #bxmyoauobd .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #bxmyoauobd .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #bxmyoauobd .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #bxmyoauobd .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #bxmyoauobd .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #bxmyoauobd .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #bxmyoauobd .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #bxmyoauobd .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #bxmyoauobd .gt_column_spanner_outer:first-child { padding-left: 0; }
- #bxmyoauobd .gt_column_spanner_outer:last-child { padding-right: 0; }
- #bxmyoauobd .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #bxmyoauobd .gt_spanner_row { border-bottom-style: hidden; }
- #bxmyoauobd .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #bxmyoauobd .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #bxmyoauobd .gt_from_md> :first-child { margin-top: 0; }
- #bxmyoauobd .gt_from_md> :last-child { margin-bottom: 0; }
- #bxmyoauobd .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #bxmyoauobd .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #bxmyoauobd .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #bxmyoauobd .gt_row_group_first td { border-top-width: 0.5px; }
- #bxmyoauobd .gt_row_group_first th { border-top-width: 0.5px; }
- #bxmyoauobd .gt_striped { background-color: rgba(128,128,128,0.05); }
- #bxmyoauobd .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #bxmyoauobd .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #bxmyoauobd .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #bxmyoauobd .gt_left { text-align: left; }
- #bxmyoauobd .gt_center { text-align: center; }
- #bxmyoauobd .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #bxmyoauobd .gt_font_normal { font-weight: normal; }
- #bxmyoauobd .gt_font_bold { font-weight: bold; }
- #bxmyoauobd .gt_font_italic { font-style: italic; }
- #bxmyoauobd .gt_super { font-size: 65%; }
- #bxmyoauobd .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #bxmyoauobd .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#avvwjvzimr p { margin: 0; padding: 0; }
+ #avvwjvzimr .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #avvwjvzimr .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #avvwjvzimr .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #avvwjvzimr .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #avvwjvzimr .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #avvwjvzimr .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #avvwjvzimr .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #avvwjvzimr .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #avvwjvzimr .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #avvwjvzimr .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #avvwjvzimr .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #avvwjvzimr .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #avvwjvzimr .gt_spanner_row { border-bottom-style: hidden; }
+ #avvwjvzimr .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #avvwjvzimr .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #avvwjvzimr .gt_from_md> :first-child { margin-top: 0; }
+ #avvwjvzimr .gt_from_md> :last-child { margin-bottom: 0; }
+ #avvwjvzimr .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #avvwjvzimr .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #avvwjvzimr .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #avvwjvzimr .gt_row_group_first td { border-top-width: 0.5px; }
+ #avvwjvzimr .gt_row_group_first th { border-top-width: 0.5px; }
+ #avvwjvzimr .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #avvwjvzimr .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #avvwjvzimr .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #avvwjvzimr .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #avvwjvzimr .gt_left { text-align: left; }
+ #avvwjvzimr .gt_center { text-align: center; }
+ #avvwjvzimr .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #avvwjvzimr .gt_font_normal { font-weight: normal; }
+ #avvwjvzimr .gt_font_bold { font-weight: bold; }
+ #avvwjvzimr .gt_font_italic { font-style: italic; }
+ #avvwjvzimr .gt_super { font-size: 65%; }
+ #avvwjvzimr .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #avvwjvzimr .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
@@ -792,6 +794,144 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
         </div></div>
 </div>
 </section>
+<section id="predicting-market-reactions-with-machine-learning-models">
+<h2>Predicting market reactions with machine learning models<a class="headerlink" href="#predicting-market-reactions-with-machine-learning-models" title="Link to this heading">#</a></h2>
+<p>The observations from above do not necessarily mean that stock market relations are not related to textual disclosure of companies. A more recent publication by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3845780">Frankel et al.</a> compares the effectiveness of machine learning methods and dictionary-based methods for measuring sentiment in corporate disclosures, specifically focusing on 10-K filings and conference calls.</p>
+<p>The study demonstrates that machine learning methods significantly outperform dictionary-based methods (such as the Loughran and McDonald (LM) dictionary and Harvard Psychosociological dictionary) in capturing sentiment reflected in stock returns, particularly at the time of 10-K filings and conference calls. Machine learning techniques provide greater explanatory power for stock price movements, especially at conference call dates, where their effectiveness surpasses that of dictionary methods more substantially than in 10-K filings.</p>
+<p>The paper replicates and extends the results of Loughran and McDonald (2011) and finds that the LM dictionary works well for their original sample period (1996–2008) but loses explanatory power in more recent years (1996–2019). Conversely, machine learning methods perform consistently across time. Among the machine learning algorithms evaluated (including random forest regression trees, support vector regression (SVR), and supervised Latent Dirichlet Allocation (sLDA)), random forest was found to capture sentiment better than the other techniques.</p>
+<p>The machine learning models, particularly random forest, not only capture immediate investor sentiment but also predict future earnings surprises and hedge portfolio returns more accurately than dictionary-based methods. These models capture information that investors may initially overlook but is later reflected in stock prices.</p>
+<p>Conference calls, being more dynamic and immediate, demonstrate stronger reactions to sentiment captured by machine learning models compared to 10-K filings. This suggests that machine learning is especially effective in settings with real-time interactive content, as opposed to more static documents like 10-K filings. The paper concludes that machine learning techniques, especially random forest methods, provide a superior and more reliable approach to measuring sentiment in financial disclosures than traditional dictionary-based methods. It recommends that researchers adopt machine learning approaches for analyzing textual sentiment in financial contexts to reduce errors and improve predictions of market responses and future performance indicators.</p>
+<p>To predict financial sentiment, they first transform financial documents (10-K filings and earning call transcripts) into document term matrices of word counts (after removing stop words and stemming). Thus, each term count is treated as a common feature by a machine learning algorithm. The target variable is given by the three day cumulative abnormal return around the date of the document’s disclosure. For a given year, the model is trained using all observations from that year. This model is used to predict cumulative abnormal returns for the next year. Formally, let <span class="math notranslate nohighlight">\(f\)</span> be a functional relationship which is supposed to be captured by a machine learning algorithm, <span class="math notranslate nohighlight">\(D_t\)</span> the document term matrix and <span class="math notranslate nohighlight">\(\mathbf{r}_t\)</span> be the vector of cumulative abnormal returns for year <span class="math notranslate nohighlight">\(t\)</span>. The model creates predictions <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}_t\)</span> by:</p>
+<div class="math notranslate nohighlight">
+\[
+f\left(D_t\right) = \hat{\mathbf{r}}_t
+\]</div>
+<p>The model is trained by minimizing a loss function <span class="math notranslate nohighlight">\(L\)</span> which is lower if <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}_t\)</span> are close to <span class="math notranslate nohighlight">\(\mathbf{r}_t\)</span>. Finally, each prediction is treated as an approximation of the sentiment from that report. The idea is that market reactions are related to the content of the financial document. While such a measure may be exposed to noise (as other factor besides the document can impact the market return), the variation of actual cumulative returns observed can be explained in a more precise way than for the method of Loughran and MacDonald.</p>
+<p>The algorithm which works best in their analysis is a random forest. A random forest creates predictions by averaging predictions of decision trees which are trained on subsamples of a data set. A decision tree recursively partitions the feature space such that the samples with the same labels or similar target values are grouped together. At each step, the tree tries to split the data such that a quality criterion is optimized, which is the lower the more pure the resulting partitions are with respect to a target variable. A more formal definition can be found <a class="reference external" href="https://scikit-learn.org/1.5/modules/tree.html#mathematical-formulation">here</a>.</p>
+<p>See below an example for a decision tree which is stopped at a tree depth level of two.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+
+<span class="c1"># Generate data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_redundant</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">flip_y</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a figure with subplots (2 rows, 2 columns)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># 1st Plot: Scatter plot of the original data</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 0&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Class 1&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of Data&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Fit the Decision Tree Classifier</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 2nd Plot: Decision tree diagram</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision Tree Diagram&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a mesh grid for decision boundary plotting</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Predict values for each point on the grid</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 3rd Plot: Decision boundaries with data points</span>
+<span class="n">contour</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision Boundaries and Data Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Leave the 4th subplot (axes[1, 1]) empty</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># This line turns off the axis, making it a blank subplot</span>
+
+<span class="c1"># Adjust layout for clarity</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a7f70a6f4d63c76c35f21b9ea2998d34f77d14f1a662bb80b004fdb80868df21.png" src="_images/a7f70a6f4d63c76c35f21b9ea2998d34f77d14f1a662bb80b004fdb80868df21.png" />
+</div>
+</div>
+<p>And in analogy, a regression tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+
+<span class="c1"># Generate data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_features</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Create a figure with subplots (2 rows, 2 columns)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># 1st Plot: Scatter plot of the original data with color shading based on target value (y)</span>
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">scatter</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Target value (y)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the Decision Tree Regressor</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># 2nd Plot: Decision tree diagram</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">regressor</span><span class="p">,</span> <span class="n">proportion</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision Tree Diagram&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a mesh grid for decision boundary plotting</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="c1"># Predict values for each point on the grid</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># 3rd Plot: Decision boundaries with data points</span>
+<span class="n">contour</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Decision Tree Regressor Splits and Data Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">contour</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicted value&#39;</span><span class="p">)</span>
+
+<span class="c1"># Leave the 4th subplot (axes[1, 1]) empty</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># This line turns off the axis, making it a blank subplot</span>
+
+<span class="c1"># Adjust layout for clarity</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/087e7a0d3f58021e7d2fa121a9c1f9ee106b466286429ea2ff47a83b22a28b14.png" src="_images/087e7a0d3f58021e7d2fa121a9c1f9ee106b466286429ea2ff47a83b22a28b14.png" />
+</div>
+</div>
+<p>Trees are very flexible, however, prone to overfitting. This may be overcome by proper hyperparameter settings, however, still can come along with high variations of predictions from tree based models. Thus, so called decision and random forests evolved which generate their predictions by averaging predictions from multiple trees. Each tree is estimated on a sample from the original data which usually only uses a subset of all available features.</p>
+<p>For the paper by Frankel et al., random forests work best to predict the financial sentiment of 10-K filings and earning call transcripts.</p>
+</section>
+<section id="unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports">
+<h2>Unsupervised language modeling to determine climate talk in annual reports<a class="headerlink" href="#unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports" title="Link to this heading">#</a></h2>
+<p>While the idea of quantifying financial sentiment by predicting stock market reactions is rather a supervised task, unsupervised tasks using word counts can be found as well. A popular example is the paper by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3317570">Engle et al.</a> who build a climate change news index to build a hedge portfolio against financial climate change risks.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -859,6 +999,8 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-specific-language-matters">Domain specific language matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-market-reactions-with-machine-learning-models">Predicting market reactions with machine learning models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports">Unsupervised language modeling to determine climate talk in annual reports</a></li>
 </ul>
   </nav></div>
 
