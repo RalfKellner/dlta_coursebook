@@ -1,0 +1,2073 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Model free text analysis &#8212; Deep Learning and Text Analysis in Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02_frequency_dictionary_models';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Applications of word frequencies in finance" href="03_financial_words_analysis.html" />
+    <link rel="prev" title="Text analysis" href="01_wording_preprocessing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F02_frequency_dictionary_models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02_frequency_dictionary_models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Model free text analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-based-modeling">Frequency based modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-based-modeling">Dictionary based modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarity">Polarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">The curse of dimensionality</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="model-free-text-analysis">
+<h1>Model free text analysis<a class="headerlink" href="#model-free-text-analysis" title="Link to this heading">#</a></h1>
+<p>Later in the course, we either use pre-trained models or models we trained ourselves for a corpus. Trained means, a statistical model is used for text analysis whose output depends on parameters that impact the model output. Before we use these more advanced techniques, we want to start with simpler approaches. Looking at our corpus, we want to aggregate the information in each document, usually by transforming it into a numerical representation.</p>
+<section id="frequency-based-modeling">
+<h2>Frequency based modeling<a class="headerlink" href="#frequency-based-modeling" title="Link to this heading">#</a></h2>
+<p>One of the easiest way to do this is to count the number of occurrences for every term in the document which ist listed in the lexicon. This approach is called bag-of-words which describes the fact we ignore the relationship of all words to each other and, hereby, loose semantic information. Let the number of documents be <span class="math notranslate nohighlight">\(n\)</span> and the number of terms in the lexicon <span class="math notranslate nohighlight">\(d\)</span>, the corpus can be transformed to a document-term matrix <span class="math notranslate nohighlight">\(D\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = 
+\begin{pmatrix}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_{ij}\)</span> describing the number of term <span class="math notranslate nohighlight">\(j\)</span> in document <span class="math notranslate nohighlight">\(i\)</span>. For larger corpora, <span class="math notranslate nohighlight">\(d\)</span> is a large number so <span class="math notranslate nohighlight">\(D\)</span> is a high-dimensional and, typically, sparse matrix which means the matrix has many zeros and only a few non-zero entries. A few options exist which can help dealing with this issue. One is the removal of stopwords. Other options are to exclude words with little and very high frequency or to exclude words with very little or high document occurrence. However, these measures need to be evaluated carefully, because sometimes words with little occurrence or frequency might provide more information than words with high occurrence of frequency. The bag-of-words approach can be conducted quite easily with the CountVectorizer class of the sklearn package. See a little demonstration in the following cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">simple_preprocess</span>
+<span class="kn">from</span> <span class="nn">gensim.parsing.preprocessing</span> <span class="kn">import</span> <span class="n">STOPWORDS</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span><span class="p">,</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">cosine_similarity</span>
+<span class="kn">import</span> <span class="nn">pysentiment2</span> <span class="k">as</span> <span class="nn">ps</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load Apple&#39;s 10-K filings</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;../data/dlta_texts.db&quot;</span><span class="p">)</span>
+<span class="n">sql_query</span> <span class="o">=</span> <span class="s2">&quot;SELECT * FROM filings;&quot;</span>
+<span class="n">df_filings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">apple_filings</span> <span class="o">=</span> <span class="n">df_filings</span><span class="p">[</span><span class="n">df_filings</span><span class="o">.</span><span class="n">ticker</span> <span class="o">==</span> <span class="s2">&quot;AAPL&quot;</span><span class="p">]</span>
+<span class="n">apple_filings</span> <span class="o">=</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;filingDate&quot;</span><span class="p">)</span>
+<span class="n">apple_filings</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">apple_filings</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accessionNumber</th>
+      <th>filingDate</th>
+      <th>reportDate</th>
+      <th>acceptanceDateTime</th>
+      <th>act</th>
+      <th>form</th>
+      <th>fileNumber</th>
+      <th>filmNumber</th>
+      <th>items</th>
+      <th>size</th>
+      <th>isXBRL</th>
+      <th>isInlineXBRL</th>
+      <th>primaryDocument</th>
+      <th>primaryDocDescription</th>
+      <th>ticker</th>
+      <th>cik</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19</th>
+      <td>0000320193-21-000105</td>
+      <td>2021-10-29</td>
+      <td>2021-09-25</td>
+      <td>2021-10-28T18:04:28.000Z</td>
+      <td>34</td>
+      <td>10-K</td>
+      <td>001-36743</td>
+      <td>211359752</td>
+      <td></td>
+      <td>10502096</td>
+      <td>1</td>
+      <td>1</td>
+      <td>aapl-20210925.htm</td>
+      <td>10-K</td>
+      <td>AAPL</td>
+      <td>0000320193</td>
+      <td>10-K\n 1\n aapl-20210925.htm\n 10-K\n \n \n \n...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0000320193-22-000108</td>
+      <td>2022-10-28</td>
+      <td>2022-09-24</td>
+      <td>2022-10-27T18:01:14.000Z</td>
+      <td>34</td>
+      <td>10-K</td>
+      <td>001-36743</td>
+      <td>221338448</td>
+      <td></td>
+      <td>10332356</td>
+      <td>1</td>
+      <td>1</td>
+      <td>aapl-20220924.htm</td>
+      <td>10-K</td>
+      <td>AAPL</td>
+      <td>0000320193</td>
+      <td>10-K\n 1\n aapl-20220924.htm\n 10-K\n \n \n \n...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a first check regarding the length of these reports</span>
+<span class="c1"># import raw text</span>
+<span class="n">raw_reports</span> <span class="o">=</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># preprocess each report</span>
+<span class="n">processed_reports</span> <span class="o">=</span> <span class="p">[</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">report</span><span class="p">)</span> <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">raw_reports</span><span class="p">]</span>
+<span class="c1"># count the number of tokens for each report</span>
+<span class="n">nbr_words_per_report</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">report</span><span class="p">)</span> <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">processed_reports</span><span class="p">]</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">apple_filings</span><span class="o">.</span><span class="n">filingDate</span><span class="p">)</span>
+<span class="n">words_per_report</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">nbr_words_per_report</span><span class="p">)</span>
+
+<span class="c1"># visualize the number of tokens per Apple report over time</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">words_per_report</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Number of tokens per report for Apple&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/631a95d2d826d0bdbdae47abe88e95583e6015ebc56231364989f3d645b8014f.png" src="_images/631a95d2d826d0bdbdae47abe88e95583e6015ebc56231364989f3d645b8014f.png" />
+</div>
+</div>
+<p>Using the CountVectorizer with its default settings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the bag-of-words with default settings</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="c1"># the output is a sparse matrix, the first dimension are the number of reports, the second dimension is the number of terms</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+<span class="c1"># let us take a look at the first reports</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">bow_default</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">bow_default</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aac</th>
+      <th>aad</th>
+      <th>aapl</th>
+      <th>abandoned</th>
+      <th>abbett</th>
+      <th>abilities</th>
+      <th>ability</th>
+      <th>able</th>
+      <th>abnormal</th>
+      <th>abnormally</th>
+      <th>...</th>
+      <th>yo</th>
+      <th>york</th>
+      <th>yosemite</th>
+      <th>young</th>
+      <th>youtube</th>
+      <th>zayante</th>
+      <th>zero</th>
+      <th>zip</th>
+      <th>zones</th>
+      <th>zoom</th>
+    </tr>
+    <tr>
+      <th>filingDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-11-05</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>23</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2019-10-31</th>
+      <td>0</td>
+      <td>0</td>
+      <td>116</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>19</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2020-10-30</th>
+      <td>0</td>
+      <td>0</td>
+      <td>152</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>22</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>0</td>
+      <td>0</td>
+      <td>130</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>26</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>109</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>27</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 6728 columns</p>
+</div></div></div>
+</div>
+<p>Using the CountVectorizer and deleting stopwords:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import the stopword list from the gensim package</span>
+<span class="n">stopword_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">STOPWORDS</span><span class="p">)</span>
+<span class="n">stopword_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+<span class="c1"># create the bag-of-words</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopword_list</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+<span class="c1"># let us take a look at the first reports</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">bow_wo_stopwords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">bow_wo_stopwords</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aac</th>
+      <th>aad</th>
+      <th>aapl</th>
+      <th>abandoned</th>
+      <th>abbett</th>
+      <th>abilities</th>
+      <th>ability</th>
+      <th>able</th>
+      <th>abnormal</th>
+      <th>abnormally</th>
+      <th>...</th>
+      <th>yo</th>
+      <th>york</th>
+      <th>yosemite</th>
+      <th>young</th>
+      <th>youtube</th>
+      <th>zayante</th>
+      <th>zero</th>
+      <th>zip</th>
+      <th>zones</th>
+      <th>zoom</th>
+    </tr>
+    <tr>
+      <th>filingDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-11-05</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>23</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2019-10-31</th>
+      <td>0</td>
+      <td>0</td>
+      <td>116</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>19</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2020-10-30</th>
+      <td>0</td>
+      <td>0</td>
+      <td>152</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>22</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>0</td>
+      <td>0</td>
+      <td>130</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>26</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>109</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>27</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 6468 columns</p>
+</div></div></div>
+</div>
+<p>Using the CountVectorizer and restrict the counting to the top 100 features ordered by frequency across the corpus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the bag-of-words</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopword_list</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+<span class="c1"># let us take a look at the first reports</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">bow_top100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">bow_top100</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accounting</th>
+      <th>adversely</th>
+      <th>apple</th>
+      <th>assets</th>
+      <th>available</th>
+      <th>based</th>
+      <th>billion</th>
+      <th>business</th>
+      <th>cash</th>
+      <th>certain</th>
+      <th>...</th>
+      <th>subject</th>
+      <th>table</th>
+      <th>tax</th>
+      <th>taxes</th>
+      <th>term</th>
+      <th>time</th>
+      <th>total</th>
+      <th>value</th>
+      <th>year</th>
+      <th>years</th>
+    </tr>
+    <tr>
+      <th>filingDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-11-05</th>
+      <td>64</td>
+      <td>52</td>
+      <td>190</td>
+      <td>89</td>
+      <td>45</td>
+      <td>88</td>
+      <td>133</td>
+      <td>66</td>
+      <td>115</td>
+      <td>91</td>
+      <td>...</td>
+      <td>58</td>
+      <td>27</td>
+      <td>179</td>
+      <td>50</td>
+      <td>48</td>
+      <td>48</td>
+      <td>90</td>
+      <td>90</td>
+      <td>47</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>2019-10-31</th>
+      <td>57</td>
+      <td>37</td>
+      <td>132</td>
+      <td>80</td>
+      <td>39</td>
+      <td>70</td>
+      <td>114</td>
+      <td>56</td>
+      <td>128</td>
+      <td>81</td>
+      <td>...</td>
+      <td>53</td>
+      <td>20</td>
+      <td>128</td>
+      <td>41</td>
+      <td>46</td>
+      <td>29</td>
+      <td>91</td>
+      <td>92</td>
+      <td>41</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>2020-10-30</th>
+      <td>54</td>
+      <td>51</td>
+      <td>138</td>
+      <td>84</td>
+      <td>38</td>
+      <td>71</td>
+      <td>123</td>
+      <td>72</td>
+      <td>122</td>
+      <td>85</td>
+      <td>...</td>
+      <td>58</td>
+      <td>22</td>
+      <td>122</td>
+      <td>37</td>
+      <td>45</td>
+      <td>34</td>
+      <td>92</td>
+      <td>89</td>
+      <td>31</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>43</td>
+      <td>59</td>
+      <td>127</td>
+      <td>63</td>
+      <td>30</td>
+      <td>66</td>
+      <td>86</td>
+      <td>104</td>
+      <td>69</td>
+      <td>75</td>
+      <td>...</td>
+      <td>62</td>
+      <td>14</td>
+      <td>113</td>
+      <td>35</td>
+      <td>34</td>
+      <td>45</td>
+      <td>76</td>
+      <td>64</td>
+      <td>31</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>44</td>
+      <td>64</td>
+      <td>136</td>
+      <td>65</td>
+      <td>24</td>
+      <td>66</td>
+      <td>82</td>
+      <td>106</td>
+      <td>67</td>
+      <td>69</td>
+      <td>...</td>
+      <td>60</td>
+      <td>12</td>
+      <td>101</td>
+      <td>36</td>
+      <td>33</td>
+      <td>49</td>
+      <td>75</td>
+      <td>66</td>
+      <td>37</td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 100 columns</p>
+</div></div></div>
+</div>
+<p>Another option which sometimes makes sense is to transform the occurrence of words in a document only in a binary fashion, i.e., <span class="math notranslate nohighlight">\(1\)</span> if the word occurs and <span class="math notranslate nohighlight">\(0\)</span> otherwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the bag-of-words</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopword_list</span><span class="p">,</span> <span class="n">binary</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+<span class="c1"># let us take a look at the first reports</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">bow_binary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">bow_binary</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aac</th>
+      <th>aad</th>
+      <th>aapl</th>
+      <th>abandoned</th>
+      <th>abbett</th>
+      <th>abilities</th>
+      <th>ability</th>
+      <th>able</th>
+      <th>abnormal</th>
+      <th>abnormally</th>
+      <th>...</th>
+      <th>yo</th>
+      <th>york</th>
+      <th>yosemite</th>
+      <th>young</th>
+      <th>youtube</th>
+      <th>zayante</th>
+      <th>zero</th>
+      <th>zip</th>
+      <th>zones</th>
+      <th>zoom</th>
+    </tr>
+    <tr>
+      <th>filingDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-11-05</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2019-10-31</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2020-10-30</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 6468 columns</p>
+</div></div></div>
+</div>
+<p>Note that it is also possible to include multi-grams of words. For instance if we also consider two adjacent word as a term, this is called a bigram. This exponentially increases the number of terms, however, if we only consider bigrams with a certain minimum occurrence, we may capture special word combinations such as “New York”.</p>
+<p>Words which appear often in all documents are not very informative. Besides the removal of high frequency words, this can be either handled by frequency normalization. One of the most common term frequency normalization is term-frequency inverse-document-frequency (tf-idf). First, we count the number of documents in which the term occurs <span class="math notranslate nohighlight">\(n_j\)</span> and set it in relation to the overall number of documents <span class="math notranslate nohighlight">\(n\)</span>. We use this to calcluate <span class="math notranslate nohighlight">\(id_j = \log \left( \frac{n}{n_j} \right)\)</span> which is non-negative and higher the less often terms appear in different documents. To determine the tf-idf, term frequencies are determined per document <span class="math notranslate nohighlight">\(tf_{ij}\)</span> and weighted with <span class="math notranslate nohighlight">\(id_j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+tf-idf =  tf_{ij} \cdot id_j
+\]</div>
+<p>The usage of tf-idf is not always of advantage and it needs to be tested if normalization leads to better results. See below for an example how to generate tf-idf representations using the TfidfVectorizer class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the tf-idf representation</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span> <span class="n">stop_words</span> <span class="o">=</span> <span class="n">stopword_list</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+<span class="c1"># let us take a look at the first reports</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
+<span class="n">tfidf_wo_stopwords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">feature_names</span><span class="p">)</span>
+<span class="n">tfidf_wo_stopwords</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aac</th>
+      <th>aad</th>
+      <th>aapl</th>
+      <th>abandoned</th>
+      <th>abbett</th>
+      <th>abilities</th>
+      <th>ability</th>
+      <th>able</th>
+      <th>abnormal</th>
+      <th>abnormally</th>
+      <th>...</th>
+      <th>yo</th>
+      <th>york</th>
+      <th>yosemite</th>
+      <th>young</th>
+      <th>youtube</th>
+      <th>zayante</th>
+      <th>zero</th>
+      <th>zip</th>
+      <th>zones</th>
+      <th>zoom</th>
+    </tr>
+    <tr>
+      <th>filingDate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2018-11-05</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000694</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000694</td>
+      <td>0.015961</td>
+      <td>0.006246</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.006841</td>
+      <td>0.0</td>
+      <td>0.002500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000694</td>
+      <td>0.0</td>
+      <td>0.001596</td>
+    </tr>
+    <tr>
+      <th>2019-10-31</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.088962</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000767</td>
+      <td>0.014571</td>
+      <td>0.006902</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.001680</td>
+      <td>0.0</td>
+      <td>0.002762</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000767</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2020-10-30</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.113777</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000749</td>
+      <td>0.016468</td>
+      <td>0.006737</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.001640</td>
+      <td>0.0</td>
+      <td>0.002696</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000749</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2021-10-29</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.106513</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000819</td>
+      <td>0.021303</td>
+      <td>0.008193</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.001795</td>
+      <td>0.0</td>
+      <td>0.002951</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000819</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2022-10-28</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.092510</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000849</td>
+      <td>0.022915</td>
+      <td>0.007638</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.002789</td>
+      <td>0.0</td>
+      <td>0.004076</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.000849</td>
+      <td>0.0</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 6468 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="dictionary-based-modeling">
+<h2>Dictionary based modeling<a class="headerlink" href="#dictionary-based-modeling" title="Link to this heading">#</a></h2>
+<p>In the examples above, we observe that each document is represented by a high dimensional vector. High dimensions can often be troublesome for machine learning methods. To deal with this issue, one may focus on the occurrences of certain words that fall into a category of interest. Usually, the common categories which are used are the number of positive and negative words. Which words are considered as negative and positive are defined by different dictionaries. An example for a general-purpose dictionary is the Harvard IV-4 dictionary. However, especially for financial documents general-purpose dictionaries may not be useful due to the domain specific usage of words, e.g., the word bear stands for bad market conditions or bull stands for good market conditions, respectively. <a class="reference external" href="https://deliverypdf.ssrn.com/delivery.php?ID=346086103074016126099123079120127096014062039067032088087075106109126028088004124029100103062122015051018100067119123113113108030078070086003125007072006080022042087054067068004000067088111096112124095065023103125127106022115082065076000082025104&amp;amp;EXT=pdf&amp;amp;INDEX=TRUE">Loughran and McDonald (2011)</a> find that the majority of general-purpose negative words from the Harvard dictionary found in in 10-K filings are not considered as negative in a financial context. This is why they generate their own dictionary. See the next cell’s output for a few examples. Besides the categories positive and negative, they also generate the categories: uncertainty, litigious, strong modal, weak modal and constraining. Each report can be summarized by counting the (relative) frequencies of words falling into these categories.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/LMcD_word_list.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">lmcd_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dict_word_vectorizer</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">raw_counts</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
+        <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">document</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentiment_dictionary</span><span class="p">[</span><span class="n">category</span><span class="p">]]))</span>
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+        <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span>  <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">document</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">raw_counts</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">counts</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">counts</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">categories</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">lmcd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Examples for the category: </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
+--------------------------------------------------
+[&#39;convict&#39; &#39;catastrophe&#39; &#39;underperformed&#39; &#39;quitting&#39; &#39;disputing&#39;
+ &#39;obstacles&#39; &#39;sacrifice&#39; &#39;untruthfully&#39; &#39;disparities&#39; &#39;irreparable&#39;]
+--------------------------------------------------
+Examples for the category: positive
+--------------------------------------------------
+[&#39;stronger&#39; &#39;achievements&#39; &#39;prosperity&#39; &#39;stabilizations&#39; &#39;smooth&#39;
+ &#39;enabled&#39; &#39;achieves&#39; &#39;enabling&#39; &#39;strong&#39; &#39;exceptional&#39;]
+--------------------------------------------------
+Examples for the category: uncertainty
+--------------------------------------------------
+[&#39;anticipations&#39; &#39;appear&#39; &#39;appearing&#39; &#39;depend&#39; &#39;seldomly&#39; &#39;reassessment&#39;
+ &#39;alteration&#39; &#39;differ&#39; &#39;differing&#39; &#39;unobservable&#39;]
+--------------------------------------------------
+Examples for the category: litigious
+--------------------------------------------------
+[&#39;nonforfeitability&#39; &#39;overruling&#39; &#39;petitioner&#39; &#39;delegees&#39; &#39;attorn&#39;
+ &#39;nonterminable&#39; &#39;conveniens&#39; &#39;crossclaims&#39; &#39;indemnifiable&#39; &#39;subtrusts&#39;]
+--------------------------------------------------
+Examples for the category: strong_modal
+--------------------------------------------------
+[&#39;always&#39; &#39;never&#39; &#39;must&#39; &#39;undisputed&#39; &#39;unequivocal&#39; &#39;strongly&#39;
+ &#39;undoubtedly&#39; &#39;unequivocally&#39; &#39;definitively&#39; &#39;highest&#39;]
+--------------------------------------------------
+Examples for the category: weak_modal
+--------------------------------------------------
+[&#39;maybe&#39; &#39;could&#39; &#39;conceivable&#39; &#39;nearly&#39; &#39;might&#39; &#39;uncertainly&#39; &#39;depend&#39;
+ &#39;appears&#39; &#39;seldomly&#39; &#39;possible&#39;]
+--------------------------------------------------
+Examples for the category: constraining
+--------------------------------------------------
+[&#39;permitted&#39; &#39;inhibit&#39; &#39;forbade&#39; &#39;entailing&#39; &#39;forbidden&#39; &#39;imposed&#39;
+ &#39;restriction&#39; &#39;requiring&#39; &#39;prevent&#39; &#39;obligating&#39;]
+--------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Overall we see below that the dictionary mostly contains negative words. This may have different reasons, for instance, 10-K filings are reports in which companies are supposed to report about potential issues with respect to their business. Furthermore, the tone of financial reports traditionally has been quantified by the occurrences of negative words in documents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span> 
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="p">[</span><span class="n">word</span><span class="p">])</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">values</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">ha</span> <span class="o">=</span> <span class="s2">&quot;right&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Number of category LMcD words&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7b2c5020d57b80d910d31586a49450e708b39e2fed3583659e2737c36b56e4e1.png" src="_images/7b2c5020d57b80d910d31586a49450e708b39e2fed3583659e2737c36b56e4e1.png" />
+</div>
+</div>
+<p>Below you can examine the development of word category frequencies for Apple ‘s 10-K filings. We can observe how the number of negative and litigious words rise during the great financial crisis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">report</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">apple_filings</span><span class="o">.</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">processed_report</span> <span class="o">=</span> <span class="n">simple_preprocess</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">lmcd_frequencies</span> <span class="o">=</span> <span class="n">dict_word_vectorizer</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="p">,</span> <span class="n">processed_report</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lmcd_frequencies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">lmcd_frequencies</span><span class="p">,</span> <span class="n">dict_word_vectorizer</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="p">,</span> <span class="n">processed_report</span><span class="p">,</span> <span class="n">raw_counts</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+
+<span class="n">lmcd_words_over_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">lmcd_frequencies</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">apple_filings</span><span class="o">.</span><span class="n">filingDate</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">lmcd_frequencies</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">lmcd_words_over_time</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;LMcD word frequencies over time Apple 10-K filings&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/866430b53ca06b4132d40938068ff8aa624481052298e4e248cffa8ea5745e61.png" src="_images/866430b53ca06b4132d40938068ff8aa624481052298e4e248cffa8ea5745e61.png" />
+</div>
+</div>
+</section>
+<section id="polarity">
+<h2>Polarity<a class="headerlink" href="#polarity" title="Link to this heading">#</a></h2>
+<p>Sometimes the occurrence of positive and negative words is translated into polarity. Polarity is the number of positive words minus the number of negative words divided by the overall number of positive and negative words.</p>
+<div class="math notranslate nohighlight">
+\[
+polarity = \frac{n^{positive} - n^{negative}}{n^{positive} + n^{negative}}
+\]</div>
+<p>See below how drastically the polarity of Apple’s 10-K filings is impacted by the choice of the dictionary defining positive and negative words. We observe how the polarity decreases during the great financial crisis when using the dictionary by Loughran and McDonald (2011). In comparison, polarity does not decrease when using the general purpose Harvard IV-4 dictionary. This already indicates that domain-specific language modeling may be important for financial documents.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hv</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">HIV4</span><span class="p">()</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">LM</span><span class="p">()</span>
+
+<span class="n">lm_polarity</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">hv_polarity</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+    <span class="n">lm_tokens</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="n">hv_tokens</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+    <span class="n">lm_score</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">lm_tokens</span><span class="p">)</span>
+    <span class="n">hv_score</span> <span class="o">=</span> <span class="n">hv</span><span class="o">.</span><span class="n">get_score</span><span class="p">(</span><span class="n">hv_tokens</span><span class="p">)</span>
+    <span class="n">lm_polarity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lm_score</span><span class="p">[</span><span class="s2">&quot;Polarity&quot;</span><span class="p">])</span>
+    <span class="n">hv_polarity</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hv_score</span><span class="p">[</span><span class="s2">&quot;Polarity&quot;</span><span class="p">])</span>
+
+<span class="n">lmcd_harvard_polarity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">lm_polarity</span><span class="p">,</span> <span class="n">hv_polarity</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">apple_filings</span><span class="o">.</span><span class="n">filingDate</span><span class="p">),</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LMcD&quot;</span><span class="p">,</span> <span class="s2">&quot;Harvard&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">lmcd_harvard_polarity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;LMcD and Harvard dictionary polarities over time Apple 10-K filings&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de7208eae15a35f58ae71e412f3e5b90b9b8fceaf258a9b5bb98c65f9cf5ee03.png" src="_images/de7208eae15a35f58ae71e412f3e5b90b9b8fceaf258a9b5bb98c65f9cf5ee03.png" />
+</div>
+</div>
+</section>
+<section id="similarity-measures">
+<h2>Similarity measures<a class="headerlink" href="#similarity-measures" title="Link to this heading">#</a></h2>
+<p>Often, we want to quantify how similar document vectors are. This can be done by distance metrics of vectors. Popular choices are, e.g., the euclidean distance or cosine similarity. Given the document vectors <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}_k\)</span>, the euclidean distance is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{euclidean}\left( \boldsymbol{x}_i, \boldsymbol{x}_k \right) = \sqrt{ \sum_{j=1}^{d} \left(x_{ij} - x_{kj} \right)^2} = ||\boldsymbol{x}_i - \boldsymbol{x}_k||
+\]</div>
+<p>The lower this value, the more close the document vectors are to each other, the more similar they should be. Cosine similarity is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij} x_{kj}}{\sqrt{ \sum_{j = 1}^d x_{ij}^2} \sqrt{ \sum_{j = 1}^d x_{kj}^2}} = \frac{\boldsymbol{x}_i \cdot \boldsymbol{x}_k}{|| \boldsymbol{x}_i || || \boldsymbol{x}_k ||}
+\]</div>
+<p>It measures the angle between vectors and can have values in the range <span class="math notranslate nohighlight">\([-1, 1]\)</span>. If each vector has only non-negative values, its range is in <span class="math notranslate nohighlight">\([0, 1]\)</span>. The smaller the angle between the vectors, the higher the value for cosine similarity.</p>
+<p>Both measures can suffer in high-dimensional spaces, meaning if vectors have a high dimension. However, cosine similarity is often favored for text analysis, if it includes sparse vectors. Sparse vectors have many <span class="math notranslate nohighlight">\(0\)</span> entries which have no impact on the distance measure (as the product in the numerator is always zero for this position). A <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.12885">popular paper</a> in the Journal of Finance by Cohen at al. (2020) finds that bigger changes in 10-K filings indicate a decline in the company’s stock price. With this in mind, let us examine euclidean distances and cosine distances (1 - <span class="math notranslate nohighlight">\(d_{cosine}\)</span>) for the Apple filings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">euclidean_distances</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># create the bag-of-words with default settings</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="c1"># the output is a sparse matrix, the first dimension are the number of reports, the second dimension is the number of terms</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">raw_reports</span><span class="p">)</span>
+
+<span class="n">euc_distances</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">cos_distances</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">distances_between_reports</span> <span class="o">=</span> <span class="n">apple_filings</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;filingDate&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;euclidean distance&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;cosine distance&quot;</span><span class="p">]</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="c1">#cosine_distances_between_reports.loc[:, &quot;cosine distance&quot;] = cosine_distances_between_reports.loc[:, &quot;cosine distance&quot;].astype(float)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">euc_distances</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cos_distances</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">distances_between_reports</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;euclidean distance&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">distances_between_reports</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;filingDate&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;cosine distance&quot;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" src="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" />
+</div>
+</div>
+</section>
+<section id="the-curse-of-dimensionality">
+<h2>The curse of dimensionality<a class="headerlink" href="#the-curse-of-dimensionality" title="Link to this heading">#</a></h2>
+<p>In this context we quickly should discuss the curse of dimensionality and its impact on measuring similarities between numerical representations of documents. In general, the volume of numerical spaces rises quickly if its dimension increases. A side-effect of this increase is that observations tend be drawn away from each other and the data becomes more sparse. If data is sparse, it becomes more challenging to identify similarities and dissimilarities between observations. Identifying such similarities and dissimilarities are in the center of supervised and unsupervised machine learning algorithms, such as clustering, regression or classification tasks.</p>
+<p>However, the exact impact for increasing dimensionality depends on the numerical space and the task itself. Let us take a look at some examples to get some intuition thouth. First, let us understand what it means the numerical space quickly increases. Assume, we identify the state of an observation by binary <span class="math notranslate nohighlight">\(x_i \in \lbrace 0, 1 \rbrace \forall x_i\)</span> variables. If we use one variable <span class="math notranslate nohighlight">\(x_1\)</span> (one dimension), the number of possible states is <span class="math notranslate nohighlight">\(2\)</span>, i.e., <span class="math notranslate nohighlight">\((0), (1)\)</span>, if we use two variables (two dimensions), the number of possible states is <span class="math notranslate nohighlight">\(4\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+0 \\
+0 \\
+\end{pmatrix}, 
+\begin{pmatrix}
+0 \\
+1 \\
+\end{pmatrix},
+\begin{pmatrix}
+1 \\
+0 \\
+\end{pmatrix}
+\begin{pmatrix}
+1 \\
+1 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>if we use three variables (three dimensions), the number of possible states is <span class="math notranslate nohighlight">\(8\)</span> and in general for <span class="math notranslate nohighlight">\(d\)</span> dimensions, the number of possible states is <span class="math notranslate nohighlight">\(2^d\)</span>. The graph below illustrates that in this scenario the volume of the numerical space even increases exponentially for incrasing dimensions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dimension&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of states&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" src="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" />
+</div>
+</div>
+<p>To get a intuition for observations being drawn apart in higher dimensions and how this depends on the numerical space and the measure which is used for quantifying the distance between observations, let us take a look at some simulation experiments. The first assumes each observation is in the interval <span class="math notranslate nohighlight">\(x_i \in [0, 1] \forall x_i\)</span>. For a given dimension each vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^T = \begin{pmatrix} x_{i1} &amp; ... &amp; x_{id} \end{pmatrix} \)</span> is located in the the vector space <span class="math notranslate nohighlight">\([0, 1]^d\)</span>. We randomly draw <span class="math notranslate nohighlight">\(n\)</span> observations in the vector space with uniform probabilities (each position is equally likely) and (1) calculate the average of all pairwise euclidean and cosine distances. For instance, the next two cells exhibit this for <span class="math notranslate nohighlight">\(n = 500\)</span> and <span class="math notranslate nohighlight">\(d = 2, 3\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average euclidean distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average cosine distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5217
+The average cosine distance is: 0.1596
+</pre></div>
+</div>
+<img alt="_images/39b85d664dae452997535dc2ff27218ba25f7484ab887b47e2a6562a9d39bf83.png" src="_images/39b85d664dae452997535dc2ff27218ba25f7484ab887b47e2a6562a9d39bf83.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_3$&quot;</span><span class="p">)</span>
+<span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+<span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average euclidean distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average cosine distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6541
+The average cosine distance is: 0.2003
+</pre></div>
+</div>
+<img alt="_images/2979d77a54d0c8fe31e715d0375608d3150121d57dbd0b9c1a6052f683443624.png" src="_images/2979d77a54d0c8fe31e715d0375608d3150121d57dbd0b9c1a6052f683443624.png" />
+</div>
+</div>
+<p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">n_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n_dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_dims</span><span class="p">):</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span>
+    <span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ndim = </span><span class="si">{</span><span class="n">n_dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;euclidean distance&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;cosine distance&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Distance distributions in a $[0, 1]$ hypercube with increasing dimension&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/84d712bca97860d7b00101760c5b0303ded73a89e39ad747a0e6d4a2e6ca3554.png" src="_images/84d712bca97860d7b00101760c5b0303ded73a89e39ad747a0e6d4a2e6ca3554.png" />
+</div>
+</div>
+<p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">n_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n_dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_dims</span><span class="p">):</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n_dim</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span>
+    <span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+    <span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ndim = </span><span class="si">{</span><span class="n">n_dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;euclidean distance&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;cosine distance&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Distance distributions in a $[0, 1]$ hypercube with increasing dimension&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/328c12e2019c46419579b667385dabe4752b4e82f4cdcdf7a7f15f251fccd60f.png" src="_images/328c12e2019c46419579b667385dabe4752b4e82f4cdcdf7a7f15f251fccd60f.png" />
+</div>
+</div>
+<p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_wording_preprocessing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Text analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03_financial_words_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Applications of word frequencies in finance</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-based-modeling">Frequency based modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-based-modeling">Dictionary based modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarity">Polarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">The curse of dimensionality</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

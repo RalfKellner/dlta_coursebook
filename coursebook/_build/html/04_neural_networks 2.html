@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Neural networks &#8212; Deep Learning and Text Analysis in Finance</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04_neural_networks';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Word embeddings with Word2Vec" href="05_word_embeddings.html" />
+    <link rel="prev" title="Applications of word frequencies in finance" href="03_financial_words_analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="00_welcome.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Deep Learning and Text Analysis in Finance</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00_welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Neural networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F04_neural_networks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/04_neural_networks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Neural networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-building-blocks-of-neural-networks">The building blocks of neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-task">Regression task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-tasks">Classification tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-neural-networks">Training neural networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-and-improving-neural-networks">Evaluating and improving neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-of-neural-networks">Performance of neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-neural-networks">Generalization of neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlook">Outlook</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-networks">
+<h1>Neural networks<a class="headerlink" href="#neural-networks" title="Link to this heading">#</a></h1>
+<p>Language models which use frequency based approaches as shown in the last chapter come along with potential pitfalls. For instance, the bag-of-words approach produces sparse high-dimensional vectors which has no further information about the context of the original text. Dictionary based approaches depend on the dictionary used and also lose contextual information. In the remainder of this course, we are going to learn about language models that aim to tackle these issues. The models we are going to use usually create numerical representations of words and documents that capture semantic meaning. This means numerical representations are similar if the meaning of words and documents is similar and vice versa. To learn about the meaning of words and documents parametric statistical models are used. These models need to be trained on corpora. The architecture of these models is developed using neural networks. This is why we first discuss neural networks in general in this chapter. Please also note that not all language models use neural networks, however, all models used from now on. Other modeling approaches rely upon matrix decompositions of document term matrices or probablitic modeling of text generation.</p>
+<section id="the-building-blocks-of-neural-networks">
+<h2>The building blocks of neural networks<a class="headerlink" href="#the-building-blocks-of-neural-networks" title="Link to this heading">#</a></h2>
+<p>Each neural network has so called layers. The first layer which receives input data is called the input layer, the last layer in a neural network returns processed input and is called the output layer. In between those two layers hidden layers can be used. Each layer consists of a number of neurons which is defined by the user. Furthermore, the output of each layer is activated by activation functions.</p>
+<p>First, let us take a look how a neuron is determined using neurons from the previous layer for a single observation in the data set. The input data is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{x} = 
+\begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    \vdots \\
+    x_{p_1} \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>where the index <span class="math notranslate nohighlight">\(j = 1, ..., p_1\)</span> represents the number of input variables (input neurons) in the first layer <span class="math notranslate nohighlight">\(p_{l=1}\)</span>. For the sake of consistency, let us denote the input variables by <span class="math notranslate nohighlight">\(\boldsymbol{x} = \boldsymbol{h}^{(1)}\)</span>, where the <span class="math notranslate nohighlight">\((1)\)</span> in the superscript signals that these are the neurons from the first layer. The first step to determine the neuron in the next layer ist to aggregate the neurons of the previous layer in a weighted fashion. This is called affine map:</p>
+<div class="math notranslate nohighlight">
+\[
+z^{(2)} = \boldsymbol{h}^{(1), T} \boldsymbol{w}^{(1)}  + b^{(1)} = w_{1}^{(1)} h_{1}^{(1)} + w_{2}^{(1)} h_2^{(1)} + ... + w_{p_{1}}^{(1)} h_{p_{1}}^{(1)} + b^{(1)}
+\]</div>
+<p>The output of this transformation is used as input for an activation function <span class="math notranslate nohighlight">\(g\)</span>. Various activation functions are used for neural networks. Popular examples are</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Function</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Identity</p></td>
+<td><p><span class="math notranslate nohighlight">\(g(z) = z\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Relu</p></td>
+<td><p><span class="math notranslate nohighlight">\(g(z) = \max (z, 0)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Sigmoid</p></td>
+<td><p><span class="math notranslate nohighlight">\(g(z) = \frac{1}{1 + e^{-z}} \)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>See the output below for their visualization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Identity&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relu&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sigmoid&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/966376178234644790a2b4f60aa304ae12bb631c5a1ed8210df9e033cb235600.png" src="_images/966376178234644790a2b4f60aa304ae12bb631c5a1ed8210df9e033cb235600.png" />
+</div>
+</div>
+<p>The result of the activation function is the hidden neuron for the next layer. Thus, to create a single neuron for the next layer, we use:</p>
+<div class="math notranslate nohighlight">
+\[
+h^{(2)} = g(z^{(2)}) = g \left(w_{1}^{(1)} h_{1}^{(1)} + w_{2}^{(1)} h_2^{(1)} + ... + w_{p_{1}}^{(1)} h_{p_{1}}^{(1)} + b^{(1)}\right)
+\]</div>
+<p>If we want to generate more than one hidden neuron, we need different parameters. Let us introduce the index <span class="math notranslate nohighlight">\(k\)</span> for this purpose:</p>
+<div class="math notranslate nohighlight">
+\[
+h_k^{(2)} = g(z_k^{(2)}) = g \left(w_{1k}^{(1)} h_{1}^{(1)} + w_{2k}^{(1)} h_2^{(1)} + ... + w_{p_{1}k}^{(1)} h_{p_{1}}^{(1)} + b_k^{(1)}\right)
+\]</div>
+<p>As this operation is used in general from layer <span class="math notranslate nohighlight">\(l-1\)</span> to layer <span class="math notranslate nohighlight">\(l\)</span>, we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+h_k^{(l)} = g(z_k^{(l)}) = g \left(w_{1k}^{(l-1)} h_{1}^{(l-1)} + w_{2k}^{(l-1)} h_2^{(l-1)} + ... + w_{p_{l-1}k}^{(l-1)} h_{p_{l-1}}^{(l-1)} + b_k^{(l-1)}\right) = g \left( \boldsymbol{h}^{(l-1), T} \boldsymbol{w}_k^{(l-1)} + b_k^{(l-1)} \right) 
+\]</div>
+<p>Given a data set with <span class="math notranslate nohighlight">\(n\)</span> observations, we can use the expression:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{H}^{(l)} = g \left( \boldsymbol{H}^{(l-1)} \boldsymbol{W}^{(l-1)}  + \boldsymbol{b}^{(l-1)} \right)
+\]</div>
+<p>Here, the dimensions are as follow:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{H}^{(l-1)} \in \mathbb{R}^{n \times p_{l-1}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{H}^{(l)} \in \mathbb{R}^{n \times p_{l}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{W}^{(l-1)} \in \mathbb{R}^{p_{l-1} \times p_{l}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{b}^{(l-1)} \in \mathbb{R}^{p_{l}}\)</span></p></li>
+</ul>
+<p>and the operation <span class="math notranslate nohighlight">\(\boldsymbol{H}^{(l-1)} \boldsymbol{W}^{(l-1)} + \boldsymbol{b}^{(l-1)}\)</span> is defined in a way such that the vector <span class="math notranslate nohighlight">\(\boldsymbol{b}^{(l-1)}\)</span> is added to each column of the matrix <span class="math notranslate nohighlight">\(\boldsymbol{H}^{(l-1)} \boldsymbol{W}^{(l-1)}\)</span> (this is called broadcasting).</p>
+<p>These operations are repeated for as many layers as desired by the user. For instance, let us take a look how data would be processed for a neural network with one hidden layer, two hidden neurons and one neuron in the output layer. Let us further focus on the processing of a single observation and assume that the network receives realizations of three input variables <span class="math notranslate nohighlight">\(x_1, x_2, x_3\)</span> in the input layer and only the identity function is used for activation in each layer.</p>
+<p>The input neurons are <span class="math notranslate nohighlight">\(h_1^{(1)} = x_1, h_2^{(1)} = x_2, h_3^{(1)} = x_3\)</span>. The hidden neurons for the next layer are calculated by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\boldsymbol{h}^{(2), T} = g \left(
+\begin{pmatrix}
+h_1^{(1)} &amp; h_2^{(1)} &amp; h_3^{(1)} \\
+\end{pmatrix}
+\begin{pmatrix}
+w_{11}^{(1)} &amp; w_{12}^{(1)}  \\
+w_{21}^{(1)} &amp; w_{22}^{(1)}  \\
+w_{31}^{(1)} &amp; w_{32}^{(1)}  \\
+\end{pmatrix}  +
+\begin{pmatrix}
+b_{1}^{(1)}  \\
+b_{2}^{(1)}  \\
+\end{pmatrix} 
+\right) = \\ =
+\begin{pmatrix}
+h_1^{(1)} w_{11}^{(1)} + h_2^{(1)} w_{21}^{(1)} + h_3^{(1)} w_{31}^{(1)}  &amp; 
+h_1^{(1)} w_{12}^{(1)} + h_2^{(1)} w_{22}^{(1)} + h_3^{(1)} w_{32}^{(1)} \\
+\end{pmatrix} +
+\begin{pmatrix}
+b_{1}^{(1)}  \\
+b_{2}^{(1)}  \\
+\end{pmatrix} =  \\ =
+\begin{pmatrix}
+h_1^{(1)} w_{11}^{(1)} + h_2^{(1)} w_{21}^{(1)} + h_3^{(1)} w_{31}^{(1)} + b_{1}^{(1)}   &amp; 
+h_1^{(1)} w_{12}^{(1)} + h_2^{(1)} w_{22}^{(1)} + h_3^{(1)} w_{32}^{(1)} + b_{2}^{(1)} \\
+\end{pmatrix} +
+\end{align}
+\end{split}\]</div>
+<p>To produce the output of the neural network, we further process these neurons through the second (output) layer by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+h^{(3)} = g \left(
+\begin{pmatrix}
+h_1^{(2)} &amp; h_2^{(2)} \\
+\end{pmatrix} 
+\begin{pmatrix}
+w_{1}^{(2)} \\ w_{2}^{(2)}  \\
+\end{pmatrix} +
+b^{(2)}
+\right) = 
+w_{1}^{(2)} h_1^{(2)} + w_{2}^{(2)} h_2^{(2)} + b^{(2)}
+\end{split}\]</div>
+<p>The only thing which is fixed here are the input values <span class="math notranslate nohighlight">\(h_1^{(1)} = x_1, h_2^{(1)} = x_2, h_3^{(1)} = x_3\)</span>. All other values <span class="math notranslate nohighlight">\(\boldsymbol{W}^{(1)}, \boldsymbol{b}^{(1)}, \boldsymbol{W}^{(2)}, \boldsymbol{b}^{(2)}\)</span> are parameters which need to be trained for the model. The number of parameters is determined by the number of hidden neurons which we set for every layer. The more hidden neurons we would like to use, the higher the number of parameters which needs to be trained. What we see in the example above is what is called a forward pass which describes how the input data is processed through the network. Note that there are no real limits regarding the architecture. For instance you can also define a neural network which produces more than one neuron in the output layer. However, the question that remains is how are the parameters trained?</p>
+<p>In order to train the parameters we need another function which is called loss or cost function and supposed to be minimized by adjusting parameters accordingly. The choice of the loss function depends on the task which is supposed to be tackled with the neural network. Popular examples for such tasks belong to the field of supervised learning and are regression or classification problems. Let us take a look at these examples to dig deeper into the training process of a neural network.</p>
+<section id="regression-task">
+<h3>Regression task<a class="headerlink" href="#regression-task" title="Link to this heading">#</a></h3>
+<p>A regression model is supposed to make predictions for a numerical values, usually a real valued number. Given information by feature variables (which are also called independent or predictor variables), the model processes this information to make predictions for the target variable (also called dependent variable). Generally, this can be written by <span class="math notranslate nohighlight">\(f_{\boldsymbol{\theta}}\left(\boldsymbol{x}\right)\)</span>, where <span class="math notranslate nohighlight">\(f\)</span> is the function which processes feature variables <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>. Usually the model predictions depend on parameters which are collected in the set <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span>. An easy example is the linear regression model. The parameters are <span class="math notranslate nohighlight">\(\boldsymbol{\theta}= \lbrace w_1, ..., w_p, b \rbrace\)</span>, and, the function is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\boldsymbol{\theta}}\left(\boldsymbol{x}_i\right) = w_1 x_{i1} + ... + w_p x_{ip} + b = \boldsymbol{w} \boldsymbol{x}_i + b = \hat{y}_{i, \boldsymbol{\theta}}
+\]</div>
+<p>If we want to tackle a regression task with a neural network, the output activation is supposed to be the identity function to create a real valued number. Besides, all components of the neural network can be set by the user as desired. To train the parameters of a neural network (or other models for regression tasks), we can choose among different loss functions, however, the most common is the (average) sum of squared deviations.</p>
+<div class="math notranslate nohighlight">
+\[
+L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = \sum_i \left(y_i - \hat{y}_{i, \boldsymbol{\theta}} \right)^2 
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(\hat{y}_{i, \boldsymbol{\theta}} =  f_{\boldsymbol{\theta}}\left(\boldsymbol{x}_i\right) \)</span> being the prediction for <span class="math notranslate nohighlight">\(y_i\)</span>. Thus, the loss function value for a neural network is smaller if model predictions are close to realizations on average. In essence, we face an optimization problem to train all model parameters which is:</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{\boldsymbol{\theta}} L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right)
+\]</div>
+<p>and, given data, we can use the solution to the optimization:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\theta}} = \argmin_{\boldsymbol{\theta}} L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right)
+\]</div>
+<p>as estimated parameter values. While such a solution is available in closed form for the multiple linear regression model it is not for neural networks, nor is it unique. This is why we usually aim to approximate this solution by numerical optimization techniques. With respect to neural networks, gradient descent techniques are very popular. We are going to take a look at this later, but, first let us take a look at classification tasks to examine some similarities regarding the architecture and training of neural networks.</p>
+</section>
+<section id="classification-tasks">
+<h3>Classification tasks<a class="headerlink" href="#classification-tasks" title="Link to this heading">#</a></h3>
+<p>In case of classification tasks, the model is supposed to predict categories of a target variable. If only two categories exist, this is called binary classification, for more than two categories, we speak about multi-class classification. Usually the categories are disjoint, meaning, only one of the categories can occur at a time. If more categories can occur for one observation, it is called multi-label classification.</p>
+<p>Usually, categories are encoded into numbers or by one-hot-vector encoding. While the original observation is a unique label, e.g., “buy”, the numerical representation is <span class="math notranslate nohighlight">\(y = 1\)</span>, and after one-hot encoding it is <span class="math notranslate nohighlight">\(\begin{pmatrix} 0 &amp; 1 \end{pmatrix}\)</span>. In general, one-hot-vectors are vectors with dimensionality being equal to the number of categories and a <span class="math notranslate nohighlight">\(1\)</span> at the position which represents the corresponding category. For instance, if the original target variable has the categories “buy”, “not buy”, we can first encode it in numbers like <span class="math notranslate nohighlight">\(0, 1\)</span> or <span class="math notranslate nohighlight">\(1, 2\)</span> or to one-hot-vectors <span class="math notranslate nohighlight">\(\begin{pmatrix} 0 &amp; 1 \end{pmatrix}\)</span>, <span class="math notranslate nohighlight">\(\begin{pmatrix} 1 &amp; 0 \end{pmatrix}\)</span>. For binary classification, one usually uses a numerical dummy encoding <span class="math notranslate nohighlight">\(0, 1\)</span> with <span class="math notranslate nohighlight">\(1\)</span> representing the category of interest. One-hot-vectors are mostly used for classification with more than two categories. For all classification models, we usually predict the probability for being a specific category instead of a direct category prediction. With respect to neural networks, this determines the choice of the output activation function.</p>
+<p>Given a binary classification task, one uses the sigmoid function in the output layer. This function takes a real-valued number <span class="math notranslate nohighlight">\(z\)</span> and maps it to the numerical range <span class="math notranslate nohighlight">\(\left(0, 1\right)\)</span>. The easiest version of this model is represented by the logistic regression model, which can be considered as a special form for a neural network without hidden layer and the sigmoid activation. This is basically the linear regression model whose output is inserted in the sigmoid function:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\boldsymbol{\theta}}\left(\boldsymbol{x}_i\right) = \frac{1}{1 + e^{- \left(w_1 x_{i1} + ... + w_p x_{ip} + b\right)}} = \frac{1}{1 + e^{-  \left( \boldsymbol{w} \boldsymbol{x}_i + b \right) }} = \hat{y}_{i, \boldsymbol{\theta}}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\hat{y}_{i, \boldsymbol{\theta}}\)</span> represents the probability for observation <span class="math notranslate nohighlight">\(i\)</span> to fall into category <span class="math notranslate nohighlight">\(1\)</span>. Note that a neural network is the same with arbitrary hidden layers between the input and the output layer. To train the parameters for a binary classification model, we need a loss function which is lower if probability predictions are in line with actual categorical observations. This means if <span class="math notranslate nohighlight">\(y=0\)</span> the model is supposed to predict a small value for <span class="math notranslate nohighlight">\(\hat{y}_{i, \boldsymbol{\theta}}\)</span> and if <span class="math notranslate nohighlight">\(y=1\)</span>, <span class="math notranslate nohighlight">\(\hat{y}_{i, \boldsymbol{\theta}}\)</span> should be a high value close towards <span class="math notranslate nohighlight">\(1\)</span>. We should mention that a low value for <span class="math notranslate nohighlight">\(\hat{y}_{i, \boldsymbol{\theta}}\)</span> is a high probability prediction for <span class="math notranslate nohighlight">\(y=0\)</span> as <span class="math notranslate nohighlight">\(P\left(y = 0\right) = 1 - \hat{y}_{i, \boldsymbol{\theta}}\)</span>. A popular loss function is the cross-entropy. The model is considered to provide better predictions the lower:</p>
+<div class="math notranslate nohighlight">
+\[
+L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \sum_i y_i \log \left(\hat{y}_{i, \boldsymbol{\theta}}\right) + \left(1 - y_i\right) \log \left(1 - \hat{y}_{i, \boldsymbol{\theta}}\right)
+\]</div>
+<p>For a better understanding of the intuition of this loss function, take a look in output below. We plot the value of <span class="math notranslate nohighlight">\(-\log(p)\)</span> for <span class="math notranslate nohighlight">\(p \in (0, 1)\)</span>. As <span class="math notranslate nohighlight">\(-\log(p)\)</span> is strictly monotonic decreasing, smaller loss values result for observations with high probability predictions for the realized category.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$p$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$-\log(p)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/00eaf6559dc8ceae04c76699e7be66bd5e951abc786b7a6ca90a9bbb16845337.png" src="_images/00eaf6559dc8ceae04c76699e7be66bd5e951abc786b7a6ca90a9bbb16845337.png" />
+</div>
+</div>
+<p>While the loss function is quite similar for multi-class classification, we need multiple outputs. Given <span class="math notranslate nohighlight">\(K\)</span> categories, one usually defines the network to produce <span class="math notranslate nohighlight">\(K\)</span> output values for each observation where each output value represents the probability for observation <span class="math notranslate nohighlight">\(i\)</span> being category <span class="math notranslate nohighlight">\(K = k\)</span>, <span class="math notranslate nohighlight">\(\pi_{i, k} = P(y_i = k)\)</span>. To achieve this, we need a set of parameters for every category and the output values need to be normalized as probabilities, i.e., <span class="math notranslate nohighlight">\(\pi_{i, k} &gt; 0, \sum_k \pi_{i, k} = 1 \)</span>. Again, we skip a hidden layer and take a look at the easiest version for such a model. Given <span class="math notranslate nohighlight">\(p\)</span> input features <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> for observation <span class="math notranslate nohighlight">\(i\)</span>, we first generate <span class="math notranslate nohighlight">\(K\)</span> real valued numbers by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f_{\boldsymbol{\theta}} \left(\boldsymbol{x}_i\right) = 
+\begin{pmatrix}
+x_{i, 1} &amp; x_{i, 2} &amp; ... &amp; x_{i, p} \\
+\end{pmatrix}
+\begin{pmatrix}
+w_{11} &amp; w_{12} &amp; ... &amp; w_{1K} \\
+w_{21} &amp; w_{22} &amp; ... &amp; w_{2K} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+w_{p1} &amp; w_{p2} &amp; ... &amp; w_{pK} \\
+\end{pmatrix} +
+\begin{pmatrix}
+b_{1} &amp; b_{2} &amp; ... &amp; b_{p} \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+z_{i, 1} &amp; z_{i, 2} &amp; ... &amp; z_{i, K} \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>In order to fulfill the requirements for probabilities, <span class="math notranslate nohighlight">\(\boldsymbol{z}_i\)</span> is transformed by the softmax function. For every element <span class="math notranslate nohighlight">\(k\)</span> of <span class="math notranslate nohighlight">\(\boldsymbol{z}_i\)</span>, the softmax transformation is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+g(z_{i, k}) = \frac{e^{z_{i, k}}}{\sum_l e^{z_{i, l}}} = \pi_{i, k}
+\]</div>
+<p>Combining both operations gives us a vector with probabilites</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\pi}_i = 
+\begin{pmatrix}
+\pi_{i, 1} \\
+\pi_{i, 2} \\
+\vdots \\
+\pi_{i, K}
+\end{pmatrix}
+\end{split}\]</div>
+<p>Given the input data is one-hot encoded label vectors <span class="math notranslate nohighlight">\( \boldsymbol{y}_i \)</span>, where each vector entry is equal to zero except at the position of the actual category, we can use the loss function:</p>
+<div class="math notranslate nohighlight">
+\[
+L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \sum_i \log \left( \boldsymbol{\pi}_i^T \boldsymbol{y}_i \right)
+\]</div>
+<p>This is the same as for the binary classification problem. In essence, the loss value for each observation is the negative value of the log of the probability prediction for its observed category. This means that minimizing the loss function results in a model which on average delivers the highest probabilities for the observed cagegories.</p>
+</section>
+</section>
+<section id="training-neural-networks">
+<h2>Training neural networks<a class="headerlink" href="#training-neural-networks" title="Link to this heading">#</a></h2>
+<p>At the moment you should understand that neural networks are basically a combination of matrix and vector operations and (mostly) non-linear function transformations. In addition, each neural network depends on the chosen architecture which is defined by, e.g., setting the number of hidden layers, neurons and the output dimension. To process input information through the network, parameters are used. These parameters are initially set by constant values or they are drawn randomly. However, for a network to fulfill its purpose in the best possible way, parameters are trained based on a data sample. We have seen above that this is done by minimizing a loss function. Usually, analytical solutions are not available for the majority of neural network architectures and we need to rely upon algorithmic optimization schemes.</p>
+<p>Let us refresh some general basics of optimization. Given a function <span class="math notranslate nohighlight">\(L: \mathbb{R} \to \mathbb{R}\)</span> (one input - one output value), with <span class="math notranslate nohighlight">\(l = L(\theta)\)</span>, the local minimum of <span class="math notranslate nohighlight">\(L\)</span> is defined as the point <span class="math notranslate nohighlight">\(\theta^{*}\)</span> such that all values around <span class="math notranslate nohighlight">\(L(\theta^{*})\)</span> are higher if <span class="math notranslate nohighlight">\(\theta^{*}\)</span> is changed by an infinitesimally small amount. A global minimum is the set of points with the smallest possible value over the domain of <span class="math notranslate nohighlight">\(L\)</span>. Due to the duality of optimization, one can translate every maximization problem into a minimization problem by multiplying the function with <span class="math notranslate nohighlight">\(-1\)</span>. So without the loss of generality, we continue with the discussion of minimization. To find candidates for local or global minima one searches for stationary points. A stationary point is the value of <span class="math notranslate nohighlight">\(\theta\)</span> at which the value for the first derivative of <span class="math notranslate nohighlight">\(L\)</span> is equal to zero, i.e., <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} = 0\)</span>. Stationary points can be either a minimum, maximum or saddle point. To identify the category for every stationary point, one can use the second derivative. These concepts can be used in analogy if we analyze functions with multidimensional input, i.e., <span class="math notranslate nohighlight">\(L: \mathbb{R}^p \to \mathbb{R}\)</span> with <span class="math notranslate nohighlight">\(l = L\left( \boldsymbol{\theta} \right)\)</span>. To us, this is the more relevant scenario as neural networks have multiple parameters, but, for one observation in a data set we determine one loss value. A stationary point for a multidimensional function is defined at the point <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> at which the gradient of <span class="math notranslate nohighlight">\(L\)</span> is zero. The gradient is the vector of all partial derivatives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla_{\boldsymbol{\theta}} L  = 
+\begin{pmatrix}
+\frac{\partial L}{\partial \theta_1} \\
+\vdots \\
+\frac{\partial L}{\partial \theta_q} \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(q\)</span> being the number of all parameters. Besides the gradient, one uses the Hessian matrix to check stationary points for the extremum identity. Analytical solutions for minimization problems mostly rely upon the convexity of the function to be optimized. Loss functions which are defined by the usage of neural networks usually are non-convex and exhibit multiple local minima. This is why one has to search for stationary points iteratively. To understand the iterative search called gradient descent, let us take a look at a small and unrealistic example. Given one data point <span class="math notranslate nohighlight">\((x = 2, y = 3)\)</span>, we aim to find the parameter <span class="math notranslate nohighlight">\(\theta\)</span> which minimizes the loss function <span class="math notranslate nohighlight">\(L\left( y, \hat{y}_{\theta} \right) = \left(y - \hat{y}_{\theta}\right)^2\)</span> with <span class="math notranslate nohighlight">\(\hat{y}_{\theta} = f_{\theta}(x) = \theta x\)</span>. The stationary point can be found by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\frac{\partial L}{\partial \theta} = 2 (3 - \theta \cdot 2) \cdot (-2) \stackrel{!}{=} 0 \\
+-12 + 8 \cdot \theta = 0 \\
+\theta = \frac{3}{2}
+\end{aligned}
+\end{split}\]</div>
+<p>and with</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2 L}{\partial^2 \theta} = 8 &gt; 0
+\]</div>
+<p>we can confirm that <span class="math notranslate nohighlight">\( \theta = \frac{3}{2} \)</span> is a minimum. Now, let us take a look at the loss function in our example and assume for a moment that we are not able to determine the analytical solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+   
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">slope</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">slope</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="n">slope</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="n">slope</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$L(\theta)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6bce53ecb45d1a02a630d6bb072ece46d12aecd8adc2471729d18c0f869d4312.png" src="_images/6bce53ecb45d1a02a630d6bb072ece46d12aecd8adc2471729d18c0f869d4312.png" />
+</div>
+</div>
+<p>Further, let us assume, we could start with a random guess <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> and remember the first derivative can be illustrated as the tangency at this point and with the slope being equal to the derivative’s value at this point. If we start with a value to the right of the actual minimum, <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &gt; 0\)</span>, and, if we start to the left <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &lt; 0\)</span>. <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &gt; 0\)</span> tells us that increasing <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> by an infinitesimal amount would increase the loss value. As we do not want this, we would decrease <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> with this information. <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &lt; 0\)</span> tells us that increasing <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> by an infinitesimal amount would decrease the loss value. As we do want this, we would further increase <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> in this scenario. This means, we can use the information of the first derivative to improve our initial guess stepwise. To subsume this, we could do the following iterative process:</p>
+<ol class="arabic simple">
+<li><p>Start with a random guess: <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span></p></li>
+<li><p>Until a condition for termination is fulfilled, repeat:</p>
+<ol class="arabic simple">
+<li><p>Determine <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta}\)</span></p></li>
+<li><p>Update the parameter by: <span class="math notranslate nohighlight">\(\theta^{(k)} \leftarrow \theta^{(k-1)} - \eta \frac{\partial L}{\partial \theta}\)</span></p></li>
+</ol>
+</li>
+</ol>
+<p>with <span class="math notranslate nohighlight">\(\eta &gt; 0\)</span> representing the learning rate which defines the magnitude of change in the parameter value. Stopping criteria can be, e.g., a fixed number of iterations, if <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} \approx 0 \)</span> or if the value of <span class="math notranslate nohighlight">\(L\)</span> can not be reduced by a certain value. Take a look below for the progress of this iterative approach and the impact of <span class="math notranslate nohighlight">\(\eta\)</span> in the visualization below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">etas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]</span>
+
+<span class="n">theta_guess</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">eta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">etas</span><span class="p">):</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">theta_guess</span> <span class="o">-=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">slope</span><span class="p">(</span><span class="n">theta_guess</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">theta_guess</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="n">theta_guess</span><span class="p">))</span>
+        <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">theta_guess</span><span class="p">,</span> <span class="n">L</span><span class="p">(</span><span class="n">theta_guess</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$L(\theta)$&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">fr</span><span class="s1">&#39;$\eta = </span><span class="si">{</span><span class="n">eta</span><span class="si">}</span><span class="s1">$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2e9bad91a3c76888465fa55e2f320df6cd0d16bb46f281886a78e569003b0de7.png" src="_images/2e9bad91a3c76888465fa55e2f320df6cd0d16bb46f281886a78e569003b0de7.png" />
+</div>
+</div>
+<p>We observe that the learning rate needs to be treated with care, choosing its value too small leads to a slow and long lasting training process which may not find the local minimum, setting the learning rate too high may overshoot the local minimum and leads the search away from the minimum. In reality, one can examine the impact of the learning rate by setting different values. Furthermore, the learning rate is often adjusted during the training process by a little more advanced gradient search based algorithms. Intuitively, we want to change the parameters to a larger extent when they just have been initialized randomly and later, once the model starts to understand the underlying dynamics, updates need to be smaller. Such dynamic adjustments are handled by different optimizers, e.g., Momentum, Adam or  RMSprop.</p>
+<p>The good news is that the procedure of gradient descent is the same if our model has more than one parameter. The only thing which changes is that our vector containing all model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> is updated using the information of all partial derivatives (the gradient) at once. Thus, the algorithm in general can be written as follows:</p>
+<ol class="arabic simple">
+<li><p>Start with a random guess: <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^{(0)}\)</span></p></li>
+<li><p>Until a condition for termination is fulfilled, repeat:</p>
+<ol class="arabic simple">
+<li><p>Determine <span class="math notranslate nohighlight">\(\nabla_{\boldsymbol{\theta}} L\)</span></p></li>
+<li><p>Update the parameter by: <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^{(k)} \leftarrow \boldsymbol{\theta}^{(k-1)} - \eta \nabla_{\boldsymbol{\theta}} L\)</span></p></li>
+</ol>
+</li>
+</ol>
+<p>In addition, some further considerations are taken into account when using gradient descent for the training of neural networks. Instead of using only one observation, one can use the average gradient information for every observation <span class="math notranslate nohighlight">\(i\)</span>. This is called batch gradient descent because the full data batch is used to update model parameters. This can be computationally expensive. Moreover, the information of certain observations may be redundant, i.e., if observations are very similar it suffices to use the information of one of these observations. The opposite of full batch gradient descent is called stochastic gradient descent where the gradient of only one observation is used per iteration step. This observation is drawn randomly. The compromise is mini-batch gradient descent which randomly draws a mini batch with batch size smaller than the data sample size and uses its gradient information for an iteration step. Note that some common libraries report the improvement of the training algorithm after an epoch. An epoch is reached after the number of samples used for gradient updates is equal to the data sample size. For instance, for a data sample of size <span class="math notranslate nohighlight">\(n = 100\)</span> which uses batches of size <span class="math notranslate nohighlight">\(10\)</span>, an epoch is finished after the processing of <span class="math notranslate nohighlight">\(10\)</span> mini batches. Using stochastic or mini-batch gradient descent may also help to decrease the risk of the algorithm to get stuck in a unique local minimum while smaller minima may be close.</p>
+<p>The last open question is how all partial derivatives for each parameter are determined, especially for deep neural networks with many hidden layers and non-linear activation functions? The answer is: quite simple and as we do it for simpler prediction models. The reason for this is the application of the chain rule. From your math courses you should remember the chain rule which dictates you how to derive derivatives for compositions of functions. Given the function <span class="math notranslate nohighlight">\(h: g \circ f\)</span> with <span class="math notranslate nohighlight">\(h(x) = g\left( f \left(x \right) \right)\)</span>, the derivative is determined by:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial h}{\partial x} = \frac{\partial g}{\partial f} \frac{\partial f}{\partial x}
+\]</div>
+<p>The forward neural network is a composition of mathematical operations:</p>
+<div class="math notranslate nohighlight">
+\[
+g^{(L)} \left(f^{(L)} \left( ... \left( g^{(1)} \left( f^{(1)} \left( \boldsymbol{x} \right) \right) \right) \right) \right)
+\]</div>
+<p>This is why each partial derivative can be determined applying the chain rule. As the outer functions in the formula above represent the last operations of the network, we need these derivatives first. This is why we backpropagate through the network from output to input when deriving all partial derivatives. With this information we conclude the essential steps which are necessary to build and train a neural network, in detail we need:</p>
+<ul class="simple">
+<li><p>the input dimension</p></li>
+<li><p>the network architecture</p></li>
+<li><p>the appropriate loss function</p></li>
+<li><p>the gradient of the loss function</p></li>
+<li><p>an iterative procedure to train the network</p></li>
+</ul>
+</section>
+<section id="evaluating-and-improving-neural-networks">
+<h2>Evaluating and improving neural networks<a class="headerlink" href="#evaluating-and-improving-neural-networks" title="Link to this heading">#</a></h2>
+<p>Different aspects need to be taken into account when we want to find out how well a neural network captures real-world dynamics inherent in the data. Due to the different scope of this course, we only shortly discuss these aspects as follows.</p>
+<section id="performance-of-neural-networks">
+<h3>Performance of neural networks<a class="headerlink" href="#performance-of-neural-networks" title="Link to this heading">#</a></h3>
+<p>When building a statistical model, our hope is to build a simplified representation of real-world dynamics. In order to evaluate how well the model captures these dynamics, performance metrics can be used. These metrics need to be chosen with care and they must be appropriate for the specific task. A great variety of performance metrics can be seen <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">here</a>. Popular examples are the mean squared error or the mean absolute error for regression tasks.</p>
+<div class="math notranslate nohighlight">
+\[
+MSE(\boldsymbol{y}, \boldsymbol{{\hat{y}}}) = \frac{1}{n} \sum_{i = 1}^n \left(y_i - \hat{y}_i\right)^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+MAE(\boldsymbol{y}, \boldsymbol{{\hat{y}}}) = \frac{1}{n} \sum_{i = 1}^n |y_i - \hat{y}_i|
+\]</div>
+<p>For classification tasks one may first focus on the the accuracy which evaluates the frequency correctly predicted categories:</p>
+<div class="math notranslate nohighlight">
+\[
+AC = \frac{1}{n} \sum_{i = 1}^n acc_i
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+acc = 
+\begin{cases}
+1 &amp; \text{ if } y = \hat{y} \\
+0 &amp; \text{ else }
+\end{cases}
+\end{split}\]</div>
+<p>However, different prediction errors can be made for classification tasks which is why it is better to examine the different types of estimation errors for classification problems. For instance we may agree it is not as bad to falsely predict a patient to be ill, if she is not, in comparison to overlook an illness. To examine these different errors one can focus on the precision and recall for binary classification or adjust these metrics for multi-class classification.</p>
+</section>
+<section id="generalization-of-neural-networks">
+<h3>Generalization of neural networks<a class="headerlink" href="#generalization-of-neural-networks" title="Link to this heading">#</a></h3>
+<p>To examine if a trained model has identified real-world dynamics correctly, we want to examine its model performance for new and unseen data. Only if the model exhibits similar performance for this data, we may infer that the model learned some general relationships which are true for the data generating process. This is why data is always split into training and test data. Training data is used for parameter estimation and test data is used to evaluate the model for new data. Splitting the overall data set only once into training and test data exposes the model evaluation to a relatively large degree of statistical uncertainty. This is why cross validation approaches should be favored. One popular example is k-fold cross validation which splits the data sample into k equally sized folds. For k times one fold is left out for testing and the remaining folds are used for training. The final evaluation metric for the network is usually the average of evaluation metrics over k test folds.</p>
+</section>
+<section id="hyperparameter-tuning">
+<h3>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Link to this heading">#</a></h3>
+<p>Besides the parameters of the neural network, its performance can be further impacted by certain choices, e.g., the number of hidden layers, the number of hidden neurons, activation function choices, the optimization algorithm and its learning rate. These choices are called hyperparameters. To further tune these parameters one repeats estimation and evaluation schemes for neural networks with different sets of hyperparameter choices and chooses the best combination. Different approaches exist to conduct hyperparameter optimization such as grid search, random search or even more sophisticated routines. Note that hyperparameter tuning demands the data sample to be split into at least three parts. The training data is used for parameter estimation, given a fixed set of hyperparameters; validation data is used to evaluate and compare the out of sample performance for different hyperparameter settings; test data is used to evaluate the model after optimizing hyperparameters. One practical routing could be to split the data set first and leave out one of these splits for testing. The remaining split is used to conduct cross validation with different hyperparameter settings. One may choose to use the hyperparamter setting which maximizes the cross validation score. Finally, the test data is evaluated.</p>
+</section>
+</section>
+<section id="outlook">
+<h2>Outlook<a class="headerlink" href="#outlook" title="Link to this heading">#</a></h2>
+<p>This chapter is meant to equip you with some fundamentals of neural networks. We did this because the following language models are neural networks with specific architectures. The next two chapters are dedicated to understand the Word2Vec and Doc2Vec approaches which can be interpreted as a simple forward neural network solving a multi-class classification task. Later in the course, we are going to discuss the BERT model whose architecture is defined by the transformer network. This has a rather complex architecture, however, comes along with a very interesting layer design that includes an attention mechanism. The attention mechanism is an interesting way for language models to actually learn how human language works.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_financial_words_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Applications of word frequencies in finance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="05_word_embeddings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Word embeddings with Word2Vec</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-building-blocks-of-neural-networks">The building blocks of neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-task">Regression task</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-tasks">Classification tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-neural-networks">Training neural networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-and-improving-neural-networks">Evaluating and improving neural networks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-of-neural-networks">Performance of neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-neural-networks">Generalization of neural networks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning">Hyperparameter tuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outlook">Outlook</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Prof. Dr. Ralf Kellner
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
