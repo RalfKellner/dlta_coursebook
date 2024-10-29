@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Text analysis &#8212; Deep Learning and Text Analysis in Finance</title>
+    <title>Preprocessing text &#8212; Deep Learning and Text Analysis in Finance</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Model free text analysis" href="02_frequency_dictionary_models.html" />
+    <link rel="next" title="Frequency based text models" href="02_frequency_dictionary_models.html" />
     <link rel="prev" title="Welcome" href="00_welcome.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,8 +180,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Text analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Preprocessing text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Frequency based text models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
@@ -375,7 +375,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Text analysis</h1>
+    <h1>Preprocessing text</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,12 +385,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-preprocessing">Text preprocessing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-grams">n-grams</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-and-corpus">Document and Corpus</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-text-types-for-financial-text-analysis">Common text types for financial text analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-10-q-and-8-k-filings">10-K, 10-Q and 8-K filings</a></li>
@@ -410,11 +408,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="text-analysis">
-<h1>Text analysis<a class="headerlink" href="#text-analysis" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="preprocessing-text">
+<h1>Preprocessing text<a class="headerlink" href="#preprocessing-text" title="Link to this heading">#</a></h1>
 <p>Let us refer to text analysis, text analytics or text mining as a process which extracts useful information from data using statistical algorithms techniques from natural language processing. Before we are able to start with text analysis, we need to gather text data and prepare it in certain ways to ease the use of text models.</p>
-<section id="text-preprocessing">
-<h2>Text preprocessing<a class="headerlink" href="#text-preprocessing" title="Link to this heading">#</a></h2>
 <p>Usually texts such as financial reports, news or others are available in digital form. Either embedded as content on web pages using hypertext markup language (HTML) or by downloading common text files such as pdf-files. If we want collect text from these sources we either need to manually collect them or we make use of techniques like web scraping. For many different types of text, this already has been done by third-party providers and text is available upon request from these providers. However, we often receive texts in raw format with special characters and other peculiarities that make direct further processing difficult. For instance, take a look at the output below which shows you the beginning of the scraped raw text format of <a class="reference external" href="https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm">this</a> company filing. As you can see, for this example even some metadata is included before the actual content of the report begins.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,7 +487,7 @@ document.write(`
 <li><p>lemmatization</p></li>
 </ul>
 <section id="stopwords">
-<h3>Stopwords<a class="headerlink" href="#stopwords" title="Link to this heading">#</a></h3>
+<h2>Stopwords<a class="headerlink" href="#stopwords" title="Link to this heading">#</a></h2>
 <p>While some words may be very special and, thus, very informative for a specific text, other words appear frequently in every text. Examples are the, and, this, that, or, etc., due to their frequent use, these words do not reveal specific content of sentences, paragraphs and so on. This is why we may want to delete these words from the original text which simplifies the processing of the information contained. The cell below shows the first ten list of the stopwords dictionary of the gensim package. Note that stopword lists need to be defined first and can also be collected manually.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -523,7 +519,7 @@ almost
 </div>
 </section>
 <section id="stemming-and-lemmatization">
-<h3>Stemming and lemmatization<a class="headerlink" href="#stemming-and-lemmatization" title="Link to this heading">#</a></h3>
+<h2>Stemming and lemmatization<a class="headerlink" href="#stemming-and-lemmatization" title="Link to this heading">#</a></h2>
 <p>Stemming and lemmatization both bring word variatons back to their root form. While lemmatization brings back words to their canonical form, stemming reduces words to their word stem. For instance the words:</p>
 <ul class="simple">
 <li><p>improve</p></li>
@@ -664,7 +660,6 @@ uncertainty
 </div>
 </div>
 </section>
-</section>
 <section id="tokenization">
 <h2>Tokenization<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h2>
 <p>While the simple preprocessing example from above splits the sentence into individual words, most state of the art language models use algorithms which are trained to split a text sequence into tokens. This usually includes normalization steps such as removing unneeded white space, stripping accents, lower casing, etc. The Stanford Natural Language Processing group describes a token as <em>an instance of a sequence of characters in some particular document that are grouped together as a useful semantic unit for processing</em>. Learning useful tokens is a task which is learned by algorithms such as Byte-Pair-Encoding or Wordpiece. Interested readers can get some first information about these algorithms at <a class="reference external" href="https://huggingface.co/docs/tokenizers/components#pretokenizers">huggingface’s documentation</a>. Below, we can take a look how the BERT model and its pretrained tokenizer would preprocess the example sentence from above.</p>
@@ -734,6 +729,17 @@ uncertain
 </div>
 </div>
 </div>
+</section>
+<section id="n-grams">
+<h2>n-grams<a class="headerlink" href="#n-grams" title="Link to this heading">#</a></h2>
+<p>We further may inlcude so called n-grams into our text analysis. An n-gram is a contiguous sequence of n items (tokens) from a given sample of text or speech. In natural language processing (NLP), these items are typically words or characters.</p>
+<p>Examples of n-grams for the sentence “I love text” are:</p>
+<ul class="simple">
+<li><p>Unigrams (1-grams): [“I”, “love”, “text”]</p></li>
+<li><p>Bigrams (2-grams): [(“I”, “love”), (“love”, “text”)]</p></li>
+<li><p>Trigrams (3-grams): [(“I”, “love”, “text”)]</p></li>
+</ul>
+<p>For instance, one may to include bigrams to capture expressions such as “climate change”. While some methods include all possible n-gram combinations possible, others may only include those n-grams that often appear in relation to some threshold.</p>
 </section>
 <section id="document-and-corpus">
 <h2>Document and Corpus<a class="headerlink" href="#document-and-corpus" title="Link to this heading">#</a></h2>
@@ -1242,7 +1248,7 @@ uncertain
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model free text analysis</p>
+        <p class="prev-next-title">Frequency based text models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1262,12 +1268,10 @@ uncertain
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-preprocessing">Text preprocessing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopwords">Stopwords</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming-and-lemmatization">Stemming and lemmatization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#n-grams">n-grams</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-and-corpus">Document and Corpus</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-text-types-for-financial-text-analysis">Common text types for financial text analysis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-10-q-and-8-k-filings">10-K, 10-Q and 8-K filings</a></li>

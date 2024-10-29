@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Neural networks" href="04_neural_networks.html" />
-    <link rel="prev" title="Model free text analysis" href="02_frequency_dictionary_models.html" />
+    <link rel="prev" title="Frequency based text models" href="02_frequency_dictionary_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,8 +182,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Preprocessing text</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_frequency_dictionary_models.html">Frequency based text models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
@@ -591,7 +591,7 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="VaXq3N"></div>
+            <div id="93MKGC"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -615,14 +615,14 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("VaXq3N").appendChild(div);
+                        document.getElementById("93MKGC").appendChild(div);
                     };
-                    var e = document.getElementById("VaXq3N");
+                    var e = document.getElementById("93MKGC");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="awBbmh"></div>
+            <div id="aKhrGc"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -646,58 +646,58 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("awBbmh").appendChild(div);
+                        document.getElementById("aKhrGc").appendChild(div);
                     };
-                    var e = document.getElementById("awBbmh");
+                    var e = document.getElementById("aKhrGc");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="avvwjvzimr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="ixsgizctuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#avvwjvzimr table {
+#ixsgizctuq table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#avvwjvzimr thead, tbody, tfoot, tr, td, th { border-style: none; }
+#ixsgizctuq thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#avvwjvzimr p { margin: 0; padding: 0; }
- #avvwjvzimr .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #avvwjvzimr .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #avvwjvzimr .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #avvwjvzimr .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #avvwjvzimr .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #avvwjvzimr .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #avvwjvzimr .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #avvwjvzimr .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #avvwjvzimr .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #avvwjvzimr .gt_column_spanner_outer:first-child { padding-left: 0; }
- #avvwjvzimr .gt_column_spanner_outer:last-child { padding-right: 0; }
- #avvwjvzimr .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #avvwjvzimr .gt_spanner_row { border-bottom-style: hidden; }
- #avvwjvzimr .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #avvwjvzimr .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #avvwjvzimr .gt_from_md> :first-child { margin-top: 0; }
- #avvwjvzimr .gt_from_md> :last-child { margin-bottom: 0; }
- #avvwjvzimr .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #avvwjvzimr .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #avvwjvzimr .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #avvwjvzimr .gt_row_group_first td { border-top-width: 0.5px; }
- #avvwjvzimr .gt_row_group_first th { border-top-width: 0.5px; }
- #avvwjvzimr .gt_striped { background-color: rgba(128,128,128,0.05); }
- #avvwjvzimr .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #avvwjvzimr .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #avvwjvzimr .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #avvwjvzimr .gt_left { text-align: left; }
- #avvwjvzimr .gt_center { text-align: center; }
- #avvwjvzimr .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #avvwjvzimr .gt_font_normal { font-weight: normal; }
- #avvwjvzimr .gt_font_bold { font-weight: bold; }
- #avvwjvzimr .gt_font_italic { font-style: italic; }
- #avvwjvzimr .gt_super { font-size: 65%; }
- #avvwjvzimr .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #avvwjvzimr .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#ixsgizctuq p { margin: 0; padding: 0; }
+ #ixsgizctuq .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #ixsgizctuq .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #ixsgizctuq .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #ixsgizctuq .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #ixsgizctuq .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ixsgizctuq .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ixsgizctuq .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ixsgizctuq .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #ixsgizctuq .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #ixsgizctuq .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #ixsgizctuq .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #ixsgizctuq .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #ixsgizctuq .gt_spanner_row { border-bottom-style: hidden; }
+ #ixsgizctuq .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #ixsgizctuq .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #ixsgizctuq .gt_from_md> :first-child { margin-top: 0; }
+ #ixsgizctuq .gt_from_md> :last-child { margin-bottom: 0; }
+ #ixsgizctuq .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #ixsgizctuq .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #ixsgizctuq .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #ixsgizctuq .gt_row_group_first td { border-top-width: 0.5px; }
+ #ixsgizctuq .gt_row_group_first th { border-top-width: 0.5px; }
+ #ixsgizctuq .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #ixsgizctuq .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #ixsgizctuq .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #ixsgizctuq .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #ixsgizctuq .gt_left { text-align: left; }
+ #ixsgizctuq .gt_center { text-align: center; }
+ #ixsgizctuq .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #ixsgizctuq .gt_font_normal { font-weight: normal; }
+ #ixsgizctuq .gt_font_bold { font-weight: bold; }
+ #ixsgizctuq .gt_font_italic { font-style: italic; }
+ #ixsgizctuq .gt_super { font-size: 65%; }
+ #ixsgizctuq .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #ixsgizctuq .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
@@ -747,15 +747,15 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
     <th class="gt_group_heading" colspan="4">fe</th>
   </tr>
   <tr>
-    <th class="gt_row gt_left gt_stub">year_month</th>
-    <td class="gt_row gt_center">-</td>
-    <td class="gt_row gt_center">-</td>
-    <td class="gt_row gt_center">x</td>
-  </tr>
-  <tr>
     <th class="gt_row gt_left gt_stub">RIC</th>
     <td class="gt_row gt_center">-</td>
     <td class="gt_row gt_center">x</td>
+    <td class="gt_row gt_center">x</td>
+  </tr>
+  <tr>
+    <th class="gt_row gt_left gt_stub">year_month</th>
+    <td class="gt_row gt_center">-</td>
+    <td class="gt_row gt_center">-</td>
     <td class="gt_row gt_center">x</td>
   </tr>
   <tr class="gt_group_heading_row">
@@ -807,7 +807,7 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
 f\left(D_t\right) = \hat{\mathbf{r}}_t
 \]</div>
 <p>The model is trained by minimizing a loss function <span class="math notranslate nohighlight">\(L\)</span> which is lower if <span class="math notranslate nohighlight">\(\hat{\mathbf{r}}_t\)</span> are close to <span class="math notranslate nohighlight">\(\mathbf{r}_t\)</span>. Finally, each prediction is treated as an approximation of the sentiment from that report. The idea is that market reactions are related to the content of the financial document. While such a measure may be exposed to noise (as other factor besides the document can impact the market return), the variation of actual cumulative returns observed can be explained in a more precise way than for the method of Loughran and MacDonald.</p>
-<p>The algorithm which works best in their analysis is a random forest. A random forest creates predictions by averaging predictions of decision trees which are trained on subsamples of a data set. A decision tree recursively partitions the feature space such that the samples with the same labels or similar target values are grouped together. At each step, the tree tries to split the data such that a quality criterion is optimized, which is the lower the more pure the resulting partitions are with respect to a target variable. A more formal definition can be found <a class="reference external" href="https://scikit-learn.org/1.5/modules/tree.html#mathematical-formulation">here</a>.</p>
+<p>The algorithm which works best in their analysis is a random forest. A random forest creates predictions by averaging predictions of decision trees which are trained on subsamples of a data set. A decision tree recursively partitions the feature space such that the samples with the same labels or similar target values are grouped together. A partition is called a node and the split points or rules to partition the nodes further are called edges. At some point the algorithm stops and we end up with the final nodes which are called leaves and can be used to predict the label. At each step, data is split such that a quality criterion is optimized, which is the lower the more pure the resulting partitions are with respect to a target variable. A more formal definition can be found <a class="reference external" href="https://scikit-learn.org/1.5/modules/tree.html#mathematical-formulation">here</a>.</p>
 <p>See below an example for a decision tree which is stopped at a tree depth level of two.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -930,7 +930,94 @@ f\left(D_t\right) = \hat{\mathbf{r}}_t
 </section>
 <section id="unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports">
 <h2>Unsupervised language modeling to determine climate talk in annual reports<a class="headerlink" href="#unsupervised-language-modeling-to-determine-climate-talk-in-annual-reports" title="Link to this heading">#</a></h2>
-<p>While the idea of quantifying financial sentiment by predicting stock market reactions is rather a supervised task, unsupervised tasks using word counts can be found as well. A popular example is the paper by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3317570">Engle et al.</a> who build a climate change news index to build a hedge portfolio against financial climate change risks.</p>
+<p>While the idea of quantifying financial sentiment by predicting stock market reactions is rather a supervised task, unsupervised tasks using word counts can be found as well in the financial domain. A popular example is the paper by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3317570">Engle et al.</a> who create a climate change news index to build a hedge portfolio against financial climate change risks.</p>
+<p>To capture climate risk for companies, they determine the cosine similarity between term-frequency inverse-document-frequencies from daily Wall Street Journal news and corresponding frequencies of a corpus which is explicitly dedicated to climate change (risks). For an experiment, let us do a similar analysis, however, let us use this approach to reveal climate change talk in annual 10-K filings of stock market listed US companies.</p>
+<p>We start collecting climate white papers as provided in the Appendix A.2 in their paper. Next, we build a term-frequency inverse-document-frequency vectorizer which creates inverse-document frequencies for 10-K filings of 3,632 companies. Overall, the corpus consists of 30,840 10-K reports. The plots below exhibit the number of 10-K reports over time on a monthly and yearly level. We observe that most of the annual reports are filed in within the first quarter of a year as most of the company’s fiscal year seems to end with the end of the year. This does not need to be the case for every company.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select * From general_company_information;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">company_info</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;TRBC Economic Sector Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sector&quot;</span><span class="p">},</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">indices_to_drop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ric</span><span class="p">,</span> <span class="n">df_tmp</span> <span class="ow">in</span> <span class="n">company_info</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Instrument&quot;</span><span class="p">):</span>
+    <span class="n">indices_to_drop</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_tmp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">indices_to_drop</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="o">~</span><span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select RIC, filingDate, ccv_cosine_sim From ccv_sim_tenks;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">company_info</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;Instrument&quot;</span><span class="p">,</span> <span class="s2">&quot;Sector&quot;</span><span class="p">]),</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;RIC&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;Instrument&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Instrument&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;filingDate&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;year_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;filingDate&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year_month&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year_month&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Number of 10-Ks per month&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Number of 10-Ks per year&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1850100250869196499b1b428c4a19e6efd519c46d8d3bc5223031da5d48fee8.png" src="_images/1850100250869196499b1b428c4a19e6efd519c46d8d3bc5223031da5d48fee8.png" />
+</div>
+</div>
+<p>To identify climate change related words, we follow the procedure of the original paper and determine all term frequencies of the 10-K term dictionary for the climate white papers. The frequencies are further multiplied with inverse-document frequencies from the 10-K corpus. This means high values for the climate change vocabulary appear for terms which can often be observed in climate white papers and rarely among all 10-K reports. The wordcloud below visualizes the top 150 terms where the size of each word is proportional to its term-frequency inverse-document frequency. Note that we include bigrams as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">term_frequencies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../notebooks/2024/climate_disclosure/climate_change_vocabulary_wordloud.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;0&quot;</span><span class="p">]</span>
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">term_frequencies</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># Remove axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b7943949c44866da72051365f072c4198d69187f77c9f88f128adf1cb3690607.png" src="_images/b7943949c44866da72051365f072c4198d69187f77c9f88f128adf1cb3690607.png" />
+</div>
+</div>
+<p>In order to identify how much an annual report (10-K) includes climate change specific language, we quantify the cosine similarity between the term-frequencey inverse-document-frequency vector of the climate change white papers with each corresponding 10-K vector. The boxplots below give us a detailed impression about the level of similarity which we refer to as “climate talk” over all reports, here, grouped by year. We observe a similar numerical range of climate talk for very year. In every year, a rather large amount of high outlier values can be observed. This may be due to differences of climate talk between companies or sectors of business operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d5a71429b9ba596c90da4bad7e9458e02e4d0fa7e006e538e031b93236e274d2.png" src="_images/d5a71429b9ba596c90da4bad7e9458e02e4d0fa7e006e538e031b93236e274d2.png" />
+</div>
+</div>
+<p>To explore this a little further, we take a look at climate talk over time by company sector. Hereby, significant differences can be observed between sectors. Climate talk in the energy and utitlites sector seems to be the most which makes sense as companies operating in these sectors face huge challenges which are related to climate transitions of their business models. Assuming, that climate talk as quantified here rather implies a higher level of climate change risks for companies, this information can be used to avoid certain companies in the portfolio of investors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;Sector&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;Sector&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">rot</span> <span class="o">=</span> <span class="mi">75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/35620242226ec7eb3059ac0bb8f6bc0fcf0accebe18e1f6fc1c817029a91481f.png" src="_images/35620242226ec7eb3059ac0bb8f6bc0fcf0accebe18e1f6fc1c817029a91481f.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -970,7 +1057,7 @@ f\left(D_t\right) = \hat{\mathbf{r}}_t
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Model free text analysis</p>
+        <p class="prev-next-title">Frequency based text models</p>
       </div>
     </a>
     <a class="right-next"

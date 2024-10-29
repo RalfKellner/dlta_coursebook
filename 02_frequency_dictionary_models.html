@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Model free text analysis &#8212; Deep Learning and Text Analysis in Finance</title>
+    <title>Frequency based text models &#8212; Deep Learning and Text Analysis in Finance</title>
   
   
   
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Applications of word frequencies in finance" href="03_financial_words_analysis.html" />
-    <link rel="prev" title="Text analysis" href="01_wording_preprocessing.html" />
+    <link rel="prev" title="Preprocessing text" href="01_wording_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -182,8 +182,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Text analysis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Model free text analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Preprocessing text</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Frequency based text models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
@@ -377,7 +377,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Model free text analysis</h1>
+    <h1>Frequency based text models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,8 +403,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="model-free-text-analysis">
-<h1>Model free text analysis<a class="headerlink" href="#model-free-text-analysis" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="frequency-based-text-models">
+<h1>Frequency based text models<a class="headerlink" href="#frequency-based-text-models" title="Link to this heading">#</a></h1>
 <p>Later in the course, we either use pre-trained models or models we trained ourselves for a corpus. Trained means, a statistical model is used for text analysis whose output depends on parameters that impact the model output. Before we use these more advanced techniques, we want to start with simpler approaches. Looking at our corpus, we want to aggregate the information in each document, usually by transforming it into a numerical representation.</p>
 <section id="frequency-based-modeling">
 <h2>Frequency based modeling<a class="headerlink" href="#frequency-based-modeling" title="Link to this heading">#</a></h2>
@@ -1626,39 +1626,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;racketeering&#39; &#39;disincentives&#39; &#39;cancelling&#39; &#39;anticompetitive&#39;
- &#39;deterrence&#39; &#39;suffered&#39; &#39;destabilization&#39; &#39;offended&#39; &#39;denigrate&#39;
- &#39;assault&#39;]
+[&#39;burdensome&#39; &#39;violently&#39; &#39;refused&#39; &#39;irregularly&#39; &#39;impending&#39; &#39;weakening&#39;
+ &#39;offended&#39; &#39;demoted&#39; &#39;limitations&#39; &#39;abnormal&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;impresses&#39; &#39;collaborator&#39; &#39;reward&#39; &#39;distinction&#39; &#39;receptive&#39;
- &#39;preeminent&#39; &#39;enhanced&#39; &#39;stabilization&#39; &#39;influential&#39; &#39;empower&#39;]
+[&#39;strengthening&#39; &#39;collaborative&#39; &#39;advancement&#39; &#39;advancing&#39; &#39;innovations&#39;
+ &#39;brilliant&#39; &#39;destined&#39; &#39;efficiencies&#39; &#39;beautifully&#39; &#39;invention&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;unforecasted&#39; &#39;undetermined&#39; &#39;fluctuating&#39; &#39;intangible&#39; &#39;perhaps&#39;
- &#39;unfamiliarity&#39; &#39;revise&#39; &#39;vagueness&#39; &#39;susceptibility&#39; &#39;probably&#39;]
+[&#39;unknown&#39; &#39;randomizes&#39; &#39;anticipates&#39; &#39;unproven&#39; &#39;recalculate&#39;
+ &#39;likelihood&#39; &#39;speculates&#39; &#39;variance&#39; &#39;maybe&#39; &#39;variant&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;grantor&#39; &#39;whereunder&#39; &#39;licensable&#39; &#39;revocability&#39; &#39;indictment&#39;
- &#39;affidavits&#39; &#39;incontestability&#39; &#39;indemnifying&#39; &#39;shall&#39; &#39;notaries&#39;]
+[&#39;notarized&#39; &#39;overrule&#39; &#39;contravene&#39; &#39;verdict&#39; &#39;contractually&#39;
+ &#39;codefendant&#39; &#39;countersuit&#39; &#39;misdemeanor&#39; &#39;promulgates&#39; &#39;recoupable&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;definitively&#39; &#39;clearly&#39; &#39;uncompromising&#39; &#39;highest&#39; &#39;never&#39; &#39;undisputed&#39;
- &#39;lowest&#39; &#39;must&#39; &#39;unambiguously&#39; &#39;definitely&#39;]
+[&#39;undoubtedly&#39; &#39;unambiguously&#39; &#39;always&#39; &#39;definitively&#39; &#39;must&#39; &#39;best&#39;
+ &#39;unequivocally&#39; &#39;uncompromising&#39; &#39;unsurpassed&#39; &#39;highest&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;perhaps&#39; &#39;depending&#39; &#39;appearing&#39; &#39;suggest&#39; &#39;depended&#39; &#39;apparently&#39;
- &#39;nearly&#39; &#39;uncertainly&#39; &#39;maybe&#39; &#39;conceivable&#39;]
+[&#39;somewhat&#39; &#39;appears&#39; &#39;may&#39; &#39;maybe&#39; &#39;perhaps&#39; &#39;could&#39; &#39;suggest&#39; &#39;almost&#39;
+ &#39;depend&#39; &#39;might&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;indebted&#39; &#39;obligated&#39; &#39;impairs&#39; &#39;abiding&#39; &#39;stipulation&#39; &#39;constrain&#39;
- &#39;inhibiting&#39; &#39;requires&#39; &#39;entailing&#39; &#39;impaired&#39;]
+[&#39;restrictiveness&#39; &#39;restrictions&#39; &#39;imposed&#39; &#39;limit&#39; &#39;compels&#39; &#39;oblige&#39;
+ &#39;covenants&#39; &#39;stipulation&#39; &#39;strict&#39; &#39;pledge&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1844,11 +1843,11 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5212
-The average cosine distance is: 0.1603
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5233
+The average cosine distance is: 0.1594
 </pre></div>
 </div>
-<img alt="_images/a14296f08914d67d795ea0d81827dc9ddb8aec43edd164aa50842873e9941c16.png" src="_images/a14296f08914d67d795ea0d81827dc9ddb8aec43edd164aa50842873e9941c16.png" />
+<img alt="_images/0fe25dc79bb570148a85c179ece35d8996034fcad5e623e89673b9ea6b73c66a.png" src="_images/0fe25dc79bb570148a85c179ece35d8996034fcad5e623e89673b9ea6b73c66a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1871,11 +1870,11 @@ The average cosine distance is: 0.1603
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6568
-The average cosine distance is: 0.1983
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6611
+The average cosine distance is: 0.1993
 </pre></div>
 </div>
-<img alt="_images/87b61436b17473f7d0f28794fe9b4668cb9ad24317abb88508c37b3e3797c856.png" src="_images/87b61436b17473f7d0f28794fe9b4668cb9ad24317abb88508c37b3e3797c856.png" />
+<img alt="_images/6eed6b87f638ce862b8f41a6b1a394ef28e354259ac4b231530723817789786f.png" src="_images/6eed6b87f638ce862b8f41a6b1a394ef28e354259ac4b231530723817789786f.png" />
 </div>
 </div>
 <p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
@@ -1908,7 +1907,7 @@ The average cosine distance is: 0.1983
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fa278ffa01366f998dc7750a68744bc11f5b7220d164a9a50f9aef3aabe9c138.png" src="_images/fa278ffa01366f998dc7750a68744bc11f5b7220d164a9a50f9aef3aabe9c138.png" />
+<img alt="_images/6397565ec9969a5d8cefc661e08bffce5826a02a7f8ad7068590f57202f4385f.png" src="_images/6397565ec9969a5d8cefc661e08bffce5826a02a7f8ad7068590f57202f4385f.png" />
 </div>
 </div>
 <p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
@@ -1941,7 +1940,7 @@ The average cosine distance is: 0.1983
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5ae3d70ca259f9bb85416a7bca901a721c193fbce4749d0ebb49f38741cfcc70.png" src="_images/5ae3d70ca259f9bb85416a7bca901a721c193fbce4749d0ebb49f38741cfcc70.png" />
+<img alt="_images/cf1fde7bef339d5d0d56eea4527b3ea7014102a3120a627e885e8f7c57c1a1b8.png" src="_images/cf1fde7bef339d5d0d56eea4527b3ea7014102a3120a627e885e8f7c57c1a1b8.png" />
 </div>
 </div>
 <p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
@@ -1984,7 +1983,7 @@ The average cosine distance is: 0.1983
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Text analysis</p>
+        <p class="prev-next-title">Preprocessing text</p>
       </div>
     </a>
     <a class="right-next"
