@@ -413,7 +413,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="word-embeddings-with-word2vec">
 <h1>Word embeddings with Word2Vec<a class="headerlink" href="#word-embeddings-with-word2vec" title="Link to this heading">#</a></h1>
-<p>Frequency as well as dictionary based approaches from the previous chapters ignore semantic relationships between the words in the document. Just recording word frequencies will not allow us to understand the context of textual information. In addition, we also mentioned that these models may also be negatively impacted by numerical issues arising from high dimensionality and sparsity of word vectors.</p>
+<p>Frequency as well as dictionary based approaches from the previous chapters ignore semantic relationships between the words in the document. Just recording word frequencies will not allow us to understand the meaning of textual information. In addition, we also mentioned that these models may also be negatively impacted by numerical issues arising from high dimensionality and sparsity of word vectors.</p>
 <p>Due to these limitations we are going to take a look at statistical language models which aim to learn embeddings for words and documents that capture semantic meaning. An embedding is a collection of numerical values that represent a word or document, i.e., usually a real-valued vector. The useful characteristic of these models is that words or documents with similar semantic meaning will have a similar numerical representation. If you hear about this concept for the first time, you may wonder why one should represent words by vectors and how it makes sense that words with similar meaning have similar vectors. Thus, let us take a look at a meaningful example. The scatter plot below visualizes different dog breeds w.r.t. their weight and size. Assuming, we only use these two metrics to characterize different dog breeds, the breed “Airedale Terrier” is represented by the vector</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -423,7 +423,7 @@ document.write(`
 58.5 \\
 \end{pmatrix}
 \end{split}\]</div>
-<p>so this is how you may picture how a word is transformed into a vector. Furthermore, if you scroll over the points in the scatter plot, you may observe that breeds with similar characteristics have similar vectors (vectors that are close to each other), so this is how you may picture how words with similar meaning may have similar vectors. Furhtermore, by transforming dog breeds into vectors, we could use vector calculus to derive new insights. For instance, we can calculate the average vector of certain dog breeds to determine a representative embedding for this group of breeds.</p>
+<p>so this is how you may picture how a word is transformed into a vector. Furthermore, if you scroll over the points in the scatter plot, you may observe that breeds with similar characteristics have similar vectors (vectors that are close to each other), so this is how you may picture how words with similar meaning may have similar vectors. Furthermore, by transforming dog breeds into vectors, we could use vector calculus to derive new insights. For instance, we can calculate the average vector of certain dog breeds to determine a representative embedding for this group of breeds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -525,9 +525,9 @@ document.write(`
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="05d51bda-d280-4b04-9307-35ee41f0ed83" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("05d51bda-d280-4b04-9307-35ee41f0ed83")) {                    Plotly.newPlot(                        "05d51bda-d280-4b04-9307-35ee41f0ed83",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003eweight=%{x}\u003cbr\u003esize=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Afghan hound","Airedale Terrier","American Staffordshire Terrier","Australian Shepherd","Borzoi","Basset","Beagle","Bearded Collie","Berger de Brie (Briard)","Saint Bernard","Bobtail","Border Collie","Boxer","Bull terrier","Chow-Chow","Collie","Dalmatian","Great Dane","German shepherd dog","Doberman pinscher","French bulldog","Golden Retriever","Greyhound","Havanese","Hovawart","Irish Red Setter","Leonberger","Lhasa Apso","Maltese","Pug","Small M\u00fcnsterl\u00e4nder","Large M\u00fcnsterl\u00e4nder","Newfoundland","Parson Russel Terrier","Rhodesian Ridgeback","Rottweiler","Standard Schnauzers","Shih Tzu","Siberian Husky","Sheltie (Shetland Sheepdog)","Staffordshire Bullterrier","Keeshond","Miniature Pinscher","Toy poodle","Miniature Schnauzer"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[25.0,22.5,16.0,24.0,36.0,24.0,14.0,24.0,25.0,77.5,32.5,16.0,27.5,25.0,24.0,24.0,28.0,67.5,35.0,36.0,11.0,32.0,39.5,5.5,32.5,27.5,60.0,6.0,3.5,7.5,22.5,27.0,57.5,7.0,39.5,50.0,16.0,6.5,22.0,9.0,14.0,23.0,6.5,5.0,6.5],"xaxis":"x","y":[68.5,58.5,45.5,52.0,76.5,33.0,37.0,53.5,62.0,75.0,60.0,51.0,58.0,47.5,47.5,56.0,57.0,76.0,60.0,66.5,29.5,56.0,73.5,25.0,64.0,64.5,72.5,26.0,22.5,27.5,55.0,61.5,68.5,35.0,65.0,61.5,47.5,26.0,55.5,37.0,35.0,50.0,31.5,31.5,32.5],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"weight"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"size"}},"legend":{"tracegroupgap":0},"title":{"text":"Dog breed vectorization"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="53b9ca93-8417-40f8-94ee-269693258e16" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("53b9ca93-8417-40f8-94ee-269693258e16")) {                    Plotly.newPlot(                        "53b9ca93-8417-40f8-94ee-269693258e16",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003eweight=%{x}\u003cbr\u003esize=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Afghan hound","Airedale Terrier","American Staffordshire Terrier","Australian Shepherd","Borzoi","Basset","Beagle","Bearded Collie","Berger de Brie (Briard)","Saint Bernard","Bobtail","Border Collie","Boxer","Bull terrier","Chow-Chow","Collie","Dalmatian","Great Dane","German shepherd dog","Doberman pinscher","French bulldog","Golden Retriever","Greyhound","Havanese","Hovawart","Irish Red Setter","Leonberger","Lhasa Apso","Maltese","Pug","Small M\u00fcnsterl\u00e4nder","Large M\u00fcnsterl\u00e4nder","Newfoundland","Parson Russel Terrier","Rhodesian Ridgeback","Rottweiler","Standard Schnauzers","Shih Tzu","Siberian Husky","Sheltie (Shetland Sheepdog)","Staffordshire Bullterrier","Keeshond","Miniature Pinscher","Toy poodle","Miniature Schnauzer"],"legendgroup":"","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"","orientation":"v","showlegend":false,"x":[25.0,22.5,16.0,24.0,36.0,24.0,14.0,24.0,25.0,77.5,32.5,16.0,27.5,25.0,24.0,24.0,28.0,67.5,35.0,36.0,11.0,32.0,39.5,5.5,32.5,27.5,60.0,6.0,3.5,7.5,22.5,27.0,57.5,7.0,39.5,50.0,16.0,6.5,22.0,9.0,14.0,23.0,6.5,5.0,6.5],"xaxis":"x","y":[68.5,58.5,45.5,52.0,76.5,33.0,37.0,53.5,62.0,75.0,60.0,51.0,58.0,47.5,47.5,56.0,57.0,76.0,60.0,66.5,29.5,56.0,73.5,25.0,64.0,64.5,72.5,26.0,22.5,27.5,55.0,61.5,68.5,35.0,65.0,61.5,47.5,26.0,55.5,37.0,35.0,50.0,31.5,31.5,32.5],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"weight"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"size"}},"legend":{"tracegroupgap":0},"title":{"text":"Dog breed vectorization"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('05d51bda-d280-4b04-9307-35ee41f0ed83');
+var gd = document.getElementById('53b9ca93-8417-40f8-94ee-269693258e16');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -551,6 +551,7 @@ if (outputEl) {{
 
                         })                };                });            </script>        </div></div></div>
 </div>
+<p>As the dog breeds are represented by vectors now we can, e.g., quantify their similarity be euclidean distance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span>
@@ -640,10 +641,10 @@ if (outputEl) {{
 </table>
 </div></div></div>
 </div>
+<p>For instance, which is the most similar breed to the American Staffordshire Terrier if we identify it the closest euclidean distance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for instance, which is the most similar breed to the American Staffordshire Terrier if we identify it the closest euclidean distance</span>
-<span class="n">breed_name</span> <span class="o">=</span> <span class="s2">&quot;American Staffordshire Terrier&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">breed_name</span> <span class="o">=</span> <span class="s2">&quot;American Staffordshire Terrier&quot;</span>
 <span class="n">pairwise_distances</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">breed_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">1</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -654,10 +655,10 @@ if (outputEl) {{
 </div>
 </div>
 </div>
+<p>We can determine the average of two breed vectors and look for the most similar dog breed to this vector.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can determine the average of two breed vectors and look for the most similar dog breed to this vector</span>
-<span class="n">bullterier_vector</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_breeds_2d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Staffordshire Bullterrier&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">dog_breeds_2d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Bull terrier&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bullterier_vector</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_breeds_2d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Staffordshire Bullterrier&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">dog_breeds_2d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Bull terrier&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">pairwise_distances</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">bullterier_vector</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">dog_breeds_2d</span><span class="o">.</span><span class="n">values</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -671,16 +672,17 @@ if (outputEl) {{
 <p>This example is only meant to give you an idea that vector representations of words may not be as abstract is it may sound in the first place. However, if we want to extend this idea to a more general scenario, we are going to make use of other numbers than attributes of the word. In our example this has been the size and the weight of a dog breed, obviously, not every word is associated with object that have meaningful size and weight characteristics, e.g., the word elegant. Furthermore, we may need more than just two numbers to capture semantic meaning.</p>
 <section id="word2vec">
 <h2>Word2Vec<a class="headerlink" href="#word2vec" title="Link to this heading">#</a></h2>
-<p>A popular model which is build upon a neural network architecture is called Word2Vec and has been presented by <a class="reference external" href="https://arxiv.org/abs/1301.3781">Mikolov et al. (2013)</a> and <a class="reference external" href="https://arxiv.org/abs/1310.4546">Mikolov et al. (2013)</a>. The model represents every word by a <span class="math notranslate nohighlight">\(p\)</span>-dimensional vector. In comparison to our example, each real-valued number in a word vector does not have a specific meaning. However, after the model is trained, the vectors will be similar to each other if the words have similar meaning. Two versions of the Word2Vec model exist: (1) the continuous bag of words approach (CBOW), and, (2) the skip-gram (SG) model. For both approaches, we take a look at the context around a center word. Let us denote <span class="math notranslate nohighlight">\(w_j\)</span> as the center word. Context is defined by the window size whose length <span class="math notranslate nohighlight">\(2 \cdot t\)</span> needs to be chosen by the user. The context words are <span class="math notranslate nohighlight">\(t\)</span> words to the left and <span class="math notranslate nohighlight">\(t\)</span> words to the right of the context word: <span class="math notranslate nohighlight">\(w_{j-t}, w_{j-t+1}, ..., w_{j-1}, w_{j+1}, w_{j + t -1}, w_{j + t}\)</span>. For instance, given the sentence, “the dog would like a piece of the sandwich”, setting the center word “like” and a window size of <span class="math notranslate nohighlight">\(4\)</span>, the context words are: “dog, would, a, piece”. The CBOW model tries to predict the center word by the context words, the SG model tries to predict context words, given the center word.</p>
+<p>A popular model which is able to learn word vectors (also called word embeddings) which capture semantic and syntactic meaning is Word2Vec. It is build upon a neural network architecture and has been presented by <a class="reference external" href="https://arxiv.org/abs/1301.3781">Mikolov et al. (2013)</a> and <a class="reference external" href="https://arxiv.org/abs/1310.4546">Mikolov et al. (2013)</a>. The model represents every word by a <span class="math notranslate nohighlight">\(p\)</span>-dimensional vector. In comparison to our example, each real-valued number in a word vector does not have a specific meaning. However, after the model is trained, the vectors will be similar to each other if the words have similar meaning. Two versions of the Word2Vec model exist: (1) the continuous bag of words approach (CBOW), and, (2) the skip-gram (SG) model. For both approaches, we take a look at the surrounding words around a center word. Let us denote <span class="math notranslate nohighlight">\(w_j\)</span> as the center word. The surrounding words, we may also call then feature words, are defined by the window size whose length <span class="math notranslate nohighlight">\(2 \cdot t\)</span> needs to be chosen by the user. The feature words are up to <span class="math notranslate nohighlight">\(t\)</span> words to the left and up to <span class="math notranslate nohighlight">\(t\)</span> words to the right of the center word: <span class="math notranslate nohighlight">\(w_{j-t}, w_{j-t+1}, ..., w_{j-1}, w_{j+1}, w_{j + t -1}, w_{j + t}\)</span>. For instance, given the sentence, “the dog would like a piece of the sandwich”, setting the center word “like” and a window size of <span class="math notranslate nohighlight">\(4\)</span>, the context words are: “dog, would, a, piece”. The CBOW model tries to predict the center word by the feature words, the SG model tries to predict feature words, given the center word.</p>
 <p>The easiest way to understand the model is to take a look at a minimal example. So, let’s go: First, everything starts with a corpus. Ours consists of three sentences:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">simple_preprocess</span>
 
 <span class="n">raw_corpus</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;The dog would like a piece of the sandwich&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;I like to eat ice-cream&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;A dog is a good friend&quot;</span>
+    <span class="s2">&quot;I love vanilla ice cream&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;I love strawberry ice cream&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;The main capital of Germany is Berlin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;The main capitol of France is Paris&quot;</span>
 <span class="p">]</span>
 
 <span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">min_len</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">raw_corpus</span><span class="p">]</span>
@@ -689,9 +691,10 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;the&#39;, &#39;dog&#39;, &#39;would&#39;, &#39;like&#39;, &#39;a&#39;, &#39;piece&#39;, &#39;of&#39;, &#39;the&#39;, &#39;sandwich&#39;],
- [&#39;i&#39;, &#39;like&#39;, &#39;to&#39;, &#39;eat&#39;, &#39;ice&#39;, &#39;cream&#39;],
- [&#39;a&#39;, &#39;dog&#39;, &#39;is&#39;, &#39;a&#39;, &#39;good&#39;, &#39;friend&#39;]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[&#39;i&#39;, &#39;love&#39;, &#39;vanilla&#39;, &#39;ice&#39;, &#39;cream&#39;],
+ [&#39;i&#39;, &#39;love&#39;, &#39;strawberry&#39;, &#39;ice&#39;, &#39;cream&#39;],
+ [&#39;the&#39;, &#39;main&#39;, &#39;capital&#39;, &#39;of&#39;, &#39;germany&#39;, &#39;is&#39;, &#39;berlin&#39;],
+ [&#39;the&#39;, &#39;main&#39;, &#39;capitol&#39;, &#39;of&#39;, &#39;france&#39;, &#39;is&#39;, &#39;paris&#39;]]
 </pre></div>
 </div>
 </div>
@@ -714,29 +717,29 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;the&#39;: 0,
- &#39;dog&#39;: 1,
- &#39;would&#39;: 2,
- &#39;like&#39;: 3,
- &#39;a&#39;: 4,
- &#39;piece&#39;: 5,
- &#39;of&#39;: 6,
- &#39;sandwich&#39;: 7,
- &#39;i&#39;: 8,
- &#39;to&#39;: 9,
- &#39;eat&#39;: 10,
- &#39;ice&#39;: 11,
- &#39;cream&#39;: 12,
- &#39;is&#39;: 13,
- &#39;good&#39;: 14,
- &#39;friend&#39;: 15}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;i&#39;: 0,
+ &#39;love&#39;: 1,
+ &#39;vanilla&#39;: 2,
+ &#39;ice&#39;: 3,
+ &#39;cream&#39;: 4,
+ &#39;strawberry&#39;: 5,
+ &#39;the&#39;: 6,
+ &#39;main&#39;: 7,
+ &#39;capital&#39;: 8,
+ &#39;of&#39;: 9,
+ &#39;germany&#39;: 10,
+ &#39;is&#39;: 11,
+ &#39;berlin&#39;: 12,
+ &#39;capitol&#39;: 13,
+ &#39;france&#39;: 14,
+ &#39;paris&#39;: 15}
 </pre></div>
 </div>
 </div>
 </div>
 <section id="cbow">
 <h3>CBOW<a class="headerlink" href="#cbow" title="Link to this heading">#</a></h3>
-<p>The CBOW model is build upon a multi-class classification task. One predicts the probabilities for the center word, given the context: <span class="math notranslate nohighlight">\(P \left( w_i | w_{i-t}, w_{i-t+1}, ..., w_{i-1}, w_{i+1}, w_{i + t -1}, w_{i + t} \right) \)</span>. Let us denote <span class="math notranslate nohighlight">\(\boldsymbol{x}_{j}\)</span> as the one-hot encoded vector for word <span class="math notranslate nohighlight">\(j\)</span> where <span class="math notranslate nohighlight">\(j\)</span> is the number of the index in the dictionary. The number of categories is equal to the number of words, e.g., <span class="math notranslate nohighlight">\(d = 16\)</span>. To generate probability predictions, we make use of two matrices <span class="math notranslate nohighlight">\(\boldsymbol{W}, \boldsymbol{V}\)</span> whose elements are parameters which need to be trained. We start with a sequence of context words and their one-hot encoded vectors, e.g., “the”, “would” is represented by <span class="math notranslate nohighlight">\(\boldsymbol{x}_{0}, \boldsymbol{x}_{2}\)</span> which can be subsumed in a matrix:</p>
+<p>The CBOW model is build around a multi-class classification task. One predicts the probabilities for the center word, given the words within the window size: <span class="math notranslate nohighlight">\(P \left( w_i | w_{i-t}, w_{i-t+1}, ..., w_{i-1}, w_{i+1}, w_{i + t -1}, w_{i + t} \right) \)</span>. Let us denote <span class="math notranslate nohighlight">\(\boldsymbol{x}_{j}\)</span> as the one-hot encoded vector for word <span class="math notranslate nohighlight">\(j\)</span> where <span class="math notranslate nohighlight">\(j\)</span> is the number of the index in the dictionary. The number of categories is equal to the number of words, e.g., <span class="math notranslate nohighlight">\(d = 16\)</span>. To generate probability predictions, we make use of two matrices <span class="math notranslate nohighlight">\(\boldsymbol{W}, \boldsymbol{V}\)</span> whose elements are parameters which need to be trained. Assume a window size of <span class="math notranslate nohighlight">\(2\)</span> (so one word to the left and one word to the right) and we start with the sequence “I love vanilla”. The feature words and their one-hot encoded vectors, e.g., “I”, “vanilla” is represented by <span class="math notranslate nohighlight">\(\boldsymbol{x}_{0}, \boldsymbol{x}_{2}\)</span> which can be subsumed in a matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\boldsymbol{C}^{(0, 2)} = \begin{pmatrix} \boldsymbol{x}_{0} \\ \boldsymbol{x}_{2} \end{pmatrix}\end{split}\]</div>
 <p>See in the cell below how this looks like for our example:</p>
@@ -773,27 +776,27 @@ if (outputEl) {{
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter containing:
-tensor([[-0.9334, -1.3524,  0.5713],
-        [-1.4587, -0.0406, -1.5564],
-        [ 0.4199,  0.5089, -2.6441],
-        [-0.4820,  0.6165, -1.7642],
-        [-0.2098, -1.6579,  0.2707],
-        [-1.5998, -0.4395,  1.0114],
-        [-0.0441,  0.9016, -0.4964],
-        [ 0.1266,  0.6019, -1.2868],
-        [ 0.3171, -0.6663,  0.8660],
-        [ 0.9571,  0.7269, -2.2459],
-        [-1.2697, -0.0746,  3.1467],
-        [-1.0160, -0.4011,  1.3563],
-        [-0.1549,  0.1205, -1.0669],
-        [ 0.7855,  0.5322, -0.9984],
-        [ 0.9173, -0.5242,  0.8889],
-        [-2.1085, -1.9355, -0.9191]], requires_grad=True)
+tensor([[ 1.9012, -0.3392,  0.5760],
+        [-0.8877,  1.4421,  1.4368],
+        [ 0.0349,  0.0346,  0.8375],
+        [-0.5825, -0.8557, -0.2524],
+        [-0.4232, -0.2073,  0.2330],
+        [-0.0261,  0.4021, -0.6487],
+        [ 0.7342, -0.7038, -0.5683],
+        [-0.6994,  0.0646, -0.3626],
+        [-1.2287, -1.3077, -0.9733],
+        [-1.6359,  0.1289, -1.6770],
+        [ 1.3437,  0.8965,  0.9004],
+        [ 0.0498,  0.9688, -0.0958],
+        [ 0.0420,  1.1851, -0.4655],
+        [-0.8788,  1.1455, -2.0045],
+        [-0.8012, -0.2371, -1.0830],
+        [ 0.5337,  0.4547,  0.2657]], requires_grad=True)
 </pre></div>
 </div>
 </div>
 </div>
-<p>This can be seen as the weights from the first layer in a neural network whose input are the one-hot context word vectors with dimension <span class="math notranslate nohighlight">\(2t \times d\)</span>. Each row of this matrix relates to the word embedding for one word if it is used in the context of a center word. Multiplying the one-hot vector input with this matrix basically transforms the one-hot encoded input into numerical representations of the context words. Let us continue the example below:</p>
+<p>This can be seen as the weights from the first layer in a neural network whose input are the one-hot context word vectors with dimension <span class="math notranslate nohighlight">\(2t \times d\)</span>. Each row of this matrix relates to the word embedding for one word if it is used in the window of a center word. Multiplying the one-hot vector input with this matrix basically transforms the one-hot encoded input into numerical representations of the feature words. Let us continue the example below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">W</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>
@@ -802,13 +805,13 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.9334, -1.3524,  0.5713],
-        [ 0.4199,  0.5089, -2.6441]], grad_fn=&lt;EmbeddingBackward0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[ 1.9012, -0.3392,  0.5760],
+        [ 0.0349,  0.0346,  0.8375]], grad_fn=&lt;EmbeddingBackward0&gt;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note that we observe row vectors with index numbers <span class="math notranslate nohighlight">\(0,2\)</span> because these are the index numbers for our example “the”, “would”. In order to condense the information of the context words into one vector, one can average or sum these vectors row-wise. Let us build the average and continue with this vector that we denote as the context vector <span class="math notranslate nohighlight">\(\boldsymbol{c}\)</span>.</p>
+<p>Note that we observe row vectors with index numbers <span class="math notranslate nohighlight">\(0,2\)</span> because these are the index numbers for our example “I”, “vanilla”. In order to condense the information of the context words into one vector, one can average or sum these vectors row-wise. Let us build the average and continue with this vector that we denote as the context vector <span class="math notranslate nohighlight">\(\boldsymbol{c}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -817,7 +820,7 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.2568, -0.4217, -1.0364], grad_fn=&lt;MeanBackward1&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.9680, -0.1523,  0.7067], grad_fn=&lt;MeanBackward1&gt;)
 </pre></div>
 </div>
 </div>
@@ -832,8 +835,8 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([ 0.2048, -0.8046,  0.0355, -0.0544, -0.0321,  0.0176,  0.5616, -0.6373,
-        -0.0182, -0.1350, -0.5947, -0.2569, -0.3414,  0.1696,  0.7993,  0.2642],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([-0.1677, -0.3179,  0.1291,  0.3049,  0.5983,  0.4527,  0.0595,  0.3968,
+        -0.6472, -0.5256,  0.1420, -0.0193,  0.6261, -0.7938, -0.5410,  0.7707],
        grad_fn=&lt;SqueezeBackward4&gt;)
 </pre></div>
 </div>
@@ -848,14 +851,14 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0743, 0.0271, 0.0627, 0.0573, 0.0586, 0.0616, 0.1061, 0.0320, 0.0594,
-        0.0529, 0.0334, 0.0468, 0.0430, 0.0717, 0.1345, 0.0788],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0462, 0.0397, 0.0621, 0.0740, 0.0993, 0.0858, 0.0579, 0.0812, 0.0286,
+        0.0323, 0.0629, 0.0535, 0.1021, 0.0247, 0.0318, 0.1180],
        grad_fn=&lt;SoftmaxBackward0&gt;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>In our example, the true category would be the word “dog” which is represented by the one-hot encoded vector <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span> with index <span class="math notranslate nohighlight">\(1\)</span>. Thus, in order to determine the value of the crossentropy loss function, we calculate the dot product and determine the negative log of this value.</p>
+<p>In our example, the true category would be the word “love” which is represented by the one-hot encoded vector <span class="math notranslate nohighlight">\(\boldsymbol{w}_1\)</span> with index <span class="math notranslate nohighlight">\(1\)</span>. Thus, in order to determine the value of the crossentropy loss function, we calculate the dot product and determine the negative log of this value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">prob_w</span> <span class="o">@</span> <span class="n">one_hot</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">([</span><span class="mi">1</span><span class="p">]),</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">d</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">())</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
@@ -863,25 +866,25 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.6097379], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.226027], dtype=float32)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Let us go through these steps formally:</p>
 <ol class="arabic simple">
-<li><p>Generate a one-hot encoded context input, given a context length <span class="math notranslate nohighlight">\(2t\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{C} \in [0, 1]^{2t \times d}\)</span></p></li>
-<li><p>Multiply this with the context word vector matrix, <span class="math notranslate nohighlight">\(\boldsymbol{W} \in \mathbb{R}^{d \times p}\)</span> and aggregate the outcome to a single vector with dimension <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>Generate a one-hot encoded context input, given a window length <span class="math notranslate nohighlight">\(2t\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{C} \in [0, 1]^{2t \times d}\)</span></p></li>
+<li><p>Multiply this with the feature word vector matrix, <span class="math notranslate nohighlight">\(\boldsymbol{W} \in \mathbb{R}^{d \times p}\)</span> and aggregate the outcome to a single vector with dimension <span class="math notranslate nohighlight">\(p\)</span></p></li>
 <li><p>Multiply this vector with the center word vector matrix <span class="math notranslate nohighlight">\(\boldsymbol{V} \in \mathbb{R}^{p \times d}\)</span> and transform the output with the softmax function to probabilities</p></li>
 <li><p>Multiply the probability prediction with the one-hot vector of the center word to determine the loss</p></li>
 </ol>
-<p>This is done for all possible center word context word combinations and gradient descent can be used to update the parameters of <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span>. After training is finished one usually uses the columns of <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> as word embeddings where word with index <span class="math notranslate nohighlight">\(0\)</span> is represented by the first column, word with index <span class="math notranslate nohighlight">\(1\)</span> is represented by the second column and so on. Let us take a look how we could do this by hand using tensorflow for our example.</p>
+<p>This is done for all possible center word context word combinations and gradient descent can be used to update the parameters of <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span>. After training is finished one usually uses the columns of <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> as word embeddings where word with index <span class="math notranslate nohighlight">\(0\)</span> is represented by the first column, word with index <span class="math notranslate nohighlight">\(1\)</span> is represented by the second column and so on. Let us take a look how we could do this by hand using pytorch for our example.</p>
 <p>First we generate the samples. Note that sample indices are used to derive the one-hot information for the center words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># context length</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">context_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">context_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># </span>
 
 <span class="c1"># generate training samples</span>
 <span class="n">sample_words</span> <span class="o">=</span> <span class="p">[]</span>
@@ -905,10 +908,10 @@ tensor([[-0.9334, -1.3524,  0.5713],
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is how the training samples look like:
-[([&#39;the&#39;, &#39;dog&#39;, &#39;like&#39;, &#39;a&#39;], &#39;would&#39;), ([&#39;dog&#39;, &#39;would&#39;, &#39;a&#39;, &#39;piece&#39;], &#39;like&#39;), ([&#39;would&#39;, &#39;like&#39;, &#39;piece&#39;, &#39;of&#39;], &#39;a&#39;), ([&#39;like&#39;, &#39;a&#39;, &#39;of&#39;, &#39;the&#39;], &#39;piece&#39;), ([&#39;a&#39;, &#39;piece&#39;, &#39;the&#39;, &#39;sandwich&#39;], &#39;of&#39;), ([&#39;i&#39;, &#39;like&#39;, &#39;eat&#39;, &#39;ice&#39;], &#39;to&#39;), ([&#39;like&#39;, &#39;to&#39;, &#39;ice&#39;, &#39;cream&#39;], &#39;eat&#39;), ([&#39;a&#39;, &#39;dog&#39;, &#39;a&#39;, &#39;good&#39;], &#39;is&#39;), ([&#39;dog&#39;, &#39;is&#39;, &#39;good&#39;, &#39;friend&#39;], &#39;a&#39;)]
+[([&#39;i&#39;, &#39;love&#39;, &#39;ice&#39;, &#39;cream&#39;], &#39;vanilla&#39;), ([&#39;i&#39;, &#39;love&#39;, &#39;ice&#39;, &#39;cream&#39;], &#39;strawberry&#39;), ([&#39;the&#39;, &#39;main&#39;, &#39;of&#39;, &#39;germany&#39;], &#39;capital&#39;), ([&#39;main&#39;, &#39;capital&#39;, &#39;germany&#39;, &#39;is&#39;], &#39;of&#39;), ([&#39;capital&#39;, &#39;of&#39;, &#39;is&#39;, &#39;berlin&#39;], &#39;germany&#39;), ([&#39;the&#39;, &#39;main&#39;, &#39;of&#39;, &#39;france&#39;], &#39;capitol&#39;), ([&#39;main&#39;, &#39;capitol&#39;, &#39;france&#39;, &#39;is&#39;], &#39;of&#39;), ([&#39;capitol&#39;, &#39;of&#39;, &#39;is&#39;, &#39;paris&#39;], &#39;france&#39;)]
 
 This is how the training samples information is provided:
-[([0, 1, 3, 4], 2), ([1, 2, 4, 5], 3), ([2, 3, 5, 6], 4), ([3, 4, 6, 0], 5), ([4, 5, 0, 7], 6), ([8, 3, 10, 11], 9), ([3, 9, 11, 12], 10), ([4, 1, 4, 14], 13), ([1, 13, 14, 15], 4)]
+[([0, 1, 3, 4], 2), ([0, 1, 3, 4], 5), ([6, 7, 9, 10], 8), ([7, 8, 10, 11], 9), ([8, 9, 11, 12], 10), ([6, 7, 9, 14], 13), ([7, 13, 14, 11], 9), ([13, 9, 11, 15], 14)]
 </pre></div>
 </div>
 </div>
@@ -930,15 +933,15 @@ This is how the training samples information is provided:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input word index labels for the neural network:
-[[0, 1, 3, 4], [1, 2, 4, 5], [2, 3, 5, 6], [3, 4, 6, 0], [4, 5, 0, 7], [8, 3, 10, 11], [3, 9, 11, 12], [4, 1, 4, 14], [1, 13, 14, 15]]
+[[0, 1, 3, 4], [0, 1, 3, 4], [6, 7, 9, 10], [7, 8, 10, 11], [8, 9, 11, 12], [6, 7, 9, 14], [7, 13, 14, 11], [13, 9, 11, 15]]
 
 Target word labels for the neural network:
-[2, 3, 4, 5, 6, 9, 10, 13, 4]
+[2, 5, 8, 9, 10, 13, 9, 14]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Below you see how we could train a CBOW model for our example using pytorch. The embedding layer includes word vectors for word embedding matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and the linear layer includes word embeddings for center words which is matrix <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span>. The model processes every sample as described in detail above and uses gradient descent for the crossentropy loss function. Basically this is a multi-class prediction problem if we define the model as below.</p>
+<p>Below we train the model. The embedding layer includes word vectors for the feature word embedding matrix <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and the linear layer includes word embeddings for center words which is matrix <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span>. The model processes every sample as described in detail above and uses gradient descent for the crossentropy loss function. Basically this is a multi-class prediction problem if we define the model as below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -984,10 +987,10 @@ Target word labels for the neural network:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e2e8d915a0250f4a882b3d508d85d04bcf9430c7ec33cd42d73792c9b4e5c5a.png" src="_images/0e2e8d915a0250f4a882b3d508d85d04bcf9430c7ec33cd42d73792c9b4e5c5a.png" />
+<img alt="_images/978e539bb1627bedc53476959e2547f9fad4d2a00c205298039a57f46caf2406.png" src="_images/978e539bb1627bedc53476959e2547f9fad4d2a00c205298039a57f46caf2406.png" />
 </div>
 </div>
-<p>What does happen during training? In the beginning word embeddings for context words <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> and center words <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> are randomly initialized. Word embeddings of words which are close to each other need to produces high dot product values in order to come along with high probabilities. This is what we want if words are used in the same context (are close to each other in documents). A high dot product results if vectors have very similar elements. Thus, during training parameters for each word vector are updated such that words which are close to each other have similar vectors. In addition, words serve as anchors to recognize similarities between words that do not appear next to each other in documents but are used in similar contexts. One training is finished, it makes sense to use center word vectors <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> as embeddings for our words. However, one may also experiment and can use context word vectors <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> or the average vectors of both matrices. Our example is too small to produce high quality embeddings. However if you take a look at the cosine similarity matrix below, you can observe that, e.g., the model learned “sandwich” has a similar meaning to “dog” which makes sense, given our corpus information.</p>
+<p>Once training is finished, it makes sense to use center word vectors <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> as embeddings for our words. However, one may also experiment and can use feature word vectors <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> or the average vectors of both matrices. Our example is too small to produce high quality embeddings. However if you take a look at the cosine similarity matrix below, you can observe that, e.g., the model learned “vanilla” has a similar meaning to “strawberry” or “berlin” is similar to “paris” which makes sense, given our corpus information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_similarity</span>
@@ -1017,327 +1020,327 @@ Target word labels for the neural network:
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>the</th>
-      <th>dog</th>
-      <th>would</th>
-      <th>like</th>
-      <th>a</th>
-      <th>piece</th>
-      <th>of</th>
-      <th>sandwich</th>
       <th>i</th>
-      <th>to</th>
-      <th>eat</th>
+      <th>love</th>
+      <th>vanilla</th>
       <th>ice</th>
       <th>cream</th>
+      <th>strawberry</th>
+      <th>the</th>
+      <th>main</th>
+      <th>capital</th>
+      <th>of</th>
+      <th>germany</th>
       <th>is</th>
-      <th>good</th>
-      <th>friend</th>
+      <th>berlin</th>
+      <th>capitol</th>
+      <th>france</th>
+      <th>paris</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>the</th>
-      <td>1.000000</td>
-      <td>0.999126</td>
-      <td>-0.405280</td>
-      <td>-0.874602</td>
-      <td>-0.108336</td>
-      <td>0.460699</td>
-      <td>0.131868</td>
-      <td>0.992750</td>
-      <td>0.999829</td>
-      <td>0.059784</td>
-      <td>0.391551</td>
-      <td>0.987179</td>
-      <td>0.985122</td>
-      <td>-0.859155</td>
-      <td>0.968027</td>
-      <td>0.922654</td>
-    </tr>
-    <tr>
-      <th>dog</th>
-      <td>0.999126</td>
-      <td>1.000000</td>
-      <td>-0.380222</td>
-      <td>-0.882393</td>
-      <td>-0.131000</td>
-      <td>0.493996</td>
-      <td>0.162199</td>
-      <td>0.995314</td>
-      <td>0.998200</td>
-      <td>0.038615</td>
-      <td>0.354439</td>
-      <td>0.991147</td>
-      <td>0.989644</td>
-      <td>-0.865466</td>
-      <td>0.975094</td>
-      <td>0.934118</td>
-    </tr>
-    <tr>
-      <th>would</th>
-      <td>-0.405280</td>
-      <td>-0.380222</td>
-      <td>1.000000</td>
-      <td>-0.073058</td>
-      <td>-0.858002</td>
-      <td>0.548626</td>
-      <td>-0.091886</td>
-      <td>-0.415046</td>
-      <td>-0.418586</td>
-      <td>0.277675</td>
-      <td>-0.866810</td>
-      <td>-0.408594</td>
-      <td>-0.402508</td>
-      <td>0.585253</td>
-      <td>-0.395237</td>
-      <td>-0.374847</td>
-    </tr>
-    <tr>
-      <th>like</th>
-      <td>-0.874602</td>
-      <td>-0.882393</td>
-      <td>-0.073058</td>
-      <td>1.000000</td>
-      <td>0.571763</td>
-      <td>-0.731063</td>
-      <td>0.031086</td>
-      <td>-0.846482</td>
-      <td>-0.869057</td>
-      <td>-0.327285</td>
-      <td>-0.043790</td>
-      <td>-0.838642</td>
-      <td>-0.837934</td>
-      <td>0.573696</td>
-      <td>-0.813046</td>
-      <td>-0.757132</td>
-    </tr>
-    <tr>
-      <th>a</th>
-      <td>-0.108336</td>
-      <td>-0.131000</td>
-      <td>-0.858002</td>
-      <td>0.571763</td>
-      <td>1.000000</td>
-      <td>-0.797577</td>
-      <td>0.148318</td>
-      <td>-0.079239</td>
-      <td>-0.095265</td>
-      <td>-0.447483</td>
-      <td>0.661017</td>
-      <td>-0.078276</td>
-      <td>-0.082196</td>
-      <td>-0.216694</td>
-      <td>-0.071052</td>
-      <td>-0.051809</td>
-    </tr>
-    <tr>
-      <th>piece</th>
-      <td>0.460699</td>
-      <td>0.493996</td>
-      <td>0.548626</td>
-      <td>-0.731063</td>
-      <td>-0.797577</td>
-      <td>1.000000</td>
-      <td>0.398502</td>
-      <td>0.490975</td>
-      <td>0.444613</td>
-      <td>-0.060251</td>
-      <td>-0.629010</td>
-      <td>0.507088</td>
-      <td>0.515442</td>
-      <td>-0.352751</td>
-      <td>0.537511</td>
-      <td>0.568944</td>
-    </tr>
-    <tr>
-      <th>of</th>
-      <td>0.131868</td>
-      <td>0.162199</td>
-      <td>-0.091886</td>
-      <td>0.031086</td>
-      <td>0.148318</td>
-      <td>0.398502</td>
-      <td>1.000000</td>
-      <td>0.249739</td>
-      <td>0.121271</td>
-      <td>-0.938938</td>
-      <td>-0.407706</td>
-      <td>0.288378</td>
-      <td>0.300219</td>
-      <td>-0.561103</td>
-      <td>0.376197</td>
-      <td>0.503627</td>
-    </tr>
-    <tr>
-      <th>sandwich</th>
-      <td>0.992750</td>
-      <td>0.995314</td>
-      <td>-0.415046</td>
-      <td>-0.846482</td>
-      <td>-0.079239</td>
-      <td>0.490975</td>
-      <td>0.249739</td>
-      <td>1.000000</td>
-      <td>0.991435</td>
-      <td>-0.057707</td>
-      <td>0.340176</td>
-      <td>0.999176</td>
-      <td>0.998543</td>
-      <td>-0.909200</td>
-      <td>0.991000</td>
-      <td>0.962019</td>
-    </tr>
-    <tr>
       <th>i</th>
-      <td>0.999829</td>
-      <td>0.998200</td>
-      <td>-0.418586</td>
-      <td>-0.869057</td>
-      <td>-0.095265</td>
-      <td>0.444613</td>
-      <td>0.121271</td>
-      <td>0.991435</td>
       <td>1.000000</td>
-      <td>0.065585</td>
-      <td>0.408429</td>
-      <td>0.985347</td>
-      <td>0.983065</td>
-      <td>-0.857818</td>
-      <td>0.965074</td>
-      <td>0.918154</td>
+      <td>0.986647</td>
+      <td>-0.231827</td>
+      <td>0.980243</td>
+      <td>0.971610</td>
+      <td>-0.226681</td>
+      <td>0.997378</td>
+      <td>0.990472</td>
+      <td>-0.784195</td>
+      <td>0.110642</td>
+      <td>-0.236029</td>
+      <td>0.989807</td>
+      <td>0.993496</td>
+      <td>-0.829203</td>
+      <td>-0.874128</td>
+      <td>0.997256</td>
     </tr>
     <tr>
-      <th>to</th>
-      <td>0.059784</td>
-      <td>0.038615</td>
-      <td>0.277675</td>
-      <td>-0.327285</td>
-      <td>-0.447483</td>
-      <td>-0.060251</td>
-      <td>-0.938938</td>
-      <td>-0.057707</td>
-      <td>0.065585</td>
+      <th>love</th>
+      <td>0.986647</td>
       <td>1.000000</td>
-      <td>0.235492</td>
-      <td>-0.094158</td>
-      <td>-0.104134</td>
-      <td>0.449833</td>
-      <td>-0.179458</td>
-      <td>-0.308433</td>
+      <td>-0.298481</td>
+      <td>0.943966</td>
+      <td>0.933424</td>
+      <td>-0.304857</td>
+      <td>0.989639</td>
+      <td>0.975385</td>
+      <td>-0.684183</td>
+      <td>0.270989</td>
+      <td>-0.289722</td>
+      <td>0.985070</td>
+      <td>0.998164</td>
+      <td>-0.829077</td>
+      <td>-0.923398</td>
+      <td>0.990758</td>
     </tr>
     <tr>
-      <th>eat</th>
-      <td>0.391551</td>
-      <td>0.354439</td>
-      <td>-0.866810</td>
-      <td>-0.043790</td>
-      <td>0.661017</td>
-      <td>-0.629010</td>
-      <td>-0.407706</td>
-      <td>0.340176</td>
-      <td>0.408429</td>
-      <td>0.235492</td>
+      <th>vanilla</th>
+      <td>-0.231827</td>
+      <td>-0.298481</td>
       <td>1.000000</td>
-      <td>0.314598</td>
-      <td>0.303146</td>
-      <td>-0.318143</td>
-      <td>0.256919</td>
-      <td>0.170503</td>
+      <td>-0.286206</td>
+      <td>-0.315224</td>
+      <td>0.996839</td>
+      <td>-0.301564</td>
+      <td>-0.344593</td>
+      <td>0.197688</td>
+      <td>-0.429992</td>
+      <td>-0.587930</td>
+      <td>-0.367541</td>
+      <td>-0.252131</td>
+      <td>-0.263642</td>
+      <td>0.633359</td>
+      <td>-0.302449</td>
     </tr>
     <tr>
       <th>ice</th>
-      <td>0.987179</td>
-      <td>0.991147</td>
-      <td>-0.408594</td>
-      <td>-0.838642</td>
-      <td>-0.078276</td>
-      <td>0.507088</td>
-      <td>0.288378</td>
-      <td>0.999176</td>
-      <td>0.985347</td>
-      <td>-0.094158</td>
-      <td>0.314598</td>
+      <td>0.980243</td>
+      <td>0.943966</td>
+      <td>-0.286206</td>
       <td>1.000000</td>
-      <td>0.999904</td>
-      <td>-0.920848</td>
-      <td>0.995613</td>
-      <td>0.972281</td>
+      <td>0.999020</td>
+      <td>-0.266105</td>
+      <td>0.981550</td>
+      <td>0.991375</td>
+      <td>-0.886482</td>
+      <td>-0.036323</td>
+      <td>-0.057150</td>
+      <td>0.981041</td>
+      <td>0.954208</td>
+      <td>-0.727060</td>
+      <td>-0.846110</td>
+      <td>0.979977</td>
     </tr>
     <tr>
       <th>cream</th>
-      <td>0.985122</td>
-      <td>0.989644</td>
-      <td>-0.402508</td>
-      <td>-0.837934</td>
-      <td>-0.082196</td>
-      <td>0.515442</td>
-      <td>0.300219</td>
-      <td>0.998543</td>
-      <td>0.983065</td>
-      <td>-0.104134</td>
-      <td>0.303146</td>
-      <td>0.999904</td>
+      <td>0.971610</td>
+      <td>0.933424</td>
+      <td>-0.315224</td>
+      <td>0.999020</td>
       <td>1.000000</td>
-      <td>-0.923094</td>
-      <td>0.996733</td>
-      <td>0.975188</td>
+      <td>-0.292765</td>
+      <td>0.975166</td>
+      <td>0.988677</td>
+      <td>-0.898517</td>
+      <td>-0.050633</td>
+      <td>-0.013040</td>
+      <td>0.977364</td>
+      <td>0.943056</td>
+      <td>-0.695978</td>
+      <td>-0.846798</td>
+      <td>0.973388</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>-0.226681</td>
+      <td>-0.304857</td>
+      <td>0.996839</td>
+      <td>-0.266105</td>
+      <td>-0.292765</td>
+      <td>1.000000</td>
+      <td>-0.296498</td>
+      <td>-0.333650</td>
+      <td>0.144418</td>
+      <td>-0.500186</td>
+      <td>-0.531284</td>
+      <td>-0.361239</td>
+      <td>-0.255828</td>
+      <td>-0.242798</td>
+      <td>0.643798</td>
+      <td>-0.298018</td>
+    </tr>
+    <tr>
+      <th>the</th>
+      <td>0.997378</td>
+      <td>0.989639</td>
+      <td>-0.301564</td>
+      <td>0.981550</td>
+      <td>0.975166</td>
+      <td>-0.296498</td>
+      <td>1.000000</td>
+      <td>0.996232</td>
+      <td>-0.781653</td>
+      <td>0.142837</td>
+      <td>-0.189551</td>
+      <td>0.997445</td>
+      <td>0.992813</td>
+      <td>-0.793958</td>
+      <td>-0.904392</td>
+      <td>0.999968</td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td>0.990472</td>
+      <td>0.975385</td>
+      <td>-0.344593</td>
+      <td>0.991375</td>
+      <td>0.988677</td>
+      <td>-0.333650</td>
+      <td>0.996232</td>
+      <td>1.000000</td>
+      <td>-0.822498</td>
+      <td>0.094909</td>
+      <td>-0.105325</td>
+      <td>0.997973</td>
+      <td>0.978790</td>
+      <td>-0.744379</td>
+      <td>-0.904023</td>
+      <td>0.995655</td>
+    </tr>
+    <tr>
+      <th>capital</th>
+      <td>-0.784195</td>
+      <td>-0.684183</td>
+      <td>0.197688</td>
+      <td>-0.886482</td>
+      <td>-0.898517</td>
+      <td>0.144418</td>
+      <td>-0.781653</td>
+      <td>-0.822498</td>
+      <td>1.000000</td>
+      <td>0.466428</td>
+      <td>-0.267741</td>
+      <td>-0.785722</td>
+      <td>-0.710214</td>
+      <td>0.453640</td>
+      <td>0.568893</td>
+      <td>-0.776597</td>
+    </tr>
+    <tr>
+      <th>of</th>
+      <td>0.110642</td>
+      <td>0.270989</td>
+      <td>-0.429992</td>
+      <td>-0.036323</td>
+      <td>-0.050633</td>
+      <td>-0.500186</td>
+      <td>0.142837</td>
+      <td>0.094909</td>
+      <td>0.466428</td>
+      <td>1.000000</td>
+      <td>-0.394840</td>
+      <td>0.158035</td>
+      <td>0.220023</td>
+      <td>-0.171955</td>
+      <td>-0.460975</td>
+      <td>0.150455</td>
+    </tr>
+    <tr>
+      <th>germany</th>
+      <td>-0.236029</td>
+      <td>-0.289722</td>
+      <td>-0.587930</td>
+      <td>-0.057150</td>
+      <td>-0.013040</td>
+      <td>-0.531284</td>
+      <td>-0.189551</td>
+      <td>-0.105325</td>
+      <td>-0.267741</td>
+      <td>-0.394840</td>
+      <td>1.000000</td>
+      <td>-0.131575</td>
+      <td>-0.299234</td>
+      <td>0.722408</td>
+      <td>0.056060</td>
+      <td>-0.194618</td>
     </tr>
     <tr>
       <th>is</th>
-      <td>-0.859155</td>
-      <td>-0.865466</td>
-      <td>0.585253</td>
-      <td>0.573696</td>
-      <td>-0.216694</td>
-      <td>-0.352751</td>
-      <td>-0.561103</td>
-      <td>-0.909200</td>
-      <td>-0.857818</td>
-      <td>0.449833</td>
-      <td>-0.318143</td>
-      <td>-0.920848</td>
-      <td>-0.923094</td>
+      <td>0.989807</td>
+      <td>0.985070</td>
+      <td>-0.367541</td>
+      <td>0.981041</td>
+      <td>0.977364</td>
+      <td>-0.361239</td>
+      <td>0.997445</td>
+      <td>0.997973</td>
+      <td>-0.785722</td>
+      <td>0.158035</td>
+      <td>-0.131575</td>
       <td>1.000000</td>
-      <td>-0.943164</td>
-      <td>-0.963082</td>
+      <td>0.985256</td>
+      <td>-0.750693</td>
+      <td>-0.925750</td>
+      <td>0.997364</td>
     </tr>
     <tr>
-      <th>good</th>
-      <td>0.968027</td>
-      <td>0.975094</td>
-      <td>-0.395237</td>
-      <td>-0.813046</td>
-      <td>-0.071052</td>
-      <td>0.537511</td>
-      <td>0.376197</td>
-      <td>0.991000</td>
-      <td>0.965074</td>
-      <td>-0.179458</td>
-      <td>0.256919</td>
-      <td>0.995613</td>
-      <td>0.996733</td>
-      <td>-0.943164</td>
+      <th>berlin</th>
+      <td>0.993496</td>
+      <td>0.998164</td>
+      <td>-0.252131</td>
+      <td>0.954208</td>
+      <td>0.943056</td>
+      <td>-0.255828</td>
+      <td>0.992813</td>
+      <td>0.978790</td>
+      <td>-0.710214</td>
+      <td>0.220023</td>
+      <td>-0.299234</td>
+      <td>0.985256</td>
       <td>1.000000</td>
-      <td>0.989882</td>
+      <td>-0.847309</td>
+      <td>-0.900657</td>
+      <td>0.993608</td>
     </tr>
     <tr>
-      <th>friend</th>
-      <td>0.922654</td>
-      <td>0.934118</td>
-      <td>-0.374847</td>
-      <td>-0.757132</td>
-      <td>-0.051809</td>
-      <td>0.568944</td>
-      <td>0.503627</td>
-      <td>0.962019</td>
-      <td>0.918154</td>
-      <td>-0.308433</td>
-      <td>0.170503</td>
-      <td>0.972281</td>
-      <td>0.975188</td>
-      <td>-0.963082</td>
-      <td>0.989882</td>
+      <th>capitol</th>
+      <td>-0.829203</td>
+      <td>-0.829077</td>
+      <td>-0.263642</td>
+      <td>-0.727060</td>
+      <td>-0.695978</td>
+      <td>-0.242798</td>
+      <td>-0.793958</td>
+      <td>-0.744379</td>
+      <td>0.453640</td>
+      <td>-0.171955</td>
+      <td>0.722408</td>
+      <td>-0.750693</td>
+      <td>-0.847309</td>
+      <td>1.000000</td>
+      <td>0.578139</td>
+      <td>-0.795860</td>
+    </tr>
+    <tr>
+      <th>france</th>
+      <td>-0.874128</td>
+      <td>-0.923398</td>
+      <td>0.633359</td>
+      <td>-0.846110</td>
+      <td>-0.846798</td>
+      <td>0.643798</td>
+      <td>-0.904392</td>
+      <td>-0.904023</td>
+      <td>0.568893</td>
+      <td>-0.460975</td>
+      <td>0.056060</td>
+      <td>-0.925750</td>
+      <td>-0.900657</td>
+      <td>0.578139</td>
+      <td>1.000000</td>
+      <td>-0.906302</td>
+    </tr>
+    <tr>
+      <th>paris</th>
+      <td>0.997256</td>
+      <td>0.990758</td>
+      <td>-0.302449</td>
+      <td>0.979977</td>
+      <td>0.973388</td>
+      <td>-0.298018</td>
+      <td>0.999968</td>
+      <td>0.995655</td>
+      <td>-0.776597</td>
+      <td>0.150455</td>
+      <td>-0.194618</td>
+      <td>0.997364</td>
+      <td>0.993608</td>
+      <td>-0.795860</td>
+      <td>-0.906302</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -1345,10 +1348,113 @@ Target word labels for the neural network:
 </div></div></div>
 </div>
 <p>Note that words in the beginning and end of the sentences are ignored in our example which causes problems for such a small corpus but usually is not problematic for a large corpus. Given a large collection of documents, common embedding dimension <span class="math notranslate nohighlight">\(p\)</span> are rather in the hundreds as in comparison to our example.</p>
+<p><strong>How does the model learn similar meaning?</strong></p>
+<p>The description from above explains the technical process, however, to understand how words with similar meaning get similar word vectors it may help to explain this in a more intuitive (and slightly technical) way.</p>
+<p>Let us take a look at the two sentences:</p>
+<ul class="simple">
+<li><p>I love vanilla ice cream</p></li>
+<li><p>I love strawberry ice cream</p></li>
+</ul>
+<p>Using two words to the left and to the right, we would generate a vector which represents the surrounding “I, love” and “ice cream”. Let us denote this vector by <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. This vector is going to be multiplied with every possible word vector <span class="math notranslate nohighlight">\(\mathbf{v}^{(I)}, \mathbf{v}^{(love)}, \mathbf{v}^{(vanilla)}, \mathbf{v}^{(strawberry)}, \mathbf{v}^{(ice)}, \mathbf{v}^{(cream)}\)</span>. Each multiplication is the dot product of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> and one of the word vectors. The result is a real-valued number, if it helps denote it as a score. The higher the score the higher the probability prediction for the word. In our example the true categories are “vanilla” and “strawberry”. This means after some training, the vectors for the corresponding words create high values for their dot products: <span class="math notranslate nohighlight">\(\mathbf{w}^T \mathbf{v}^{(vanilla)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{w}^T \mathbf{v}^{(strawberry)}\)</span>. As the vector from the words in the window around the center words <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is the same for both calculations. High values for both dot products can only be generated if <span class="math notranslate nohighlight">\(\mathbf{v}^{(vanilla)}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}^{(strawberry)}\)</span> are similar…and this is how the magic happens.</p>
+<p>Take a look below. For our trained model the aggregated vector for the window “I love — ice cream”, is given by:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_vector</span> <span class="o">=</span> <span class="n">w2w_cbow</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">[:</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">feature_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.745953  , -0.10597844, -0.9553042 ], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The trained vanilla vector (from the center word matrix) is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vanilla_vector</span> <span class="o">=</span> <span class="n">w2w_cbow</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">vanilla_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.27347  , -1.0341777, -1.6583916], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The one for strawberry is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strawberry_vector</span> <span class="o">=</span> <span class="n">w2w_cbow</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">strawberry_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.3196907, -1.2112182, -1.5031197], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>All three vectors share similarity in sign and value. The scores (dot products) are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_vector</span> <span class="o">@</span> <span class="n">vanilla_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.936711
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_vector</span> <span class="o">@</span> <span class="n">strawberry_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.9340615
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we change the similarity between the “vanilla” and “strawberry” representation by, e.g., changing the sign for the last number of the strawberry vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strawberry_vector</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">strawberry_vector</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">strawberry_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.3196907, -1.2112182,  1.5031197], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The score for it is decreased which would reduce the probability prediction for seeing the word “strawberry”, given the window “I love — ice cream”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_vector</span> <span class="o">@</span> <span class="n">strawberry_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0621886
+</pre></div>
+</div>
+</div>
+</div>
+<p>This does not make sense as “vanilla” and “strawberry” are equally likely in our example. Thus, the more similar vector after training is more reasonable and more in line with the observed corpus.</p>
 </section>
 <section id="sg">
 <h3>SG<a class="headerlink" href="#sg" title="Link to this heading">#</a></h3>
-<p>The figure below visualizes the CBOW and the SG model. While CBOW uses context words to predict the center word, SG uses the center word to predict context words. Thus, the prediction simplifies to <span class="math notranslate nohighlight">\(P \left( w_l | w_i \right)\)</span> for any conext word <span class="math notranslate nohighlight">\(w_l \in \lbrace w_{i-t}, w_{i-t+1}, ..., w_{i-1}, w_{i+1}, w_{i + t -1}, w_{i + t}  \rbrace\)</span>. As before, we use train two parameter matrices <span class="math notranslate nohighlight">\(\boldsymbol{W}, \boldsymbol{V}\)</span>, however, this time <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> represents word embeddings for center words and <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> word embeddings for context words.</p>
+<p>The figure below visualizes the CBOW and the SG model. While CBOW uses words in the window arount the center word to predict the center word, SG uses the center word to predict words within the window size. Thus, the prediction simplifies to <span class="math notranslate nohighlight">\(P \left( w_l | w_i \right)\)</span> for any feature word <span class="math notranslate nohighlight">\(w_l \in \lbrace w_{i-t}, w_{i-t+1}, ..., w_{i-1}, w_{i+1}, w_{i + t -1}, w_{i + t}  \rbrace\)</span>. As before, we use train two parameter matrices <span class="math notranslate nohighlight">\(\boldsymbol{W}, \boldsymbol{V}\)</span>, however, this time <span class="math notranslate nohighlight">\(\boldsymbol{W}\)</span> represents word embeddings for center words and <span class="math notranslate nohighlight">\(\boldsymbol{V}\)</span> word embeddings for context words.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -1395,10 +1501,10 @@ Target word labels for the neural network:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is how the training samples look like:
-[(&#39;would&#39;, &#39;the&#39;), (&#39;would&#39;, &#39;dog&#39;), (&#39;would&#39;, &#39;like&#39;), (&#39;would&#39;, &#39;a&#39;), (&#39;like&#39;, &#39;dog&#39;), (&#39;like&#39;, &#39;would&#39;), (&#39;like&#39;, &#39;a&#39;), (&#39;like&#39;, &#39;piece&#39;), (&#39;a&#39;, &#39;would&#39;), (&#39;a&#39;, &#39;like&#39;), (&#39;a&#39;, &#39;piece&#39;), (&#39;a&#39;, &#39;of&#39;), (&#39;piece&#39;, &#39;like&#39;), (&#39;piece&#39;, &#39;a&#39;), (&#39;piece&#39;, &#39;of&#39;), (&#39;piece&#39;, &#39;the&#39;), (&#39;of&#39;, &#39;a&#39;), (&#39;of&#39;, &#39;piece&#39;), (&#39;of&#39;, &#39;the&#39;), (&#39;of&#39;, &#39;sandwich&#39;), (&#39;to&#39;, &#39;i&#39;), (&#39;to&#39;, &#39;like&#39;), (&#39;to&#39;, &#39;eat&#39;), (&#39;to&#39;, &#39;ice&#39;), (&#39;eat&#39;, &#39;like&#39;), (&#39;eat&#39;, &#39;to&#39;), (&#39;eat&#39;, &#39;ice&#39;), (&#39;eat&#39;, &#39;cream&#39;), (&#39;is&#39;, &#39;a&#39;), (&#39;is&#39;, &#39;dog&#39;), (&#39;is&#39;, &#39;a&#39;), (&#39;is&#39;, &#39;good&#39;), (&#39;a&#39;, &#39;dog&#39;), (&#39;a&#39;, &#39;is&#39;), (&#39;a&#39;, &#39;good&#39;), (&#39;a&#39;, &#39;friend&#39;)]
+[(&#39;vanilla&#39;, &#39;i&#39;), (&#39;vanilla&#39;, &#39;love&#39;), (&#39;vanilla&#39;, &#39;ice&#39;), (&#39;vanilla&#39;, &#39;cream&#39;), (&#39;strawberry&#39;, &#39;i&#39;), (&#39;strawberry&#39;, &#39;love&#39;), (&#39;strawberry&#39;, &#39;ice&#39;), (&#39;strawberry&#39;, &#39;cream&#39;), (&#39;capital&#39;, &#39;the&#39;), (&#39;capital&#39;, &#39;main&#39;), (&#39;capital&#39;, &#39;of&#39;), (&#39;capital&#39;, &#39;germany&#39;), (&#39;of&#39;, &#39;main&#39;), (&#39;of&#39;, &#39;capital&#39;), (&#39;of&#39;, &#39;germany&#39;), (&#39;of&#39;, &#39;is&#39;), (&#39;germany&#39;, &#39;capital&#39;), (&#39;germany&#39;, &#39;of&#39;), (&#39;germany&#39;, &#39;is&#39;), (&#39;germany&#39;, &#39;berlin&#39;), (&#39;capitol&#39;, &#39;the&#39;), (&#39;capitol&#39;, &#39;main&#39;), (&#39;capitol&#39;, &#39;of&#39;), (&#39;capitol&#39;, &#39;france&#39;), (&#39;of&#39;, &#39;main&#39;), (&#39;of&#39;, &#39;capitol&#39;), (&#39;of&#39;, &#39;france&#39;), (&#39;of&#39;, &#39;is&#39;), (&#39;france&#39;, &#39;capitol&#39;), (&#39;france&#39;, &#39;of&#39;), (&#39;france&#39;, &#39;is&#39;), (&#39;france&#39;, &#39;paris&#39;)]
 
 This is how the training samples information is provided:
-[(2, 0), (2, 1), (2, 3), (2, 4), (3, 1), (3, 2), (3, 4), (3, 5), (4, 2), (4, 3), (4, 5), (4, 6), (5, 3), (5, 4), (5, 6), (5, 0), (6, 4), (6, 5), (6, 0), (6, 7), (9, 8), (9, 3), (9, 10), (9, 11), (10, 3), (10, 9), (10, 11), (10, 12), (13, 4), (13, 1), (13, 4), (13, 14), (4, 1), (4, 13), (4, 14), (4, 15)]
+[(2, 0), (2, 1), (2, 3), (2, 4), (5, 0), (5, 1), (5, 3), (5, 4), (8, 6), (8, 7), (8, 9), (8, 10), (9, 7), (9, 8), (9, 10), (9, 11), (10, 8), (10, 9), (10, 11), (10, 12), (13, 6), (13, 7), (13, 9), (13, 14), (9, 7), (9, 13), (9, 14), (9, 11), (14, 13), (14, 9), (14, 11), (14, 15)]
 </pre></div>
 </div>
 </div>
@@ -1421,10 +1527,10 @@ This is how the training samples information is provided:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Input for the neural network:
-[2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 9, 9, 9, 9, 10, 10, 10, 10, 13, 13, 13, 13, 4, 4, 4, 4]
+[2, 2, 2, 2, 5, 5, 5, 5, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 13, 13, 13, 13, 9, 9, 9, 9, 14, 14, 14, 14]
 
 Target values for the neural network:
-[0, 1, 3, 4, 1, 2, 4, 5, 2, 3, 5, 6, 3, 4, 6, 0, 4, 5, 0, 7, 8, 3, 10, 11, 3, 9, 11, 12, 4, 1, 4, 14, 1, 13, 14, 15]
+[0, 1, 3, 4, 0, 1, 3, 4, 6, 7, 9, 10, 7, 8, 10, 11, 8, 9, 11, 12, 6, 7, 9, 14, 7, 13, 14, 11, 13, 9, 11, 15]
 </pre></div>
 </div>
 </div>
@@ -1471,7 +1577,7 @@ Target values for the neural network:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/efd6c544e92b060c263f1231f6088c40c3859bb8d47618db80acfc310ca94baa.png" src="_images/efd6c544e92b060c263f1231f6088c40c3859bb8d47618db80acfc310ca94baa.png" />
+<img alt="_images/542952887eaf9864e3298981b881520130800da5b1d463c5ac021cfb7094ad05.png" src="_images/542952887eaf9864e3298981b881520130800da5b1d463c5ac021cfb7094ad05.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1501,327 +1607,327 @@ Target values for the neural network:
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>the</th>
-      <th>dog</th>
-      <th>would</th>
-      <th>like</th>
-      <th>a</th>
-      <th>piece</th>
-      <th>of</th>
-      <th>sandwich</th>
       <th>i</th>
-      <th>to</th>
-      <th>eat</th>
+      <th>love</th>
+      <th>vanilla</th>
       <th>ice</th>
       <th>cream</th>
+      <th>strawberry</th>
+      <th>the</th>
+      <th>main</th>
+      <th>capital</th>
+      <th>of</th>
+      <th>germany</th>
       <th>is</th>
-      <th>good</th>
-      <th>friend</th>
+      <th>berlin</th>
+      <th>capitol</th>
+      <th>france</th>
+      <th>paris</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>the</th>
-      <td>1.000000</td>
-      <td>0.388015</td>
-      <td>0.045794</td>
-      <td>-0.174839</td>
-      <td>0.651106</td>
-      <td>0.291147</td>
-      <td>-0.093555</td>
-      <td>0.743372</td>
-      <td>-0.898381</td>
-      <td>-0.016954</td>
-      <td>-0.891559</td>
-      <td>-0.483374</td>
-      <td>0.004044</td>
-      <td>-0.818342</td>
-      <td>-0.621014</td>
-      <td>-0.832215</td>
-    </tr>
-    <tr>
-      <th>dog</th>
-      <td>0.388015</td>
-      <td>1.000000</td>
-      <td>0.938300</td>
-      <td>-0.370184</td>
-      <td>0.948580</td>
-      <td>0.992740</td>
-      <td>-0.124790</td>
-      <td>0.069364</td>
-      <td>-0.725996</td>
-      <td>-0.705607</td>
-      <td>-0.761330</td>
-      <td>-0.952171</td>
-      <td>-0.791643</td>
-      <td>0.203901</td>
-      <td>0.294924</td>
-      <td>0.187104</td>
-    </tr>
-    <tr>
-      <th>would</th>
-      <td>0.045794</td>
-      <td>0.938300</td>
-      <td>1.000000</td>
-      <td>-0.352637</td>
-      <td>0.785402</td>
-      <td>0.965564</td>
-      <td>-0.118309</td>
-      <td>-0.191928</td>
-      <td>-0.447230</td>
-      <td>-0.746385</td>
-      <td>-0.490166</td>
-      <td>-0.845626</td>
-      <td>-0.850092</td>
-      <td>0.529442</td>
-      <td>0.561911</td>
-      <td>0.515220</td>
-    </tr>
-    <tr>
-      <th>like</th>
-      <td>-0.174839</td>
-      <td>-0.370184</td>
-      <td>-0.352637</td>
-      <td>1.000000</td>
-      <td>-0.432756</td>
-      <td>-0.304935</td>
-      <td>0.967815</td>
-      <td>-0.632411</td>
-      <td>0.143957</td>
-      <td>-0.353054</td>
-      <td>0.262312</td>
-      <td>0.097237</td>
-      <td>-0.191088</td>
-      <td>-0.136448</td>
-      <td>-0.570110</td>
-      <td>-0.068187</td>
-    </tr>
-    <tr>
-      <th>a</th>
-      <td>0.651106</td>
-      <td>0.948580</td>
-      <td>0.785402</td>
-      <td>-0.432756</td>
-      <td>1.000000</td>
-      <td>0.905470</td>
-      <td>-0.209428</td>
-      <td>0.352487</td>
-      <td>-0.881967</td>
-      <td>-0.533770</td>
-      <td>-0.917403</td>
-      <td>-0.919733</td>
-      <td>-0.608178</td>
-      <td>-0.097864</td>
-      <td>0.075019</td>
-      <td>-0.121353</td>
-    </tr>
-    <tr>
-      <th>piece</th>
-      <td>0.291147</td>
-      <td>0.992740</td>
-      <td>0.965564</td>
-      <td>-0.304935</td>
-      <td>0.905470</td>
-      <td>1.000000</td>
-      <td>-0.055793</td>
-      <td>-0.050273</td>
-      <td>-0.662558</td>
-      <td>-0.770401</td>
-      <td>-0.692637</td>
-      <td>-0.950438</td>
-      <td>-0.852773</td>
-      <td>0.295345</td>
-      <td>0.340747</td>
-      <td>0.283721</td>
-    </tr>
-    <tr>
-      <th>of</th>
-      <td>-0.093555</td>
-      <td>-0.124790</td>
-      <td>-0.118309</td>
-      <td>0.967815</td>
-      <td>-0.209428</td>
-      <td>-0.055793</td>
-      <td>1.000000</td>
-      <td>-0.666300</td>
-      <td>-0.034030</td>
-      <td>-0.571223</td>
-      <td>0.082471</td>
-      <td>-0.152054</td>
-      <td>-0.422348</td>
-      <td>-0.078029</td>
-      <td>-0.518595</td>
-      <td>-0.009602</td>
-    </tr>
-    <tr>
-      <th>sandwich</th>
-      <td>0.743372</td>
-      <td>0.069364</td>
-      <td>-0.191928</td>
-      <td>-0.632411</td>
-      <td>0.352487</td>
-      <td>-0.050273</td>
-      <td>-0.666300</td>
-      <td>1.000000</td>
-      <td>-0.471193</td>
-      <td>0.575016</td>
-      <td>-0.527734</td>
-      <td>0.012589</td>
-      <td>0.525939</td>
-      <td>-0.679549</td>
-      <td>-0.271228</td>
-      <td>-0.728521</td>
-    </tr>
-    <tr>
       <th>i</th>
-      <td>-0.898381</td>
-      <td>-0.725996</td>
-      <td>-0.447230</td>
-      <td>0.143957</td>
-      <td>-0.881967</td>
-      <td>-0.662558</td>
-      <td>-0.034030</td>
-      <td>-0.471193</td>
       <td>1.000000</td>
-      <td>0.429290</td>
-      <td>0.992605</td>
-      <td>0.818360</td>
-      <td>0.429668</td>
-      <td>0.519581</td>
-      <td>0.403293</td>
-      <td>0.526547</td>
+      <td>0.953440</td>
+      <td>0.318513</td>
+      <td>0.998749</td>
+      <td>0.976138</td>
+      <td>0.286884</td>
+      <td>0.048907</td>
+      <td>-0.823801</td>
+      <td>-0.698166</td>
+      <td>-0.737598</td>
+      <td>-0.869544</td>
+      <td>-0.962727</td>
+      <td>-0.233840</td>
+      <td>-0.938120</td>
+      <td>-0.327748</td>
+      <td>-0.001658</td>
     </tr>
     <tr>
-      <th>to</th>
-      <td>-0.016954</td>
-      <td>-0.705607</td>
-      <td>-0.746385</td>
-      <td>-0.353054</td>
-      <td>-0.533770</td>
-      <td>-0.770401</td>
-      <td>-0.571223</td>
-      <td>0.575016</td>
-      <td>0.429290</td>
+      <th>love</th>
+      <td>0.953440</td>
       <td>1.000000</td>
-      <td>0.386018</td>
-      <td>0.819480</td>
-      <td>0.984432</td>
-      <td>-0.349301</td>
-      <td>-0.088023</td>
-      <td>-0.383025</td>
+      <td>0.024655</td>
+      <td>0.967289</td>
+      <td>0.996177</td>
+      <td>-0.009058</td>
+      <td>0.076273</td>
+      <td>-0.727107</td>
+      <td>-0.853817</td>
+      <td>-0.500105</td>
+      <td>-0.702728</td>
+      <td>-0.877104</td>
+      <td>-0.451678</td>
+      <td>-0.798156</td>
+      <td>-0.502871</td>
+      <td>0.256854</td>
     </tr>
     <tr>
-      <th>eat</th>
-      <td>-0.891559</td>
-      <td>-0.761330</td>
-      <td>-0.490166</td>
-      <td>0.262312</td>
-      <td>-0.917403</td>
-      <td>-0.692637</td>
-      <td>0.082471</td>
-      <td>-0.527734</td>
-      <td>0.992605</td>
-      <td>0.386018</td>
+      <th>vanilla</th>
+      <td>0.318513</td>
+      <td>0.024655</td>
       <td>1.000000</td>
-      <td>0.817332</td>
-      <td>0.407005</td>
-      <td>0.479127</td>
-      <td>0.315063</td>
-      <td>0.494108</td>
+      <td>0.272701</td>
+      <td>0.110287</td>
+      <td>0.999406</td>
+      <td>0.129639</td>
+      <td>-0.331461</td>
+      <td>0.282432</td>
+      <td>-0.867838</td>
+      <td>-0.610566</td>
+      <td>-0.480108</td>
+      <td>0.501733</td>
+      <td>-0.621862</td>
+      <td>0.624642</td>
+      <td>-0.899670</td>
     </tr>
     <tr>
       <th>ice</th>
-      <td>-0.483374</td>
-      <td>-0.952171</td>
-      <td>-0.845626</td>
-      <td>0.097237</td>
-      <td>-0.919733</td>
-      <td>-0.950438</td>
-      <td>-0.152054</td>
-      <td>0.012589</td>
-      <td>0.818360</td>
-      <td>0.819480</td>
-      <td>0.817332</td>
+      <td>0.998749</td>
+      <td>0.967289</td>
+      <td>0.272701</td>
       <td>1.000000</td>
-      <td>0.854339</td>
-      <td>-0.045516</td>
-      <td>-0.035305</td>
-      <td>-0.047131</td>
+      <td>0.985753</td>
+      <td>0.240498</td>
+      <td>0.057291</td>
+      <td>-0.811223</td>
+      <td>-0.729664</td>
+      <td>-0.703243</td>
+      <td>-0.846630</td>
+      <td>-0.955609</td>
+      <td>-0.273544</td>
+      <td>-0.921500</td>
+      <td>-0.356321</td>
+      <td>0.039250</td>
     </tr>
     <tr>
       <th>cream</th>
-      <td>0.004044</td>
-      <td>-0.791643</td>
-      <td>-0.850092</td>
-      <td>-0.191088</td>
-      <td>-0.608178</td>
-      <td>-0.852773</td>
-      <td>-0.422348</td>
-      <td>0.525939</td>
-      <td>0.429668</td>
-      <td>0.984432</td>
-      <td>0.407005</td>
-      <td>0.854339</td>
+      <td>0.976138</td>
+      <td>0.996177</td>
+      <td>0.110287</td>
+      <td>0.985753</td>
       <td>1.000000</td>
-      <td>-0.438699</td>
-      <td>-0.235282</td>
-      <td>-0.461979</td>
+      <td>0.076843</td>
+      <td>0.070436</td>
+      <td>-0.761414</td>
+      <td>-0.817462</td>
+      <td>-0.573789</td>
+      <td>-0.757479</td>
+      <td>-0.910698</td>
+      <td>-0.393775</td>
+      <td>-0.846590</td>
+      <td>-0.456051</td>
+      <td>0.183759</td>
+    </tr>
+    <tr>
+      <th>strawberry</th>
+      <td>0.286884</td>
+      <td>-0.009058</td>
+      <td>0.999406</td>
+      <td>0.240498</td>
+      <td>0.076843</td>
+      <td>1.000000</td>
+      <td>0.120059</td>
+      <td>-0.311371</td>
+      <td>0.314298</td>
+      <td>-0.852125</td>
+      <td>-0.589810</td>
+      <td>-0.449633</td>
+      <td>0.522278</td>
+      <td>-0.595025</td>
+      <td>0.637589</td>
+      <td>-0.906154</td>
+    </tr>
+    <tr>
+      <th>the</th>
+      <td>0.048907</td>
+      <td>0.076273</td>
+      <td>0.129639</td>
+      <td>0.057291</td>
+      <td>0.070436</td>
+      <td>0.120059</td>
+      <td>1.000000</td>
+      <td>0.508357</td>
+      <td>-0.444512</td>
+      <td>-0.016490</td>
+      <td>0.258653</td>
+      <td>-0.266587</td>
+      <td>-0.690684</td>
+      <td>-0.147852</td>
+      <td>0.620576</td>
+      <td>-0.428179</td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td>-0.823801</td>
+      <td>-0.727107</td>
+      <td>-0.331461</td>
+      <td>-0.811223</td>
+      <td>-0.761414</td>
+      <td>-0.311371</td>
+      <td>0.508357</td>
+      <td>1.000000</td>
+      <td>0.267344</td>
+      <td>0.712939</td>
+      <td>0.936748</td>
+      <td>0.694460</td>
+      <td>-0.278247</td>
+      <td>0.763093</td>
+      <td>0.522432</td>
+      <td>-0.107529</td>
+    </tr>
+    <tr>
+      <th>capital</th>
+      <td>-0.698166</td>
+      <td>-0.853817</td>
+      <td>0.282432</td>
+      <td>-0.729664</td>
+      <td>-0.817462</td>
+      <td>0.314298</td>
+      <td>-0.444512</td>
+      <td>0.267344</td>
+      <td>1.000000</td>
+      <td>0.111177</td>
+      <td>0.253884</td>
+      <td>0.669992</td>
+      <td>0.850073</td>
+      <td>0.502889</td>
+      <td>0.375838</td>
+      <td>-0.352468</td>
+    </tr>
+    <tr>
+      <th>of</th>
+      <td>-0.737598</td>
+      <td>-0.500105</td>
+      <td>-0.867838</td>
+      <td>-0.703243</td>
+      <td>-0.573789</td>
+      <td>-0.852125</td>
+      <td>-0.016490</td>
+      <td>0.712939</td>
+      <td>0.111177</td>
+      <td>1.000000</td>
+      <td>0.911268</td>
+      <td>0.812217</td>
+      <td>-0.309856</td>
+      <td>0.913309</td>
+      <td>-0.216459</td>
+      <td>0.602633</td>
+    </tr>
+    <tr>
+      <th>germany</th>
+      <td>-0.869544</td>
+      <td>-0.702728</td>
+      <td>-0.610566</td>
+      <td>-0.846630</td>
+      <td>-0.757479</td>
+      <td>-0.589810</td>
+      <td>0.258653</td>
+      <td>0.936748</td>
+      <td>0.253884</td>
+      <td>0.911268</td>
+      <td>1.000000</td>
+      <td>0.832531</td>
+      <td>-0.273500</td>
+      <td>0.914377</td>
+      <td>0.204430</td>
+      <td>0.225561</td>
     </tr>
     <tr>
       <th>is</th>
-      <td>-0.818342</td>
-      <td>0.203901</td>
-      <td>0.529442</td>
-      <td>-0.136448</td>
-      <td>-0.097864</td>
-      <td>0.295345</td>
-      <td>-0.078029</td>
-      <td>-0.679549</td>
-      <td>0.519581</td>
-      <td>-0.349301</td>
-      <td>0.479127</td>
-      <td>-0.045516</td>
-      <td>-0.438699</td>
+      <td>-0.962727</td>
+      <td>-0.877104</td>
+      <td>-0.480108</td>
+      <td>-0.955609</td>
+      <td>-0.910698</td>
+      <td>-0.449633</td>
+      <td>-0.266587</td>
+      <td>0.694460</td>
+      <td>0.669992</td>
+      <td>0.812217</td>
+      <td>0.832531</td>
       <td>1.000000</td>
-      <td>0.890338</td>
-      <td>0.997613</td>
+      <td>0.265018</td>
+      <td>0.977767</td>
+      <td>0.065504</td>
+      <td>0.238243</td>
     </tr>
     <tr>
-      <th>good</th>
-      <td>-0.621014</td>
-      <td>0.294924</td>
-      <td>0.561911</td>
-      <td>-0.570110</td>
-      <td>0.075019</td>
-      <td>0.340747</td>
-      <td>-0.518595</td>
-      <td>-0.271228</td>
-      <td>0.403293</td>
-      <td>-0.088023</td>
-      <td>0.315063</td>
-      <td>-0.035305</td>
-      <td>-0.235282</td>
-      <td>0.890338</td>
+      <th>berlin</th>
+      <td>-0.233840</td>
+      <td>-0.451678</td>
+      <td>0.501733</td>
+      <td>-0.273544</td>
+      <td>-0.393775</td>
+      <td>0.522278</td>
+      <td>-0.690684</td>
+      <td>-0.278247</td>
+      <td>0.850073</td>
+      <td>-0.309856</td>
+      <td>-0.273500</td>
+      <td>0.265018</td>
       <td>1.000000</td>
-      <td>0.856777</td>
+      <td>0.058857</td>
+      <td>0.127777</td>
+      <td>-0.335931</td>
     </tr>
     <tr>
-      <th>friend</th>
-      <td>-0.832215</td>
-      <td>0.187104</td>
-      <td>0.515220</td>
-      <td>-0.068187</td>
-      <td>-0.121353</td>
-      <td>0.283721</td>
-      <td>-0.009602</td>
-      <td>-0.728521</td>
-      <td>0.526547</td>
-      <td>-0.383025</td>
-      <td>0.494108</td>
-      <td>-0.047131</td>
-      <td>-0.461979</td>
-      <td>0.997613</td>
-      <td>0.856777</td>
+      <th>capitol</th>
+      <td>-0.938120</td>
+      <td>-0.798156</td>
+      <td>-0.621862</td>
+      <td>-0.921500</td>
+      <td>-0.846590</td>
+      <td>-0.595025</td>
+      <td>-0.147852</td>
+      <td>0.763093</td>
+      <td>0.502889</td>
+      <td>0.913309</td>
+      <td>0.914377</td>
+      <td>0.977767</td>
+      <td>0.058857</td>
+      <td>1.000000</td>
+      <td>0.011619</td>
+      <td>0.344294</td>
+    </tr>
+    <tr>
+      <th>france</th>
+      <td>-0.327748</td>
+      <td>-0.502871</td>
+      <td>0.624642</td>
+      <td>-0.356321</td>
+      <td>-0.456051</td>
+      <td>0.637589</td>
+      <td>0.620576</td>
+      <td>0.522432</td>
+      <td>0.375838</td>
+      <td>-0.216459</td>
+      <td>0.204430</td>
+      <td>0.065504</td>
+      <td>0.127777</td>
+      <td>0.011619</td>
+      <td>1.000000</td>
+      <td>-0.902717</td>
+    </tr>
+    <tr>
+      <th>paris</th>
+      <td>-0.001658</td>
+      <td>0.256854</td>
+      <td>-0.899670</td>
+      <td>0.039250</td>
+      <td>0.183759</td>
+      <td>-0.906154</td>
+      <td>-0.428179</td>
+      <td>-0.107529</td>
+      <td>-0.352468</td>
+      <td>0.602633</td>
+      <td>0.225561</td>
+      <td>0.238243</td>
+      <td>-0.335931</td>
+      <td>0.344294</td>
+      <td>-0.902717</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -1831,7 +1937,7 @@ Target values for the neural network:
 </section>
 <section id="practical-considerations">
 <h3>Practical considerations<a class="headerlink" href="#practical-considerations" title="Link to this heading">#</a></h3>
-<p>CBOW aggregates context by summing or averaging context word vectors. This has a smoothing effect which it may be helpful for smaller data sets. On the other side, it does not take full advantage of granular context information. As a consequence, it can be beneficial to use CBOW for smaller corpora and SG for larger ones. The embedding dimension is an important hyperparameter for the model. Choosing higher values may improve the understanding of context similarity, while, at the same time, more data is needed to learn this. Common choices for larger and pre-trained models are in the range <span class="math notranslate nohighlight">\([100, 300]\)</span>, however, sometimes embedding sizes go even higher. Another hyperparameter is the window size of the context. Common choices are between <span class="math notranslate nohighlight">\(5\)</span> and <span class="math notranslate nohighlight">\(10\)</span>. Very frequent words can dominate the training of word embeddings. A common technique is to down-sample these words or even completely ignore them. At the same time words which appear very rarely may also be ignored because general relationships are hard to identify.</p>
+<p>CBOW aggregates context by summing or averaging context word vectors. This has a smoothing effect which may be helpful for smaller data sets. On the other side, it does not take full advantage of granular text information. As a consequence, it can be beneficial to use CBOW for smaller corpora and SG for larger ones. The embedding dimension is an important hyperparameter for the model. Choosing higher values may improve the understanding of similarity, while, at the same time, more data is needed to learn this. Common choices for larger and pre-trained models are in the range <span class="math notranslate nohighlight">\([100, 300]\)</span>, however, sometimes embedding sizes go even higher. Another hyperparameter is the window size of the context. Common choices are between <span class="math notranslate nohighlight">\(5\)</span> and <span class="math notranslate nohighlight">\(10\)</span>. Very frequent words can dominate the training of word embeddings. A common technique is to down-sample these words or even completely ignore them. At the same time words which appear very rarely may also be ignored because general relationships are hard to identify. Furthermore, training the model as a common multi-class classification problem can become cumbersome as the target dimension is equal to the number unique terms in the corpus. In practice, the model is usually trained by hierarchical softmax or negative sampling. This is beyond the scope of this course which is about the intuition how similar word embeddings are created for words with similar meaning.</p>
 </section>
 </section>
 <section id="working-with-word-vectors">
@@ -1844,9 +1950,9 @@ Target values for the neural network:
 <li><p>examine word similarities</p></li>
 <li><p>examine word analogies</p></li>
 <li><p>determine document embeddings</p></li>
-<li><p>visualize word</p></li>
+<li><p>visualize word embeddings</p></li>
 </ul>
-<p>To determine word similarities, we compute a vector based similarity measure. The most popular choice in the natural language processing domain is the cosine similarity which has been presented in an earlier chapter of this book. For instance, the cell below shows the top ten similar words to the word</p>
+<p>To determine word similarities, we compute a vector based similarity measure. The most popular choice in the natural language processing domain is the cosine similarity which has been presented in an earlier chapter of this book. For instance, the cell below shows the top ten similar words to the word “crisis”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">KeyedVectors</span>
@@ -1893,6 +1999,12 @@ Target values for the neural network:
 <img alt="_images/bdd6928a86c0aa6846ded5f43f57a9f4ca61464e407b8346bff9bcaac3f87e54.png" src="_images/bdd6928a86c0aa6846ded5f43f57a9f4ca61464e407b8346bff9bcaac3f87e54.png" />
 </div>
 </div>
+<p>We also observe n-grams are included in the list of similar words. Usually, not all possible n-grams are taken into account, only very common combinations such as “New York”. To identify common n-grams, one can, e.g., determine a score as suggested by <a class="reference external" href="https://arxiv.org/pdf/1310.4546">Mikolov et al. (2013)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+score(w_i, w_j) = \frac{count(w_i, w_j) - \delta}{count(w_i) \cdot count(w_j)}
+\]</div>
+<p>With <span class="math notranslate nohighlight">\(count(w_i, w_j), count(w_i), count(w_j)\)</span> representing the number of co-occurrence for word pair <span class="math notranslate nohighlight">\(i,j\)</span> and individual occurrences, respectively, and, <span class="math notranslate nohighlight">\(\delta\)</span> a discounting coefficient. If a score exceeds a user-defined threshold, the pair is considered as a bi-gram. Repeating this counting process is also able to reveal n-grams of higher order.</p>
 <p>The next impressive aspect of word embeddings is that we can use vector calculus to examine similarities and dissimilarities between words. The most popular example is the word analogy of “woman” to “man” which should be similar to “queen” and “king”. Given the vectors <span class="math notranslate nohighlight">\(\boldsymbol{w}^{(woman)}, \boldsymbol{w}^{(man)}, \boldsymbol{w}^{(queen)}, \boldsymbol{w}^{(king)}\)</span>, we can calculate the differences <span class="math notranslate nohighlight">\(\boldsymbol{w}^{(woman)} - \boldsymbol{w}^{(man)}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{w}^{(queen)} - \boldsymbol{w}^{(king)}\)</span>. If the relation of woman to man is similar as the relation of queen to king, we should get:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1960,13 +2072,13 @@ Target values for the neural network:
 <span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="p">[</span><span class="n">google_word_vectors</span><span class="o">.</span><span class="n">get_mean_vector</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">]</span>
 <span class="n">cosine_similarity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sentence_embeddings</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pairwise cosine similarities:&quot;</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_similarity_matrix</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_similarity_matrix</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenized sentences:
-[[&#39;the&#39;, &#39;dog&#39;, &#39;would&#39;, &#39;like&#39;, &#39;a&#39;, &#39;piece&#39;, &#39;of&#39;, &#39;the&#39;, &#39;sandwich&#39;], [&#39;i&#39;, &#39;like&#39;, &#39;to&#39;, &#39;eat&#39;, &#39;ice&#39;, &#39;cream&#39;], [&#39;a&#39;, &#39;dog&#39;, &#39;is&#39;, &#39;a&#39;, &#39;good&#39;, &#39;friend&#39;]] 
+[[&#39;i&#39;, &#39;love&#39;, &#39;vanilla&#39;, &#39;ice&#39;, &#39;cream&#39;], [&#39;i&#39;, &#39;love&#39;, &#39;strawberry&#39;, &#39;ice&#39;, &#39;cream&#39;], [&#39;the&#39;, &#39;main&#39;, &#39;capital&#39;, &#39;of&#39;, &#39;germany&#39;, &#39;is&#39;, &#39;berlin&#39;], [&#39;the&#39;, &#39;main&#39;, &#39;capitol&#39;, &#39;of&#39;, &#39;france&#39;, &#39;is&#39;, &#39;paris&#39;]] 
 
 Pairwise cosine similarities:
 </pre></div>
@@ -1992,25 +2104,36 @@ Pairwise cosine similarities:
       <th>s1</th>
       <th>s2</th>
       <th>s3</th>
+      <th>s4</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>s1</th>
       <td>1.0000</td>
-      <td>0.5117</td>
-      <td>0.5692</td>
+      <td>0.9274</td>
+      <td>0.2842</td>
+      <td>0.3435</td>
     </tr>
     <tr>
       <th>s2</th>
-      <td>0.5117</td>
+      <td>0.9274</td>
       <td>1.0000</td>
-      <td>0.3753</td>
+      <td>0.2752</td>
+      <td>0.3356</td>
     </tr>
     <tr>
       <th>s3</th>
-      <td>0.5692</td>
-      <td>0.3753</td>
+      <td>0.2842</td>
+      <td>0.2752</td>
+      <td>1.0000</td>
+      <td>0.8298</td>
+    </tr>
+    <tr>
+      <th>s4</th>
+      <td>0.3435</td>
+      <td>0.3356</td>
+      <td>0.8298</td>
       <td>1.0000</td>
     </tr>
   </tbody>
@@ -2021,21 +2144,21 @@ Pairwise cosine similarities:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;environmental&quot;</span><span class="p">,</span> <span class="s2">&quot;social&quot;</span><span class="p">,</span> <span class="s2">&quot;governance&quot;</span><span class="p">]</span>
-<span class="n">google_word_vectors</span><span class="o">.</span><span class="n">similar_by_vector</span><span class="p">(</span><span class="n">google_word_vectors</span><span class="o">.</span><span class="n">get_mean_vector</span><span class="p">(</span><span class="n">topic_words</span><span class="p">))</span>
+<span class="n">google_word_vectors</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">topic_words</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;social&#39;, 0.7614427804946899),
- (&#39;environmental&#39;, 0.7357089519500732),
- (&#39;governance&#39;, 0.6950607895851135),
- (&#39;ecological&#39;, 0.6291204690933228),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;ecological&#39;, 0.6291204690933228),
  (&#39;corporate_governance_ESG&#39;, 0.6060682535171509),
  (&#39;governance_ESG_issues&#39;, 0.6004064679145813),
  (&#39;sustainablity&#39;, 0.5869180560112),
  (&#39;environmental_sustainability&#39;, 0.5842981338500977),
  (&#39;governance_ESG_factors&#39;, 0.5816299319267273),
- (&#39;governance_ESG&#39;, 0.57416170835495)]
+ (&#39;governance_ESG&#39;, 0.57416170835495),
+ (&#39;sustainability&#39;, 0.561872124671936),
+ (&#39;socio_economic&#39;, 0.5555124282836914),
+ (&#39;Melissa_McEver_covers&#39;, 0.5459955334663391)]
 </pre></div>
 </div>
 </div>
@@ -2100,9 +2223,9 @@ Pairwise cosine similarities:
 When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
 </pre></div>
 </div>
-<div class="output text_html"><div>                            <div id="96fe98d0-9964-4426-a9a1-93b098f3614d" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("96fe98d0-9964-4426-a9a1-93b098f3614d")) {                    Plotly.newPlot(                        "96fe98d0-9964-4426-a9a1-93b098f3614d",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["crises","turmoil","meltdown","credit_crunch","crisis.The","recession","downturn","subprime_mortgage_crisis","economic_downturn","liquidity_crunch","crisi","upheaval","turmoil_engulfing","crunch","calamity","contagion","malaise_gripping","upheavals","subprime_mortgage_meltdown","recesssion"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[-1.4922940731048584,-1.5750223398208618,-2.1032521724700928,2.111586093902588,2.4641637802124023,2.0910446643829346,2.1590545177459717,2.2322773933410645,1.9663782119750977,2.687757730484009,-3.3026344776153564,-1.84064781665802,-1.4036976099014282,-0.3663305342197418,-0.41726136207580566,2.2684600353240967,1.8820137977600098,-1.9909615516662598,2.047797203063965,2.2620131969451904],"xaxis":"x","y":[-0.7100429534912109,-0.636488139629364,-0.7516023516654968,-1.769202470779419,-1.657707929611206,-1.7749046087265015,-1.7257317304611206,-1.760103702545166,-1.7743935585021973,-1.4905539751052856,1.1474217176437378,-0.5874619483947754,-0.5020016431808472,-0.7437851428985596,-0.9357903599739075,-1.736565351486206,-1.69001042842865,-0.6005589962005615,-1.8342312574386597,-1.7260489463806152],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Fertittas","Susannah_Meadows","General_Yoshio_Utsumi","Kyonggi_Province","Mansheim","Macedonia_Nordonia","operator_Angkasa_Pura","Krambach","Outright_secular","Cook_Yourself_Thin","Ganira_Pashayeva","Peter_Whittall","BFGoodrich_Baja","Guernica_Picasso","Gumtree","striker_Stuart_Beavon","Daughter_Remembers","overbooked_flights","Tito_Massoud","Yong_Pyong","Phebra","Titlow","Info_www.tops.org","granola","Vladimir_Obradovic","Djang","----------_-----------------------------------------------_unaudited","ImageStation","Cerro_Grande","Auggie_Tantillo_executive","ROLL_OUT_THE","Combat_Infantryman_Badges","Thousand_Cranes","GREEN_PARTY","##M####","Toaff","Clake","Girbaud","Solotomo","Le_Cirque","Sven_Bruss","http:\u002f\u002fwww.avanquest.com","LI","Zeta_Ophiuchi","Patient_Monitoring_Market","Rekong_Peo","atopic_asthma","Ocitti","Zomi_Students_Federation","Cyngor","Alisha_Filmore","heat_exchanger_ruptured","Golden_Pin_Lanes","Jillie","Ti_Logistics_Briefing","Noor_Azam","BIAM_auditorium","Drapers_features","Anastazia_Kuzmina","Throne_Holst","Laura_Grevas_Worthington","mantling","WE_Thu","Steve_Chealander","TT_X_TRADER","Be_Exhumed","Picardi","Daejeon","Deluxe_Rooms","Franco_Prussian_War","ClearBlack_display","shampoo_contraceptives","Bukit_Payong","Deborah_Jeon","Raj_Thackerey","Sub_Swara","Quartermaster_Corps","Dichello_Distributors","Irawati","MCF####","Oquaye","SFA_disciplinary","GameZnFlix","Rube_Waddell","Sholom_Aleichem","Engagement_Rumors","wakame","LVDS_transmitter","director_Jesus_Puc","Athletic_Bilbao_Atletico_Madrid","Vijay_Kannan","Group_JSE_NED","Wellesley_Wenham_West","Don_DeFord","MAp_airports","fecal_coli","King_Athelstan","Jorge_Mario_Bergoglio","Tirumalasetti","Airbus_A###\u002fA###_aircraft"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[-2.1808485984802246,-2.1537938117980957,2.4029688835144043,4.15267276763916,-1.7311012744903564,-2.205284833908081,0.04217971861362457,1.4690673351287842,0.042269688099622726,-2.9758217334747314,2.120708465576172,2.445039749145508,2.046733856201172,-2.843052387237549,1.1765800714492798,1.3008999824523926,-3.1568150520324707,1.0835082530975342,1.6133891344070435,-1.018115520477295,2.252906322479248,-1.5707004070281982,-0.5430095791816711,-2.4786646366119385,-1.815774917602539,-0.7338646054267883,-3.5651698112487793,1.452361822128296,-1.0582629442214966,1.51152765750885,-5.303893089294434,0.8002625703811646,-3.681612253189087,-5.207736015319824,1.892197608947754,1.4126895666122437,-0.3515494763851166,-2.8461546897888184,4.278331756591797,-2.8994016647338867,-3.2425172328948975,0.14423444867134094,-1.4216967821121216,0.28243961930274963,0.8636484146118164,3.9889214038848877,-0.7453590631484985,3.734771966934204,3.7191503047943115,-3.660468578338623,-2.7608771324157715,-0.0019791615195572376,-1.4623425006866455,0.14898934960365295,-0.364860862493515,3.495605230331421,3.4517416954040527,-0.2748569846153259,-1.1345335245132446,-0.5958341360092163,-0.27831295132637024,0.2973524332046509,-0.6527619957923889,0.8677995204925537,1.5944644212722778,-1.089525818824768,-1.6622846126556396,4.130869388580322,-1.6954801082611084,-2.660170316696167,1.5458478927612305,-0.18718808889389038,3.6046249866485596,0.5701276659965515,3.741237163543701,-4.619618892669678,0.9202393293380737,-2.3172764778137207,3.484557628631592,1.9682667255401611,4.114999771118164,1.1936593055725098,1.5220274925231934,-3.9275460243225098,-3.6052944660186768,-2.91298246383667,-2.6422674655914307,1.7243282794952393,0.42391136288642883,0.7718990445137024,-0.19184736907482147,-0.025886619463562965,-3.6462345123291016,-0.1409636288881302,2.0933103561401367,-0.7329679131507874,1.047486662864685,-0.737467885017395,3.509896755218506,2.3378090858459473],"xaxis":"x","y":[0.7568840980529785,-3.9024486541748047,0.3805922567844391,-0.4456283748149872,3.84926700592041,4.65029764175415,1.8929076194763184,3.293119430541992,-3.2410998344421387,-2.3135671615600586,0.3907051980495453,-1.0076398849487305,-5.216128349304199,-1.1849111318588257,-2.8540914058685303,5.125800132751465,-1.368623971939087,-1.3893152475357056,0.9659081101417542,5.4798078536987305,-3.6607768535614014,3.6616737842559814,-3.5161030292510986,-2.9489338397979736,5.113847732543945,3.6723594665527344,-5.95825719833374,-5.425321102142334,-0.4302407503128052,-1.085823893547058,-3.83884596824646,-0.0326756052672863,-0.2623366713523865,-4.0505242347717285,-4.973182678222656,1.5675554275512695,4.034193515777588,-2.019984245300293,-2.9178965091705322,-2.186962842941284,2.7198245525360107,-3.3444411754608154,1.1705999374389648,-4.010463237762451,-2.8817880153656006,2.1476550102233887,-5.112679958343506,1.319050908088684,2.302431583404541,1.0407482385635376,5.139404296875,-4.356990337371826,4.821451187133789,3.6007254123687744,-2.804579973220825,0.6227918267250061,2.334800958633423,-2.1774609088897705,5.511955261230469,1.8638046979904175,-2.1472926139831543,-4.263006210327148,-2.3171393871307373,-0.7252888083457947,-4.361708164215088,-1.2088980674743652,3.090249538421631,-0.4527391791343689,0.17258358001708984,-0.792773425579071,-5.545612335205078,-4.818868637084961,0.49335163831710815,0.7466777563095093,2.4377994537353516,-0.25724494457244873,-0.0073157744482159615,-1.706594705581665,3.0190963745117188,-5.0131120681762695,1.135654091835022,5.1802077293396,-3.5284013748168945,5.516270637512207,-0.6501876711845398,-1.4693403244018555,-3.0828020572662354,-5.2367095947265625,0.11938036978244781,5.609327793121338,5.754137992858887,-1.9960871934890747,-4.097599029541016,1.4871129989624023,-1.3418861627578735,-4.382050514221191,3.173275947570801,-0.06568687409162521,2.798651933670044,-4.589817523956299],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+<div class="output text_html"><div>                            <div id="b280a337-6822-4bbd-8a7f-cc8d6456c585" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("b280a337-6822-4bbd-8a7f-cc8d6456c585")) {                    Plotly.newPlot(                        "b280a337-6822-4bbd-8a7f-cc8d6456c585",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["crises","turmoil","meltdown","credit_crunch","crisis.The","recession","downturn","subprime_mortgage_crisis","economic_downturn","liquidity_crunch","crisi","upheaval","turmoil_engulfing","crunch","calamity","contagion","malaise_gripping","upheavals","subprime_mortgage_meltdown","recesssion"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[-1.2140929698944092,-1.8246209621429443,-1.98341703414917,1.9825180768966675,2.5820558071136475,2.023837089538574,2.1812615394592285,2.1653425693511963,2.035900354385376,2.584946632385254,-3.334073305130005,-1.8453946113586426,-1.0656144618988037,-0.20353825390338898,-0.3432759642601013,2.4272000789642334,1.9369701147079468,-1.8910791873931885,2.077296495437622,2.258784532546997],"xaxis":"x","y":[-0.8536401391029358,-0.6487208008766174,-0.6845095753669739,-1.7863985300064087,-1.6978901624679565,-1.7085185050964355,-1.7622783184051514,-1.8251241445541382,-1.7424217462539673,-1.6697113513946533,1.0959030389785767,-0.6126121878623962,-0.6656309962272644,-0.6187843084335327,-0.9992165565490723,-1.598236083984375,-1.7377073764801025,-0.5995039343833923,-1.809852957725525,-1.7156572341918945],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["Fertittas","Susannah_Meadows","General_Yoshio_Utsumi","Kyonggi_Province","Mansheim","Macedonia_Nordonia","operator_Angkasa_Pura","Krambach","Outright_secular","Cook_Yourself_Thin","Ganira_Pashayeva","Peter_Whittall","BFGoodrich_Baja","Guernica_Picasso","Gumtree","striker_Stuart_Beavon","Daughter_Remembers","overbooked_flights","Tito_Massoud","Yong_Pyong","Phebra","Titlow","Info_www.tops.org","granola","Vladimir_Obradovic","Djang","----------_-----------------------------------------------_unaudited","ImageStation","Cerro_Grande","Auggie_Tantillo_executive","ROLL_OUT_THE","Combat_Infantryman_Badges","Thousand_Cranes","GREEN_PARTY","##M####","Toaff","Clake","Girbaud","Solotomo","Le_Cirque","Sven_Bruss","http:\u002f\u002fwww.avanquest.com","LI","Zeta_Ophiuchi","Patient_Monitoring_Market","Rekong_Peo","atopic_asthma","Ocitti","Zomi_Students_Federation","Cyngor","Alisha_Filmore","heat_exchanger_ruptured","Golden_Pin_Lanes","Jillie","Ti_Logistics_Briefing","Noor_Azam","BIAM_auditorium","Drapers_features","Anastazia_Kuzmina","Throne_Holst","Laura_Grevas_Worthington","mantling","WE_Thu","Steve_Chealander","TT_X_TRADER","Be_Exhumed","Picardi","Daejeon","Deluxe_Rooms","Franco_Prussian_War","ClearBlack_display","shampoo_contraceptives","Bukit_Payong","Deborah_Jeon","Raj_Thackerey","Sub_Swara","Quartermaster_Corps","Dichello_Distributors","Irawati","MCF####","Oquaye","SFA_disciplinary","GameZnFlix","Rube_Waddell","Sholom_Aleichem","Engagement_Rumors","wakame","LVDS_transmitter","director_Jesus_Puc","Athletic_Bilbao_Atletico_Madrid","Vijay_Kannan","Group_JSE_NED","Wellesley_Wenham_West","Don_DeFord","MAp_airports","fecal_coli","King_Athelstan","Jorge_Mario_Bergoglio","Tirumalasetti","Airbus_A###\u002fA###_aircraft"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[-0.9078962206840515,-2.1216304302215576,2.343888282775879,4.166727066040039,-1.5684884786605835,-2.23046612739563,0.0541657917201519,1.4666032791137695,-0.05656879022717476,-2.9882848262786865,2.1208786964416504,2.415250062942505,1.9205446243286133,-2.888190269470215,1.282513976097107,1.2256698608398438,-3.1026976108551025,1.0453617572784424,1.6300517320632935,-0.9820497035980225,2.2969839572906494,-1.450332522392273,-0.6634401082992554,-2.604949951171875,-1.8184677362442017,-0.5873401165008545,-3.5386428833007812,1.3944875001907349,-1.0506184101104736,1.6065526008605957,-5.365377426147461,0.7948641777038574,-3.660799503326416,-5.304263591766357,2.0164546966552734,1.4239736795425415,-0.2323468178510666,-2.8332252502441406,4.269224643707275,-2.8448498249053955,-3.233402967453003,0.17640654742717743,-4.9922637939453125,0.25407978892326355,0.8824209570884705,4.004482746124268,-0.5882684588432312,3.7248284816741943,3.6003637313842773,-3.6817641258239746,-2.737858533859253,0.032244499772787094,-2.087202787399292,0.22982235252857208,-0.3918234705924988,3.4214465618133545,3.438997983932495,-0.06924408674240112,-1.1253732442855835,-0.6048515439033508,-0.24384869635105133,0.3733590245246887,-0.6842519640922546,0.9275639057159424,1.4996081590652466,-1.0896050930023193,-1.659929871559143,4.119892120361328,-1.6867542266845703,-2.716231346130371,1.5152534246444702,-0.24774406850337982,3.5812504291534424,0.5797985792160034,3.740811347961426,-4.541807174682617,0.8909887075424194,-2.4254536628723145,3.496494770050049,1.9358251094818115,3.997441530227661,1.2263290882110596,1.6004661321640015,-3.8699092864990234,-3.7166364192962646,-3.0237863063812256,-2.6922104358673096,1.8034502267837524,0.3549380898475647,0.8653431534767151,-0.1913556009531021,0.07163399457931519,-3.656365394592285,-0.12930546700954437,1.9529870748519897,-0.6985359787940979,1.1108384132385254,-0.741998553276062,3.515655279159546,2.3215737342834473],"xaxis":"x","y":[0.4051090478897095,-3.796745538711548,0.36315542459487915,-0.45054391026496887,3.6525990962982178,4.666105270385742,1.8946287631988525,3.3121821880340576,-3.3303205966949463,-2.2663190364837646,0.3980594873428345,-0.8897274136543274,-5.135280609130859,-1.1150195598602295,-2.9294326305389404,5.096129417419434,-1.4680745601654053,-1.1743834018707275,0.97281414270401,5.463324069976807,-3.5347394943237305,3.547701358795166,-3.54077410697937,-2.859281063079834,5.115606307983398,3.7353055477142334,-5.9409613609313965,-5.412898063659668,-0.41469648480415344,-1.0139645338058472,-3.8413164615631104,-0.009372861124575138,-0.2640402019023895,-4.048075199127197,-5.060673713684082,1.5877482891082764,4.104689121246338,-2.0236048698425293,-2.922414779663086,-2.1630074977874756,2.706437110900879,-3.3648674488067627,-5.121730804443359,-4.014157772064209,-2.8899946212768555,2.167489528656006,-5.246896266937256,1.2568426132202148,2.1798219680786133,1.0249664783477783,5.1225080490112305,-4.437066555023193,1.2645732164382935,3.6128082275390625,-2.772735595703125,0.6336972713470459,2.2706098556518555,-2.125596284866333,5.5218400955200195,1.8345484733581543,-2.119499444961548,-4.5399169921875,-2.36015248298645,-0.6395877003669739,-4.394176959991455,-1.2312569618225098,3.0115966796875,-0.4511944055557251,0.14843466877937317,-0.8788166046142578,-5.625594615936279,-4.78620719909668,0.5274580121040344,0.7730829119682312,2.4249141216278076,-0.3855985701084137,-0.03916686400771141,-1.4337763786315918,2.9557158946990967,-5.032797336578369,1.225161075592041,5.207328796386719,-3.658646583557129,5.490629196166992,-0.6352900266647339,-1.4688876867294312,-2.9050958156585693,-5.202078342437744,0.162303626537323,5.591123104095459,5.724580764770508,-1.911829948425293,-4.101501941680908,1.5544551610946655,-1.2781084775924683,-4.432823657989502,2.3353517055511475,-0.11003630608320236,2.866053581237793,-4.537809371948242],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('96fe98d0-9964-4426-a9a1-93b098f3614d');
+var gd = document.getElementById('b280a337-6822-4bbd-8a7f-cc8d6456c585');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -2219,7 +2342,7 @@ attach	join	7.75
 </div>
 </div>
 </div>
-<p>Even though the text data spans over a longer history which also includes the subprime mortgage crisis, the word embedding seems to be closely connected to the covid crisis. However, the first words seem to make perfect sense in a more w.r.t. to a more general understanding of a crisis period.</p>
+<p>Even though the text data spans over a longer history which also includes the subprime mortgage crisis, the word embedding seems to be closely connected to the covid crisis. However, the first words seem to make perfect sense in a more general understanding of a crisis period.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">default_rng</span>
@@ -2262,90 +2385,25 @@ attach	join	7.75
 </div>
 </div>
 </div>
-<p>The domain specific vectors fail w.r.t. to this task. This is no big surprise, because it seems very unlikely that royal relationships are often discussed in financial reports.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tokenized sentences:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">corpus</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="p">[</span><span class="n">word_vectors</span><span class="o">.</span><span class="n">get_mean_vector</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span> <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">]</span>
-<span class="n">cosine_similarity_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cosine_similarity</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">sentence_embeddings</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pairwise cosine similarities:&quot;</span><span class="p">)</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cosine_similarity_matrix</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;s</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenized sentences:
-[[&#39;the&#39;, &#39;dog&#39;, &#39;would&#39;, &#39;like&#39;, &#39;a&#39;, &#39;piece&#39;, &#39;of&#39;, &#39;the&#39;, &#39;sandwich&#39;], [&#39;i&#39;, &#39;like&#39;, &#39;to&#39;, &#39;eat&#39;, &#39;ice&#39;, &#39;cream&#39;], [&#39;a&#39;, &#39;dog&#39;, &#39;is&#39;, &#39;a&#39;, &#39;good&#39;, &#39;friend&#39;]] 
-
-Pairwise cosine similarities:
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>s1</th>
-      <th>s2</th>
-      <th>s3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>s1</th>
-      <td>1.0000</td>
-      <td>0.7398</td>
-      <td>0.7805</td>
-    </tr>
-    <tr>
-      <th>s2</th>
-      <td>0.7398</td>
-      <td>1.0000</td>
-      <td>0.5976</td>
-    </tr>
-    <tr>
-      <th>s3</th>
-      <td>0.7805</td>
-      <td>0.5976</td>
-      <td>1.0000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Nevertheless, as before the sentence embedding similarities seem to make sense. However, the distinction with Google News embeddings seems to be better.</p>
+<p>The domain specific vectors fail w.r.t. to this task. This is no big surprise, because it seems very unlikely that royal relationships are often discussed in financial reports. Nevertheless, as before the sentence embedding similarities seem to make sense. However, the distinction with Google News embeddings seems to be better.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;environmental&quot;</span><span class="p">,</span> <span class="s2">&quot;social&quot;</span><span class="p">,</span> <span class="s2">&quot;governance&quot;</span><span class="p">]</span>
-<span class="n">word_vectors</span><span class="o">.</span><span class="n">similar_by_vector</span><span class="p">(</span><span class="n">word_vectors</span><span class="o">.</span><span class="n">get_mean_vector</span><span class="p">(</span><span class="n">topic_words</span><span class="p">))</span>
+<span class="n">word_vectors</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">topic_words</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;governance&#39;, 0.7420051097869873),
- (&#39;environmental&#39;, 0.7306384444236755),
- (&#39;social&#39;, 0.729841411113739),
- (&#39;esg&#39;, 0.5995034575462341),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;esg&#39;, 0.5995034575462341),
  (&#39;sustainability&#39;, 0.5876127481460571),
  (&#39;workplace&#39;, 0.5621027946472168),
  (&#39;cybersecurity&#39;, 0.5460812449455261),
  (&#39;worker&#39;, 0.5370159149169922),
  (&#39;health&#39;, 0.510663628578186),
- (&#39;stewardship&#39;, 0.5101289749145508)]
+ (&#39;stewardship&#39;, 0.5101289749145508),
+ (&#39;pollution&#39;, 0.5056083798408508),
+ (&#39;remediation&#39;, 0.5013638138771057),
+ (&#39;committees&#39;, 0.5011717677116394)]
 </pre></div>
 </div>
 </div>
@@ -2377,9 +2435,9 @@ Pairwise cosine similarities:
 When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
 </pre></div>
 </div>
-<div class="output text_html"><div>                            <div id="fbbc91c7-e0fb-4077-9d8a-df50a23b656c" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("fbbc91c7-e0fb-4077-9d8a-df50a23b656c")) {                    Plotly.newPlot(                        "fbbc91c7-e0fb-4077-9d8a-df50a23b656c",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["turmoil","recession","crises","downturn","pandemic","covid","slowdown","unprecedented","tightening","outbreak","economy","recessionary","lingering","macroeconomic","deteriorating","instability","worsening","coronavirus","dislocation","dislocations"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[10.83753490447998,10.795320510864258,10.84511661529541,10.837347984313965,10.918013572692871,10.908233642578125,10.881586074829102,10.860207557678223,10.852726936340332,10.906038284301758,10.775276184082031,10.822701454162598,10.864791870117188,10.786287307739258,10.843101501464844,10.722382545471191,10.870558738708496,10.924205780029297,10.853801727294922,10.826455116271973],"xaxis":"x","y":[10.565119743347168,10.396622657775879,10.76805305480957,10.415146827697754,10.707446098327637,10.656153678894043,10.426942825317383,10.398835182189941,10.404536247253418,10.790339469909668,10.381885528564453,10.375755310058594,10.366181373596191,10.413516998291016,10.364627838134766,10.779558181762695,10.326692581176758,10.744078636169434,10.396626472473145,10.476119041442871],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["sched","ugas","collectibles","salle","plers","disagreed","biod","dpler","recruitment","ldr","umber","nys","reinsurers","finisar","amune","golub","adata","galileo","originators","maidstone","slee","partners","brazing","usgovernmentsponsoredenterprises","constric","omniab","shortfalls","starting","serviceable","beings","hur","verastem","shenandoah","rox","ndc","trapped","dissol","gassegmentmember","sior","vpc","constructionandlanddevelopment","kog","arena","lihood","cyx","lomb","lucer","insec","coalmember","oncor","resolved","eco","nuo","pressur","lloy","docsis","filippo","acbb","unlocking","endow","certiorari","apu","abatements","stranded","administrator","strath","ogen","seriesofindividuallyimmaterial","risperidone","tv","hne","eafe","talis","vontier","verint","pwc","oradur","majo","rated","classb","mccrea","bux","lf","correction","resem","ameh","albu","wich","confirmations","part","graduate","adversaries","foss","championships","occi","gmac","sellers","behavi","veneers","asct"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[10.376482963562012,6.9051384925842285,10.127074241638184,8.66262435913086,12.246431350708008,8.842977523803711,14.8299560546875,8.414152145385742,9.67467975616455,13.290789604187012,9.121453285217285,7.4762701988220215,7.35081672668457,9.986435890197754,14.886052131652832,8.132356643676758,10.076327323913574,10.534982681274414,7.4392900466918945,9.094009399414062,11.574054718017578,8.441020011901855,12.557180404663086,3.0182945728302,10.967220306396484,9.151183128356934,10.423219680786133,8.918461799621582,11.040660858154297,12.990442276000977,10.327617645263672,9.041715621948242,8.789224624633789,11.646214485168457,9.582356452941895,12.744485855102539,13.024273872375488,3.4884369373321533,9.636380195617676,10.969590187072754,2.681403636932373,11.19328784942627,10.113462448120117,10.692462921142578,5.8734941482543945,9.516233444213867,5.55479621887207,6.102237701416016,3.1362550258636475,8.322808265686035,8.947258949279785,10.792257308959961,12.344991683959961,12.53714656829834,1.4914690256118774,10.542856216430664,9.666089057922363,2.4576995372772217,10.687508583068848,12.863743782043457,8.560831069946289,11.010842323303223,8.240715980529785,13.662920951843262,7.918063640594482,9.090187072753906,12.878588676452637,2.7700252532958984,14.616416931152344,9.905423164367676,10.380102157592773,7.067783355712891,10.615907669067383,9.160323143005371,10.062342643737793,11.528059959411621,14.567635536193848,9.753223419189453,6.816432952880859,1.7328428030014038,10.272699356079102,10.31324291229248,10.958335876464844,12.58948040008545,12.181228637695312,1.9161760807037354,14.349615097045898,9.02138900756836,9.256738662719727,7.6834940910339355,9.362051963806152,10.221720695495605,10.466765403747559,10.179023742675781,7.615113258361816,7.4352569580078125,8.351824760437012,10.910223007202148,12.641277313232422,14.812846183776855],"xaxis":"x","y":[7.191896438598633,6.960075378417969,6.710818767547607,2.208179235458374,7.463688850402832,10.983141899108887,7.305496692657471,5.79203987121582,8.438437461853027,7.512955188751221,1.6883752346038818,7.332895755767822,6.876563549041748,4.539992332458496,7.655300140380859,4.914822578430176,5.408006191253662,5.1118597984313965,8.056266784667969,1.1111066341400146,7.270543098449707,8.374444007873535,6.411561489105225,5.760363578796387,10.254424095153809,4.2562971115112305,10.45395278930664,10.078307151794434,7.5695624351501465,8.613946914672852,0.8494796752929688,4.1000237464904785,1.9182831048965454,3.5938684940338135,5.349385738372803,7.385086536407471,6.783617973327637,4.757144927978516,0.44181132316589355,5.690017223358154,6.523680686950684,1.3428826332092285,8.562149047851562,8.512731552124023,4.211390972137451,3.8388912677764893,3.5439491271972656,3.990264654159546,4.561169624328613,5.842823505401611,11.067580223083496,4.580596446990967,2.2549614906311035,6.933314323425293,4.851119518280029,6.449351787567139,0.35050374269485474,6.093127250671387,8.966402053833008,7.422707557678223,11.196460723876953,6.027379512786865,8.560344696044922,8.152339935302734,8.027772903442383,1.5857646465301514,6.58273983001709,4.6611008644104,7.4126057624816895,6.326502323150635,0.8985981941223145,7.203466892242432,4.765897750854492,4.644805908203125,5.213431358337402,0.5448281764984131,7.234646797180176,2.819570779800415,7.244627952575684,5.081926345825195,0.4892929792404175,0.8965780735015869,4.247100830078125,8.12839126586914,8.394965171813965,4.291287422180176,7.3341779708862305,1.8087093830108643,8.765791893005371,10.132669448852539,7.307994365692139,11.222977638244629,1.552749752998352,6.24831485748291,3.426279067993164,5.279391288757324,8.11817741394043,8.798338890075684,6.04239559173584,8.276979446411133],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
+<div class="output text_html"><div>                            <div id="39b7ef58-e466-4b01-9c38-0f8a59a1fb20" class="plotly-graph-div" style="height:600px; width:800px;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("39b7ef58-e466-4b01-9c38-0f8a59a1fb20")) {                    Plotly.newPlot(                        "39b7ef58-e466-4b01-9c38-0f8a59a1fb20",                        [{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=positive\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["turmoil","recession","crises","downturn","pandemic","covid","slowdown","unprecedented","tightening","outbreak","economy","recessionary","lingering","macroeconomic","deteriorating","instability","worsening","coronavirus","dislocation","dislocations"],"legendgroup":"positive","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"positive","orientation":"v","showlegend":true,"x":[10.857210159301758,10.810080528259277,10.795272827148438,10.817477226257324,10.917064666748047,10.90200424194336,10.80535888671875,10.863576889038086,10.869441986083984,10.967257499694824,10.76856803894043,10.863356590270996,10.91788387298584,10.802125930786133,10.833054542541504,10.78044605255127,10.848402976989746,10.95043659210205,10.886234283447266,10.85740852355957],"xaxis":"x","y":[10.508430480957031,10.415538787841797,10.776998519897461,10.325712203979492,10.74677562713623,10.704877853393555,10.298543930053711,10.380002975463867,10.40672779083252,10.798507690429688,10.319245338439941,10.435881614685059,10.325814247131348,10.470545768737793,10.34581470489502,10.829442024230957,10.350004196166992,10.75037956237793,10.417173385620117,10.471661567687988],"yaxis":"y","type":"scatter"},{"hovertemplate":"\u003cb\u003e%{hovertext}\u003c\u002fb\u003e\u003cbr\u003e\u003cbr\u003ecategory=negative\u003cbr\u003eu1=%{x}\u003cbr\u003eu2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","hovertext":["sched","ugas","collectibles","salle","plers","disagreed","biod","dpler","recruitment","ldr","umber","nys","reinsurers","finisar","amune","golub","adata","galileo","originators","maidstone","slee","partners","brazing","usgovernmentsponsoredenterprises","constric","omniab","shortfalls","starting","serviceable","beings","hur","verastem","shenandoah","rox","ndc","trapped","dissol","gassegmentmember","sior","vpc","constructionandlanddevelopment","kog","arena","lihood","cyx","lomb","lucer","insec","coalmember","oncor","resolved","eco","nuo","pressur","lloy","docsis","filippo","acbb","unlocking","endow","certiorari","apu","abatements","stranded","administrator","strath","ogen","seriesofindividuallyimmaterial","risperidone","tv","hne","eafe","talis","vontier","verint","pwc","oradur","majo","rated","classb","mccrea","bux","lf","correction","resem","ameh","albu","wich","confirmations","part","graduate","adversaries","foss","championships","occi","gmac","sellers","behavi","veneers","asct"],"legendgroup":"negative","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"negative","orientation":"v","showlegend":true,"x":[10.411331176757812,6.890118598937988,10.057909965515137,8.60591983795166,12.289682388305664,8.816549301147461,14.725055694580078,8.359762191772461,9.745463371276855,13.373151779174805,9.055221557617188,7.503292560577393,7.339141845703125,10.046509742736816,14.65689468383789,8.201094627380371,10.227177619934082,10.615815162658691,7.358488082885742,9.050503730773926,11.379741668701172,8.473151206970215,12.636300086975098,2.9465739727020264,10.985109329223633,9.06747817993164,10.4185209274292,8.914773941040039,10.950904846191406,12.997735977172852,10.61525821685791,9.042115211486816,8.670494079589844,11.62990951538086,9.651139259338379,12.766532897949219,13.072967529296875,3.5001509189605713,9.595946311950684,10.939663887023926,2.739825963973999,11.025832176208496,10.32573127746582,10.779003143310547,5.809340476989746,9.509055137634277,5.591249942779541,6.233206748962402,3.0830554962158203,8.302386283874512,8.943276405334473,10.79625129699707,12.500937461853027,12.510467529296875,1.4632296562194824,10.622445106506348,9.54965591430664,2.3885176181793213,10.57996654510498,12.7794828414917,8.593984603881836,11.186960220336914,8.228642463684082,13.63562297821045,7.941285133361816,9.190762519836426,12.90666675567627,2.8222532272338867,14.542598724365234,9.961931228637695,10.335898399353027,7.066584587097168,10.569425582885742,9.224593162536621,10.173218727111816,11.51836109161377,14.561854362487793,9.792682647705078,6.807532787322998,1.7168009281158447,10.188401222229004,9.978086471557617,10.909527778625488,12.66639232635498,12.187597274780273,1.8789089918136597,14.344908714294434,9.06030559539795,9.248556137084961,7.649738788604736,9.345136642456055,10.213220596313477,10.848432540893555,10.126039505004883,7.615251541137695,7.438923358917236,8.292107582092285,11.033453941345215,12.64391803741455,14.710515022277832],"xaxis":"x","y":[7.379482269287109,6.954648494720459,6.780051231384277,2.225438356399536,7.504296779632568,10.983810424804688,7.301891326904297,5.852311134338379,8.489005088806152,7.464242935180664,1.716375470161438,7.412707328796387,6.854798793792725,4.5710129737854,7.519672870635986,4.831189155578613,5.325491428375244,5.076511859893799,7.996293067932129,1.0577726364135742,7.195626258850098,8.368943214416504,6.436819076538086,5.822507858276367,10.236623764038086,4.268909454345703,10.403101921081543,10.12454891204834,7.681519508361816,8.646248817443848,1.0771844387054443,3.9801573753356934,1.8309316635131836,3.637488842010498,5.322319030761719,7.369973659515381,6.76078462600708,4.801892280578613,0.3273169994354248,5.731198787689209,6.559962749481201,1.187261700630188,8.534488677978516,8.55370044708252,4.2027106285095215,3.8574702739715576,3.547642707824707,4.035439491271973,4.55120325088501,5.840318202972412,11.045275688171387,4.6720476150512695,2.1759092807769775,6.9212727546691895,4.84919548034668,6.399466037750244,0.31773141026496887,5.972601413726807,8.918779373168945,7.370157241821289,11.135428428649902,5.9036664962768555,8.52700424194336,8.158476829528809,7.998612403869629,1.4971576929092407,6.69576358795166,4.672540664672852,7.428426265716553,6.371067047119141,0.6820977926254272,7.1792073249816895,4.686826705932617,4.692773818969727,5.20797872543335,0.5342817306518555,7.2030768394470215,2.8640851974487305,7.260822296142578,4.975733280181885,0.37325620651245117,0.9958796501159668,4.28814172744751,8.298391342163086,8.438217163085938,4.3272809982299805,7.389791488647461,1.8078789710998535,8.738363265991211,10.166670799255371,7.299733638763428,11.196815490722656,1.5393284559249878,6.288341522216797,3.473297595977783,5.268494129180908,8.099133491516113,8.813347816467285,5.973332405090332,8.287602424621582],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"u1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"u2"}},"legend":{"title":{"text":"category"},"tracegroupgap":0},"title":{"text":"Similar and random words for the word: crisis in 2D"},"height":600,"width":800},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('fbbc91c7-e0fb-4077-9d8a-df50a23b656c');
+var gd = document.getElementById('39b7ef58-e466-4b01-9c38-0f8a59a1fb20');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
