@@ -459,27 +459,325 @@ that differ in the way which parts of the transformer are used and which trainin
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Preprocessed example sentence number 1:
-----------------------------------------------------------------------------------------------------
-[&#39;[CLS]&#39;, &#39;the&#39;, &#39;dog&#39;, &#39;would&#39;, &#39;like&#39;, &#39;a&#39;, &#39;piece&#39;, &#39;of&#39;, &#39;the&#39;, &#39;sandwich&#39;, &#39;[SEP]&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">gaierror</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connection.py:203,</span> in <span class="ni">HTTPConnection._new_conn</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">203</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>         <span class="n">source_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="n">socket_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">socket_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
- Corresponding token ids:
-----------------------------------------------------------------------------------------------------
-[101, 1996, 3899, 2052, 2066, 1037, 3538, 1997, 1996, 11642, 102]
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/util/connection.py:60,</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address, socket_options)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span>     <span class="k">raise</span> <span class="n">LocationParseError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">host</span><span class="si">}</span><span class="s2">&#39;, label empty or too long&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
+<span class="ne">---&gt; </span><span class="mi">60</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
 
- Shape of the BERT output for this sentence:
-----------------------------------------------------------------------------------------------------
-torch.Size([1, 11, 768])
+<span class="nn">File /opt/homebrew/Cellar/python@3.11/3.11.7_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/socket.py:962,</span> in <span class="ni">getaddrinfo</span><span class="nt">(host, port, family, type, proto, flags)</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span> <span class="n">addrlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">--&gt; </span><span class="mi">962</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">_socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">family</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="n">af</span><span class="p">,</span> <span class="n">socktype</span><span class="p">,</span> <span class="n">proto</span><span class="p">,</span> <span class="n">canonname</span><span class="p">,</span> <span class="n">sa</span> <span class="o">=</span> <span class="n">res</span>
 
- First ten embedding numbers for the word &quot;the&quot; in the sentence beginning:
-----------------------------------------------------------------------------------------------------
-tensor([-0.2704, -0.1033,  0.3877, -0.3113,  0.6653,  0.6063, -0.1018,  0.4087,
-         0.4454,  0.2812])
+<span class="ne">gaierror</span>: [Errno 8] nodename nor servname provided, or not known
 
- First ten embedding numbers for the word &quot;the&quot; in the sentence ending:
-----------------------------------------------------------------------------------------------------
-tensor([-0.7568, -0.3465, -0.2336,  0.3571,  0.5186,  0.1808, -0.3280,  0.7645,
-        -0.3733, -0.0666])
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">BertTokenizer</span><span class="p">,</span> <span class="n">BertModel</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">torch</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">BertTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">model</span> <span class="o">=</span> <span class="n">BertModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="s2">&quot;The dog would like a piece of the sandwich&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="s2">&quot;I like to eat ice-cream&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="s2">&quot;A dog is a good friend&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">]</span> 
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/transformers/tokenization_utils_base.py:2135,</span> in <span class="ni">PreTrainedTokenizerBase.from_pretrained</span><span class="nt">(cls, pretrained_model_name_or_path, cache_dir, force_download, local_files_only, token, revision, trust_remote_code, *init_inputs, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2132</span> <span class="k">if</span> <span class="s2">&quot;tokenizer_file&quot;</span> <span class="ow">in</span> <span class="n">vocab_files</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2133</span>     <span class="c1"># Try to get the tokenizer config to see if there are versioned tokenizer files.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2134</span>     <span class="n">fast_tokenizer_file</span> <span class="o">=</span> <span class="n">FULL_TOKENIZER_FILE</span>
+<span class="ne">-&gt; </span><span class="mi">2135</span>     <span class="n">resolved_config_file</span> <span class="o">=</span> <span class="n">cached_file</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2136</span>         <span class="n">pretrained_model_name_or_path</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span>         <span class="n">TOKENIZER_CONFIG_FILE</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2138</span>         <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2139</span>         <span class="n">force_download</span><span class="o">=</span><span class="n">force_download</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span>         <span class="n">resume_download</span><span class="o">=</span><span class="n">resume_download</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2141</span>         <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2142</span>         <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2143</span>         <span class="n">revision</span><span class="o">=</span><span class="n">revision</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2144</span>         <span class="n">local_files_only</span><span class="o">=</span><span class="n">local_files_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2145</span>         <span class="n">subfolder</span><span class="o">=</span><span class="n">subfolder</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2146</span>         <span class="n">user_agent</span><span class="o">=</span><span class="n">user_agent</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2147</span>         <span class="n">_raise_exceptions_for_gated_repo</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2148</span>         <span class="n">_raise_exceptions_for_missing_entries</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2149</span>         <span class="n">_raise_exceptions_for_connection_errors</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2150</span>         <span class="n">_commit_hash</span><span class="o">=</span><span class="n">commit_hash</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2151</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2152</span>     <span class="n">commit_hash</span> <span class="o">=</span> <span class="n">extract_commit_hash</span><span class="p">(</span><span class="n">resolved_config_file</span><span class="p">,</span> <span class="n">commit_hash</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2153</span>     <span class="k">if</span> <span class="n">resolved_config_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/transformers/utils/hub.py:403,</span> in <span class="ni">cached_file</span><span class="nt">(path_or_repo_id, filename, cache_dir, force_download, resume_download, proxies, token, revision, local_files_only, subfolder, repo_type, user_agent, _raise_exceptions_for_gated_repo, _raise_exceptions_for_missing_entries, _raise_exceptions_for_connection_errors, _commit_hash, **deprecated_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">400</span> <span class="n">user_agent</span> <span class="o">=</span> <span class="n">http_user_agent</span><span class="p">(</span><span class="n">user_agent</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="c1"># Load from URL or cache if already cached</span>
+<span class="ne">--&gt; </span><span class="mi">403</span>     <span class="n">resolved_file</span> <span class="o">=</span> <span class="n">hf_hub_download</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span>         <span class="n">path_or_repo_id</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span>         <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="n">subfolder</span><span class="o">=</span><span class="kc">None</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subfolder</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">subfolder</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>         <span class="n">repo_type</span><span class="o">=</span><span class="n">repo_type</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>         <span class="n">revision</span><span class="o">=</span><span class="n">revision</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="n">user_agent</span><span class="o">=</span><span class="n">user_agent</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="n">force_download</span><span class="o">=</span><span class="n">force_download</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>         <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span>         <span class="n">resume_download</span><span class="o">=</span><span class="n">resume_download</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span>         <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span>         <span class="n">local_files_only</span><span class="o">=</span><span class="n">local_files_only</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span> <span class="k">except</span> <span class="n">GatedRepoError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="n">resolved_file</span> <span class="o">=</span> <span class="n">_get_cache_file_to_return</span><span class="p">(</span><span class="n">path_or_repo_id</span><span class="p">,</span> <span class="n">full_filename</span><span class="p">,</span> <span class="n">cache_dir</span><span class="p">,</span> <span class="n">revision</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_deprecation.py:101,</span> in <span class="ni">_deprecate_arguments.&lt;locals&gt;._inner_deprecate_positional_args.&lt;locals&gt;.inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>         <span class="n">message</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">custom_message</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">101</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py:114,</span> in <span class="ni">validate_hf_hub_args.&lt;locals&gt;._inner_fn</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">if</span> <span class="n">check_use_auth_token</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">smoothly_deprecate_use_auth_token</span><span class="p">(</span><span class="n">fn_name</span><span class="o">=</span><span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">has_token</span><span class="o">=</span><span class="n">has_token</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">114</span> <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:1232,</span> in <span class="ni">hf_hub_download</span><span class="nt">(repo_id, filename, subfolder, repo_type, revision, library_name, library_version, cache_dir, local_dir, user_agent, force_download, proxies, etag_timeout, token, local_files_only, headers, endpoint, legacy_cache_layout, resume_download, force_filename, local_dir_use_symlinks)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1212</span>     <span class="k">return</span> <span class="n">_hf_hub_download_to_local_dir</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>         <span class="c1"># Destination</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span>         <span class="n">local_dir</span><span class="o">=</span><span class="n">local_dir</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1229</span>         <span class="n">local_files_only</span><span class="o">=</span><span class="n">local_files_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1230</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1231</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1232</span>     <span class="k">return</span> <span class="n">_hf_hub_download_to_cache_dir</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1233</span>         <span class="c1"># Destination</span>
+<span class="g g-Whitespace">   </span><span class="mi">1234</span>         <span class="n">cache_dir</span><span class="o">=</span><span class="n">cache_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1235</span>         <span class="c1"># File info</span>
+<span class="g g-Whitespace">   </span><span class="mi">1236</span>         <span class="n">repo_id</span><span class="o">=</span><span class="n">repo_id</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1237</span>         <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1238</span>         <span class="n">repo_type</span><span class="o">=</span><span class="n">repo_type</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1239</span>         <span class="n">revision</span><span class="o">=</span><span class="n">revision</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span>         <span class="c1"># HTTP info</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span>         <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span>         <span class="n">etag_timeout</span><span class="o">=</span><span class="n">etag_timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>         <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1244</span>         <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1245</span>         <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1246</span>         <span class="c1"># Additional options</span>
+<span class="g g-Whitespace">   </span><span class="mi">1247</span>         <span class="n">local_files_only</span><span class="o">=</span><span class="n">local_files_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1248</span>         <span class="n">force_download</span><span class="o">=</span><span class="n">force_download</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span>     <span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:1295,</span> in <span class="ni">_hf_hub_download_to_cache_dir</span><span class="nt">(cache_dir, repo_id, filename, repo_type, revision, endpoint, etag_timeout, headers, proxies, token, local_files_only, force_download)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1291</span>         <span class="k">return</span> <span class="n">pointer_path</span>
+<span class="g g-Whitespace">   </span><span class="mi">1293</span> <span class="c1"># Try to get metadata (etag, commit_hash, url, size) from the server.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1294</span> <span class="c1"># If we can&#39;t, a HEAD request error is returned.</span>
+<span class="ne">-&gt; </span><span class="mi">1295</span> <span class="p">(</span><span class="n">url_to_download</span><span class="p">,</span> <span class="n">etag</span><span class="p">,</span> <span class="n">commit_hash</span><span class="p">,</span> <span class="n">expected_size</span><span class="p">,</span> <span class="n">head_call_error</span><span class="p">)</span> <span class="o">=</span> <span class="n">_get_metadata_or_catch_error</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1296</span>     <span class="n">repo_id</span><span class="o">=</span><span class="n">repo_id</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1297</span>     <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1298</span>     <span class="n">repo_type</span><span class="o">=</span><span class="n">repo_type</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1299</span>     <span class="n">revision</span><span class="o">=</span><span class="n">revision</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1300</span>     <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1301</span>     <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1302</span>     <span class="n">etag_timeout</span><span class="o">=</span><span class="n">etag_timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1303</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1304</span>     <span class="n">token</span><span class="o">=</span><span class="n">token</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1305</span>     <span class="n">local_files_only</span><span class="o">=</span><span class="n">local_files_only</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1306</span>     <span class="n">storage_folder</span><span class="o">=</span><span class="n">storage_folder</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1307</span>     <span class="n">relative_filename</span><span class="o">=</span><span class="n">relative_filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1308</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1310</span> <span class="c1"># etag can be None for several reasons:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1311</span> <span class="c1"># 1. we passed local_files_only.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1312</span> <span class="c1"># 2. we don&#39;t have a connection</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1318</span> <span class="c1"># If the specified revision is a commit hash, look inside &quot;snapshots&quot;.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1319</span> <span class="c1"># If the specified revision is a branch or tag, look inside &quot;refs&quot;.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1320</span> <span class="k">if</span> <span class="n">head_call_error</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1321</span>     <span class="c1"># Couldn&#39;t make a HEAD call =&gt; let&#39;s try to find a local file</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:1746,</span> in <span class="ni">_get_metadata_or_catch_error</span><span class="nt">(repo_id, filename, repo_type, revision, endpoint, proxies, etag_timeout, headers, token, local_files_only, relative_filename, storage_folder)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1746</span>         <span class="n">metadata</span> <span class="o">=</span> <span class="n">get_hf_file_metadata</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1747</span>             <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">etag_timeout</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">token</span>
+<span class="g g-Whitespace">   </span><span class="mi">1748</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1749</span>     <span class="k">except</span> <span class="n">EntryNotFoundError</span> <span class="k">as</span> <span class="n">http_error</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1750</span>         <span class="k">if</span> <span class="n">storage_folder</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">relative_filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1751</span>             <span class="c1"># Cache the non-existence of the file</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py:114,</span> in <span class="ni">validate_hf_hub_args.&lt;locals&gt;._inner_fn</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="k">if</span> <span class="n">check_use_auth_token</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">kwargs</span> <span class="o">=</span> <span class="n">smoothly_deprecate_use_auth_token</span><span class="p">(</span><span class="n">fn_name</span><span class="o">=</span><span class="n">fn</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">has_token</span><span class="o">=</span><span class="n">has_token</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">114</span> <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:1666,</span> in <span class="ni">get_hf_file_metadata</span><span class="nt">(url, token, proxies, timeout, library_name, library_version, user_agent, headers)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1663</span> <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Accept-Encoding&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;identity&quot;</span>  <span class="c1"># prevent any compression =&gt; we want to know the real size of the file</span>
+<span class="g g-Whitespace">   </span><span class="mi">1665</span> <span class="c1"># Retrieve metadata</span>
+<span class="ne">-&gt; </span><span class="mi">1666</span> <span class="n">r</span> <span class="o">=</span> <span class="n">_request_wrapper</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">method</span><span class="o">=</span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1670</span>     <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1671</span>     <span class="n">follow_relative_redirects</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1672</span>     <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1673</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1674</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1675</span> <span class="n">hf_raise_for_status</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1677</span> <span class="c1"># Return</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:364,</span> in <span class="ni">_request_wrapper</span><span class="nt">(method, url, follow_relative_redirects, **params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">362</span> <span class="c1"># Recursively follow relative redirects</span>
+<span class="g g-Whitespace">    </span><span class="mi">363</span> <span class="k">if</span> <span class="n">follow_relative_redirects</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">364</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">_request_wrapper</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">365</span>         <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span>         <span class="n">follow_relative_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span>         <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span>     <span class="c1"># If redirection, we redirect only relative paths.</span>
+<span class="g g-Whitespace">    </span><span class="mi">372</span>     <span class="c1"># This is useful in case of a renamed repository.</span>
+<span class="g g-Whitespace">    </span><span class="mi">373</span>     <span class="k">if</span> <span class="mi">300</span> <span class="o">&lt;=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">&lt;=</span> <span class="mi">399</span><span class="p">:</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/file_download.py:387,</span> in <span class="ni">_request_wrapper</span><span class="nt">(method, url, follow_relative_redirects, **params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">384</span>     <span class="k">return</span> <span class="n">response</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span> <span class="c1"># Perform request and return if status_code is not in the retry list.</span>
+<span class="ne">--&gt; </span><span class="mi">387</span> <span class="n">response</span> <span class="o">=</span> <span class="n">get_session</span><span class="p">()</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">388</span> <span class="n">hf_raise_for_status</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">389</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/huggingface_hub/utils/_http.py:93,</span> in <span class="ni">UniqueRequestIdAdapter.send</span><span class="nt">(self, request, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Catch any RequestException to append request id to the error message for debugging.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">93</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">RequestException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="n">request_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">X_AMZN_TRACE_ID</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/requests/adapters.py:667,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeoutSauce</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">682</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py:790,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span> <span class="c1"># Make the request on the HTTPConnection object</span>
+<span class="ne">--&gt; </span><span class="mi">790</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">800</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">801</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">805</span> <span class="c1"># Everything went great!</span>
+<span class="g g-Whitespace">    </span><span class="mi">806</span> <span class="n">clean_exit</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py:467,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
+<span class="g g-Whitespace">    </span><span class="mi">464</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">465</span>     <span class="c1"># Trigger any extra validation we need to do.</span>
+<span class="g g-Whitespace">    </span><span class="mi">466</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">467</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span>     <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">conn</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py:1096,</span> in <span class="ni">HTTPSConnectionPool._validate_conn</span><span class="nt">(self, conn)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1094</span> <span class="c1"># Force connect early to allow us to validate the connection.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_closed</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1096</span>     <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_verified</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>         <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>             <span class="sa">f</span><span class="s2">&quot;Unverified HTTPS request is being made to host &#39;</span><span class="si">{</span><span class="n">conn</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1106</span>         <span class="n">InsecureRequestWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1107</span>     <span class="p">)</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connection.py:611,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">609</span> <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span>     <span class="n">sock</span><span class="p">:</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span> <span class="o">|</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLSocket</span>
+<span class="ne">--&gt; </span><span class="mi">611</span>     <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new_conn</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>     <span class="n">server_hostname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">host</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="n">tls_in_tls</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connection.py:210,</span> in <span class="ni">HTTPConnection._new_conn</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="n">sock</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>         <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>         <span class="n">source_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>         <span class="n">socket_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">socket_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">210</span>     <span class="k">raise</span> <span class="n">NameResolutionError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+<span class="g g-Whitespace">    </span><span class="mi">211</span> <span class="k">except</span> <span class="n">SocketTimeout</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="k">raise</span> <span class="n">ConnectTimeoutError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>         <span class="sa">f</span><span class="s2">&quot;Connection to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="si">}</span><span class="s2"> timed out. (connect timeout=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+
+<span class="nn">File ~/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.11/site-packages/urllib3/connection.py:168,</span> in <span class="ni">HTTPConnection.host</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_tunnel_scheme</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span> <span class="c1"># https://github.com/python/mypy/issues/4125</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="c1"># Mypy treats this as LSP violation, which is considered a bug.</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="c1"># If `host` is made a property it violates LSP, because a writeable attribute is overridden with a read-only one.</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span> <span class="c1"># However, there is also a `host` setter so LSP is not violated.</span>
+<span class="g g-Whitespace">    </span><span class="mi">167</span> <span class="c1"># Potentially, a `@host.deleter` might be needed depending on how this issue will be fixed.</span>
+<span class="ne">--&gt; </span><span class="mi">168</span> <span class="nd">@property</span>
+<span class="g g-Whitespace">    </span><span class="mi">169</span> <span class="k">def</span> <span class="nf">host</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span><span class="sd">     Getter method to remove any trailing dots that indicate the hostname is an FQDN.</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span><span class="sd">     actual TCP connection across which we&#39;re going to send HTTP requests).</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dns_host</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -525,12 +823,6 @@ tensor([-0.7568, -0.3465, -0.2336,  0.3571,  0.5186,  0.1808, -0.3280,  0.7645,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BertForMaskedLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly overwritten. However, it doesn&#39;t directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
-  - If you&#39;re using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
-  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you&#39;ll get an exception).
-  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
-</pre></div>
-</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some weights of the model checkpoint at bert-base-uncased were not used when initializing BertForMaskedLM: [&#39;bert.pooler.dense.bias&#39;, &#39;bert.pooler.dense.weight&#39;, &#39;cls.seq_relationship.bias&#39;, &#39;cls.seq_relationship.weight&#39;]
 - This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
 - This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
@@ -550,11 +842,11 @@ tensor([-0.7568, -0.3465, -0.2336,  0.3571,  0.5186,  0.1808, -0.3280,  0.7645,
 
  Probability predictions for the first 20 words in the lexicon, given the first masked token:
  
-[9.79043406e-08 1.16180381e-07 9.52346539e-08 1.10266356e-07
- 1.08428324e-07 1.06025531e-07 1.09137197e-07 1.16444149e-07
- 9.25754122e-08 1.10625955e-07 1.11280080e-07 1.08806518e-07
- 9.45591623e-08 1.20132810e-07 1.08166411e-07 8.49750634e-08
- 1.04969438e-07 9.28835107e-08 1.08935879e-07 1.15667852e-07]
+[9.79041275e-08 1.16179564e-07 9.52343484e-08 1.10266001e-07
+ 1.08427777e-07 1.06024892e-07 1.09136337e-07 1.16443566e-07
+ 9.25745880e-08 1.10625280e-07 1.11278887e-07 1.08806383e-07
+ 9.45586791e-08 1.20131986e-07 1.08165757e-07 8.49745518e-08
+ 1.04968898e-07 9.28828641e-08 1.08935438e-07 1.15667603e-07]
 </pre></div>
 </div>
 </div>

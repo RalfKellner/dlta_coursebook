@@ -1,5 +1,6 @@
 .DS_Store
 .venv/
+.idea/
 data/
 language_models/
 notebooks/
@@ -9,5 +10,8 @@ yt/00_collect_eightk_filings.py
 yt/00_collect_top_reddits.py
 yt/apple_eightks.csv
 yt/reddit_api_credentials.json
+yt/d2v_demo
+yt/99_d2v.ipynb
 tex/
 !tex/dlta.pdf
+top2vec/*
