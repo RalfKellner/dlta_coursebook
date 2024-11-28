@@ -10,8 +10,8 @@ chapters:
 - file: 04_neural_networks
 - file: 05_word_embeddings
 - file: 06_document_embeddings
-- file: 07_transformer
-- file: 08_bert
-- file: 09_text_analysis_finance
+- file: 07_text_analysis_finance
+- file: 08_transformer
+- file: 09_bert
 - file: 10_case_study_8k
 

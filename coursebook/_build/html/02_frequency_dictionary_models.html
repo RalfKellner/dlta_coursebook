@@ -14,57 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '02_frequency_dictionary_models';</script>
@@ -75,6 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Preprocessing text" href="01_wording_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -82,31 +78,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -114,7 +95,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -122,10 +102,15 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -134,7 +119,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,6 +135,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="00_welcome.html">
   
@@ -162,15 +150,11 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -188,9 +172,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="06_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_transformer.html">Attention!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_bert.html">BERT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_text_analysis_finance.html">Text analysis in finance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_bert.html">BERT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
@@ -207,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -216,14 +200,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -346,27 +330,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -551,7 +527,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/631a95d2d826d0bdbdae47abe88e95583e6015ebc56231364989f3d645b8014f.png" src="_images/631a95d2d826d0bdbdae47abe88e95583e6015ebc56231364989f3d645b8014f.png" />
+<img alt="_images/47ca67aee1834119d2b9164cab2befbc5a69f6608043648ec45e499478d08e1c.png" src="_images/47ca67aee1834119d2b9164cab2befbc5a69f6608043648ec45e499478d08e1c.png" />
 </div>
 </div>
 <p>Using the CountVectorizer with its default settings:</p>
@@ -1593,7 +1569,7 @@ tf-idf =  tf_{ij} \cdot id_j
 </section>
 <section id="dictionary-based-modeling">
 <h2>Dictionary based modeling<a class="headerlink" href="#dictionary-based-modeling" title="Link to this heading">#</a></h2>
-<p>In the examples above, we observe that each document is represented by a high dimensional vector. High dimensions can often be troublesome for machine learning methods. To deal with this issue, one may focus on the occurrences of certain words that fall into a category of interest. Usually, the common categories which are used are the number of positive and negative words. Which words are considered as negative and positive are defined by different dictionaries. An example for a general-purpose dictionary is the Harvard IV-4 dictionary. However, especially for financial documents general-purpose dictionaries may not be useful due to the domain specific usage of words, e.g., the word bear stands for bad market conditions or bull stands for good market conditions, respectively. <a class="reference external" href="https://deliverypdf.ssrn.com/delivery.php?ID=346086103074016126099123079120127096014062039067032088087075106109126028088004124029100103062122015051018100067119123113113108030078070086003125007072006080022042087054067068004000067088111096112124095065023103125127106022115082065076000082025104&amp;amp;EXT=pdf&amp;amp;INDEX=TRUE">Loughran and McDonald (2011)</a> find that the majority of general-purpose negative words from the Harvard dictionary found in in 10-K filings are not considered as negative in a financial context. This is why they generate their own dictionary. See the next cell’s output for a few examples. Besides the categories positive and negative, they also generate the categories: uncertainty, litigious, strong modal, weak modal and constraining. Each report can be summarized by counting the (relative) frequencies of words falling into these categories.</p>
+<p>In the examples above, we observe that each document is represented by a high dimensional vector. High dimensions can often be troublesome for machine learning methods. To deal with this issue, one may focus on the occurrences of certain words that fall into a category of interest. Usually, the common categories which are used are the number of positive and negative words. Which words are considered as negative and positive are defined by different dictionaries. An example for a general-purpose dictionary is the Harvard IV-4 dictionary. However, especially for financial documents general-purpose dictionaries may not be useful due to the domain specific usage of words, e.g., the word bear stands for bad market conditions or bull stands for good market conditions, respectively. <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughran and McDonald (2011)</a> find that the majority of general-purpose negative words from the Harvard dictionary found in in 10-K filings are not considered as negative in a financial context. This is why they generate their own dictionary. See the next cell’s output for a few examples. Besides the categories positive and negative, they also generate the categories: uncertainty, litigious, strong modal, weak modal and constraining. Each report can be summarized by counting the (relative) frequencies of words falling into these categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -1626,38 +1602,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;threat&#39; &#39;abandoned&#39; &#39;overcoming&#39; &#39;impracticalities&#39; &#39;deterrents&#39;
- &#39;misappropriation&#39; &#39;encroachments&#39; &#39;felonious&#39; &#39;disfavors&#39; &#39;violating&#39;]
+[&#39;postponing&#39; &#39;disappears&#39; &#39;persisting&#39; &#39;frustrations&#39; &#39;unfortunate&#39;
+ &#39;collusion&#39; &#39;alleging&#39; &#39;plaintiff&#39; &#39;problem&#39; &#39;inconsistency&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;gained&#39; &#39;inspirational&#39; &#39;excellence&#39; &#39;breakthroughs&#39; &#39;invent&#39; &#39;winner&#39;
- &#39;profitable&#39; &#39;succeeds&#39; &#39;alliances&#39; &#39;improve&#39;]
+[&#39;proficient&#39; &#39;perfected&#39; &#39;vibrancy&#39; &#39;encouragement&#39; &#39;booming&#39;
+ &#39;advantages&#39; &#39;prestigious&#39; &#39;success&#39; &#39;constructively&#39; &#39;alliance&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;approximation&#39; &#39;vaguenesses&#39; &#39;confuses&#39; &#39;anticipates&#39; &#39;indefinite&#39;
- &#39;riskier&#39; &#39;predictor&#39; &#39;unusual&#39; &#39;assume&#39; &#39;sporadically&#39;]
+[&#39;abeyances&#39; &#39;presumed&#39; &#39;suddenly&#39; &#39;fluctuated&#39; &#39;predictions&#39;
+ &#39;contingently&#39; &#39;unfamiliar&#39; &#39;reassessing&#39; &#39;improbable&#39; &#39;unusual&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;affidavit&#39; &#39;lawfully&#39; &#39;subleasee&#39; &#39;encumbered&#39; &#39;legislatures&#39;
- &#39;evidential&#39; &#39;licensable&#39; &#39;voidable&#39; &#39;legislations&#39; &#39;enforceable&#39;]
+[&#39;promulgator&#39; &#39;lawmakers&#39; &#39;pledgors&#39; &#39;dispossessory&#39; &#39;forwhich&#39;
+ &#39;aforestated&#39; &#39;whereon&#39; &#39;demurrer&#39; &#39;subpoena&#39; &#39;rebutting&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;lowest&#39; &#39;definitively&#39; &#39;will&#39; &#39;unequivocal&#39; &#39;unsurpassed&#39;
- &#39;unequivocally&#39; &#39;clearly&#39; &#39;unambiguously&#39; &#39;always&#39; &#39;must&#39;]
+[&#39;definitively&#39; &#39;unequivocally&#39; &#39;definitely&#39; &#39;uncompromising&#39; &#39;highest&#39;
+ &#39;unambiguously&#39; &#39;clearly&#39; &#39;unsurpassed&#39; &#39;unequivocal&#39; &#39;strongly&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;depend&#39; &#39;somewhat&#39; &#39;uncertain&#39; &#39;suggest&#39; &#39;possible&#39; &#39;appears&#39;
- &#39;uncertainly&#39; &#39;depends&#39; &#39;might&#39; &#39;almost&#39;]
+[&#39;nearly&#39; &#39;appearing&#39; &#39;depending&#39; &#39;uncertainly&#39; &#39;perhaps&#39; &#39;could&#39; &#39;seldom&#39;
+ &#39;appeared&#39; &#39;conceivable&#39; &#39;maybe&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;necessitates&#39; &#39;directives&#39; &#39;constraining&#39; &#39;stipulation&#39; &#39;mandating&#39;
- &#39;dictating&#39; &#39;obligating&#39; &#39;pledges&#39; &#39;forbidden&#39; &#39;impairments&#39;]
+[&#39;prohibiting&#39; &#39;prohibitively&#39; &#39;encumbrance&#39; &#39;strict&#39; &#39;restricted&#39;
+ &#39;permissions&#39; &#39;impairment&#39; &#39;permissible&#39; &#39;commits&#39; &#39;impose&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1680,7 +1656,7 @@ Examples for the category: constraining
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b2c5020d57b80d910d31586a49450e708b39e2fed3583659e2737c36b56e4e1.png" src="_images/7b2c5020d57b80d910d31586a49450e708b39e2fed3583659e2737c36b56e4e1.png" />
+<img alt="_images/508d3779ace8de44ce9b2bb44b3891ead6ad853b9fe2608876d9ac0da723cfa2.png" src="_images/508d3779ace8de44ce9b2bb44b3891ead6ad853b9fe2608876d9ac0da723cfa2.png" />
 </div>
 </div>
 <p>Below you can examine the development of word category frequencies for Apple ‘s 10-K filings. We can observe how the number of negative and litigious words rise during the great financial crisis.</p>
@@ -1700,7 +1676,7 @@ Examples for the category: constraining
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/866430b53ca06b4132d40938068ff8aa624481052298e4e248cffa8ea5745e61.png" src="_images/866430b53ca06b4132d40938068ff8aa624481052298e4e248cffa8ea5745e61.png" />
+<img alt="_images/ad48d0d69715750f230c5df389bd93487f92e533886490456f7c5d357cf79d20.png" src="_images/ad48d0d69715750f230c5df389bd93487f92e533886490456f7c5d357cf79d20.png" />
 </div>
 </div>
 </section>
@@ -1735,7 +1711,7 @@ polarity = \frac{n^{positive} - n^{negative}}{n^{positive} + n^{negative}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de7208eae15a35f58ae71e412f3e5b90b9b8fceaf258a9b5bb98c65f9cf5ee03.png" src="_images/de7208eae15a35f58ae71e412f3e5b90b9b8fceaf258a9b5bb98c65f9cf5ee03.png" />
+<img alt="_images/c4508da88f89982c52bb001f844d47d16b5e162793c2d4a52ba8b0c00d948de9.png" src="_images/c4508da88f89982c52bb001f844d47d16b5e162793c2d4a52ba8b0c00d948de9.png" />
 </div>
 </div>
 </section>
@@ -1782,7 +1758,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" src="_images/e1cdbf7f0d6799b7d7d67a80fc919e26153a096f796ac5be04818afb3eda3424.png" />
+<img alt="_images/4ee8e163036611f07595d499aae172bd02c7b00d9ae57098158da3990b571faf.png" src="_images/4ee8e163036611f07595d499aae172bd02c7b00d9ae57098158da3990b571faf.png" />
 </div>
 </div>
 </section>
@@ -1822,7 +1798,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" src="_images/c40203d11907952231aacbe739ec9719ebbf21dc354125a96c87544b47f17681.png" />
+<img alt="_images/7d9d2dcbcbc7054ffd69feb4c7ced00c5e8cb10d305da992f64c0df69c7325e6.png" src="_images/7d9d2dcbcbc7054ffd69feb4c7ced00c5e8cb10d305da992f64c0df69c7325e6.png" />
 </div>
 </div>
 <p>To get a intuition for observations being drawn apart in higher dimensions and how this depends on the numerical space and the measure which is used for quantifying the distance between observations, let us take a look at some simulation experiments. The first assumes each observation is in the interval <span class="math notranslate nohighlight">\(x_i \in [0, 1] \forall x_i\)</span>. For a given dimension each vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^T = \begin{pmatrix} x_{i1} &amp; ... &amp; x_{id} \end{pmatrix} \)</span> is located in the the vector space <span class="math notranslate nohighlight">\([0, 1]^d\)</span>. We randomly draw <span class="math notranslate nohighlight">\(n\)</span> observations in the vector space with uniform probabilities (each position is equally likely) and (1) calculate the average of all pairwise euclidean and cosine distances. For instance, the next two cells exhibit this for <span class="math notranslate nohighlight">\(n = 500\)</span> and <span class="math notranslate nohighlight">\(d = 2, 3\)</span>.</p>
@@ -1843,11 +1819,11 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5208
-The average cosine distance is: 0.1609
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5235
+The average cosine distance is: 0.1683
 </pre></div>
 </div>
-<img alt="_images/7656d14ea442334c1aeb05402b76b040a61ed705f3abeb5d1465362524c1c245.png" src="_images/7656d14ea442334c1aeb05402b76b040a61ed705f3abeb5d1465362524c1c245.png" />
+<img alt="_images/44d4186e8fe3e565082b2c3898c9b7d5ebf52eab5da305d029465d57e9c7f1d8.png" src="_images/44d4186e8fe3e565082b2c3898c9b7d5ebf52eab5da305d029465d57e9c7f1d8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1870,11 +1846,11 @@ The average cosine distance is: 0.1609
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6624
-The average cosine distance is: 0.2024
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6471
+The average cosine distance is: 0.1940
 </pre></div>
 </div>
-<img alt="_images/63ad1ab8896633b5691fb02776698b304fad18002be331e2d888a99157510235.png" src="_images/63ad1ab8896633b5691fb02776698b304fad18002be331e2d888a99157510235.png" />
+<img alt="_images/6938209ebfe7ef28303cb10ed6e7cc8dfa65a15d5bd1de4fce7f609fc9c0d05c.png" src="_images/6938209ebfe7ef28303cb10ed6e7cc8dfa65a15d5bd1de4fce7f609fc9c0d05c.png" />
 </div>
 </div>
 <p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
@@ -1907,7 +1883,7 @@ The average cosine distance is: 0.2024
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6eb8f8c4abc6c24abe2e00fe7c098159e6ec826b52c5586cf195237e94193221.png" src="_images/6eb8f8c4abc6c24abe2e00fe7c098159e6ec826b52c5586cf195237e94193221.png" />
+<img alt="_images/4a7030033e760e1e6f545ac90c4f41c3d5ec7703b65cd8a9bc7e5b4be5d41e84.png" src="_images/4a7030033e760e1e6f545ac90c4f41c3d5ec7703b65cd8a9bc7e5b4be5d41e84.png" />
 </div>
 </div>
 <p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
@@ -1940,7 +1916,7 @@ The average cosine distance is: 0.2024
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76b2b3891ec3a7521b58a66ca00d474b06884c285e149a87f1c68c74da32d9b2.png" src="_images/76b2b3891ec3a7521b58a66ca00d474b06884c285e149a87f1c68c74da32d9b2.png" />
+<img alt="_images/73018dae1dd6b4f739bda1cfa491bab60c703f57eb34fba873bd8ee1b9fb6a87.png" src="_images/73018dae1dd6b4f739bda1cfa491bab60c703f57eb34fba873bd8ee1b9fb6a87.png" />
 </div>
 </div>
 <p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
@@ -1974,7 +1950,7 @@ The average cosine distance is: 0.2024
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2002,7 +1978,8 @@ The average cosine distance is: 0.2024
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2064,8 +2041,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
