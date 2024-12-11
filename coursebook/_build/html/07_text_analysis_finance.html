@@ -824,7 +824,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{np} \\
 \end{pmatrix}
 \end{split}\]</div>
 <p>Hereby, each row corresponds to one document, thus <span class="math notranslate nohighlight">\(n\)</span> is equal to the number of documents and <span class="math notranslate nohighlight">\(p\)</span> is the dimension which we use to represent every document. For instance in case of a bag-of-word approach, <span class="math notranslate nohighlight">\(p\)</span> is the number of terms in the dictionary or if we use a Doc2Vec model, <span class="math notranslate nohighlight">\(p\)</span> is equal to the embedding dimension.</p>
-<p>Given we are able to calculate cumulative (excess or abnormal) returns the correspond to each document, the target variable is:</p>
+<p>Given we are able to calculate cumulative (excess or abnormal) returns that correspond to each document, the target variable is:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{y} = 
@@ -846,7 +846,7 @@ R_{\text{naive}}^2 = 1 - \frac{\sum_{i=1}^n \left(cr_{i, t, w} - \hat{cr}_{i, t,
 R^2 = 1 - \frac{\sum_{i=1}^n \left(y_i - \hat{y}_i \right)^2}{\sum_{i=1}^n \left(y_i - \bar{y} \right)^2}
 \]</div>
 <p><span class="math notranslate nohighlight">\(R^2\)</span> basically compares two prediction models, one which uses feature information to create predictions <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> and one which predicts the average of all target variable realizations <span class="math notranslate nohighlight">\(\bar{y}\)</span> for each individual realization. The more precise predictions <span class="math notranslate nohighlight">\(\hat{y}_i\)</span> are in comparison to <span class="math notranslate nohighlight">\(\bar{y}\)</span>, the smaller the fraction and the more close <span class="math notranslate nohighlight">\(R^2\)</span> is to <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>The definition of <span class="math notranslate nohighlight">\(R_{\text{naive}}^2\)</span> implies that we compare the predictions which use text information <span class="math notranslate nohighlight">\(\hat{cr}_{i, t, w}\)</span> with a prediction of <span class="math notranslate nohighlight">\(cr_{i, t, w} = 0\)</span>, i.e., the stock market does not react towards the event at time <span class="math notranslate nohighlight">\(t\)</span>. This means that whenever we evaluate a prediction model and examine <span class="math notranslate nohighlight">\(R_{\text{naive}}^2 &gt; 0\)</span>, we know that the model is able to distinguish at least between positive and negative stock market reactions. The higher <span class="math notranslate nohighlight">\(R_{\text{naive}}^2\)</span>, the better the model is at not only differentiating between positive and negative reactions, only, but is also able to predict the strength of the stock market reaction.</p>
+<p>The definition of <span class="math notranslate nohighlight">\(R_{\text{naive}}^2\)</span> implies that we compare the predictions which use text information <span class="math notranslate nohighlight">\(\hat{cr}_{i, t, w}\)</span> with a prediction of <span class="math notranslate nohighlight">\(cr_{i, t, w} = 0\)</span>, i.e., the stock market does not react towards the event at time <span class="math notranslate nohighlight">\(t\)</span>. This means that whenever we evaluate a prediction model and examine <span class="math notranslate nohighlight">\(R_{\text{naive}}^2 &gt; 0\)</span>, we know that the model is able to distinguish at least between positive and negative stock market reactions. The higher <span class="math notranslate nohighlight">\(R_{\text{naive}}^2\)</span>, the better the model is at not only differentiating between positive and negative reactions, but to predict the strength of the stock market reaction.</p>
 <p>If should be noted, that individual predictions are not in the center of analyses as described so far. It is rather the average of predictions which should exhibit an increasing monotonic behavior. That means the average of high (low) stock market reactions should also high (low) predictions on average.</p>
 </section>
 <section id="how-much-text-information-explains-of-stock-market-reactions">
@@ -878,7 +878,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x15fea7090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x3608b9090&gt;
 </pre></div>
 </div>
 <img alt="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" src="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" />
@@ -889,11 +889,6 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyfixest</span> <span class="k">as</span> <span class="nn">pf</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
-
-<span class="c1">#model = pf.feols(</span>
-<span class="c1">#    &quot;y ~ x_1 + x_2 + x_3&quot;,</span>
-<span class="c1">#    data = df</span>
-<span class="c1">#)</span>
 
 <span class="n">predictors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x_1&quot;</span><span class="p">,</span> <span class="s2">&quot;x_2&quot;</span><span class="p">,</span> <span class="s2">&quot;x_3&quot;</span><span class="p">]</span>
 <span class="n">predictor_combinations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -915,7 +910,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="uLG3Ue"></div>
+            <div id="y3eooo"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -939,14 +934,14 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("uLG3Ue").appendChild(div);
+                        document.getElementById("y3eooo").appendChild(div);
                     };
-                    var e = document.getElementById("uLG3Ue");
+                    var e = document.getElementById("y3eooo");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="2YiWUY"></div>
+            <div id="V6D3NU"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -970,58 +965,58 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("2YiWUY").appendChild(div);
+                        document.getElementById("V6D3NU").appendChild(div);
                     };
-                    var e = document.getElementById("2YiWUY");
+                    var e = document.getElementById("V6D3NU");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="dyywoaqpwh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="jwobmwqiew" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#dyywoaqpwh table {
+#jwobmwqiew table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#dyywoaqpwh thead, tbody, tfoot, tr, td, th { border-style: none; }
+#jwobmwqiew thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#dyywoaqpwh p { margin: 0; padding: 0; }
- #dyywoaqpwh .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #dyywoaqpwh .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #dyywoaqpwh .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #dyywoaqpwh .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #dyywoaqpwh .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #dyywoaqpwh .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #dyywoaqpwh .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #dyywoaqpwh .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #dyywoaqpwh .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #dyywoaqpwh .gt_column_spanner_outer:first-child { padding-left: 0; }
- #dyywoaqpwh .gt_column_spanner_outer:last-child { padding-right: 0; }
- #dyywoaqpwh .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #dyywoaqpwh .gt_spanner_row { border-bottom-style: hidden; }
- #dyywoaqpwh .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #dyywoaqpwh .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #dyywoaqpwh .gt_from_md> :first-child { margin-top: 0; }
- #dyywoaqpwh .gt_from_md> :last-child { margin-bottom: 0; }
- #dyywoaqpwh .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #dyywoaqpwh .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #dyywoaqpwh .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #dyywoaqpwh .gt_row_group_first td { border-top-width: 0.5px; }
- #dyywoaqpwh .gt_row_group_first th { border-top-width: 0.5px; }
- #dyywoaqpwh .gt_striped { background-color: rgba(128,128,128,0.05); }
- #dyywoaqpwh .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #dyywoaqpwh .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #dyywoaqpwh .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #dyywoaqpwh .gt_left { text-align: left; }
- #dyywoaqpwh .gt_center { text-align: center; }
- #dyywoaqpwh .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #dyywoaqpwh .gt_font_normal { font-weight: normal; }
- #dyywoaqpwh .gt_font_bold { font-weight: bold; }
- #dyywoaqpwh .gt_font_italic { font-style: italic; }
- #dyywoaqpwh .gt_super { font-size: 65%; }
- #dyywoaqpwh .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #dyywoaqpwh .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#jwobmwqiew p { margin: 0; padding: 0; }
+ #jwobmwqiew .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #jwobmwqiew .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #jwobmwqiew .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #jwobmwqiew .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #jwobmwqiew .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jwobmwqiew .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #jwobmwqiew .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jwobmwqiew .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #jwobmwqiew .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #jwobmwqiew .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #jwobmwqiew .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #jwobmwqiew .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #jwobmwqiew .gt_spanner_row { border-bottom-style: hidden; }
+ #jwobmwqiew .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #jwobmwqiew .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #jwobmwqiew .gt_from_md> :first-child { margin-top: 0; }
+ #jwobmwqiew .gt_from_md> :last-child { margin-bottom: 0; }
+ #jwobmwqiew .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #jwobmwqiew .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #jwobmwqiew .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #jwobmwqiew .gt_row_group_first td { border-top-width: 0.5px; }
+ #jwobmwqiew .gt_row_group_first th { border-top-width: 0.5px; }
+ #jwobmwqiew .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #jwobmwqiew .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #jwobmwqiew .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #jwobmwqiew .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #jwobmwqiew .gt_left { text-align: left; }
+ #jwobmwqiew .gt_center { text-align: center; }
+ #jwobmwqiew .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #jwobmwqiew .gt_font_normal { font-weight: normal; }
+ #jwobmwqiew .gt_font_bold { font-weight: bold; }
+ #jwobmwqiew .gt_font_italic { font-style: italic; }
+ #jwobmwqiew .gt_super { font-size: 65%; }
+ #jwobmwqiew .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #jwobmwqiew .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
@@ -1144,12 +1139,12 @@ cr_{it, w} = \beta_0 + \beta_1 + \hat{cr}_{it, w} + \epsilon_{it}
 <p>where the index <span class="math notranslate nohighlight">\(i\)</span> represents companies and <span class="math notranslate nohighlight">\(t\)</span> is the time step of event which occurs at <span class="math notranslate nohighlight">\(t\)</span> for company <span class="math notranslate nohighlight">\(i\)</span>. This means we use the prediction as a explanatory variable. A large value of <span class="math notranslate nohighlight">\(R^2\)</span> would indicate predictions being close to realizations, thus, explaining a large amount of the variation of stock market reactions. However, if further feature variables exist which also are able to explain the variation of <span class="math notranslate nohighlight">\(cr_{t, w}\)</span>, not including them can cause a bias for the estimator of <span class="math notranslate nohighlight">\(\beta_1\)</span>, thus, false quantification of its impact. This is why we should further add other feature variables to the regression which may be related to <span class="math notranslate nohighlight">\(cr_{t, w}\)</span>. From the literature, it is known that, e.g., the size of a company or its book-to-market value are related to the returns of a company. This is why they also might be related to cumulative excess or abnormal returns. Thus, the regression usually also includes further variable which are called control variables <span class="math notranslate nohighlight">\(C\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-cr_{it, w} = \beta_0 + \beta_1 + \hat{cr}_{it, w} + \mathbf{\gamma} C_{it} + \epsilon_{it}
+cr_{it, w} = \beta_0 + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma} C_{it} + \epsilon_{it}
 \]</div>
 <p>Without going to much into the details, for econometric reasons we further often include a constant parameter which is different for every company and a specific time period <span class="math notranslate nohighlight">\(t'\)</span>, e.g., a quarter or year. The regression becomes:</p>
 <div class="math notranslate nohighlight">
 \[
-cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 + \hat{cr}_{it, w} + \mathbf{\gamma} C_{it} + \epsilon_{it}
+cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T C_{it} + \epsilon_{it}
 \]</div>
 <p>Even though it looks more complicated, the interpretation in terms of adjusted <span class="math notranslate nohighlight">\(R^2\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> coefficients remain as before.</p>
 </section>
