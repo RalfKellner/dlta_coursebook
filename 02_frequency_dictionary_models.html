@@ -66,7 +66,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Applications of word frequencies in finance" href="03_financial_words_analysis.html" />
+    <link rel="next" title="Neural networks" href="03_neural_networks.html" />
     <link rel="prev" title="Preprocessing text" href="01_wording_preprocessing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -168,13 +168,13 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_wording_preprocessing.html">Preprocessing text</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Frequency based text models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_financial_words_analysis.html">Applications of word frequencies in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04_neural_networks.html">Neural networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_word_embeddings.html">Word embeddings with Word2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07_text_analysis_finance.html">Text analysis in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08_transformer.html">Attention!</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09_bert.html">BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_neural_networks.html">Neural networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_word_embeddings.html">Word embeddings with Word2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_document_embeddings.html">Document embeddings with Doc2Vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_transformer.html">Attention!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_encoder.html">Encoder models - BERT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_decoder.html">Decoder models - GPT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
@@ -367,7 +367,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-based-modeling">Dictionary based modeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarity">Polarity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">The curse of dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-summary">Chapter summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-word-frequencies-to-identify-climate-talk-in-annual-reports">Using word frequencies to identify climate talk in annual reports</a></li>
 </ul>
             </nav>
         </div>
@@ -1602,38 +1603,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;premature&#39; &#39;violent&#39; &#39;criticizes&#39; &#39;deters&#39; &#39;prejudiced&#39;
- &#39;undercapitalized&#39; &#39;exonerating&#39; &#39;breached&#39; &#39;trouble&#39; &#39;complicates&#39;]
+[&#39;postponements&#39; &#39;cancel&#39; &#39;dissatisfaction&#39; &#39;redactions&#39; &#39;acquitted&#39;
+ &#39;defamations&#39; &#39;purports&#39; &#39;overproduced&#39; &#39;unsound&#39; &#39;unattractive&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;excels&#39; &#39;plentiful&#39; &#39;stabilizations&#39; &#39;revolutionized&#39; &#39;innovating&#39;
- &#39;popularity&#39; &#39;surpass&#39; &#39;surpasses&#39; &#39;enhance&#39; &#39;honor&#39;]
+[&#39;integrity&#39; &#39;delighting&#39; &#39;benefiting&#39; &#39;plentiful&#39; &#39;efficiencies&#39;
+ &#39;exciting&#39; &#39;creatively&#39; &#39;dependability&#39; &#39;inventiveness&#39; &#39;better&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;assume&#39; &#39;nonassessable&#39; &#39;may&#39; &#39;unspecific&#39; &#39;unguaranteed&#39; &#39;hidden&#39;
- &#39;variations&#39; &#39;appeared&#39; &#39;deviated&#39; &#39;randomness&#39;]
+[&#39;suggests&#39; &#39;speculating&#39; &#39;indefiniteness&#39; &#39;volatilities&#39; &#39;unfamiliarity&#39;
+ &#39;ambiguous&#39; &#39;recalculating&#39; &#39;approximating&#39; &#39;doubted&#39; &#39;appear&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;judicially&#39; &#39;aggrieved&#39; &#39;demurred&#39; &#39;recoupable&#39; &#39;therein&#39; &#39;perpetrate&#39;
- &#39;statute&#39; &#39;postjudgment&#39; &#39;legal&#39; &#39;noncontractual&#39;]
+[&#39;breaching&#39; &#39;pretrial&#39; &#39;demurrers&#39; &#39;allegation&#39; &#39;prejudice&#39;
+ &#39;legislations&#39; &#39;contravening&#39; &#39;amends&#39; &#39;overruled&#39; &#39;probationer&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;will&#39; &#39;undisputed&#39; &#39;highest&#39; &#39;definitely&#39; &#39;undoubtedly&#39; &#39;strongly&#39;
- &#39;always&#39; &#39;definitively&#39; &#39;uncompromising&#39; &#39;never&#39;]
+[&#39;highest&#39; &#39;lowest&#39; &#39;best&#39; &#39;definitely&#39; &#39;undisputed&#39; &#39;unparalleled&#39;
+ &#39;strongly&#39; &#39;unsurpassed&#39; &#39;uncompromising&#39; &#39;never&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;depend&#39; &#39;may&#39; &#39;appeared&#39; &#39;possibly&#39; &#39;suggest&#39; &#39;could&#39; &#39;sometimes&#39;
- &#39;occasionally&#39; &#39;perhaps&#39; &#39;nearly&#39;]
+[&#39;may&#39; &#39;maybe&#39; &#39;uncertain&#39; &#39;sometimes&#39; &#39;might&#39; &#39;possible&#39; &#39;suggests&#39;
+ &#39;seldomly&#39; &#39;perhaps&#39; &#39;depends&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;restricts&#39; &#39;inhibits&#39; &#39;permitted&#39; &#39;entails&#39; &#39;permission&#39; &#39;restrains&#39;
- &#39;restrained&#39; &#39;obligations&#39; &#39;confinement&#39; &#39;prevented&#39;]
+[&#39;forbid&#39; &#39;stipulate&#39; &#39;stipulation&#39; &#39;limit&#39; &#39;prohibit&#39; &#39;encumbrances&#39;
+ &#39;depending&#39; &#39;limiting&#39; &#39;depend&#39; &#39;dictates&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1762,164 +1763,103 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 </section>
-<section id="the-curse-of-dimensionality">
-<h2>The curse of dimensionality<a class="headerlink" href="#the-curse-of-dimensionality" title="Link to this heading">#</a></h2>
-<p>In this context we quickly should discuss the curse of dimensionality and its impact on measuring similarities between numerical representations of documents. In general, the volume of numerical spaces rises quickly if its dimension increases. A side-effect of this increase is that observations tend be drawn away from each other and the data becomes more sparse. If data is sparse, it becomes more challenging to identify similarities and dissimilarities between observations. Identifying such similarities and dissimilarities are in the center of supervised and unsupervised machine learning algorithms, such as clustering, regression or classification tasks.</p>
-<p>However, the exact impact for increasing dimensionality depends on the numerical space and the task itself. Let us take a look at some examples to get some intuition thouth. First, let us understand what it means the numerical space quickly increases. Assume, we identify the state of an observation by binary <span class="math notranslate nohighlight">\(x_i \in \lbrace 0, 1 \rbrace \forall x_i\)</span> variables. If we use one variable <span class="math notranslate nohighlight">\(x_1\)</span> (one dimension), the number of possible states is <span class="math notranslate nohighlight">\(2\)</span>, i.e., <span class="math notranslate nohighlight">\((0), (1)\)</span>, if we use two variables (two dimensions), the number of possible states is <span class="math notranslate nohighlight">\(4\)</span>, i.e.,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{pmatrix}
-0 \\
-0 \\
-\end{pmatrix}, 
-\begin{pmatrix}
-0 \\
-1 \\
-\end{pmatrix},
-\begin{pmatrix}
-1 \\
-0 \\
-\end{pmatrix}
-\begin{pmatrix}
-1 \\
-1 \\
-\end{pmatrix}
-\end{split}\]</div>
-<p>if we use three variables (three dimensions), the number of possible states is <span class="math notranslate nohighlight">\(8\)</span> and in general for <span class="math notranslate nohighlight">\(d\)</span> dimensions, the number of possible states is <span class="math notranslate nohighlight">\(2^d\)</span>. The graph below illustrates that in this scenario the volume of the numerical space even increases exponentially for incrasing dimensions.</p>
+<section id="chapter-summary">
+<h2>Chapter summary<a class="headerlink" href="#chapter-summary" title="Link to this heading">#</a></h2>
+<p>This chapter shows how text can be transformed into a numerical representation by splitting each document into tokens and count their frequencies. We refer to this approach as the bag-of-words representation. In addition, this proceeding may be adjusted by giving frequencies weights which are inverse proportional to their document appearance over the corpus resulting in a term-frequency inverse-document-frequency or by ignoring most of the word and counting only the ones defined in a user-defined dictionary. No matter what we finally use, we start with a set of tokens for a document and end up with a vector. The dimension of the vector is driven by the size of the unique terms used for counting.</p>
+<p>The numerical representation can be used as input for other algorithms, e.g., a clustering algorithm to build groups of similar documents or a supervised learning algorithm to predict outcomes for variables whose realizations may relate to the document’s content (for instance sentiment prediction).</p>
+<p>Another important concept is the similarity or dissimilarity between pairs of documents which can be quantified by appropriate metrics such as euclidean distance of cosine similarity or distance, respectively.</p>
+<p>To finalize this chapter, let us take a look at an example for an application in the financial domain which can be used to identify companies with more or little climate talk in their annual reports.</p>
+</section>
+<section id="using-word-frequencies-to-identify-climate-talk-in-annual-reports">
+<h2>Using word frequencies to identify climate talk in annual reports<a class="headerlink" href="#using-word-frequencies-to-identify-climate-talk-in-annual-reports" title="Link to this heading">#</a></h2>
+<p>This example is inspired by the paper by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3317570">Engle et al.</a> who create a climate change news index to build a hedge portfolio against financial climate change risks.</p>
+<p>To capture climate risk for companies, they determine the cosine similarity between term-frequency inverse-document-frequencies from daily Wall Street Journal news and corresponding frequencies of a corpus which is explicitly dedicated to climate change (risks). Let us use this approach to reveal climate change talk in annual 10-K filings of stock market listed US companies.</p>
+<p>We start collecting climate white papers as provided in the Appendix A.2 in their paper. Next, we build a term-frequency inverse-document-frequency vectorizer which creates inverse-document frequencies for 10-K filings of 3,632 companies. Overall, the corpus consists of 30,840 10-K reports. The plots below exhibit the number of 10-K reports over time on a monthly and yearly level. We observe that most of the annual reports are filed in within the first quarter of a year as most of the company’s fiscal year seems to end with the end of the year. This does not need to be the case for every company.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dimension&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of states&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select * From general_company_information;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">company_info</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;TRBC Economic Sector Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sector&quot;</span><span class="p">},</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">indices_to_drop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ric</span><span class="p">,</span> <span class="n">df_tmp</span> <span class="ow">in</span> <span class="n">company_info</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Instrument&quot;</span><span class="p">):</span>
+    <span class="n">indices_to_drop</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">df_tmp</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">)</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">indices_to_drop</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">company_info</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="o">~</span><span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">company_info</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select RIC, filingDate, ccv_cosine_sim From ccv_sim_tenks;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">company_info</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;Instrument&quot;</span><span class="p">,</span> <span class="s2">&quot;Sector&quot;</span><span class="p">]),</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s2">&quot;RIC&quot;</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s2">&quot;Instrument&quot;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Instrument&quot;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;year&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;filingDate&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;year_month&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;filingDate&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year_month&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year_month&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Number of 10-Ks per month&quot;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Number of 10-Ks per year&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7d9d2dcbcbc7054ffd69feb4c7ced00c5e8cb10d305da992f64c0df69c7325e6.png" src="_images/7d9d2dcbcbc7054ffd69feb4c7ced00c5e8cb10d305da992f64c0df69c7325e6.png" />
+<img alt="_images/d729de95ace47144c6b475530b1dd7342b28f70ead3638bdad0c4d1a8c6fba7d.png" src="_images/d729de95ace47144c6b475530b1dd7342b28f70ead3638bdad0c4d1a8c6fba7d.png" />
 </div>
 </div>
-<p>To get a intuition for observations being drawn apart in higher dimensions and how this depends on the numerical space and the measure which is used for quantifying the distance between observations, let us take a look at some simulation experiments. The first assumes each observation is in the interval <span class="math notranslate nohighlight">\(x_i \in [0, 1] \forall x_i\)</span>. For a given dimension each vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^T = \begin{pmatrix} x_{i1} &amp; ... &amp; x_{id} \end{pmatrix} \)</span> is located in the the vector space <span class="math notranslate nohighlight">\([0, 1]^d\)</span>. We randomly draw <span class="math notranslate nohighlight">\(n\)</span> observations in the vector space with uniform probabilities (each position is equally likely) and (1) calculate the average of all pairwise euclidean and cosine distances. For instance, the next two cells exhibit this for <span class="math notranslate nohighlight">\(n = 500\)</span> and <span class="math notranslate nohighlight">\(d = 2, 3\)</span>.</p>
+<p>To identify climate change related words, we follow the procedure of the original paper and determine all term frequencies of the 10-K term dictionary for the climate white papers. The frequencies are further multiplied with inverse-document frequencies from the 10-K corpus. This means high values for the climate change vocabulary appear for terms which can often be observed in climate white papers and rarely among all 10-K reports. The wordcloud below visualizes the top 150 terms where the size of each word is proportional to its term-frequency inverse-document frequency. Note that we include bigrams as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
-<span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-<span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-<span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average euclidean distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average cosine distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">term_frequencies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../notebooks/2024/climate_disclosure/climate_change_vocabulary_wordloud.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;0&quot;</span><span class="p">]</span>
+<span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">term_frequencies</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bilinear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>  <span class="c1"># Remove axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5040
-The average cosine distance is: 0.1497
-</pre></div>
-</div>
-<img alt="_images/f8f6ae2a1cc82acbb6dcd0bb813d36f0c0d8930b2b34f8a2ecd4a09fdadcc1ad.png" src="_images/f8f6ae2a1cc82acbb6dcd0bb813d36f0c0d8930b2b34f8a2ecd4a09fdadcc1ad.png" />
+<img alt="_images/bf9fb025e25ec8e4d8ae79d8d2d283d9fcb752ff6e5840ae4947c17a081d0293.png" src="_images/bf9fb025e25ec8e4d8ae79d8d2d283d9fcb752ff6e5840ae4947c17a081d0293.png" />
 </div>
 </div>
+<p>In order to identify how much an annual report (10-K) includes climate change specific language, we quantify the cosine similarity between the term-frequencey inverse-document-frequency vector of the climate change white papers with each corresponding 10-K vector. The boxplots below give us a detailed impression about the level of similarity which we refer to as “climate talk” over all reports, here, grouped by year. We observe a similar numerical range of climate talk for very year. In every year, a rather large amount of high outlier values can be observed. This may be due to differences of climate talk between companies or sectors of business operations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
-
-<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_3$&quot;</span><span class="p">)</span>
-<span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-<span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-<span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average euclidean distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The average cosine distance is: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6601
-The average cosine distance is: 0.1920
-</pre></div>
-</div>
-<img alt="_images/ae81632822e9aaa6a654d270c7586f22545814569fdfcd692e1e1c39326896d9.png" src="_images/ae81632822e9aaa6a654d270c7586f22545814569fdfcd692e1e1c39326896d9.png" />
+<img alt="_images/7e0984102978a76d5f71fd28207d7c4ea5add2f2132dced0d6ba718d8c85e88e.png" src="_images/7e0984102978a76d5f71fd28207d7c4ea5add2f2132dced0d6ba718d8c85e88e.png" />
 </div>
 </div>
-<p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
+<p>To explore this a little further, we take a look at climate talk over time by company sector. Hereby, significant differences can be observed between sectors. Climate talk in the energy and utitlites sector seems to be the most which makes sense as companies operating in these sectors face huge challenges which are related to climate transitions of their business models. Assuming, that climate talk as quantified here rather implies a higher level of climate change risks for companies, this information can be used to avoid certain companies in the portfolio of investors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">n_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n_dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_dims</span><span class="p">):</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span>
-    <span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-    <span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-    <span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-    <span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ndim = </span><span class="si">{</span><span class="n">n_dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;euclidean distance&quot;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;cosine distance&quot;</span><span class="p">)</span>
-
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Distance distributions in a $[0, 1]$ hypercube with increasing dimension&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span><span class="o">.</span><span class="n">get</span><span class="p">([</span><span class="s2">&quot;Sector&quot;</span><span class="p">,</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span> <span class="o">=</span> <span class="s2">&quot;ccv_cosine_sim&quot;</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s2">&quot;Sector&quot;</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">rot</span> <span class="o">=</span> <span class="mi">75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9c94422caeb5164f38b3d7c7d07964e99203b4fcb71352dcfbe19c6d45b304b.png" src="_images/a9c94422caeb5164f38b3d7c7d07964e99203b4fcb71352dcfbe19c6d45b304b.png" />
+<img alt="_images/838458908cd1ac3adac6c7d77272a709cdf044bea5d3a75f4d4aeed81ba805e1.png" src="_images/838458908cd1ac3adac6c7d77272a709cdf044bea5d3a75f4d4aeed81ba805e1.png" />
 </div>
 </div>
-<p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">n_dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n_dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">n_dims</span><span class="p">):</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n_dim</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span>
-    <span class="n">euc_dist</span> <span class="o">=</span> <span class="n">euclidean_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-    <span class="n">cos_dist</span> <span class="o">=</span> <span class="n">cosine_distances</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
-    <span class="n">euc_dist_flatten</span> <span class="o">=</span> <span class="n">euc_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-    <span class="n">cos_dist_flatten</span> <span class="o">=</span> <span class="n">cos_dist</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tril_indices</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ndim = </span><span class="si">{</span><span class="n">n_dim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">euc_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;euclidean distance&quot;</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cos_dist_flatten</span><span class="p">),</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.75</span><span class="p">)</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;cosine distance&quot;</span><span class="p">)</span>
-
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;Distance distributions in a $[0, 1]$ hypercube with increasing dimension&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/889d91e7bd117721c47ee416d3fb0b0014c06bdec6beef039f5b451604cb281b.png" src="_images/889d91e7bd117721c47ee416d3fb0b0014c06bdec6beef039f5b451604cb281b.png" />
-</div>
-</div>
-<p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
 </section>
 </section>
 
@@ -1963,11 +1903,11 @@ The average cosine distance is: 0.1920
       </div>
     </a>
     <a class="right-next"
-       href="03_financial_words_analysis.html"
+       href="03_neural_networks.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Applications of word frequencies in finance</p>
+        <p class="prev-next-title">Neural networks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1992,7 +1932,8 @@ The average cosine distance is: 0.1920
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-based-modeling">Dictionary based modeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarity">Polarity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#similarity-measures">Similarity measures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-curse-of-dimensionality">The curse of dimensionality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-summary">Chapter summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-word-frequencies-to-identify-climate-talk-in-annual-reports">Using word frequencies to identify climate talk in annual reports</a></li>
 </ul>
   </nav></div>
 
