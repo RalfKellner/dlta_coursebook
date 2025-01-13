@@ -628,26 +628,92 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">q</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">x_tilde</span><span class="p">)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">x_tilde</span><span class="p">)</span>
 <span class="n">scores</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">dim0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dim1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">scaled_scores</span> <span class="o">=</span> <span class="n">scores</span> <span class="o">/</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">hidden_dim</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attention scores before softmax:</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">scaled_scores</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attention scores before softmax:&quot;</span><span class="p">)</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;financial&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;analytics&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;awesome&quot;</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaled_scores</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attention scores before softmax:
- [[[-0.1  -0.05  0.45  0.32  0.02]
-  [ 0.26  0.33 -0.07 -0.12 -0.05]
-  [-0.36 -0.86  1.82  1.22  0.34]
-  [-0.17 -0.5   0.95  0.63  0.2 ]
-  [-0.15 -0.2   0.3   0.23  0.05]]]
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>financial</th>
+      <th>data</th>
+      <th>analytics</th>
+      <th>is</th>
+      <th>awesome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>financial</th>
+      <td>-0.1006</td>
+      <td>-0.0454</td>
+      <td>0.4507</td>
+      <td>0.3174</td>
+      <td>0.0193</td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td>0.2624</td>
+      <td>0.3261</td>
+      <td>-0.0700</td>
+      <td>-0.1247</td>
+      <td>-0.0466</td>
+    </tr>
+    <tr>
+      <th>analytics</th>
+      <td>-0.3572</td>
+      <td>-0.8620</td>
+      <td>1.8158</td>
+      <td>1.2162</td>
+      <td>0.3443</td>
+    </tr>
+    <tr>
+      <th>is</th>
+      <td>-0.1668</td>
+      <td>-0.4991</td>
+      <td>0.9529</td>
+      <td>0.6272</td>
+      <td>0.2043</td>
+    </tr>
+    <tr>
+      <th>awesome</th>
+      <td>-0.1539</td>
+      <td>-0.1977</td>
+      <td>0.2952</td>
+      <td>0.2313</td>
+      <td>0.0483</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>For the decoder model, attention is masked in a way such that only tokens can only pay attention to itself or to the proceeding tokens. This is like reading from left to right and is also called autoregressive attention. To achieve this, we mask the scores for the tokens which follow after the token in the current position. If you take a look in the cell below, you can see that technically this is done by replacing the original scores with small value close to zero.</p>
 <div class="cell docutils container">
@@ -655,20 +721,84 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">max_seq</span><span class="p">,</span> <span class="n">max_seq</span><span class="p">)))</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="n">scaled_scores</span> <span class="o">=</span> <span class="n">scaled_scores</span><span class="o">.</span><span class="n">masked_fill</span><span class="p">(</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">value</span><span class="o">=-</span><span class="mf">1e9</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Masked attention scores before softmax:</span><span class="se">\n</span><span class="s2"> </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">scaled_scores</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Masked attention scores before softmax:&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">scaled_scores</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Masked attention scores before softmax:
- [[[-1.00e-01 -1.00e+09 -1.00e+09 -1.00e+09 -1.00e+09]
-  [ 2.60e-01  3.30e-01 -1.00e+09 -1.00e+09 -1.00e+09]
-  [-3.60e-01 -8.60e-01  1.82e+00 -1.00e+09 -1.00e+09]
-  [-1.70e-01 -5.00e-01  9.50e-01  6.30e-01 -1.00e+09]
-  [-1.50e-01 -2.00e-01  3.00e-01  2.30e-01  5.00e-02]]]
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>financial</th>
+      <th>data</th>
+      <th>analytics</th>
+      <th>is</th>
+      <th>awesome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>financial</th>
+      <td>-0.1006</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td>0.2624</td>
+      <td>3.261000e-01</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+    </tr>
+    <tr>
+      <th>analytics</th>
+      <td>-0.3572</td>
+      <td>-8.620000e-01</td>
+      <td>1.815800e+00</td>
+      <td>-1.000000e+09</td>
+      <td>-1.000000e+09</td>
+    </tr>
+    <tr>
+      <th>is</th>
+      <td>-0.1668</td>
+      <td>-4.991000e-01</td>
+      <td>9.529000e-01</td>
+      <td>6.272000e-01</td>
+      <td>-1.000000e+09</td>
+    </tr>
+    <tr>
+      <th>awesome</th>
+      <td>-0.1539</td>
+      <td>-1.977000e-01</td>
+      <td>2.952000e-01</td>
+      <td>2.313000e-01</td>
+      <td>4.830000e-02</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>If we activate these values with the softmax function (for every row), masked scaled dot-product attention scores are generated. We observe that the values for every row are in <span class="math notranslate nohighlight">\([0, 1]\)</span> and sum up to <span class="math notranslate nohighlight">\(1\)</span>. However, in comparison to the attention mechanism of the encoder model, the weights are only available for proceeding tokens and the token itself.</p>
 <div class="cell docutils container">
@@ -676,20 +806,80 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span> 
 
 <span class="n">attention</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scaled_scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">attention</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">attention</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[[1.0000, 0.0000, 0.0000, 0.0000, 0.0000],
-         [0.4841, 0.5159, 0.0000, 0.0000, 0.0000],
-         [0.0963, 0.0581, 0.8456, 0.0000, 0.0000],
-         [0.1430, 0.1026, 0.4381, 0.3163, 0.0000],
-         [0.1608, 0.1539, 0.2520, 0.2364, 0.1969]]],
-       grad_fn=&lt;SoftmaxBackward0&gt;)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>financial</th>
+      <th>data</th>
+      <th>analytics</th>
+      <th>is</th>
+      <th>awesome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>financial</th>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>data</th>
+      <td>0.484069</td>
+      <td>0.515930</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>analytics</th>
+      <td>0.096256</td>
+      <td>0.058105</td>
+      <td>0.845639</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>is</th>
+      <td>0.142993</td>
+      <td>0.102566</td>
+      <td>0.438126</td>
+      <td>0.316315</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>awesome</th>
+      <td>0.160823</td>
+      <td>0.153924</td>
+      <td>0.251999</td>
+      <td>0.236390</td>
+      <td>0.196864</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Finally, the attention is multiplied with the value embeddings.</p>
 <div class="cell docutils container">
@@ -990,14 +1180,356 @@ Most likely tokens which could follow:
 </section>
 <section id="text-generation">
 <h2>Text generation<a class="headerlink" href="#text-generation" title="Link to this heading">#</a></h2>
-</section>
-<section id="finetuning">
-<h2>Finetuning<a class="headerlink" href="#finetuning" title="Link to this heading">#</a></h2>
-<p>So technically, we use the the chain rule of probabilities also called factorization. Given a sequence of events or random variables  <span class="math notranslate nohighlight">\(x = \{x_1, x_2, \dots, x_T\} \)</span>, its joint probability can be determined by:</p>
+<p>Once a model is trained, it becomes relatively easy to determine the probability for an observed text sequence. In general at every position <span class="math notranslate nohighlight">\(t\)</span> in the sequence, the decoder returns the conditional probability:</p>
+<div class="math notranslate nohighlight">
+\[
+P(x_t \mid x_1, x_2, \dots, x_{t-1}) 
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(x\)</span> representing the tokens in the sequence. To generate text, the intuitive idea is to use the token with the highest probability as the next one. After that we move on and do the same and so on. This is called a <em>greedy search</em>. However, as we are going to find out in the cells below, greedy search does not necessarily lead to human alike texts. This is why other generation mechanisms evolved for text generation. Without going to much into the details, we study ideas based on</p>
+<ul class="simple">
+<li><p>greedy search</p></li>
+<li><p>beam search</p></li>
+<li><p>sampling</p></li>
+</ul>
+<p>in the examples below.</p>
+<p>For the following examples, the starting sequence is always: “I enjoy studying text models, because” and the model is supposed to continue the sequence up to a maximum of 40 tokens.</p>
+<p>In the cell below, we observe the output of a greedy search and as we can see it somewhat makes sense, however, sequences tend to get repeated a lot. This may be related to the algorithms behavior of ignoring other tokens with high probabilities. Thus, the outcome of generated text is less diverse and tends to repeat at some point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+
+<span class="n">sentence_start</span> <span class="o">=</span> <span class="s2">&quot;I enjoy studying text models, because&quot;</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sentence_start</span><span class="p">,</span> <span class="n">return_tensors</span> <span class="o">=</span> <span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+
+<span class="n">greedy_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">greedy_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because they are very easy to understand and understand. I also like to use them to create a visual representation of the world.
+
+I like to use them to create a visual representation of the world.
+</pre></div>
+</div>
+</div>
+</div>
+<p>One way to tackle this issue is by applying <em>beam</em> search. To understand this, we need to repeat some fundamentals of probability calculus, i.e., tools to calculate probabilities for discrete sequential outcomes. Maybe you remember from school or undergraduate math or statistics courses, that the probability for the sequence “financial data analytics”, given the start word is “financial” in the example below is:</p>
+<div class="math notranslate nohighlight">
+\[
+P(data, analytics| financial) = 0.4 \cdot 0.1 = 0.04
+\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[
+P(data, analysis| financial) = 0.4 \cdot 0.9 = 0.36
+\]</div>
+<p>This comes from the general formula:</p>
+<div class="math notranslate nohighlight">
+\[
+P (x_{1:T} | x_0) = P(x_T | x_{0:T-1}) \cdot P(x_{T-1} | x_{0:T-2}) \cdot ... \cdot P(x_1 | x_0) = \prod_{t=1}^T P(x_t | x_{0:t-1})
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(x_{1:T} = x_1, x_2, ...,x_t\)</span> representing the sequence from token at position <span class="math notranslate nohighlight">\(t=1\)</span> until token at position <span class="math notranslate nohighlight">\(T\)</span>. If you are interested, this formula can be derived by the chain rule of probabilities also called factorization. Given a sequence of events or random variables  <span class="math notranslate nohighlight">\(x = \{x_1, x_2, \dots, x_T\} \)</span>, its joint probability can be determined by:</p>
 <div class="math notranslate nohighlight">
 \[
 P(x_1, x_2, \dots, x_T) = P(x_1) \cdot P(x_2 \mid x_1) \cdot P(x_3 \mid x_1, x_2) \cdot \dots \cdot P(x_T \mid x_1, x_2, \dots, x_{T-1})
 \]</div>
+<p>Coming back to our example in the cell below, this means, we can determine the probabilities for all potential sequences, given the seed word “financial” simply by following the branches of the trees and multiplying the conditional probabilities. For our example, this gives us:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P(data, analysis| financial) = 0.4 \cdot 0.9 = 0.36 \\
+P(data, analytics| financial) = 0.4 \cdot 0.1 = 0.04 \\
+P(analysis, is| financial) = 0.6 \cdot 0.4 = 0.24 \\
+P(analysis, help| financial) = 0.6 \cdot 0.4 = 0.12 \\
+P(analysis, improves| financial) = 0.6 \cdot 0.4 = 0.24 \\
+\end{split}\]</div>
+<p>This means the sequence “financial data analysis” is more likely than “financial analysis is” or “financial analysis improves”, even though the next token after “financial” which would be chosen according to a greedy search is “analysis”. So generating the first sequence might be more reasonable and is different from greedy search.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;word_seq_probs.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/0a1444eeb5bd2c79dd4754c3c8a9a07d0b69582a634590df0e0b372f408a527f.jpg"><img alt="_images/0a1444eeb5bd2c79dd4754c3c8a9a07d0b69582a634590df0e0b372f408a527f.jpg" src="_images/0a1444eeb5bd2c79dd4754c3c8a9a07d0b69582a634590df0e0b372f408a527f.jpg" style="width: 600px;" /></a>
+</div>
+</div>
+<p>Beam search keeps track of the most likely tokens at each time step and finally choses the sequence with the highest probability overall. If we take a look at the generated text below the next cell, we hardly observe an improvement, the generated text still seems to be very repetitive. This may be improved by not allowing the algorithm to use n-grams more than once. Nevertheless, the literature further argues that human text does not necessarily mostly include high probability tokens and often may have more surprising (and by this means less likely) tokens in a sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beam_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">num_beams</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">beam_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because they allow me to see what I want to see, and I can see what I want to see, and I can see what I want to see, and I can see what I want to see
+</pre></div>
+</div>
+</div>
+</div>
+<p>To include this surprising element when generating text, we may sample tokens according to their conditional probability distribution. For instance, regarding to the probability example from above, we continue a sequence with “data” in 40% of all generated samples and with “analysis” in 60%. So all possible sequences may occur, however, “financial data analysis” will be the one which occurs the most.</p>
+<p>If we take a look how this impacts the generation of our full text sequence, at first sight it seems more natural, however, the sequence makes little sense at this point. So maybe, too much randomness?!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">sample_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">top_k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because I&#39;m more proficient with models in actual conversations, because, well, like a lot of these people. BUT if they act the way I want them to and think you&#39;d be interested in their skills
+</pre></div>
+</div>
+</div>
+</div>
+<p>In order to overcome the issue of too much randomness, different methods can be done. These can be applied separately or in combination.</p>
+<ul class="simple">
+<li><p>Temperature sampling</p></li>
+<li><p>Top-k sampling</p></li>
+<li><p>Nucleus sampling</p></li>
+</ul>
+<p>To understand temperature sampling, we need to remember that probabilities are usually determined by activating scores via a softmax function. For instance, if we have three possible categories, the scores are:</p>
+<div class="math notranslate nohighlight">
+\[
+z = [1.0, 1.0, 1.2]
+\]</div>
+<p>Remember from a previous chapter that the softmax activation transformes theses scores to probabilities by:</p>
+<div class="math notranslate nohighlight">
+\[
+g(z_{k}) = \frac{e^{z_{k}}}{\sum_l e^{z_{l}}} 
+\]</div>
+<p>Temperature sampling adjusts scores by dividing them with temperature <span class="math notranslate nohighlight">\(c \in (0, 1]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*} = \frac{z}{c}
+\]</div>
+<p>and determines probabilities by applying the softmax activation to these scores. For temperature <span class="math notranslate nohighlight">\(c&lt;1\)</span>, high probability tokens become more likely and low probability words become less likely. For instance, if we use the scores from above probabilities are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
+<span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">scores</span><span class="p">)),</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.2614, 0.2614, 0.4772], dtype=torch.float64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Setting the temperature to <span class="math notranslate nohighlight">\(c=0.6\)</span> changes these probabilities to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mf">0.6</span>
+<span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">scores</span><span class="o">/</span><span class="n">t</span><span class="p">)),</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([0.0988, 0.0988, 0.8024], dtype=torch.float64)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using this technique, we generate the following sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">sample_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because I&#39;m more proficient with them in terms of how they are applied to the text and how we can understand them.
+
+It&#39;s also interesting because I&#39;ve been doing several interviews with people who are
+</pre></div>
+</div>
+</div>
+</div>
+<p>Top-k sampling first chooses the <span class="math notranslate nohighlight">\(k\)</span> tokens with the highest probabilities, proportionally adjusts these probabilities and samples from that distribution. For instance in our decision tree, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P(x_2 | financial, analysis) = 
+\begin{cases}
+0.4 &amp; is \\
+0.2 &amp; helps \\
+0.4 &amp; improves 
+\end{cases}
+\end{split}\]</div>
+<p>Let us set k=2, we only keep “is” and “improves” and re-adjust the conditional probability distribution to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P(x_2 | financial, analysis) = 
+\begin{cases}
+0.5 &amp; is \\
+0.5 &amp; improves 
+\end{cases}
+\end{split}\]</div>
+<p>Using this technique, we generate the following sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">sample_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">top_k</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because I&#39;m more comfortable with the computer world.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or combining these techniques leads to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">sample_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">top_k</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because I&#39;m more proficient with them in terms of my writing, and I like to see how we can improve our research approaches. I&#39;m also happy to help people think about the data. So I&#39;m
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last variant we take a look at is <em>nucleus (top-p)</em> sampling. In essence, it may be seen as a refinement of top-k sampling. Instead of sample from the top-k probability tokens, we search for the smallest set of tokens such that their sum of individual probabilities exceeds <span class="math notranslate nohighlight">\(p\)</span>. For instance in our decision tree, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P(x_2 | financial, analysis) = 
+\begin{cases}
+0.4 &amp; is \\
+0.2 &amp; helps \\
+0.4 &amp; improves 
+\end{cases}
+\end{split}\]</div>
+<p>Let us set p=0.7, the smallest set whose sum of individual probabilities are again the words “is” and “improves”, thus, this would be equivalent to top-k sampling with <span class="math notranslate nohighlight">\(k=2\)</span> in our example. Again the original probabilities are redistributed such that the sum of probabilities is equal to one.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P(x_2 | financial, analysis) = 
+\begin{cases}
+0.5 &amp; is \\
+0.5 &amp; improves 
+\end{cases}
+\end{split}\]</div>
+<p>Using this technique, we generate the following sequence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">sample_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">top_p</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">pad_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="n">eos_token_id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output:</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">*</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample_output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output:
+----------------------------------------------------------------------------------------------------
+I enjoy studying text models, because I&#39;m more proficient with models in languages like JavaScript or Ruby. I like to see examples of how it&#39;s possible to design the most realistic way possible for an individual program.
+
+The more code
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finetuning">
+<h2>Finetuning<a class="headerlink" href="#finetuning" title="Link to this heading">#</a></h2>
+<p>Similar to encoder only models, the decoder models are usually finetuned for specific tasks. In general, the nature of encoder models is to create a meaningful numerical representation of the original input. The decoder models may be suited for this as well, however, due to their attention mechanism maybe better suited for tasks of text generation.</p>
+<p>Examples which can be tackled by both model types are regression or classification tasks. We already learned that the CLS token representation of the encoder is usually used as a representation for the whole sequence by encoder models. In case of the decoder models, this would make little sense as the first token is only able to pay attention to itself and not the sequence of tokens which follow after it. Thus, the numerical representation of the last token in the sequence is used by decoder models to represent the sequence. For this purpose, it would make sense to end every sequence with a special token, e.g., an EOS (End of Sequence) token.</p>
+<p>Besides tasks such as question answering or summarizing are better tackled by decoder models as they are able to create sequences of tokens with arbitrary length. Overall the process is as for encoder models. After pretraining, labeled examples are presented to the model and all its parameters are finetuned to increase the performance for a specific task.</p>
 </section>
 </section>
 
