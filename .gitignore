@@ -16,3 +16,4 @@ tex/
 !tex/dlta.pdf
 top2vec/*
 generator/*
+transformers/*
