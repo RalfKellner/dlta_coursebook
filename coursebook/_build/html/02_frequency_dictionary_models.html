@@ -175,7 +175,6 @@
 <li class="toctree-l1"><a class="reference internal" href="07_encoder.html">Encoder models - BERT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_decoder.html">Decoder models - GPT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
     </div>
@@ -1603,38 +1602,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;encumbrance&#39; &#39;shortfalls&#39; &#39;recalled&#39; &#39;obscene&#39; &#39;complaining&#39; &#39;claims&#39;
- &#39;briberies&#39; &#39;punishment&#39; &#39;exaggeration&#39; &#39;taints&#39;]
+[&#39;petty&#39; &#39;impairing&#39; &#39;repossessions&#39; &#39;destroying&#39; &#39;infringements&#39;
+ &#39;corruption&#39; &#39;litigation&#39; &#39;overvaluing&#39; &#39;undesired&#39; &#39;boycotting&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;favoring&#39; &#39;enthusiastic&#39; &#39;favored&#39; &#39;prosperous&#39; &#39;attractive&#39; &#39;unmatched&#39;
- &#39;succeeds&#39; &#39;easily&#39; &#39;excelling&#39; &#39;strength&#39;]
+[&#39;innovations&#39; &#39;enjoying&#39; &#39;stabilizes&#39; &#39;impressively&#39; &#39;proficiency&#39;
+ &#39;regained&#39; &#39;gains&#39; &#39;succeeded&#39; &#39;winning&#39; &#39;attractive&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;crossroad&#39; &#39;cautious&#39; &#39;assumed&#39; &#39;instability&#39; &#39;vaguest&#39; &#39;randomize&#39;
- &#39;seldomly&#39; &#39;volatile&#39; &#39;doubted&#39; &#39;indefiniteness&#39;]
+[&#39;unidentified&#39; &#39;uncertain&#39; &#39;presumption&#39; &#39;ambiguous&#39; &#39;variant&#39;
+ &#39;anticipating&#39; &#39;differs&#39; &#39;reinterprets&#39; &#39;variance&#39; &#39;confusing&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;quitclaims&#39; &#39;breached&#39; &#39;rescinds&#39; &#39;obligors&#39; &#39;adjournment&#39;
- &#39;nonappealable&#39; &#39;prosecuting&#39; &#39;tenantability&#39; &#39;predeceases&#39; &#39;optionees&#39;]
+[&#39;demurred&#39; &#39;retrocessionaires&#39; &#39;nonforfeiture&#39; &#39;recusal&#39; &#39;thereof&#39;
+ &#39;assumable&#39; &#39;indicting&#39; &#39;executrixes&#39; &#39;legalized&#39; &#39;willfully&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;unequivocal&#39; &#39;must&#39; &#39;definitively&#39; &#39;unsurpassed&#39; &#39;clearly&#39; &#39;never&#39;
- &#39;will&#39; &#39;best&#39; &#39;strongly&#39; &#39;lowest&#39;]
+[&#39;must&#39; &#39;unequivocally&#39; &#39;strongly&#39; &#39;clearly&#39; &#39;definitively&#39; &#39;best&#39;
+ &#39;unambiguously&#39; &#39;uncompromising&#39; &#39;will&#39; &#39;undoubtedly&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;suggest&#39; &#39;depends&#39; &#39;possible&#39; &#39;depending&#39; &#39;depended&#39; &#39;uncertain&#39;
- &#39;seldom&#39; &#39;could&#39; &#39;possibly&#39; &#39;might&#39;]
+[&#39;uncertainly&#39; &#39;might&#39; &#39;almost&#39; &#39;appears&#39; &#39;perhaps&#39; &#39;apparently&#39; &#39;suggest&#39;
+ &#39;appearing&#39; &#39;depend&#39; &#39;uncertain&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;stipulations&#39; &#39;prohibitively&#39; &#39;directives&#39; &#39;permitting&#39; &#39;inhibits&#39;
- &#39;forbid&#39; &#39;escrowed&#39; &#39;imposes&#39; &#39;precluded&#39; &#39;confines&#39;]
+[&#39;obliged&#39; &#39;refrains&#39; &#39;impairs&#39; &#39;prevents&#39; &#39;entails&#39; &#39;encumbered&#39;
+ &#39;preconditions&#39; &#39;forbids&#39; &#39;permitting&#39; &#39;imposing&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1833,7 +1832,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ab012fa8d8ca2969958fff5ddafa2d6e12796c46eb66a62eb4101cfcf82ded56.png" src="_images/ab012fa8d8ca2969958fff5ddafa2d6e12796c46eb66a62eb4101cfcf82ded56.png" />
+<img alt="_images/84d0d2a6bcf928d6fe3503bfd43cf21fc68f2816fb4fc36aac5c4b0ac14d088a.png" src="_images/84d0d2a6bcf928d6fe3503bfd43cf21fc68f2816fb4fc36aac5c4b0ac14d088a.png" />
 </div>
 </div>
 <p>In order to identify how much an annual report (10-K) includes climate change specific language, we quantify the cosine similarity between the term-frequencey inverse-document-frequency vector of the climate change white papers with each corresponding 10-K vector. The boxplots below give us a detailed impression about the level of similarity which we refer to as “climate talk” over all reports, here, grouped by year. We observe a similar numerical range of climate talk for very year. In every year, a rather large amount of high outlier values can be observed. This may be due to differences of climate talk between companies or sectors of business operations.</p>
