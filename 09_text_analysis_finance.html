@@ -66,7 +66,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Case study form 8K filings" href="10_case_study_8k.html" />
     <link rel="prev" title="Decoder models - GPT" href="08_decoder.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -175,7 +174,6 @@
 <li class="toctree-l1"><a class="reference internal" href="07_encoder.html">Encoder models - BERT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_decoder.html">Decoder models - GPT</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Text analysis in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
     </div>
@@ -363,8 +361,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-noisy-vs-noise-tasks">Non-noisy vs noise tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-stock-market-reactions">Quantifying stock market reactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-tasks-with-stock-market-reactions">Regression tasks with stock market reactions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-returns">Event returns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-returns">Excess returns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abnormal-returns">Abnormal returns</a></li>
@@ -373,7 +370,21 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-stock-market-reactions">Predicting stock market reactions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-text-information-explains-of-stock-market-reactions">How much text information explains of stock market reactions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-the-literature">Examples from the literature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stock-market-reactions-and-term-frequencies">Stock market reactions and term frequencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-a-liability-not-a-liability">When is a liability not a liability?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disclosure-sentiment-machine-learning-vs-dictionary-methods">Disclosure Sentiment: Machine Learning vs Dictionary Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-similarity-and-its-usage">Document similarity and its usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lazy-prices">Lazy Prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hedging-climate-change-news">Hedging Climate Change News</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-models">Encoder models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-bert-how-regulatory-disclosure-of-transition-and-physical-climate-risks-affects-the-cds-term-structure">Ask BERT: How Regulatory Disclosure of Transition and Physical Climate Risks Affects the CDS Term Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-value-and-values-discovery-in-earnings-calls">Climate Value and Values Discovery in Earnings Calls</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
             </nav>
@@ -388,16 +399,22 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="text-analysis-in-finance">
 <h1>Text analysis in finance<a class="headerlink" href="#text-analysis-in-finance" title="Link to this heading">#</a></h1>
-<p>So far we mostly discussed different methods how text can be transformed into numerical representations. Starting from frequency based bag-of-word type representations to methods including semantic meaning like Word2Vec and Doc2Vec. Given we generate the numerical representation of text, we may use it for different applications which are specific for the domain, i.e., for us it is the domain of financial markets. So let us take a look at common goals for financial text analysis.</p>
-<p>A very popular one is the detection of sentiment of financial text, e.g., do earning calls of companies include negative, neutral or positive tone. Furthermore, besides sentiment analysis, the disclosure of topics in financial reports can be of high interest. For instance, how does a company reports about its risk management of its exposure to risk factors as the development of the economy or its exposure to non-financial risk factors including environmental, social or governance issues of the company.</p>
-<p>Why would anyone care about these things? With a very general point of view, financial markets are about the distribution of money where, if everything behaves as desired, money is transferred to entities which seem to be best in creating values. Again, values is a very general description for things such as the development of products and services of high quality. Usually, the ones which succeed best in generating values are the ones which make large gains and grow in value. This means investors on financial markets want to transfer their funds to the most promising entities with this respect. To achieve this goal, investors make use of all information available. Starting from quantitative facts such as numbers from, e.g., balance sheet and financial statements, to the content of financial reports, news, earning calls, etc. Whenever information is published which impacts future earnings, investor’s adjust their expectation of a company’s value and by this means the price they are willing to pay for an asset.</p>
-<p>Bringing this narrative to financial texts, investor want to be informed about aspects which may be relevant for the company’s future. Given the immense amount of textual information on financial markets, they are in need of tools supporting their information gathering process. This is why text models which are able to automatically generate information on the content of financial texts are relevant and needed.</p>
-<section id="non-noisy-vs-noise-tasks">
-<h2>Non-noisy vs noise tasks<a class="headerlink" href="#non-noisy-vs-noise-tasks" title="Link to this heading">#</a></h2>
-<p>If we want to evaluate the performance of a financial text model, we need labels which relate to text information, e.g., is the sentence positive, neutral or negative. One way to create these labels is by manual labeling which means that we select a number of text examples and label them ourselves. The positive aspect of manual labeling is that a genuine and direct link exists between text information and its label. On the negative side, labeling is a time-consuming process which can adversely be impacted by subjection. An alternative to manual labeling in the financial domain is to treat market reactions as the label, i.e., if the price of an asset in- or decreases after the release of textual information, the reaction of the market is treated as a label of positive (price increase) or negative (price decrease). This liberates us from manual labeling, however, comes along with some drawbacks. For instance, the text may include information which is relevant for the assets future development, but, investors do not react towards the information, given they learned about it before from other sources. Or, the information in the text is irrelevant for the assets future, however the market reacts to other developments, e.g., future adverse conditions of the economy. Bottom line, the link between text and market reactions is rather blurry and noisy.</p>
-</section>
-<section id="quantifying-stock-market-reactions">
-<h2>Quantifying stock market reactions<a class="headerlink" href="#quantifying-stock-market-reactions" title="Link to this heading">#</a></h2>
+<p>So far we mostly discussed different methods how text can be transformed into numerical representations. Starting from frequency based bag-of-word type representations to methods including semantic meaning like Word2Vec and Doc2Vec and finally ending up at language models which capture meaning and context. Given we generate the numerical representation of text, we may use it for different applications which are specific for the domain, e.g., financial markets. In this chapter, we review general concepts which are needed for the application of text models on financial markets. Furthermore, we examine a few academic research papers with versatile applications of text models on financial markets.</p>
+<p>We take a look at:</p>
+<ul class="simple">
+<li><p>the quantification of financial sentiment</p></li>
+<li><p>the identification how quickly investors process text information in financial reports</p></li>
+<li><p>how financial climate risk is hedged with a textual approach</p></li>
+<li><p>how climate talk and climate disclosure can be identified in earning conference calls and annual reports</p></li>
+</ul>
+<p>From a methodological point of view, the majority of text related tasks which are tackled in these research papers are either regression or classification tasks:</p>
+<ul class="simple">
+<li><p>Regression tasks usually use text as input and a numerical target variable which is derived from stock market prices</p></li>
+<li><p>Classification tasks collect text sequences from financial documents, annotate them and tune a model for automated classification</p></li>
+</ul>
+<p>If text sequences are manually labeld, usually a genuine and direct link exists between text information and its label. However, labeling is a time-consuming process which can adversely be impacted by subjection. An alternative to manual labeling in the financial domain is to treat market reactions as the label, i.e., if the price of an asset in- or decreases after the release of textual information, the reaction of the market is treated as a label of positive (price increase) or negative (price decrease). This is often used to create target variables for regression tasks and liberates us from manual labeling. However, it comes along with some drawbacks. For instance, the text may include information which is relevant for the assets future development, but, investors do not react towards the information, given they learned about it before from other sources. Or, the information in the text is irrelevant for the assets future, however the market reacts to other developments, e.g., future adverse conditions of the economy. Bottom line, the link between text and market reactions is rather blurry and noisy.</p>
+<section id="regression-tasks-with-stock-market-reactions">
+<h2>Regression tasks with stock market reactions<a class="headerlink" href="#regression-tasks-with-stock-market-reactions" title="Link to this heading">#</a></h2>
 <p>Nevertheless, market reactions are more often used in research due to its easier access and broader availability. So let us take a look how we exactly quantify stock market reactions. As defined in a previous chapter, we define the discrete return of this asset as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -878,7 +895,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x33d9e5dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x1473ae890&gt;
 </pre></div>
 </div>
 <img alt="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" src="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" />
@@ -910,7 +927,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="YDOgHt"></div>
+            <div id="hA6cEo"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -934,14 +951,14 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("YDOgHt").appendChild(div);
+                        document.getElementById("hA6cEo").appendChild(div);
                     };
-                    var e = document.getElementById("YDOgHt");
+                    var e = document.getElementById("hA6cEo");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="8VHYe5"></div>
+            <div id="C4DzTG"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -965,58 +982,58 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("8VHYe5").appendChild(div);
+                        document.getElementById("C4DzTG").appendChild(div);
                     };
-                    var e = document.getElementById("8VHYe5");
+                    var e = document.getElementById("C4DzTG");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="xfxglgeesw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="sbnuelpzkj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#xfxglgeesw table {
+#sbnuelpzkj table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#xfxglgeesw thead, tbody, tfoot, tr, td, th { border-style: none; }
+#sbnuelpzkj thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#xfxglgeesw p { margin: 0; padding: 0; }
- #xfxglgeesw .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #xfxglgeesw .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #xfxglgeesw .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #xfxglgeesw .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #xfxglgeesw .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #xfxglgeesw .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #xfxglgeesw .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #xfxglgeesw .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #xfxglgeesw .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #xfxglgeesw .gt_column_spanner_outer:first-child { padding-left: 0; }
- #xfxglgeesw .gt_column_spanner_outer:last-child { padding-right: 0; }
- #xfxglgeesw .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #xfxglgeesw .gt_spanner_row { border-bottom-style: hidden; }
- #xfxglgeesw .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #xfxglgeesw .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #xfxglgeesw .gt_from_md> :first-child { margin-top: 0; }
- #xfxglgeesw .gt_from_md> :last-child { margin-bottom: 0; }
- #xfxglgeesw .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #xfxglgeesw .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #xfxglgeesw .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #xfxglgeesw .gt_row_group_first td { border-top-width: 0.5px; }
- #xfxglgeesw .gt_row_group_first th { border-top-width: 0.5px; }
- #xfxglgeesw .gt_striped { background-color: rgba(128,128,128,0.05); }
- #xfxglgeesw .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #xfxglgeesw .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #xfxglgeesw .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #xfxglgeesw .gt_left { text-align: left; }
- #xfxglgeesw .gt_center { text-align: center; }
- #xfxglgeesw .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #xfxglgeesw .gt_font_normal { font-weight: normal; }
- #xfxglgeesw .gt_font_bold { font-weight: bold; }
- #xfxglgeesw .gt_font_italic { font-style: italic; }
- #xfxglgeesw .gt_super { font-size: 65%; }
- #xfxglgeesw .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #xfxglgeesw .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#sbnuelpzkj p { margin: 0; padding: 0; }
+ #sbnuelpzkj .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #sbnuelpzkj .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #sbnuelpzkj .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #sbnuelpzkj .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #sbnuelpzkj .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #sbnuelpzkj .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #sbnuelpzkj .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #sbnuelpzkj .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #sbnuelpzkj .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #sbnuelpzkj .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #sbnuelpzkj .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #sbnuelpzkj .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #sbnuelpzkj .gt_spanner_row { border-bottom-style: hidden; }
+ #sbnuelpzkj .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #sbnuelpzkj .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #sbnuelpzkj .gt_from_md> :first-child { margin-top: 0; }
+ #sbnuelpzkj .gt_from_md> :last-child { margin-bottom: 0; }
+ #sbnuelpzkj .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #sbnuelpzkj .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #sbnuelpzkj .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #sbnuelpzkj .gt_row_group_first td { border-top-width: 0.5px; }
+ #sbnuelpzkj .gt_row_group_first th { border-top-width: 0.5px; }
+ #sbnuelpzkj .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #sbnuelpzkj .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #sbnuelpzkj .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #sbnuelpzkj .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #sbnuelpzkj .gt_left { text-align: left; }
+ #sbnuelpzkj .gt_center { text-align: center; }
+ #sbnuelpzkj .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #sbnuelpzkj .gt_font_normal { font-weight: normal; }
+ #sbnuelpzkj .gt_font_bold { font-weight: bold; }
+ #sbnuelpzkj .gt_font_italic { font-style: italic; }
+ #sbnuelpzkj .gt_super { font-size: 65%; }
+ #sbnuelpzkj .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #sbnuelpzkj .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
@@ -1148,9 +1165,12 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 \]</div>
 <p>Even though it looks more complicated, the interpretation in terms of adjusted <span class="math notranslate nohighlight">\(R^2\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> coefficients remain as before.</p>
 </section>
-<section id="examples-from-the-literature">
-<h2>Examples from the literature<a class="headerlink" href="#examples-from-the-literature" title="Link to this heading">#</a></h2>
-<p>Let us take a look from a popular research paper by <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughran and McDonald (2011)</a>. They do not create predictions for financial sentiment, however, as described in the former chapters, they define a finance specific dictionary and count the frequency of negative tone in form 10-K annual filings of stock market listed companies. This variable is called Fin-Neg in the table of their paper below. The ability of this variable to explain the variation the cumulative excess return over the annual report’s disclosure is compared to the negative tone measured by words from a more common dictionary that is not finance specific (H4N-Inf).</p>
+<section id="stock-market-reactions-and-term-frequencies">
+<h2>Stock market reactions and term frequencies<a class="headerlink" href="#stock-market-reactions-and-term-frequencies" title="Link to this heading">#</a></h2>
+<p>Two popular papers which investigate the relation between the sentiment of company reports and earning call transcripts and stock market reactions are by <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughran and McDonald (2011)</a> and <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3845780">Frankel et. al (2022)</a>.</p>
+<section id="when-is-a-liability-not-a-liability">
+<h3>When is a liability not a liability?<a class="headerlink" href="#when-is-a-liability-not-a-liability" title="Link to this heading">#</a></h3>
+<p>Loughran and MacDonald (2011) do not create predictions for financial sentiment, however, as described in the former chapters, they define a finance specific dictionary and count the frequency of negative tone in form 10-K annual filings of stock market listed companies. This variable is called Fin-Neg in the table of their paper below. The ability of this variable to explain the variation the cumulative excess return over the annual report’s disclosure is compared to the negative tone measured by words from a more common dictionary that is not finance specific (H4N-Inf).</p>
 <p>If you take a look in the table below, you also see further variables which are included as control variables. Furthermore the Average <span class="math notranslate nohighlight">\(R^2\)</span> is the average of <span class="math notranslate nohighlight">\(R^2\)</span> values over multiple regression from different quarters. Also the displayed coefficients are averages of estimated coefficients over all quarters. Values in curly brackets are t-statistics which can be used for statistical inference. Under normality of the t-value, absolute values exceeding <span class="math notranslate nohighlight">\(1.645\)</span> are the ones which would reject the null hypothesis of no impact under common significance levels. Proportional Weights are the frequencies of negative words in annual reports, the two columns to the right exhibit results when negative terms are weighted by their inverse document frequencies before aggregation.</p>
 <p>If we take a look at the two columns referring to the proportional weights, we observe a negative impact of negative tone on stock market reactions. The interesting take away is that the impact of the variable using the finance specific dictionary is statistically different from zero, while the one using the common dictionary is not. At the same time, variables of both dictionaries exhibit a negative impact on stock market reactions that is statistically different from zero. Thus, investors seem to react towards textual information of annual reports. Nevertheless, this result should not be overstated as the average value of <span class="math notranslate nohighlight">\(R^2\)</span> scores is relatively small. This indicates that only little of the actual variation of stock market reactions can be explained by the control and text variables. This is rather common in the financial domain which is largely exposed to randomness and lacks of strong deterministic relationships between firm variables and stock market developments.</p>
 <div class="cell docutils container">
@@ -1164,7 +1184,10 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 <a class="reference internal image-reference" href="_images/7e7f43c5c4b2c06cb7893a6ae197ab2b93faeb50cdd6ea17224f82669dd13d00.png"><img alt="_images/7e7f43c5c4b2c06cb7893a6ae197ab2b93faeb50cdd6ea17224f82669dd13d00.png" src="_images/7e7f43c5c4b2c06cb7893a6ae197ab2b93faeb50cdd6ea17224f82669dd13d00.png" style="width: 700px;" /></a>
 </div>
 </div>
-<p>The study from above is repeated by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3845780">Frankel et. al (2022)</a> using data up to more recent time periods. They find that the impact of negative tone measured by the dictionary of Loughran and MacDonald seems to vanish. Three variables are examined:</p>
+</section>
+<section id="disclosure-sentiment-machine-learning-vs-dictionary-methods">
+<h3>Disclosure Sentiment: Machine Learning vs Dictionary Methods<a class="headerlink" href="#disclosure-sentiment-machine-learning-vs-dictionary-methods" title="Link to this heading">#</a></h3>
+<p>The study from above is repeated by Frankel et. al (2022) using data up to more recent time periods. They find that the impact of negative tone measured by the dictionary of Loughran and MacDonald seems to vanish. Three variables are examined:</p>
 <ul class="simple">
 <li><p>Tone: number of positive words minus negative words divided by the number of positive and negative words</p></li>
 <li><p>Pos Tone: frequency of positive words</p></li>
@@ -1199,6 +1222,589 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 <a class="reference internal image-reference" href="_images/7b23ea4b6506a5f650e20044642b6e1874eaa5f79d25c7a5c5a43245c3515a3b.png"><img alt="_images/7b23ea4b6506a5f650e20044642b6e1874eaa5f79d25c7a5c5a43245c3515a3b.png" src="_images/7b23ea4b6506a5f650e20044642b6e1874eaa5f79d25c7a5c5a43245c3515a3b.png" style="width: 700px;" /></a>
 </div>
 </div>
+</section>
+</section>
+<section id="document-similarity-and-its-usage">
+<h2>Document similarity and its usage<a class="headerlink" href="#document-similarity-and-its-usage" title="Link to this heading">#</a></h2>
+<p>The papers by Loughran and MacDonald (2011) as well as Frankel et al. (2022) rely upon term frequencies and directly model their relation to financial market sentiment. Besides, we also can find useful document similarity based approaches in the financial literature. Two very different but interesting application are presented by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1658471">Cohen et. al (2020)</a> and <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3317570">Engle et. al (2020)</a>.</p>
+<section id="lazy-prices">
+<h3>Lazy Prices<a class="headerlink" href="#lazy-prices" title="Link to this heading">#</a></h3>
+<p>In “Lazy Prices”, Cohen et al. (2020) explore the predictive power of linguistic changes in financial filings (10-K and 10-Q reports) on stock returns and firm performance. They rely on textual similarity measures, comparing term frequencies across different filing periods to identify meaningful changes in language and structure. The primary focus is on how subtle modifications in corporate disclosures signal shifts in company fundamentals, which investors often overlook. By employing these textual metrics, the paper quantifies “non-obvious” updates in filings and connects these changes to market inefficiencies, such as delayed investor reactions.</p>
+<p>This approach leverages term frequency to assess semantic stability or drift, identifying linguistic updates as proxies for evolving firm-specific risks or opportunities. The authors use the insights to argue that markets fail to price in all relevant information promptly, creating opportunities for excess returns.</p>
+<p>More concrete, the authors holistically analyze a universe of US companies. Text documents are annual 10-K and quarter 10-Q reports. To quantify the similarity of firm reports, they use use four different metrics:</p>
+<ul class="simple">
+<li><p>Cosine similarity</p></li>
+<li><p>Jaccard similarity</p></li>
+<li><p>Minimum edit distance</p></li>
+<li><p>Simple similarity</p></li>
+</ul>
+<p>All measures are determined between two documents. For instance, cosine similarity uses the set of all terms which occur in both documents, determines their frequencies per document and calculates the cosine similarity between those vectors. Given the two documents:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_1\)</span>: financial data analytics</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_2\)</span>: financial data analysis</p></li>
+</ul>
+<p>we collect the dictionary by: [financial, data, analytics, analysis]</p>
+<p>The term frequency vectors are:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(TF_1\)</span>: [1, 1, 1, 0]</p></li>
+<li><p><span class="math notranslate nohighlight">\(TF_1\)</span>: [1, 1, 0, 1]</p></li>
+</ul>
+<p>The dot-product is: <span class="math notranslate nohighlight">\((1 \cdot 1) + (1 \cdot 1) + (1 \cdot 0) + (0 \cdot 1) = 2\)</span></p>
+<p>The length of each vector is: <span class="math notranslate nohighlight">\(\sqrt{3}\)</span></p>
+<p>This would result in the cosine similarity:;</p>
+<div class="math notranslate nohighlight">
+\[
+d_{cosine} = \frac{2}{\sqrt{3} \sqrt{3}} = \frac{2}{3} \approx 0.667 
+\]</div>
+<p>The highest effect sizes are given for the Jaccard similarity in the paper, so let us also take a look how it is defined. The Jaccard similarity compares the documents based on the overlap of terms in their sets.</p>
+<p>First, we need to define the sets of terms in both documents:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_1\)</span>: (financial, data, analytics)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_2\)</span>: (financial, data, analysis)</p></li>
+</ul>
+<p>Next, we determine the intersection and union:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_1 \cap D_2 \)</span>: (financial, data)</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_1 \cup D_2 \)</span>: (financial, data, analytics, analysis)</p></li>
+</ul>
+<p>Finally, Jaccard similarity is the ratio for number of elements in the intersection and the union:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
+\]</div>
+<p>In their paper, they always compare a report with its counterpart from the previous year, e.g., report for the first quarter in 2023 with the one in the first quarter in 2024. The analysis is done with data between 1995 and 2014. On the firm level, the do monthly regressions which regress the next month’s return upon the similarity measures and control variables. See the table from their paper below. Each of the similarity measures has a positive sign and is statistically different from zero (at a significance level of at 5%). This implies that companies with lower similarity do have a lower expected return. From a asset pricing perspective, this means investors demand a premium for companies that do not change their reports. This would only make sense if changes are mostly associated with positive company developments and a decrease in company risk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_regression.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/61aa7d6fd352fb9d5e66e84a2c2620c46d2a16bf83262e202211b5744c6003f9.png"><img alt="_images/61aa7d6fd352fb9d5e66e84a2c2620c46d2a16bf83262e202211b5744c6003f9.png" src="_images/61aa7d6fd352fb9d5e66e84a2c2620c46d2a16bf83262e202211b5744c6003f9.png" style="width: 800px;" /></a>
+</div>
+</div>
+<p>However, the opposite seems to be true as they conduct another regression to get further insights of document changes. The regression table below regresses one of their similarity shows that similarities decrease if more negative, litigious and uncertainty words are used or if the change is announcing the change of the company’s CEO or CFO. This creates a puzzling result as changes in the document seem to be related to aspects creating uncertainty and risk of the company. At the same time, investors want to be less compensated when holding companies with higher document changes.</p>
+<p>The only explanation which makes this result plausible is, that investors fail to directly include the information of the document changes at the time they are revealed. This seems to be true and revealed by their portfolio analysis. Based on the document similarity, they build two portfolios. One containing companies with the least document changes and one with the highest document changes. Over time portfolio components are added and deleted according to their current document similarity. To extract the difference between the two portfolios we take a look at the difference in returns of the portfolio with the least and the most changes. This is from the paper’s appendix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_pf_returns.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/27e50a48706d634bc1e4fbfd6b8f6fc887dc989c0ba8d3304b4a8dd9dcd88f97.png"><img alt="_images/27e50a48706d634bc1e4fbfd6b8f6fc887dc989c0ba8d3304b4a8dd9dcd88f97.png" src="_images/27e50a48706d634bc1e4fbfd6b8f6fc887dc989c0ba8d3304b4a8dd9dcd88f97.png" style="width: 800px;" /></a>
+</div>
+</div>
+<p>As we can see the portfolio of least changers outperforms the most changers in most of the months, predominately in the early 2000s where the dot-com crisis took place. To identify the origin of the outperformance, the figure below exhibits averages of cumulative abnormal returns after report disclosure. It gets clear that companies with the high changes in their company reports loose value over time, not at the event of information disclosure, but, months after it. This is quite uncommon for efficient markets which immediately process information into the companies’ stock market prices.</p>
+<p>Thus, the paper reveals that investors seem to be unable to detect information which is relevant for the companies’ value. Note that this is done by a rather simply method of using term frequencies and cosine similarity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_pf_returns2.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/aca76e929975fec63d8fbf66a3e8a41d8d29f3cd0f68d3de49c9c0f91bfaae86.png"><img alt="_images/aca76e929975fec63d8fbf66a3e8a41d8d29f3cd0f68d3de49c9c0f91bfaae86.png" src="_images/aca76e929975fec63d8fbf66a3e8a41d8d29f3cd0f68d3de49c9c0f91bfaae86.png" style="width: 700px;" /></a>
+</div>
+</div>
+</section>
+<section id="hedging-climate-change-news">
+<h3>Hedging Climate Change News<a class="headerlink" href="#hedging-climate-change-news" title="Link to this heading">#</a></h3>
+<p>The paper by Engle et al. (2020), Hedging Climate Change News, addresses the growing need to manage climate-related risks in financial markets. Climate risk is increasingly recognized as a critical factor affecting global economies due to its long-term, systemic, and non-diversifiable nature. These risks stem from both physical impacts (e.g., extreme weather events, rising sea levels) and transitional challenges (e.g., regulatory changes, shifts to low-carbon economies).</p>
+<p>As investors and companies seek to mitigate these uncertainties, traditional hedging tools like futures or insurance contracts face limitations. For example, the long-term horizon and correlated nature of climate risks make it difficult for counterparties to credibly ensure payouts during a widespread crisis. In this context, dynamically constructed hedge portfolios using publicly traded assets, as proposed by Engle et al. (2020), are critical. These portfolios offer a feasible approach to offset the financial impacts of climate risks by aligning market exposures with innovations in climate news, a key driver of investor sentiment and decision-making.</p>
+<p>More concrete, in their paper, they use term frequency analysis to construct indices that capture the intensity and sentiment of climate change coverage in media outlets. They develop the WSJ Climate Change News Index, which measures the prevalence of climate-related terms in The Wall Street Journal. This index is built using textual corpora, where climate-related term frequencies are weighted using methods like Term Frequency-Inverse Document Frequency (TF-IDF) and cosine similarity to authoritative climate change texts.</p>
+<p>The objective here is to capture “innovations” in climate news—unexpected shifts in media coverage that might influence investor perceptions of climate risks. These innovations serve as inputs for constructing hedge portfolios that aim to mitigate the financial impact of climate-related risks. Thus, term frequency is not merely used to identify changes in text but to model a market-relevant risk factor.</p>
+<p>Let us quickly take a look how, the climate change index is determined with help of a minimum example. In their paper, they collect documents whose emphasis lies on climate change (e.g., IPCC reports) and news articles of the wall street journal.</p>
+<ul class="simple">
+<li><p>Climate documents:</p>
+<ul>
+<li><p>Document 1: “greenhouse gas emissions increase global warming”</p></li>
+<li><p>Document 2: “renewable energies help to reduce greenhouse gas emissions”</p></li>
+</ul>
+</li>
+<li><p>News articles:</p>
+<ul>
+<li><p>Article 1: “greenhouse gas emissions are a major driver of future economic losses”</p></li>
+<li><p>Article 2: “the markets go up these days”</p></li>
+</ul>
+</li>
+</ul>
+<p>In the original paper, TF-IDF vectors for every document are generated. Hereby, there is only one climate document which includes the term frequencies from all climate documents. Furthermore, a newspaper document is the aggregate of all news articles for a single day. Thus, the frequencies of all articles within a day are used for determining the news TF-IDF vectors.</p>
+<p>In our example below, we have two articles from climate reports (d1, d2) and news articles from two days (a1, a2). Furthermore, we are going to ignore inverse document frequencies for our example. In a first step we create the unique set of terms and remove stop words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="s2">&quot;greenhouse gas emissions increase global warming&quot;</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="s2">&quot;renewable energies help to reduce greenhouse gas emissions&quot;</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="s2">&quot;greenhouse gas emissions are a major driver of future economic losses&quot;</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="s2">&quot;the markets go up these days&quot;</span>
+
+<span class="n">terms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">]:</span>
+    <span class="n">terms</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">terms</span><span class="p">))</span>
+
+<span class="n">stop_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;are&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">]</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">terms</span> <span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="n">t</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">)]</span>
+<span class="n">terms</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;go&#39;,
+ &#39;reduce&#39;,
+ &#39;emissions&#39;,
+ &#39;days&#39;,
+ &#39;up&#39;,
+ &#39;warming&#39;,
+ &#39;global&#39;,
+ &#39;markets&#39;,
+ &#39;greenhouse&#39;,
+ &#39;losses&#39;,
+ &#39;increase&#39;,
+ &#39;gas&#39;,
+ &#39;future&#39;,
+ &#39;driver&#39;,
+ &#39;these&#39;,
+ &#39;economic&#39;,
+ &#39;renewable&#39;,
+ &#39;energies&#39;,
+ &#39;major&#39;,
+ &#39;help&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we determine the term frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">term_frequencies</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counts</span>
+
+<span class="n">tfs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">terms</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">]):</span>
+    <span class="n">tfs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">term_frequencies</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+
+<span class="n">tfs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;d1&quot;</span><span class="p">,</span> <span class="s2">&quot;d2&quot;</span><span class="p">,</span> <span class="s2">&quot;a1&quot;</span><span class="p">,</span> <span class="s2">&quot;a2&quot;</span><span class="p">]</span>
+<span class="n">tfs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>go</th>
+      <th>reduce</th>
+      <th>emissions</th>
+      <th>days</th>
+      <th>up</th>
+      <th>warming</th>
+      <th>global</th>
+      <th>markets</th>
+      <th>greenhouse</th>
+      <th>losses</th>
+      <th>increase</th>
+      <th>gas</th>
+      <th>future</th>
+      <th>driver</th>
+      <th>these</th>
+      <th>economic</th>
+      <th>renewable</th>
+      <th>energies</th>
+      <th>major</th>
+      <th>help</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>d1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>d2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>a1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>a2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Afterwards, we aggregate term frequencies over all climate reports.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climate_vector</span> <span class="o">=</span> <span class="n">tfs</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;d1&quot;</span><span class="p">,</span> <span class="s2">&quot;d2&quot;</span><span class="p">],</span> <span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;climate&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">climate_vector</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>go</th>
+      <th>reduce</th>
+      <th>emissions</th>
+      <th>days</th>
+      <th>up</th>
+      <th>warming</th>
+      <th>global</th>
+      <th>markets</th>
+      <th>greenhouse</th>
+      <th>losses</th>
+      <th>increase</th>
+      <th>gas</th>
+      <th>future</th>
+      <th>driver</th>
+      <th>these</th>
+      <th>economic</th>
+      <th>renewable</th>
+      <th>energies</th>
+      <th>major</th>
+      <th>help</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>climate</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we calculate the cosine similarity, we determine the dot-product of two vectors and normalize them by their length. The dot-product is the sum of elementwise multiplication. Thus, for our example, if we take a look at the elementwise multiplication for the climate frequency and the news vectors, we could observe overlapping words of climate reports and news of article 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climate_vector</span> <span class="o">*</span> <span class="n">tfs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;a1&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>go</th>
+      <th>reduce</th>
+      <th>emissions</th>
+      <th>days</th>
+      <th>up</th>
+      <th>warming</th>
+      <th>global</th>
+      <th>markets</th>
+      <th>greenhouse</th>
+      <th>losses</th>
+      <th>increase</th>
+      <th>gas</th>
+      <th>future</th>
+      <th>driver</th>
+      <th>these</th>
+      <th>economic</th>
+      <th>renewable</th>
+      <th>energies</th>
+      <th>major</th>
+      <th>help</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>climate</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>However, we could not identify any similarity of climate reports and the second article.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climate_vector</span> <span class="o">*</span> <span class="n">tfs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;a2&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>go</th>
+      <th>reduce</th>
+      <th>emissions</th>
+      <th>days</th>
+      <th>up</th>
+      <th>warming</th>
+      <th>global</th>
+      <th>markets</th>
+      <th>greenhouse</th>
+      <th>losses</th>
+      <th>increase</th>
+      <th>gas</th>
+      <th>future</th>
+      <th>driver</th>
+      <th>these</th>
+      <th>economic</th>
+      <th>renewable</th>
+      <th>energies</th>
+      <th>major</th>
+      <th>help</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>climate</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Accordingly, we could identify the day of article 1 as a day with climate talk in the news and the day of article 2 where climate talk has not been relevant in the news. In broader terms, the paper’s approach focuses on identifying days when news articles contain language commonly associated with discussions about the consequences of climate change. The underlying assumption is that news coverage of climate-related topics often conveys information that heightens companies’ exposure to climate risks.</p>
+<p>In the paper of Engle et. al (2020), this is done with daily Wall Street Journal news and the climate vector is build upon a large collection of documents and glossaries about climate change. To reveal the changes in climate risk, the index itself is created as changes (between subsequent days) of daily cosine similarities between the news articles and the climate vector. See the figure below from their paper which shows the development of the climate change index between 1985 and 2017.</p>
+<p>The goal of their paper is to create a portfolio whose value increases if the climate change index increases to hedge against an in crease in climate risk from the companies’ perspective. This is where the actual “work” of the paper starts. However, this extract is the one using language modeling which is why we end the presentation here and leave interested readers to the original research article.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;engle_hedging.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/6ef035692accbc6b2b9177e26a893670831aabc68303fbba2f48a9e9bf7cec9f.png"><img alt="_images/6ef035692accbc6b2b9177e26a893670831aabc68303fbba2f48a9e9bf7cec9f.png" src="_images/6ef035692accbc6b2b9177e26a893670831aabc68303fbba2f48a9e9bf7cec9f.png" style="width: 800px;" /></a>
+</div>
+</div>
+</section>
+</section>
+<section id="encoder-models">
+<h2>Encoder models<a class="headerlink" href="#encoder-models" title="Link to this heading">#</a></h2>
+<p>We already examined the FinBERT paper and its applications in the paper by <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1111/1911-3846.12832">Huang and Yiang (2022)</a>. Besides, most of financial research paper use encoder models like this to detect sequences related to a topic in longer financial reports. The appearance of such sequences is then used for varying company analyses.</p>
+<section id="ask-bert-how-regulatory-disclosure-of-transition-and-physical-climate-risks-affects-the-cds-term-structure">
+<h3>Ask BERT: How Regulatory Disclosure of Transition and Physical Climate Risks Affects the CDS Term Structure<a class="headerlink" href="#ask-bert-how-regulatory-disclosure-of-transition-and-physical-climate-risks-affects-the-cds-term-structure" title="Link to this heading">#</a></h3>
+<p>Popular applications are the identification of climate talk in company reports and earning calls. Two examples are presented by <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3616324">Kölbel et. al (2022)</a> and <a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4596668">Sautner et. al (2024)</a>. The paper by Kölbel et. al finetunes the general purpose BERT model to identify sentences related to climate disclosure in 10-K annual firm reports. They, distinguish between the categories “general”, “physical”, “transition”. The latter two are both related to climate risk.</p>
+<p>Physical climate risk refers to the direct impacts of climate change on natural and human systems, such as extreme weather events like hurricanes and floods or long-term changes like rising sea levels and increasing temperatures. These risks primarily affect physical assets, ecosystems, and human health.</p>
+<p>On the other hand, transition climate risk arises from the societal and economic adjustments required to move toward a low-carbon economy. This includes risks related to changing government policies, shifts in market dynamics, technological advancements, and reputational pressures. While physical risks deal with the tangible effects of climate change, transition risks are rooted in the challenges and disruptions associated with mitigating those effects and adapting to a sustainable future.</p>
+<p>Since 2010, the securities and exchange commission (SEC) in the US provided guidelines that four items  of form K reports:</p>
+<ul class="simple">
+<li><p>description of the business</p></li>
+<li><p>legal proceedings</p></li>
+<li><p>risk factors</p></li>
+<li><p>management’s discussion and analysis of financial condition and results of operations</p></li>
+</ul>
+<p>may require disclosure related to climate change. Kölbel et. al (2022) use the finetuned BERT model to identify the fraction of climate related sentences in Item 1A of 10-K reports as this item is related to declaring risk factors for the business of a company.</p>
+<p>In their analysis, they use this feature to examine if climate disclosure has explanatory for the creditworthiness of a company. The latter is measured by changes of credit default swap (CDS) spreads. The most important findings of the analysis are that higher levels of transition risk increase reduces creditworthiness by increasing CDS spreads, while the impact of physical disclosure levels are reversed. The former inducing higher company risk, the latter reduces uncertainty leading to higher levels of creditworthiness.</p>
+</section>
+<section id="climate-value-and-values-discovery-in-earnings-calls">
+<h3>Climate Value and Values Discovery in Earnings Calls<a class="headerlink" href="#climate-value-and-values-discovery-in-earnings-calls" title="Link to this heading">#</a></h3>
+<p>The paper explores how financial analysts address climate change concerns in corporate earnings calls, focusing on both financial (value) and non-financial (values) aspects. To identify climate related questions by analysis, they finetune the FinBERT model by Huang and Yiang (2022) using 2,400 sentences from earning call transcripts.</p>
+<p>Key findings include that climate-related questions are increasingly frequent and tailored to specific industries and periods of relevance. Value-related discussions, which emphasize financial impacts like costs and investments, have gained relative importance over time, especially since 2018. In contrast, values-related inquiries address moral and regulatory concerns. Analysts’ climate discussions influence stock trading volumes, reflecting investor disagreement on interpreting climate information.</p>
+<p>Interestingly, the paper finds that analysts’ interest in climate change is not an innate trait but a dynamic response to market and situational factors. Climate-focused analysts benefit in their careers, with value-centric discussions offering stronger predictive power for promotions and job mobility compared to values-centric ones. This study sheds light on the evolving role of analysts in integrating climate change into financial and ethical decision-making.</p>
+</section>
 </section>
 <section id="id1">
 <h2><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
@@ -1244,15 +1850,6 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
         <p class="prev-next-title">Decoder models - GPT</p>
       </div>
     </a>
-    <a class="right-next"
-       href="10_case_study_8k.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Case study form 8K filings</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1270,8 +1867,7 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-noisy-vs-noise-tasks">Non-noisy vs noise tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantifying-stock-market-reactions">Quantifying stock market reactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-tasks-with-stock-market-reactions">Regression tasks with stock market reactions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-returns">Event returns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excess-returns">Excess returns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abnormal-returns">Abnormal returns</a></li>
@@ -1280,7 +1876,21 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-stock-market-reactions">Predicting stock market reactions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-text-information-explains-of-stock-market-reactions">How much text information explains of stock market reactions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-from-the-literature">Examples from the literature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stock-market-reactions-and-term-frequencies">Stock market reactions and term frequencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-a-liability-not-a-liability">When is a liability not a liability?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disclosure-sentiment-machine-learning-vs-dictionary-methods">Disclosure Sentiment: Machine Learning vs Dictionary Methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#document-similarity-and-its-usage">Document similarity and its usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lazy-prices">Lazy Prices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hedging-climate-change-news">Hedging Climate Change News</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-models">Encoder models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ask-bert-how-regulatory-disclosure-of-transition-and-physical-climate-risks-affects-the-cds-term-structure">Ask BERT: How Regulatory Disclosure of Transition and Physical Climate Risks Affects the CDS Term Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-value-and-values-discovery-in-earnings-calls">Climate Value and Values Discovery in Earnings Calls</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
   </nav></div>

@@ -175,7 +175,6 @@
 <li class="toctree-l1"><a class="reference internal" href="07_encoder.html">Encoder models - BERT</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decoder models - GPT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_text_analysis_finance.html">Text analysis in finance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10_case_study_8k.html">Case study form 8K filings</a></li>
 </ul>
 
     </div>
@@ -1343,6 +1342,8 @@ z^{*} = \frac{z}{c}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
 <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">scores</span><span class="p">)),</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
