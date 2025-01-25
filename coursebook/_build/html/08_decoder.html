@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -183,9 +183,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -388,7 +393,7 @@
 <p>The example below is processing a single sequence: “financial data analytics is awesome!”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
 <span class="c1"># this example is inspired by Josh Starmer&#39;s youtube video: https://youtu.be/C9QSpl5nmrY?si=gnOSg72dKpIrHrnS</span>
 <span class="n">token_to_id</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;financial&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
@@ -464,8 +469,8 @@
 <p>for all sequences seen by the model during training. So let us take a look how these probabilities are derived. First, we set a hidden dimension and start to initialize word and positional embeddings. The number of unique tokens in a corpus define the number of word embeddings we need. Furthermore, the sequence length defines the number of positional embeddings we need. For realistic model training, a fixed sequence size is set, e.g., 512 or 1024, and all sequences are padded or truncated to that length. In our example, the sequence length is <span class="math notranslate nohighlight">\(T = 5\)</span> and we use a hidden dimension of <span class="math notranslate nohighlight">\(p = 3\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span> 
-<span class="kn">import</span> <span class="nn">torch</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -626,8 +631,8 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <p>This is were it gets different to the attention mechanism of the encoder model. For the encoder these scores are activated by the softmax function such that every token can pay attention to itself and all other tokens no matter if these tokens are placed before or after it in the sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">q</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">x_tilde</span><span class="p">)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">x_tilde</span><span class="p">)</span>
@@ -802,7 +807,7 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <p>If we activate these values with the softmax function (for every row), masked scaled dot-product attention scores are generated. We observe that the values for every row are in <span class="math notranslate nohighlight">\([0, 1]\)</span> and sum up to <span class="math notranslate nohighlight">\(1\)</span>. However, in comparison to the attention mechanism of the encoder model, the weights are only available for proceeding tokens and the token itself.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span> 
 
 <span class="n">attention</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">scaled_scores</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">attention</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">)</span>
@@ -920,8 +925,8 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <p>The output of each masked attention layer can be processed through another layer masked attention layer, however, the output dimension will always be the same: <span class="math notranslate nohighlight">\(T \times p\)</span>. Let us denote the output of the decoder’ attention block by: <span class="math notranslate nohighlight">\(X^A\)</span>. To conduct next token prediction it is used as input for a multi-classification task which predicts the probabilities for the next words. In our example, we number of unique tokens is <span class="math notranslate nohighlight">\(N = 6\)</span>. Thus we need a forward layer which creates out of <span class="math notranslate nohighlight">\(p\)</span> input neurons, <span class="math notranslate nohighlight">\(N\)</span> output neurons which are activated with the softmax function. Once the output of the attention layer is processed through this layer, the result is as shown below. Every row returns the probabilities for the next words. For instance, with the output below, the input <span class="math notranslate nohighlight">\(financial\)</span> would give us the highest probability prediction for “!” to be the next token which is obviously wrong. However, the same prediction would be done for the input “financial data analytics is awesome” which is right. As always, the paramters of the whole model are adjusted during training to increase probability predictions for the actual next tokens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1014,7 +1019,7 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <p>Let us take a look, how this looks like for an actual model. Below we import the original gpt2 model and its tokenizer and play around with a news sentence regarding Nvdia.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
@@ -1026,6 +1031,10 @@ tensor([[-0.2695,  0.1472, -0.2660],
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The shares of IonQ Inc. and other companies linked to quantum computing tumbled in premarket trading on Wednesday, after Nvidia Corp. Chief Executive Officer Jensen Huang said that “very useful” quantum computers are likely decades away
 </pre></div>
 </div>
@@ -1034,7 +1043,7 @@ tensor([[-0.2695,  0.1472, -0.2660],
 <p>This is how the sequence is tokenized.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
 
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]:</span>
@@ -1195,7 +1204,7 @@ P(x_t \mid x_1, x_2, \dots, x_{t-1})
 <p>In the cell below, we observe the output of a greedy search and as we can see it somewhat makes sense, however, parts of the sequence tend to get repeated a lot. This may be related to the algorithm’s behavior of ignoring other tokens with high probabilities. Thus, the outcome of generated text is less diverse and tends to repeat at some point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">AutoTokenizer</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
@@ -1255,7 +1264,7 @@ P(analysis, improves| financial) = 0.6 \cdot 0.4 = 0.24 \\
 <p>This means the sequence “financial data analysis” is more likely than “financial analysis is” or “financial analysis improves”, even though the next token after “financial” which would be chosen according to a greedy search is “analysis”. So generating the first sequence might be more reasonable and is different from greedy search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;word_seq_probs.jpg&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1292,7 +1301,7 @@ I enjoy studying text models, because they allow me to see what I want to see, a
 <p>If we take a look how this impacts the generation of our full text sequence, at first sight it seems more natural, however, the sequence makes little sense at this point. So maybe, too much randomness?!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1341,9 +1350,9 @@ z^{*} = \frac{z}{c}
 <p>and determines probabilities by applying the softmax activation to these scores. For temperature <span class="math notranslate nohighlight">\(c&lt;1\)</span>, high probability tokens become more likely and low probability words become less likely. For instance, if we use the scores from above probabilities are:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
 
 <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">])</span>
 <span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">scores</span><span class="p">)),</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
@@ -1373,7 +1382,7 @@ z^{*} = \frac{z}{c}
 <p>Using this technique, we generate the following sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1422,7 +1431,7 @@ P(x_2 | financial, analysis) =
 <p>Using this technique, we generate the following sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1450,7 +1459,7 @@ I enjoy studying text models, because I&#39;m more comfortable with the computer
 <p>Or combining these techniques leads to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1498,7 +1507,7 @@ P(x_2 | financial, analysis) =
 <p>Using this technique, we generate the following sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
 <span class="n">set_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 
@@ -1529,18 +1538,18 @@ The more code
 <p>The first output is created with the top-p sampling and a model which has been trained by myself on financial text data. The model is comparably small and has not been trained that long. Still, besides some odd tokenization, the text sounds not that unrealistic, right?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">PreTrainedTokenizerFast</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">GPT2LMHeadModel</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">PreTrainedTokenizerFast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">GPT2LMHeadModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_seed</span>
 
-<span class="k">class</span> <span class="nc">FinLMGptTokenizer</span><span class="p">(</span><span class="n">PreTrainedTokenizerFast</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FinLMGptTokenizer</span><span class="p">(</span><span class="n">PreTrainedTokenizerFast</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A tokenizer using the fast tokenizer wrapper class from transformers. This transformer comes with all functionalities as present for</span>
 <span class="sd">    official models.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">tokenizer_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">eos_token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&lt;|endoftext|&gt;&quot;</span><span class="p">,</span>
@@ -1556,7 +1565,7 @@ The more code
             <span class="n">trim_offsets</span><span class="o">=</span><span class="n">trim_offsets</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="c1"># Call the parent class&#39;s tokenization method</span>
         <span class="n">encoded</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="c1"># Remove token_type_ids from the output</span>
@@ -1564,8 +1573,8 @@ The more code
         <span class="k">return</span> <span class="n">encoded</span>
     
 
-<span class="n">tokenizer_finlm</span> <span class="o">=</span> <span class="n">FinLMGptTokenizer</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm-bpe-tokenizer.json&quot;</span><span class="p">)</span>
-<span class="n">model_finlm</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm_gpt_model&quot;</span><span class="p">)</span>
+<span class="n">tokenizer_finlm</span> <span class="o">=</span> <span class="n">FinLMGptTokenizer</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm-bpe-tokenizer.json&quot;</span><span class="p">)</span>
+<span class="n">model_finlm</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm_gpt_model&quot;</span><span class="p">)</span>
 
 <span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;The outlook for the next quarter is&quot;</span>
 <span class="n">inputs_finlm</span> <span class="o">=</span> <span class="n">tokenizer_finlm</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
@@ -1773,8 +1782,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
