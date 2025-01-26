@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -183,9 +183,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -385,7 +390,7 @@
 <p>The cell below shows its architecture. The full transformer model is an encoder decoder network. The encoder generates a numerical representation of text sequences which includes word embeddings that are aware of the word position in the sequence and its contextual meaning to the remaining words. The decoder is able to use this encoded text sequence to generate a new version, e.g., a translation of the original text into another language. Even though, the original paper has its major focus on language translation, the model architecture has been used to develop other models which can be used for a variety of other language modeling tasks. Roughly the new models can be divided into encoder, decoder and encoder-decoder models. Encoder models are about finding representative embeddings of input text, decoder models are often used for generation of text and encoder-decoder models serve to convert one text sequence into another version of it, e.g., another language.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;transformer.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -418,8 +423,8 @@
 <p>First, the model starts with word embeddings. As for the Word2Vec model, we would make use of a word to index mapping which uses the row vector of an embedding matrix. Let us stick to a small text example. Given our example corpus, we start with our word2index dictionary and the word embedding matrix <span class="math notranslate nohighlight">\(X\)</span> in which every row represents a word embedding (we change the notation here from <span class="math notranslate nohighlight">\(W\)</span> to <span class="math notranslate nohighlight">\(X\)</span> to keep the notation more in line with the original paper) Let us assume we want to process the second sentence “I like to eat ice-cream” through the encoder of the transformer, the following matrix is how we start:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">simple_preprocess</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gensim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">simple_preprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 
 <span class="n">raw_corpus</span> <span class="o">=</span> <span class="p">[</span>
@@ -512,12 +517,12 @@ P_{i, 2j+1} = \cos \left(\frac{i}{10000^{2i / p}} \right)
 <p>This means even index values of the embedding index are determined using the sine function and uneven values are determined using the cosine. As a result each value of the positional embedding matrix is in the interval <span class="math notranslate nohighlight">\([-1, 1]\)</span> and the same word would be added to a different positional vector if it sits at a different position in a sequence. Note that other models also initialize the values in the positional embedding matrix randomly and learn its values during training (thus, positional encodings are trainable parameters). The cell below visualizes the positional embedding matrix for our example. Most importantly, you should note that each row corresponds to a word position in the sequence and these positional embeddings are different for different places in the sequence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># nice function taken from here: https://medium.com/towards-data-science/transformers-intuitively-and-exhaustively-explained-58a5c5df8dbb</span>
 <span class="c1">#generating a positional encodings</span>
-<span class="k">def</span> <span class="nf">gen_positional_encodings</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gen_positional_encodings</span><span class="p">(</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">):</span>
     <span class="c1">#creating an empty placeholder</span>
     <span class="n">positional_encodings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">sequence_length</span><span class="p">,</span> <span class="n">embedding_dimension</span><span class="p">))</span>
 
@@ -545,7 +550,7 @@ P_{i, 2j+1} = \cos \left(\frac{i}{10000^{2i / p}} \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6efd1d979cd1453dbd6a3ccdc6f9a0c82ad3979fac481e35575cad099819d972.png" src="_images/6efd1d979cd1453dbd6a3ccdc6f9a0c82ad3979fac481e35575cad099819d972.png" />
+<img alt="_images/911862840b7378a594a7ef214f35e834607a39667368836453385e8897ecbbfe.png" src="_images/911862840b7378a594a7ef214f35e834607a39667368836453385e8897ecbbfe.png" />
 </div>
 </div>
 <p>The word embedding and positional embedding matrix are added and with this matrix <span class="math notranslate nohighlight">\(\tilde{X} = X + P \)</span> the first attention layer is entered.</p>
@@ -598,7 +603,7 @@ S = \text{softmax} \left( \frac{Q K^T}{\sqrt{p}} \right)
 <p>While this may look meaningless or confusing to you at first sight, take a look at the <span class="math notranslate nohighlight">\(n \times n\)</span> dimensional output of this calculation for our example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">softmax</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">softmax</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">W_Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
@@ -963,8 +968,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

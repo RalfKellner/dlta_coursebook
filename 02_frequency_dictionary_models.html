@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -183,9 +183,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -397,15 +402,15 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 <p>with <span class="math notranslate nohighlight">\(x_{ij}\)</span> describing the number of term <span class="math notranslate nohighlight">\(j\)</span> in document <span class="math notranslate nohighlight">\(i\)</span>. For larger corpora, <span class="math notranslate nohighlight">\(d\)</span> is a large number so <span class="math notranslate nohighlight">\(D\)</span> is a high-dimensional and, typically, sparse matrix which means the matrix has many zeros and only a few non-zero entries. A few options exist which can help dealing with this issue. One is the removal of stopwords. Other options are to exclude words with little and very high frequency or to exclude words with very little or high document occurrence. However, these measures need to be evaluated carefully, because sometimes words with little occurrence or frequency might provide more information than words with high occurrence of frequency. The bag-of-words approach can be conducted quite easily with the CountVectorizer class of the sklearn package. See a little demonstration in the following cells.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">gensim.utils</span> <span class="kn">import</span> <span class="n">simple_preprocess</span>
-<span class="kn">from</span> <span class="nn">gensim.parsing.preprocessing</span> <span class="kn">import</span> <span class="n">STOPWORDS</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">euclidean_distances</span><span class="p">,</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">cosine_similarity</span>
-<span class="kn">import</span> <span class="nn">pysentiment2</span> <span class="k">as</span> <span class="nn">ps</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">simple_preprocess</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gensim.parsing.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">STOPWORDS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">CountVectorizer</span><span class="p">,</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">euclidean_distances</span><span class="p">,</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">cosine_similarity</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pysentiment2</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ps</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +532,7 @@ x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nd} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/47ca67aee1834119d2b9164cab2befbc5a69f6608043648ec45e499478d08e1c.png" src="_images/47ca67aee1834119d2b9164cab2befbc5a69f6608043648ec45e499478d08e1c.png" />
+<img alt="_images/0935ecd1d364154f99abc0570ebec836177e2e7cd5fb1b38ae2fda9b250feb9b.png" src="_images/0935ecd1d364154f99abc0570ebec836177e2e7cd5fb1b38ae2fda9b250feb9b.png" />
 </div>
 </div>
 <p>Using the CountVectorizer with its default settings:</p>
@@ -1572,13 +1577,13 @@ tf-idf =  tf_{ij} \cdot id_j
 <p>In the examples above, we observe that each document is represented by a high dimensional vector. High dimensions can often be troublesome for machine learning methods. To deal with this issue, one may focus on the occurrences of certain words that fall into a category of interest. Usually, the common categories which are used are the number of positive and negative words. Which words are considered as negative and positive are defined by different dictionaries. An example for a general-purpose dictionary is the Harvard IV-4 dictionary. However, especially for financial documents general-purpose dictionaries may not be useful due to the domain specific usage of words, e.g., the word bear stands for bad market conditions or bull stands for good market conditions, respectively. <a class="reference external" href="https://www.uts.edu.au/sites/default/files/ADG_Cons2015_Loughran%20McDonald%20JE%202011.pdf">Loughran and McDonald (2011)</a> find that the majority of general-purpose negative words from the Harvard dictionary found in in 10-K filings are not considered as negative in a financial context. This is why they generate their own dictionary. See the next cell’s output for a few examples. Besides the categories positive and negative, they also generate the categories: uncertainty, litigious, strong modal, weak modal and constraining. Each report can be summarized by counting the (relative) frequencies of words falling into these categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/LMcD_word_list.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">lmcd_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">dict_word_vectorizer</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">raw_counts</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dict_word_vectorizer</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">raw_counts</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">normalize</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="n">categories</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">sentiment_dictionary</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="n">categories</span><span class="p">:</span>
@@ -1602,38 +1607,38 @@ tf-idf =  tf_{ij} \cdot id_j
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Examples for the category: negative
 --------------------------------------------------
-[&#39;ignoring&#39; &#39;embezzler&#39; &#39;collapse&#39; &#39;defamation&#39; &#39;weakening&#39; &#39;cautions&#39;
- &#39;accusation&#39; &#39;absences&#39; &#39;egregiously&#39; &#39;sacrificed&#39;]
+[&#39;costly&#39; &#39;calamitous&#39; &#39;nonproductive&#39; &#39;disagreeable&#39; &#39;misuse&#39;
+ &#39;recklessly&#39; &#39;traumatic&#39; &#39;usurp&#39; &#39;distracting&#39; &#39;provoking&#39;]
 --------------------------------------------------
 Examples for the category: positive
 --------------------------------------------------
-[&#39;attainments&#39; &#39;exclusive&#39; &#39;upturns&#39; &#39;succeeds&#39; &#39;desirable&#39; &#39;enhancements&#39;
- &#39;dependable&#39; &#39;inventors&#39; &#39;successful&#39; &#39;innovating&#39;]
+[&#39;favoring&#39; &#39;delighting&#39; &#39;valuable&#39; &#39;advantaged&#39; &#39;desirable&#39; &#39;succeeds&#39;
+ &#39;innovating&#39; &#39;beneficially&#39; &#39;encouraged&#39; &#39;conclusively&#39;]
 --------------------------------------------------
 Examples for the category: uncertainty
 --------------------------------------------------
-[&#39;intangibles&#39; &#39;nonassessable&#39; &#39;speculated&#39; &#39;assuming&#39; &#39;presuming&#39;
- &#39;confusing&#39; &#39;reconsidered&#39; &#39;unfamiliarity&#39; &#39;approximately&#39; &#39;differ&#39;]
+[&#39;appear&#39; &#39;fluctuations&#39; &#39;deviates&#39; &#39;assumptions&#39; &#39;assumed&#39; &#39;undefined&#39;
+ &#39;riskiest&#39; &#39;exposure&#39; &#39;conditional&#39; &#39;arbitrarily&#39;]
 --------------------------------------------------
 Examples for the category: litigious
 --------------------------------------------------
-[&#39;injunctive&#39; &#39;contractile&#39; &#39;interrogating&#39; &#39;demurrers&#39; &#39;construe&#39;
- &#39;nullification&#39; &#39;lawyer&#39; &#39;declarant&#39; &#39;distributees&#39; &#39;escheat&#39;]
+[&#39;privity&#39; &#39;cession&#39; &#39;aforedescribed&#39; &#39;appeal&#39; &#39;prejudicial&#39; &#39;replevin&#39;
+ &#39;whereabouts&#39; &#39;arbitrative&#39; &#39;offeree&#39; &#39;plaintiff&#39;]
 --------------------------------------------------
 Examples for the category: strong_modal
 --------------------------------------------------
-[&#39;always&#39; &#39;best&#39; &#39;will&#39; &#39;unequivocal&#39; &#39;definitely&#39; &#39;unequivocally&#39;
- &#39;undoubtedly&#39; &#39;unsurpassed&#39; &#39;unambiguously&#39; &#39;uncompromising&#39;]
+[&#39;unambiguously&#39; &#39;undoubtedly&#39; &#39;definitely&#39; &#39;will&#39; &#39;must&#39; &#39;strongly&#39;
+ &#39;clearly&#39; &#39;uncompromising&#39; &#39;highest&#39; &#39;definitively&#39;]
 --------------------------------------------------
 Examples for the category: weak_modal
 --------------------------------------------------
-[&#39;seldom&#39; &#39;may&#39; &#39;suggest&#39; &#39;sometimes&#39; &#39;appearing&#39; &#39;nearly&#39; &#39;suggests&#39;
- &#39;uncertain&#39; &#39;could&#39; &#39;uncertainly&#39;]
+[&#39;appearing&#39; &#39;nearly&#39; &#39;apparently&#39; &#39;suggests&#39; &#39;depended&#39; &#39;possible&#39;
+ &#39;uncertain&#39; &#39;possibly&#39; &#39;appeared&#39; &#39;might&#39;]
 --------------------------------------------------
 Examples for the category: constraining
 --------------------------------------------------
-[&#39;restrains&#39; &#39;stipulated&#39; &#39;insist&#39; &#39;impaired&#39; &#39;compelling&#39; &#39;commitment&#39;
- &#39;irrevocable&#39; &#39;requires&#39; &#39;requiring&#39; &#39;restrict&#39;]
+[&#39;entail&#39; &#39;directive&#39; &#39;mandating&#39; &#39;prohibiting&#39; &#39;pledging&#39; &#39;obligated&#39;
+ &#39;preventing&#39; &#39;permissible&#39; &#39;prohibitory&#39; &#39;depending&#39;]
 --------------------------------------------------
 </pre></div>
 </div>
@@ -1642,7 +1647,7 @@ Examples for the category: constraining
 <p>Overall we see below that the dictionary mostly contains negative words. This may have different reasons, for instance, 10-K filings are reports in which companies are supposed to report about potential issues with respect to their business. Furthermore, the tone of financial reports traditionally has been quantified by the occurrences of negative words in documents.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lmcd_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
@@ -1656,7 +1661,7 @@ Examples for the category: constraining
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/508d3779ace8de44ce9b2bb44b3891ead6ad853b9fe2608876d9ac0da723cfa2.png" src="_images/508d3779ace8de44ce9b2bb44b3891ead6ad853b9fe2608876d9ac0da723cfa2.png" />
+<img alt="_images/7a33af94dcb7e6a70b6960717b26642241d91f9a63cbc5d6d5731467dd80f239.png" src="_images/7a33af94dcb7e6a70b6960717b26642241d91f9a63cbc5d6d5731467dd80f239.png" />
 </div>
 </div>
 <p>Below you can examine the development of word category frequencies for Apple ‘s 10-K filings. We can observe how the number of negative and litigious words rise during the great financial crisis.</p>
@@ -1676,7 +1681,7 @@ Examples for the category: constraining
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ad48d0d69715750f230c5df389bd93487f92e533886490456f7c5d357cf79d20.png" src="_images/ad48d0d69715750f230c5df389bd93487f92e533886490456f7c5d357cf79d20.png" />
+<img alt="_images/e25a51a4ffd0fb2fbefb8f620189077ffb3112690bb2d62f009c12c44a91b870.png" src="_images/e25a51a4ffd0fb2fbefb8f620189077ffb3112690bb2d62f009c12c44a91b870.png" />
 </div>
 </div>
 </section>
@@ -1711,7 +1716,7 @@ polarity = \frac{n^{positive} - n^{negative}}{n^{positive} + n^{negative}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c4508da88f89982c52bb001f844d47d16b5e162793c2d4a52ba8b0c00d948de9.png" src="_images/c4508da88f89982c52bb001f844d47d16b5e162793c2d4a52ba8b0c00d948de9.png" />
+<img alt="_images/2eddf66eec315891ec5383a4647675f428d1688ef2f790e6bdd9e1be94be320e.png" src="_images/2eddf66eec315891ec5383a4647675f428d1688ef2f790e6bdd9e1be94be320e.png" />
 </div>
 </div>
 </section>
@@ -1731,8 +1736,8 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 <p>Both measures can suffer in high-dimensional spaces, meaning if vectors have a high dimension. However, cosine similarity is often favored for text analysis, if it includes sparse vectors. Sparse vectors have many <span class="math notranslate nohighlight">\(0\)</span> entries which have no impact on the distance measure (as the product in the numerator is always zero for this position). A <a class="reference external" href="https://onlinelibrary.wiley.com/doi/10.1111/jofi.12885">popular paper</a> in the Journal of Finance by Cohen at al. (2020) finds that bigger changes in 10-K filings indicate a decline in the company’s stock price. With this in mind, let us examine euclidean distances and cosine distances (1 - <span class="math notranslate nohighlight">\(d_{cosine}\)</span>) for the Apple filings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="kn">import</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">euclidean_distances</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_distances</span><span class="p">,</span> <span class="n">euclidean_distances</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># create the bag-of-words with default settings</span>
 <span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">preprocessor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">simple_preprocess</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
@@ -1758,7 +1763,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4ee8e163036611f07595d499aae172bd02c7b00d9ae57098158da3990b571faf.png" src="_images/4ee8e163036611f07595d499aae172bd02c7b00d9ae57098158da3990b571faf.png" />
+<img alt="_images/1ee5a94805fc190c9a064607151ec357031e4fa4152371c418a43ce90f60acb4.png" src="_images/1ee5a94805fc190c9a064607151ec357031e4fa4152371c418a43ce90f60acb4.png" />
 </div>
 </div>
 </section>
@@ -1776,12 +1781,12 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 <p>We start collecting climate white papers as provided in the Appendix A.2 in their paper. Next, we build a term-frequency inverse-document-frequency vectorizer which creates inverse-document frequencies for 10-K filings of 3,632 companies. Overall, the corpus consists of 30,840 10-K reports. The plots below exhibit the number of 10-K reports over time on a monthly and yearly level. We observe that most of the annual reports are filed in within the first quarter of a year as most of the company’s fiscal year seems to end with the end of the year. This does not need to be the case for every company.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&#39;</span><span class="p">)</span>
 <span class="n">company_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select * From general_company_information;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="n">company_info</span> <span class="o">=</span> <span class="n">company_info</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;TRBC Economic Sector Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sector&quot;</span><span class="p">},</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
@@ -1794,7 +1799,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 <span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">company_info</span><span class="p">[</span><span class="s2">&quot;CIK Number&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">company_info</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;/Users/ralf/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&quot;</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Python/Eikon/collect_data_returns_and_fundamentals/us_data.sqlite&#39;</span><span class="p">)</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;Select RIC, filingDate, ccv_cosine_sim From ccv_sim_tenks;&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
@@ -1811,15 +1816,15 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d729de95ace47144c6b475530b1dd7342b28f70ead3638bdad0c4d1a8c6fba7d.png" src="_images/d729de95ace47144c6b475530b1dd7342b28f70ead3638bdad0c4d1a8c6fba7d.png" />
+<img alt="_images/51f568cb1ba1b3cbf86f5f1978d65ababe918c5640337f4031dd361cdea54fae.png" src="_images/51f568cb1ba1b3cbf86f5f1978d65ababe918c5640337f4031dd361cdea54fae.png" />
 </div>
 </div>
 <p>To identify climate change related words, we follow the procedure of the original paper and determine all term frequencies of the 10-K term dictionary for the climate white papers. The frequencies are further multiplied with inverse-document frequencies from the 10-K corpus. This means high values for the climate change vocabulary appear for terms which can often be observed in climate white papers and rarely among all 10-K reports. The wordcloud below visualizes the top 150 terms where the size of each word is proportional to its term-frequency inverse-document frequency. Note that we include bigrams as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">wordcloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">term_frequencies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../notebooks/2024/climate_disclosure/climate_change_vocabulary_wordloud.csv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;0&quot;</span><span class="p">]</span>
 <span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">term_frequencies</span><span class="p">)</span>
@@ -1832,7 +1837,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5559ece6aed04bb6b5e0702d424674f5ded32ad5025dce21491b104cf6760f3e.png" src="_images/5559ece6aed04bb6b5e0702d424674f5ded32ad5025dce21491b104cf6760f3e.png" />
+<img alt="_images/a9c205a2e556404f142efe3a39fd88db050a8816515a7e9f7e1ac8a8c4929edc.png" src="_images/a9c205a2e556404f142efe3a39fd88db050a8816515a7e9f7e1ac8a8c4929edc.png" />
 </div>
 </div>
 <p>In order to identify how much an annual report (10-K) includes climate change specific language, we quantify the cosine similarity between the term-frequencey inverse-document-frequency vector of the climate change white papers with each corresponding 10-K vector. The boxplots below give us a detailed impression about the level of similarity which we refer to as “climate talk” over all reports, here, grouped by year. We observe a similar numerical range of climate talk for very year. In every year, a rather large amount of high outlier values can be observed. This may be due to differences of climate talk between companies or sectors of business operations.</p>
@@ -1844,7 +1849,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e0984102978a76d5f71fd28207d7c4ea5add2f2132dced0d6ba718d8c85e88e.png" src="_images/7e0984102978a76d5f71fd28207d7c4ea5add2f2132dced0d6ba718d8c85e88e.png" />
+<img alt="_images/bede8fc6cbe0d906547b23871ddd36567e1ea09e48dc49a240795493516c35bb.png" src="_images/bede8fc6cbe0d906547b23871ddd36567e1ea09e48dc49a240795493516c35bb.png" />
 </div>
 </div>
 <p>To explore this a little further, we take a look at climate talk over time by company sector. Hereby, significant differences can be observed between sectors. Climate talk in the energy and utitlites sector seems to be the most which makes sense as companies operating in these sectors face huge challenges which are related to climate transitions of their business models. Assuming, that climate talk as quantified here rather implies a higher level of climate change risks for companies, this information can be used to avoid certain companies in the portfolio of investors.</p>
@@ -1856,7 +1861,7 @@ d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k}) = \frac{\sum_{j = 1}^d  x_{ij}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/838458908cd1ac3adac6c7d77272a709cdf044bea5d3a75f4d4aeed81ba805e1.png" src="_images/838458908cd1ac3adac6c7d77272a709cdf044bea5d3a75f4d4aeed81ba805e1.png" />
+<img alt="_images/85c45b29f8959e41013d5dc126307460ca318b1a556e60be6f218a5c83cb8a8f.png" src="_images/85c45b29f8959e41013d5dc126307460ca318b1a556e60be6f218a5c83cb8a8f.png" />
 </div>
 </div>
 </section>
@@ -1981,8 +1986,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

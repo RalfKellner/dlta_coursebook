@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -183,9 +183,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -431,8 +436,8 @@ z^{(1)} = \boldsymbol{h}^{(1), T} \boldsymbol{w}^{(1)}  + b^{(1)} = w_{1}^{(1)} 
 <p>See the output below for their visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 
 <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -449,7 +454,7 @@ z^{(1)} = \boldsymbol{h}^{(1), T} \boldsymbol{w}^{(1)}  + b^{(1)} = w_{1}^{(1)} 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f49d38ffe05a9befba0a815a08a6f4c2f3dfe0c85d9b1cb1cf919e40ac31bcd6.png" src="_images/f49d38ffe05a9befba0a815a08a6f4c2f3dfe0c85d9b1cb1cf919e40ac31bcd6.png" />
+<img alt="_images/80b766c20bf96165ef1cacfffc08440a1a263cdb4866beeed14feadab84fb578.png" src="_images/80b766c20bf96165ef1cacfffc08440a1a263cdb4866beeed14feadab84fb578.png" />
 </div>
 </div>
 <p>The result of the activation function is the hidden neuron for the next layer. Thus, to create a single neuron for the next layer, we use:</p>
@@ -570,8 +575,8 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 <p>For a better understanding of the intuition of this loss function, take a look in output below. We plot the value of <span class="math notranslate nohighlight">\(-\log(p)\)</span> for <span class="math notranslate nohighlight">\(p \in (0, 1)\)</span>. As <span class="math notranslate nohighlight">\(-\log(p)\)</span> is strictly monotonic decreasing, smaller loss values result for observations with high probability predictions for the realized category.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 
 <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.9999</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
@@ -583,7 +588,7 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/21c410e824add50f4802d3e6dcb8cfdc6e3e4f4a95e7a1ef0c4e7b1b6693ebb3.png" src="_images/21c410e824add50f4802d3e6dcb8cfdc6e3e4f4a95e7a1ef0c4e7b1b6693ebb3.png" />
+<img alt="_images/552b6bf567761b46e4fdb0cfa28050e0a02b5cc56a0accfb5b609b81a8c67031.png" src="_images/552b6bf567761b46e4fdb0cfa28050e0a02b5cc56a0accfb5b609b81a8c67031.png" />
 </div>
 </div>
 <p>While the loss function is quite similar for multi-class classification, we need multiple outputs. Given <span class="math notranslate nohighlight">\(K\)</span> categories, one usually defines the network to produce <span class="math notranslate nohighlight">\(K\)</span> output values for each observation where each output value represents the probability for observation <span class="math notranslate nohighlight">\(i\)</span> being category <span class="math notranslate nohighlight">\(K = k\)</span>, <span class="math notranslate nohighlight">\(\pi_{i, k} = P(y_i = k)\)</span>. To achieve this, we need a set of parameters for every category and the output values need to be normalized as probabilities, i.e., <span class="math notranslate nohighlight">\(\pi_{i, k} &gt; 0, \sum_k \pi_{i, k} = 1 \)</span>. Again, we skip a hidden layer and take a look at the easiest version for such a model. Given <span class="math notranslate nohighlight">\(p\)</span> input features <span class="math notranslate nohighlight">\(\boldsymbol{x}_i\)</span> for observation <span class="math notranslate nohighlight">\(i\)</span>, we first generate <span class="math notranslate nohighlight">\(K\)</span> real valued numbers by:</p>
@@ -661,13 +666,13 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 <p>we can confirm that <span class="math notranslate nohighlight">\( \theta = \frac{3}{2} \)</span> is a minimum. Now, let us take a look at the loss function in our example and assume for a moment that we are not able to determine the analytical solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
     <span class="k">return</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
     <span class="k">return</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
 
    
@@ -682,7 +687,7 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/adb1e6997b769d4ac67c51496c60e13c1211ae46d32003226ae698178bc5404b.png" src="_images/adb1e6997b769d4ac67c51496c60e13c1211ae46d32003226ae698178bc5404b.png" />
+<img alt="_images/fb4e8ef94f02f1e73a372e928bee6b4206c87f5f826c56a58241bd8f1831e591.png" src="_images/fb4e8ef94f02f1e73a372e928bee6b4206c87f5f826c56a58241bd8f1831e591.png" />
 </div>
 </div>
 <p>Further, let us assume, we could start with a random guess <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> and remember the first derivative can be illustrated as the tangency at this point and with the slope being equal to the derivative’s value at this point. If we start with a value to the right of the actual minimum, <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &gt; 0\)</span>, and, if we start to the left <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &lt; 0\)</span>. <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &gt; 0\)</span> tells us that increasing <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> by an infinitesimal amount would increase the loss value. As we do not want this, we would decrease <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> with this information. <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} &lt; 0\)</span> tells us that increasing <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> by an infinitesimal amount would decrease the loss value. As we do want this, we would further increase <span class="math notranslate nohighlight">\(\theta^{(0)}\)</span> in this scenario. This means, we can use the information of the first derivative to improve our initial guess stepwise. To subsume this, we could do the following iterative process:</p>
@@ -698,13 +703,13 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 <p>with <span class="math notranslate nohighlight">\(\eta &gt; 0\)</span> representing the learning rate which defines the magnitude of change in the parameter value. Stopping criteria can be, e.g., a fixed number of iterations, if <span class="math notranslate nohighlight">\(\frac{\partial L}{\partial \theta} \approx 0 \)</span> or if the value of <span class="math notranslate nohighlight">\(L\)</span> can not be reduced by a certain value. Take a look below for the progress of this iterative approach and the impact of <span class="math notranslate nohighlight">\(\eta\)</span> in the visualization below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">L</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
     <span class="k">return</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
+<span class="k">def</span><span class="w"> </span><span class="nf">slope</span><span class="p">(</span><span class="n">theta</span><span class="p">):</span> 
     <span class="k">return</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">3</span> <span class="o">-</span> <span class="n">theta</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
 
 
@@ -732,7 +737,7 @@ L \left(\boldsymbol{y}, \boldsymbol{\hat{y}}_{\boldsymbol{\theta}}\right) = - \s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/048abc23b06f76b6f566b40fa12228d355fdc65792f8cfae964d8e590c540fd9.png" src="_images/048abc23b06f76b6f566b40fa12228d355fdc65792f8cfae964d8e590c540fd9.png" />
+<img alt="_images/09cd9bd8167ad444faa866afa686f2a86af9257fe91b82bc03d92efd18488a82.png" src="_images/09cd9bd8167ad444faa866afa686f2a86af9257fe91b82bc03d92efd18488a82.png" />
 </div>
 </div>
 <p>We observe that the learning rate needs to be treated with care, choosing its value too small leads to a slow and long lasting training process which may not find the local minimum, setting the learning rate too high may overshoot the local minimum and leads the search away from the minimum. In reality, one can examine the impact of the learning rate by setting different values. Furthermore, the learning rate is often adjusted during the training process by a little more advanced gradient search based algorithms. Intuitively, we want to change the parameters to a larger extent when they just have been initialized randomly and later, once the model starts to understand the underlying dynamics, updates need to be smaller. Such dynamic adjustments are handled by different optimizers, e.g., Momentum, Adam or  RMSprop.</p>
@@ -937,8 +942,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

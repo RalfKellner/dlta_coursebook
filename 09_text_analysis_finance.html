@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -39,10 +39,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -182,9 +182,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -440,7 +445,7 @@ z_t = \ln \left( \frac{s_{t}}{s_{t-1}} \right) = \ln \left(1 + r_t\right)
 <p>If you take a look in the plot below, you observe the relative stock price development for large US stocks and two major indices (Russell 3000 and S&amp;P 500). We can see that all assets massively loose value in March 2020. This development occurred in the beginning of the Covid crisis which had a systematic impact on all assets. Systematic market movements like these are not related to company specific events and thus, should be filtered first to isolate the relationship between company information and asset price development.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">df_close</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/stock_prices.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">)</span>
 <span class="n">df_close</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_close</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
@@ -452,7 +457,7 @@ z_t = \ln \left( \frac{s_{t}}{s_{t-1}} \right) = \ln \left(1 + r_t\right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02bac1d447d6b99668c53b3cd0af4e2d72184f312172d86add60dd241a5f1c2a.png" src="_images/02bac1d447d6b99668c53b3cd0af4e2d72184f312172d86add60dd241a5f1c2a.png" />
+<img alt="_images/b3501369411f42228862681382c08c06972534b3e87740226fbc91642916a15c.png" src="_images/b3501369411f42228862681382c08c06972534b3e87740226fbc91642916a15c.png" />
 </div>
 </div>
 </section>
@@ -488,8 +493,8 @@ r_{t, AAPL} = \beta_0 + \beta_1 r_{t, R3000} + \epsilon_t
 <p>The cell below illustrates Apple’s filtered and unfiltered return in the first half of 2020. We observe, that especially in the financial downturn month of the Covid pandemic (March 2020), Apple’s development has been not as worse as the overall market development.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">start_regression</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2019-01-01&quot;</span><span class="p">)</span>
 <span class="n">end_regression</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2020-01-01&quot;</span><span class="p">)</span>
@@ -519,7 +524,7 @@ r_{t, AAPL} = \beta_0 + \beta_1 r_{t, R3000} + \epsilon_t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b900519f1a72b024c3a0ac255458111cc20853793745abc445b16345e5555772.png" src="_images/b900519f1a72b024c3a0ac255458111cc20853793745abc445b16345e5555772.png" />
+<img alt="_images/387951d031c1f285a55d7cab133d865222b3314d1f87f57534d5d18769d6715c.png" src="_images/387951d031c1f285a55d7cab133d865222b3314d1f87f57534d5d18769d6715c.png" />
 </div>
 </div>
 </section>
@@ -738,7 +743,7 @@ cr_{t, w} = \sum_{t=1}^{w-1} r_t^{*}
 <p>In the next cell, we take a look at the three day window cumulative abnormal returns of Apple at filing dates. We compare them with the corresponding cumulative returns of Apple and the Russell 3000. We observe mostly positive <span class="math notranslate nohighlight">\(cr_{t,3}\)</span> values at filing dates. The average value of these <span class="math notranslate nohighlight">\(cr_{t, 3}\)</span> at filing dates equals <span class="math notranslate nohighlight">\(0.0287\)</span>, while notably, the average value at days without filings is considerably lower (<span class="math notranslate nohighlight">\(0.0007\)</span>). Furthermore, it is interesting if the filing content impacts <span class="math notranslate nohighlight">\(cr_{t, 3}\)</span> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">russell_returns</span> <span class="o">=</span> <span class="n">df_returns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">end_regression</span><span class="p">:</span><span class="n">end_out_of_time</span><span class="p">,</span> <span class="s2">&quot;^RUA&quot;</span><span class="p">]</span>
 <span class="n">cumulative_values</span> <span class="o">=</span> <span class="p">[]</span>
@@ -881,10 +886,10 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 <p>The cell below simulates data for a regression analysis which on purpose includes a variable (<span class="math notranslate nohighlight">\(x_3\)</span>) which has no explanatory power for <span class="math notranslate nohighlight">\(y\)</span> and, thus, may be better omitted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
@@ -895,17 +900,17 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x36691d3d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x358703d70&gt;
 </pre></div>
 </div>
-<img alt="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" src="_images/2e11d332a712cf426c3d2f1ea435d1ff6127828f4685c6c63ad763997f6e180f.png" />
+<img alt="_images/150d2a9444f01209963e2da549dd8ac9222d7bb90945451e1f70a62b1e70fecc.png" src="_images/150d2a9444f01209963e2da549dd8ac9222d7bb90945451e1f70a62b1e70fecc.png" />
 </div>
 </div>
 <p>The cell below shows regression results for all combinations which can be chosen for the predictor variables <span class="math notranslate nohighlight">\(x_1, x_2, x_3\)</span>. From the table, we can identify that <span class="math notranslate nohighlight">\(x_1\)</span> alone explains most of the variation of <span class="math notranslate nohighlight">\(y\)</span>. Furthermore, including <span class="math notranslate nohighlight">\(x_2\)</span> increases the level of variation which can be explained. Adding <span class="math notranslate nohighlight">\(x_3\)</span> is not improving the explanatory power. By the signs of the predicted beta-coefficients we further would identify a positive relationship between <span class="math notranslate nohighlight">\(x_1, x_2\)</span> and the target variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyfixest</span> <span class="k">as</span> <span class="nn">pf</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">combinations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyfixest</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">combinations</span>
 
 <span class="n">predictors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x_1&quot;</span><span class="p">,</span> <span class="s2">&quot;x_2&quot;</span><span class="p">,</span> <span class="s2">&quot;x_3&quot;</span><span class="p">]</span>
 <span class="n">predictor_combinations</span> <span class="o">=</span> <span class="p">[]</span>
@@ -927,7 +932,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="bHPQlj"></div>
+            <div id="uyoJbe"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -938,7 +943,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                 (function() {
                     var script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.1/js-package/distr/lets-plot.min.js";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
                     script.onload = function() {
                         window.letsPlotCall = function(f) {f();};
                         window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -951,14 +956,14 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("bHPQlj").appendChild(div);
+                        document.getElementById("uyoJbe").appendChild(div);
                     };
-                    var e = document.getElementById("bHPQlj");
+                    var e = document.getElementById("uyoJbe");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="tZulDK"></div>
+            <div id="IR82BU"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -969,7 +974,7 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                 (function() {
                     var script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.1/js-package/distr/lets-plot.min.js";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.5.2/js-package/distr/lets-plot.min.js";
                     script.onload = function() {
                         window.letsPlotCall = function(f) {f();};
                         window.letsPlotCallQueue.forEach(function(f) {f();});
@@ -982,58 +987,58 @@ y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_p x_q + \epsilon =  \bolds
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("tZulDK").appendChild(div);
+                        document.getElementById("IR82BU").appendChild(div);
                     };
-                    var e = document.getElementById("tZulDK");
+                    var e = document.getElementById("IR82BU");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="juhcmbncjf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="mwvxenenxy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#juhcmbncjf table {
+#mwvxenenxy table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#juhcmbncjf thead, tbody, tfoot, tr, td, th { border-style: none; }
+#mwvxenenxy thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#juhcmbncjf p { margin: 0; padding: 0; }
- #juhcmbncjf .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #juhcmbncjf .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #juhcmbncjf .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #juhcmbncjf .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #juhcmbncjf .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #juhcmbncjf .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #juhcmbncjf .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #juhcmbncjf .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #juhcmbncjf .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #juhcmbncjf .gt_column_spanner_outer:first-child { padding-left: 0; }
- #juhcmbncjf .gt_column_spanner_outer:last-child { padding-right: 0; }
- #juhcmbncjf .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #juhcmbncjf .gt_spanner_row { border-bottom-style: hidden; }
- #juhcmbncjf .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #juhcmbncjf .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #juhcmbncjf .gt_from_md> :first-child { margin-top: 0; }
- #juhcmbncjf .gt_from_md> :last-child { margin-bottom: 0; }
- #juhcmbncjf .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #juhcmbncjf .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #juhcmbncjf .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #juhcmbncjf .gt_row_group_first td { border-top-width: 0.5px; }
- #juhcmbncjf .gt_row_group_first th { border-top-width: 0.5px; }
- #juhcmbncjf .gt_striped { background-color: rgba(128,128,128,0.05); }
- #juhcmbncjf .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #juhcmbncjf .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #juhcmbncjf .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #juhcmbncjf .gt_left { text-align: left; }
- #juhcmbncjf .gt_center { text-align: center; }
- #juhcmbncjf .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #juhcmbncjf .gt_font_normal { font-weight: normal; }
- #juhcmbncjf .gt_font_bold { font-weight: bold; }
- #juhcmbncjf .gt_font_italic { font-style: italic; }
- #juhcmbncjf .gt_super { font-size: 65%; }
- #juhcmbncjf .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #juhcmbncjf .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#mwvxenenxy p { margin: 0; padding: 0; }
+ #mwvxenenxy .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #mwvxenenxy .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #mwvxenenxy .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #mwvxenenxy .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #mwvxenenxy .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #mwvxenenxy .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #mwvxenenxy .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #mwvxenenxy .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #mwvxenenxy .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #mwvxenenxy .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #mwvxenenxy .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #mwvxenenxy .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #mwvxenenxy .gt_spanner_row { border-bottom-style: hidden; }
+ #mwvxenenxy .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #mwvxenenxy .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #mwvxenenxy .gt_from_md> :first-child { margin-top: 0; }
+ #mwvxenenxy .gt_from_md> :last-child { margin-bottom: 0; }
+ #mwvxenenxy .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #mwvxenenxy .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #mwvxenenxy .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #mwvxenenxy .gt_row_group_first td { border-top-width: 0.5px; }
+ #mwvxenenxy .gt_row_group_first th { border-top-width: 0.5px; }
+ #mwvxenenxy .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #mwvxenenxy .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #mwvxenenxy .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #mwvxenenxy .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #mwvxenenxy .gt_left { text-align: left; }
+ #mwvxenenxy .gt_center { text-align: center; }
+ #mwvxenenxy .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #mwvxenenxy .gt_font_normal { font-weight: normal; }
+ #mwvxenenxy .gt_font_bold { font-weight: bold; }
+ #mwvxenenxy .gt_font_italic { font-style: italic; }
+ #mwvxenenxy .gt_super { font-size: 65%; }
+ #mwvxenenxy .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #mwvxenenxy .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
@@ -1175,7 +1180,7 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 <p>If we take a look at the two columns referring to the proportional weights, we observe a negative impact of negative tone on stock market reactions. The interesting take away is that the impact of the variable using the finance specific dictionary is statistically different from zero, while the one using the common dictionary is not. At the same time, variables of both dictionaries exhibit a negative impact on stock market reactions that is statistically different from zero. Thus, investors seem to react towards textual information of annual reports. Nevertheless, this result should not be overstated as the average value of <span class="math notranslate nohighlight">\(R^2\)</span> scores is relatively small. This indicates that only little of the actual variation of stock market reactions can be explained by the control and text variables. This is rather common in the financial domain which is largely exposed to randomness and lacks of strong deterministic relationships between firm variables and stock market developments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lmcd_results_table.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1200,7 +1205,7 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;frankel_1.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1213,7 +1218,7 @@ cr_{it, w} = \beta_i + \beta_{t'} + \beta_1 \hat{cr}_{it, w} + \mathbf{\gamma}^T
 <p>Comparing the <span class="math notranslate nohighlight">\(R^2\)</span> levels of the table above (10-K) and the one below (earning calls), demonstrates that much more of the stock market reaction to earning calls is explainable by control variables and the text variable. A reason for this may lie in the nature of both events. Earning calls are usually before annual or quarter reports are released. Furthermore, they are less prepared and may allow analysts and investors to elicit more relevant information from firm representatives. Thus, information released in 10-K reports are known before and included in asset prices before the event occurs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;frankel_2.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1275,7 +1280,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>In their paper, they always compare a report with its counterpart from the previous year, e.g., report for the first quarter in 2023 with the one in the first quarter in 2024. The analysis is done with data between 1995 and 2014. On the firm level, they conduct monthly regressions which regress the next month’s return upon the similarity measures and control variables. See the table from their paper below. Each of the similarity measures has a positive sign and is statistically different from zero (at a significance level of at 5%). This implies that companies with lower similarity do have a lower expected return. From a asset pricing perspective, this means investors demand a premium for companies that do not change their reports. This would only make sense if changes are mostly associated with positive company developments and a decrease in company risk.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_regression.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1287,7 +1292,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>However, the opposite seems to be true as they conduct another regression to get further insights of document changes. The regression table below regresses one of their similarity metrics on sentiment, uncertainty, litigious and CEO references in document changes. The results show that similarities decrease if more negative, litigious and uncertainty words are used or if the change is announcing the change of the company’s CEO or CFO. This creates a puzzling result as changes in the document seem to be related to aspects creating uncertainty and risk of the company. At the same time, investors want to be less compensated when holding companies with higher document changes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_regression_2.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1299,7 +1304,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>The only explanation which makes this result plausible is, that investors fail to directly include the information of the document changes at the time they are revealed. This seems to be true and revealed by a portfolio analysis in the paper. Based on the document similarity, they build two portfolios. One containing companies with the least document changes and one with the highest document changes. Over time portfolio components are added and deleted according to their current document similarity. To extract the difference between the two portfolios we take a look at the difference in returns of the portfolio with the least and the most changes. This is from the paper’s appendix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_pf_returns.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1312,7 +1317,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>Thus, the paper reveals that investors seem to be unable to detect information which is relevant for the companies’ value. Note that this is done by a rather simply method of using term frequencies and cosine similarity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;lazy_prices_pf_returns2.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1364,26 +1369,26 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;gas&#39;,
- &#39;markets&#39;,
- &#39;global&#39;,
- &#39;losses&#39;,
- &#39;days&#39;,
- &#39;major&#39;,
- &#39;up&#39;,
- &#39;go&#39;,
- &#39;greenhouse&#39;,
- &#39;driver&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;driver&#39;,
  &#39;economic&#39;,
- &#39;emissions&#39;,
+ &#39;go&#39;,
+ &#39;gas&#39;,
+ &#39;up&#39;,
  &#39;these&#39;,
- &#39;increase&#39;,
- &#39;energies&#39;,
- &#39;help&#39;,
- &#39;renewable&#39;,
+ &#39;emissions&#39;,
  &#39;warming&#39;,
+ &#39;greenhouse&#39;,
+ &#39;major&#39;,
+ &#39;reduce&#39;,
+ &#39;losses&#39;,
+ &#39;global&#39;,
  &#39;future&#39;,
- &#39;reduce&#39;]
+ &#39;renewable&#39;,
+ &#39;help&#39;,
+ &#39;days&#39;,
+ &#39;energies&#39;,
+ &#39;markets&#39;,
+ &#39;increase&#39;]
 </pre></div>
 </div>
 </div>
@@ -1391,9 +1396,9 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>Next, we determine the term frequencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="k">def</span> <span class="nf">term_frequencies</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">term_frequencies</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
     <span class="n">counts</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
@@ -1428,36 +1433,31 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>gas</th>
-      <th>markets</th>
-      <th>global</th>
-      <th>losses</th>
-      <th>days</th>
-      <th>major</th>
-      <th>up</th>
-      <th>go</th>
-      <th>greenhouse</th>
       <th>driver</th>
       <th>economic</th>
-      <th>emissions</th>
+      <th>go</th>
+      <th>gas</th>
+      <th>up</th>
       <th>these</th>
-      <th>increase</th>
-      <th>energies</th>
-      <th>help</th>
-      <th>renewable</th>
+      <th>emissions</th>
       <th>warming</th>
-      <th>future</th>
+      <th>greenhouse</th>
+      <th>major</th>
       <th>reduce</th>
+      <th>losses</th>
+      <th>global</th>
+      <th>future</th>
+      <th>renewable</th>
+      <th>help</th>
+      <th>days</th>
+      <th>energies</th>
+      <th>markets</th>
+      <th>increase</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>d1</th>
-      <td>1</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1465,7 +1465,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0</td>
+      <td>1</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
@@ -1473,14 +1473,14 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>1</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>d2</th>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1489,42 +1489,45 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>0</td>
       <td>1</td>
       <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
     </tr>
     <tr>
       <th>a1</th>
       <td>1</td>
-      <td>0</td>
-      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>a2</th>
       <td>0</td>
-      <td>1</td>
-      <td>0</td>
       <td>0</td>
       <td>1</td>
       <td>0</td>
@@ -1534,13 +1537,15 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -1574,36 +1579,31 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>gas</th>
-      <th>markets</th>
-      <th>global</th>
-      <th>losses</th>
-      <th>days</th>
-      <th>major</th>
-      <th>up</th>
-      <th>go</th>
-      <th>greenhouse</th>
       <th>driver</th>
       <th>economic</th>
-      <th>emissions</th>
+      <th>go</th>
+      <th>gas</th>
+      <th>up</th>
       <th>these</th>
-      <th>increase</th>
-      <th>energies</th>
-      <th>help</th>
-      <th>renewable</th>
+      <th>emissions</th>
       <th>warming</th>
-      <th>future</th>
+      <th>greenhouse</th>
+      <th>major</th>
       <th>reduce</th>
+      <th>losses</th>
+      <th>global</th>
+      <th>future</th>
+      <th>renewable</th>
+      <th>help</th>
+      <th>days</th>
+      <th>energies</th>
+      <th>markets</th>
+      <th>increase</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>climate</th>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1611,11 +1611,16 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>0</td>
       <td>0</td>
       <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
       <td>0</td>
       <td>1</td>
       <td>1</td>
-      <td>1</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
@@ -1650,36 +1655,31 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>gas</th>
-      <th>markets</th>
-      <th>global</th>
-      <th>losses</th>
-      <th>days</th>
-      <th>major</th>
-      <th>up</th>
-      <th>go</th>
-      <th>greenhouse</th>
       <th>driver</th>
       <th>economic</th>
-      <th>emissions</th>
+      <th>go</th>
+      <th>gas</th>
+      <th>up</th>
       <th>these</th>
-      <th>increase</th>
-      <th>energies</th>
-      <th>help</th>
-      <th>renewable</th>
+      <th>emissions</th>
       <th>warming</th>
-      <th>future</th>
+      <th>greenhouse</th>
+      <th>major</th>
       <th>reduce</th>
+      <th>losses</th>
+      <th>global</th>
+      <th>future</th>
+      <th>renewable</th>
+      <th>help</th>
+      <th>days</th>
+      <th>energies</th>
+      <th>markets</th>
+      <th>increase</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>climate</th>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1687,6 +1687,11 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
       <td>0</td>
       <td>0</td>
       <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1726,26 +1731,26 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>gas</th>
-      <th>markets</th>
-      <th>global</th>
-      <th>losses</th>
-      <th>days</th>
-      <th>major</th>
-      <th>up</th>
-      <th>go</th>
-      <th>greenhouse</th>
       <th>driver</th>
       <th>economic</th>
-      <th>emissions</th>
+      <th>go</th>
+      <th>gas</th>
+      <th>up</th>
       <th>these</th>
-      <th>increase</th>
-      <th>energies</th>
-      <th>help</th>
-      <th>renewable</th>
+      <th>emissions</th>
       <th>warming</th>
-      <th>future</th>
+      <th>greenhouse</th>
+      <th>major</th>
       <th>reduce</th>
+      <th>losses</th>
+      <th>global</th>
+      <th>future</th>
+      <th>renewable</th>
+      <th>help</th>
+      <th>days</th>
+      <th>energies</th>
+      <th>markets</th>
+      <th>increase</th>
     </tr>
   </thead>
   <tbody>
@@ -1781,7 +1786,7 @@ d_{jaccard} = \frac{|D_1 \cap D_2|}{|D_1 \cup D_2|} = \frac{2}{4} = 0.5
 <p>The goal of their paper is to create a portfolio whose value increases if the climate change index increases to hedge against an in crease in climate risk from the companies’ perspective. This is where the actual “work” of the paper starts. However, this extract is the one using language modeling which is why we end the presentation here and leave interested readers to the original research article.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;engle_hedging.png&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1951,8 +1956,8 @@ By Prof. Dr. Ralf Kellner
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
