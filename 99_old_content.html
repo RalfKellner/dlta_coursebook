@@ -452,11 +452,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5186
-The average cosine distance is: 0.1638
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.5319
+The average cosine distance is: 0.1706
 </pre></div>
 </div>
-<img alt="_images/9029b6bb278ec6f81e00268aa2bd9ff02fdb60ab96bb524541b53a3c7a5c903a.png" src="_images/9029b6bb278ec6f81e00268aa2bd9ff02fdb60ab96bb524541b53a3c7a5c903a.png" />
+<img alt="_images/78cb588fa960552578015246f7eb4a6c5cc508d18894ec8a03f1bb392aca93fd.png" src="_images/78cb588fa960552578015246f7eb4a6c5cc508d18894ec8a03f1bb392aca93fd.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -479,11 +479,11 @@ The average cosine distance is: 0.1638
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6759
-The average cosine distance is: 0.2136
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average euclidean distance is: 0.6610
+The average cosine distance is: 0.2069
 </pre></div>
 </div>
-<img alt="_images/8b2d869de6213f5fafc90a67b4abc8a31db68d5b7056fe11fe02ae0e0af91658.png" src="_images/8b2d869de6213f5fafc90a67b4abc8a31db68d5b7056fe11fe02ae0e0af91658.png" />
+<img alt="_images/3c66852a0ccea359b35fdb52191107b5477e0343e888027964b2c6f1e7cd0439.png" src="_images/3c66852a0ccea359b35fdb52191107b5477e0343e888027964b2c6f1e7cd0439.png" />
 </div>
 </div>
 <p>Now let us take a look, how average distances behave for an increasing number of dimensions. The cell below exhibits the distance distributions for <span class="math notranslate nohighlight">\(d = 10, 100, 1000\)</span>. We observe that distributions are shifted to the right for pairwise euclidean distances which means they increase simply because we increase dimensionality. The cosine distances stay on average at the same level, but, become less diverse with increasing dimensionality. Does this mean that cosine similariy is not prone to the fallacies of the curse of dimensionality?</p>
@@ -516,7 +516,7 @@ The average cosine distance is: 0.2136
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/77f48bf916b10ce5ac4101f5287a7c205ef06480272d2b90d5939b86ac2fde90.png" src="_images/77f48bf916b10ce5ac4101f5287a7c205ef06480272d2b90d5939b86ac2fde90.png" />
+<img alt="_images/a120155c4a968554075c88c5269f3700964fd4856e02924c642a11f4e3e701e7.png" src="_images/a120155c4a968554075c88c5269f3700964fd4856e02924c642a11f4e3e701e7.png" />
 </div>
 </div>
 <p>Unfortunately not in general! Take a look a look at the cell below for which we now sample observations in <span class="math notranslate nohighlight">\([-1, 1]^d\)</span>.</p>
@@ -549,7 +549,7 @@ The average cosine distance is: 0.2136
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/428311a31e041f065d9bfaeb77925a9436ae6af442c4250be04e0676e75f201d.png" src="_images/428311a31e041f065d9bfaeb77925a9436ae6af442c4250be04e0676e75f201d.png" />
+<img alt="_images/a1ffcd1e5f05ed759ba1b862f1a8ebdc0a6a4fb4e8504e3708fd3993281bebee.png" src="_images/a1ffcd1e5f05ed759ba1b862f1a8ebdc0a6a4fb4e8504e3708fd3993281bebee.png" />
 </div>
 </div>
 <p>Remember that cosine distance is <span class="math notranslate nohighlight">\( 1 - d_{cosine} (\boldsymbol{x}_i, \boldsymbol{x}_{k})\)</span>, this means that an average value of it being equal to <span class="math notranslate nohighlight">\(1\)</span> implies average similarities of <span class="math notranslate nohighlight">\(0\)</span>. Thus, for higher dimension, vectors are independent of each other. Let us end the experiment here. What you should take away from it is that measuring similarities can become challenging if we use high dimensional vectors for the numerical representation of words and documents. Thus, sometimes we may need to bring high-dimensional representations back to lower dimensions by making use of dimensionality reduction techniques as principal component analysis (PCA), t-distributed neighbor embedding (t-sne) or unifold manifold approximation and projection (umap).</p>
@@ -745,7 +745,7 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-            <div id="fGheWz"></div>
+            <div id="9Rcfni"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -769,14 +769,14 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("fGheWz").appendChild(div);
+                        document.getElementById("9Rcfni").appendChild(div);
                     };
-                    var e = document.getElementById("fGheWz");
+                    var e = document.getElementById("9Rcfni");
                     e.appendChild(script);
                 })()
             </script>
             </div><div class="output text_html">
-            <div id="WVx5Cz"></div>
+            <div id="E0zkGW"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -800,58 +800,58 @@ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("WVx5Cz").appendChild(div);
+                        document.getElementById("E0zkGW").appendChild(div);
                     };
-                    var e = document.getElementById("WVx5Cz");
+                    var e = document.getElementById("E0zkGW");
                     e.appendChild(script);
                 })()
             </script>
-            </div><div class="output text_html"><div id="pvmkcjyfse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+            </div><div class="output text_html"><div id="qsquylbzkh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#pvmkcjyfse table {
+#qsquylbzkh table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#pvmkcjyfse thead, tbody, tfoot, tr, td, th { border-style: none; }
+#qsquylbzkh thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#pvmkcjyfse p { margin: 0; padding: 0; }
- #pvmkcjyfse .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #pvmkcjyfse .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #pvmkcjyfse .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #pvmkcjyfse .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #pvmkcjyfse .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #pvmkcjyfse .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #pvmkcjyfse .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #pvmkcjyfse .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #pvmkcjyfse .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #pvmkcjyfse .gt_column_spanner_outer:first-child { padding-left: 0; }
- #pvmkcjyfse .gt_column_spanner_outer:last-child { padding-right: 0; }
- #pvmkcjyfse .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
- #pvmkcjyfse .gt_spanner_row { border-bottom-style: hidden; }
- #pvmkcjyfse .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
- #pvmkcjyfse .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
- #pvmkcjyfse .gt_from_md> :first-child { margin-top: 0; }
- #pvmkcjyfse .gt_from_md> :last-child { margin-bottom: 0; }
- #pvmkcjyfse .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
- #pvmkcjyfse .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #pvmkcjyfse .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #pvmkcjyfse .gt_row_group_first td { border-top-width: 0.5px; }
- #pvmkcjyfse .gt_row_group_first th { border-top-width: 0.5px; }
- #pvmkcjyfse .gt_striped { background-color: rgba(128,128,128,0.05); }
- #pvmkcjyfse .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
- #pvmkcjyfse .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #pvmkcjyfse .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #pvmkcjyfse .gt_left { text-align: left; }
- #pvmkcjyfse .gt_center { text-align: center; }
- #pvmkcjyfse .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #pvmkcjyfse .gt_font_normal { font-weight: normal; }
- #pvmkcjyfse .gt_font_bold { font-weight: bold; }
- #pvmkcjyfse .gt_font_italic { font-style: italic; }
- #pvmkcjyfse .gt_super { font-size: 65%; }
- #pvmkcjyfse .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #pvmkcjyfse .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#qsquylbzkh p { margin: 0; padding: 0; }
+ #qsquylbzkh .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: hidden; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #qsquylbzkh .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #qsquylbzkh .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #qsquylbzkh .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #qsquylbzkh .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #qsquylbzkh .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #qsquylbzkh .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #qsquylbzkh .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: bottom; padding-top: 4px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #qsquylbzkh .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #qsquylbzkh .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #qsquylbzkh .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #qsquylbzkh .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: bottom; padding-top: 4px; padding-bottom: 4px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #qsquylbzkh .gt_spanner_row { border-bottom-style: hidden; }
+ #qsquylbzkh .gt_group_heading { padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; border-left-style: none; border-left-width: 1px; border-left-color: white; border-right-style: none; border-right-width: 1px; border-right-color: white; vertical-align: middle; text-align: left; }
+ #qsquylbzkh .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 0px; font-weight: initial; border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: black; vertical-align: middle; }
+ #qsquylbzkh .gt_from_md> :first-child { margin-top: 0; }
+ #qsquylbzkh .gt_from_md> :last-child { margin-bottom: 0; }
+ #qsquylbzkh .gt_row { padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: none; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 0px; border-left-color: white; border-right-style: none; border-right-width: 0px; border-right-color: white; vertical-align: middle; overflow-x: hidden; }
+ #qsquylbzkh .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: hidden; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #qsquylbzkh .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #qsquylbzkh .gt_row_group_first td { border-top-width: 0.5px; }
+ #qsquylbzkh .gt_row_group_first th { border-top-width: 0.5px; }
+ #qsquylbzkh .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #qsquylbzkh .gt_table_body { border-top-style: solid; border-top-width: 0.5px; border-top-color: black; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: black; }
+ #qsquylbzkh .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #qsquylbzkh .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #qsquylbzkh .gt_left { text-align: left; }
+ #qsquylbzkh .gt_center { text-align: center; }
+ #qsquylbzkh .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #qsquylbzkh .gt_font_normal { font-weight: normal; }
+ #qsquylbzkh .gt_font_bold { font-weight: bold; }
+ #qsquylbzkh .gt_font_italic { font-style: italic; }
+ #qsquylbzkh .gt_super { font-size: 65%; }
+ #qsquylbzkh .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #qsquylbzkh .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">

@@ -1031,7 +1031,7 @@ tensor([[-0.2695,  0.1472, -0.2660],
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/.venv/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ralfkellner/Documents/Kurse/DLTA/.venv/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
@@ -1573,8 +1573,8 @@ The more code
         <span class="k">return</span> <span class="n">encoded</span>
     
 
-<span class="n">tokenizer_finlm</span> <span class="o">=</span> <span class="n">FinLMGptTokenizer</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm-bpe-tokenizer.json&quot;</span><span class="p">)</span>
-<span class="n">model_finlm</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Library/Mobile Documents/com~apple~CloudDocs/Kurse/DLTA/generator/finlm_gpt/finlm_gpt_model&quot;</span><span class="p">)</span>
+<span class="n">tokenizer_finlm</span> <span class="o">=</span> <span class="n">FinLMGptTokenizer</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Documents/Kurse/DLTA/generator/finlm_gpt/finlm-bpe-tokenizer.json&quot;</span><span class="p">)</span>
+<span class="n">model_finlm</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;/Users/ralfkellner/Documents/Kurse/DLTA/generator/finlm_gpt/finlm_gpt_model&quot;</span><span class="p">)</span>
 
 <span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;The outlook for the next quarter is&quot;</span>
 <span class="n">inputs_finlm</span> <span class="o">=</span> <span class="n">tokenizer_finlm</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
